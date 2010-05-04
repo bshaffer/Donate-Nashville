@@ -20,4 +20,12 @@ class ProjectConfiguration extends sfProjectConfiguration
       'sfFbConnectGuardPlugin',
       ));
   }
+  
+  /**
+    * Configure the Doctrine engine
+    */
+  public function configureDoctrine(Doctrine_Manager $manager)
+  {
+    $manager->setAttribute(Doctrine_Core::ATTR_QUERY_CLASS, 'Doctrine_Query_Extra');
+  }
 }

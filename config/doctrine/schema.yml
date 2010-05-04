@@ -3,7 +3,7 @@ Resource:
     Locatable:
       fields:             [address_1, address_2, city, state, zip]
   columns:
-    user_id:
+    owner_id:
       type:             integer(4)
       notnull:          true
     transaction_type:
@@ -14,6 +14,12 @@ Resource:
       notnull:          true
     description:
       type:             clob
+    show_contact_info:
+      type:             boolean
+      default:          true
+    is_satisfied:
+      type:             boolean
+      default:          false
     address_1:
       type:             string(255)
     address_2:             
@@ -33,7 +39,7 @@ Resource:
   relations:
     User:
       class:            sfGuardUser
-      local:            user_id
+      local:            owner_id
       foreignAlias:     Resoures
       onDelete:       CASCADE
       
@@ -70,4 +76,14 @@ HousingResource:
       default:          1
     square_footage:
       type:             integer
+
+ResourceParticipant:
+  columns:
+    participant_id:
+      type:             integer(4)
+      notnull:          true
+    resource_id:
+      type:             integer(4)
+      notnull:          true
+  relations:
     
