@@ -1,94 +1,100 @@
 <?php
 
 /**
- * Renders tracking code on every page.
- * 
- * To activate, add the following code to your application's filters.yml file,
- * just below the web_debug filter.
- * 
- * <code>
- *  rendering: ~
- *  web_debug: ~
- *  
- *  # sfGoogleAnalyticsPlugin filter
- *  google_analytics:
- *    class: sfGoogleAnalyticsFilter
- *  
- *  # etc ...
- * </code>
+ * Add tracking code to the response.
  * 
  * @package     sfGoogleAnalyticsPlugin
  * @subpackage  filter
  * @author      Kris Wallsmith <kris.wallsmith@symfony-project.com>
- * @version     SVN: $Id: sfGoogleAnalyticsFilter.class.php 11928 2008-10-03 16:59:33Z Kris.Wallsmith $
+ * @version     SVN: $Id: sfGoogleAnalyticsFilter.class.php 12235 2008-10-17 16:54:35Z Kris.Wallsmith $
  */
 class sfGoogleAnalyticsFilter extends sfFilter
 {
   /**
    * Insert tracking code for applicable web requests.
    * 
-   * @author  Kris Wallsmith
    * @param   sfFilterChain $filterChain
    */
   public function execute($filterChain)
   {
-    if ($this->isTrackable())
+    $prefix   = 'app_sf_google_analytics_plugin_';
+    $user     = $this->context->getUser();
+    $request  = $this->context->getRequest();
+    $response = $this->context->getResponse();
+    
+    if ($this->isFirstCall())
     {
-      // capture custom vars stored to flash on the way up the filter chain
-      // since they'll have been removed already on the way down
-      sfGoogleAnalyticsToolkit::addCustomVars($this->getContext()->getUser()->getAttributeHolder()->get('google_analytics_custom_vars', array(), 'symfony/flash'));
+      $classes = array_merge(array(
+        'urchin' => 'sfGoogleAnalyticsTrackerUrchin',
+        'google' => 'sfGoogleAnalyticsTrackerGoogle'), sfConfig::get($prefix.'classes', array()));
+      $class = $classes[sfConfig::get($prefix.'tracker', 'urchin')];
+      
+      $tracker = new $class($this->context);
+      
+      // pull callables from session storage
+      $callables = $user->getAttribute('callables', array(), 'sf_google_analytics_plugin');
+      foreach ($callables as $callable)
+      {
+        list($method, $arguments) = $callable;
+        call_user_func_array(array($tracker, $method), $arguments);
+      }
+      
+      $request->setTracker($tracker);
     }
     
     $filterChain->execute();
+    $tracker = $request->getTracker();
     
-    if ($this->isTrackable())
+    // apply module- and action-level configuration
+    $module = $this->context->getModuleName();
+    $action = $this->context->getActionName();
+    
+    $moduleParams = sfConfig::get('mod_'.strtolower($module).'_sf_google_analytics_plugin_params', array());
+    $tracker->configure($moduleParams);
+    
+    $actionConfig = sfConfig::get('mod_'.strtolower($module).'_'.$action.'_sf_google_analytics_plugin', array());
+    if (isset($actionConfig['params']))
     {
-      $insertion    = sfConfig::get('app_google_analytics_insertion', 'bottom');
-      $insertMethod = 'insertTrackingCode'.$insertion;
+      $tracker->configure($actionConfig['params']);
+    }
+    
+    // insert tracking code
+    if ($this->isTrackable() && $tracker->isEnabled())
+    {
+      if (sfConfig::get('sf_logging_enabled'))
+      {
+        sfGoogleAnalyticsToolkit::logMessage($this, 'Inserting tracking code.');
+      }
       
-      if (method_exists($this, $insertMethod))
-      {
-        if (sfConfig::get('sf_logging_enabled'))
-        {
-          $this->getContext()->getLogger()->info('{sfGoogleAnalyticsFilter} Inserting tracking code in "'.$insertion.'" position.');
-        }
-        
-        $trackingCode = $this->generateTrackingCode();
-        call_user_func(array($this, $insertMethod), "\n".$trackingCode);
-      }
-      else
-      {
-        throw new sfGoogleAnalyticsException('Unrecognized insertion.');
-      }
+      $tracker->insert($response);
     }
     elseif (sfConfig::get('sf_logging_enabled'))
     {
-      $this->getContext()->getLogger()->info('{sfGoogleAnalyticsFilter} Tracking code not inserted.');
+      sfGoogleAnalyticsToolkit::logMessage($this, 'Tracking code not inserted.');
     }
+    
+    $user->getAttributeHolder()->removeNamespace('sf_google_analytics_plugin');
+    $tracker->shutdown($user);
   }
   
   /**
-   * Test whether tracking code should be inserted for this request.
+   * Test whether the response is trackable.
    * 
-   * @author  Kris Wallsmith
    * @return  bool
    */
   protected function isTrackable()
   {
-    $context    = $this->getContext();
-    $request    = $context->getRequest();
-    $response   = $context->getResponse();
-    $controller = $context->getController();
+    $request    = $this->context->getRequest();
+    $response   = $this->context->getResponse();
+    $controller = $this->context->getController();
     
     // don't add analytics:
-    // * if google analytics is not enabled
     // * for XHR requests
     // * if not HTML
     // * if 304
     // * if not rendering to the client
     // * if HTTP headers only
-    if (!sfConfig::get('app_google_analytics_enabled') ||
-        $request->isXmlHttpRequest() ||
+    if ($request->isXmlHttpRequest() ||
         strpos($response->getContentType(), 'html') === false ||
         $response->getStatusCode() == 304 ||
         $controller->getRenderMode() != sfView::RENDER_CLIENT ||
@@ -100,58 +106,5 @@ class sfGoogleAnalyticsFilter extends sfFilter
     {
       return true;
     }
-  }
-  
-  /**
-   * Insert supplied tracking code at the top of the body tag.
-   * 
-   * @author  Kris Wallsmith
-   * @param   string $trackingCode
-   */
-  protected function insertTrackingCodeTop($trackingCode)
-  {
-    $response = $this->getContext()->getResponse();
-    
-    $oldContent = $response->getContent();
-    $newContent = preg_replace('/\<body[^\>]*\>/i', "$0\n".$trackingCode, $oldContent, 1);
-    
-    if ($oldContent == $newContent)
-    {
-      $newContent .= $trackingCode;
-    }
-    
-    $response->setContent($newContent);
-  }
-  
-  /**
-   * Insert supplied tracking code at the bottom of the body tag.
-   * 
-   * @author  Kris Wallsmith
-   * @param   string $trackingCode
-   */
-  protected function insertTrackingCodeBottom($trackingCode)
-  {
-    $response = $this->getContext()->getResponse();
-    
-    $oldContent = $response->getContent();
-    $newContent = str_ireplace('</body>', $trackingCode."\n</body>", $oldContent);
-    
-    if ($oldContent == $newContent)
-    {
-      $newContent .= $trackingCode;
-    }
-    
-    $response->setContent($newContent);
-  }
-  
-  /**
-   * Get tracking code for insertion.
-   *
-   * @author  Kris Wallsmith
-   * @return  string
-   */
-  protected function generateTrackingCode()
-  {
-    return sfGoogleAnalyticsToolkit::getHtml();
   }
 }
