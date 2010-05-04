@@ -3,11 +3,14 @@
 /**
  * sfGuardUser form base class.
  *
- * @package    form
- * @subpackage sf_guard_user
- * @version    SVN: $Id: sfDoctrineFormGeneratedTemplate.php 8508 2008-04-17 17:39:15Z fabien $
+ * @method sfGuardUser getObject() Returns the current form's model object
+ *
+ * @package    skeleton
+ * @subpackage form
+ * @author     Your name here
+ * @version    SVN: $Id: sfDoctrineFormGeneratedTemplate.php 24171 2009-11-19 16:37:50Z Kris.Wallsmith $
  */
-class BasesfGuardUserForm extends BaseFormDoctrine
+abstract class BasesfGuardUserForm extends BaseFormDoctrine
 {
   public function setup()
   {
@@ -20,25 +23,41 @@ class BasesfGuardUserForm extends BaseFormDoctrine
       'is_active'        => new sfWidgetFormInputCheckbox(),
       'is_super_admin'   => new sfWidgetFormInputCheckbox(),
       'last_login'       => new sfWidgetFormDateTime(),
+      'address_1'        => new sfWidgetFormInputText(),
+      'address_2'        => new sfWidgetFormInputText(),
+      'city'             => new sfWidgetFormInputText(),
+      'state'            => new sfWidgetFormInputText(),
+      'zip'              => new sfWidgetFormInputText(),
+      'phone_1'          => new sfWidgetFormInputText(),
+      'phone_2'          => new sfWidgetFormInputText(),
+      'email'            => new sfWidgetFormInputText(),
       'created_at'       => new sfWidgetFormDateTime(),
       'updated_at'       => new sfWidgetFormDateTime(),
-      'groups_list'      => new sfWidgetFormDoctrineChoiceMany(array('model' => 'sfGuardGroup')),
-      'permissions_list' => new sfWidgetFormDoctrineChoiceMany(array('model' => 'sfGuardPermission')),
+      'groups_list'      => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardGroup')),
+      'permissions_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardPermission')),
     ));
 
     $this->setValidators(array(
-      'id'               => new sfValidatorDoctrineChoice(array('model' => 'sfGuardUser', 'column' => 'id', 'required' => false)),
+      'id'               => new sfValidatorDoctrineChoice(array('model' => $this->getModelName(), 'column' => 'id', 'required' => false)),
       'username'         => new sfValidatorString(array('max_length' => 128)),
-      'algorithm'        => new sfValidatorString(array('max_length' => 128)),
+      'algorithm'        => new sfValidatorString(array('max_length' => 128, 'required' => false)),
       'salt'             => new sfValidatorString(array('max_length' => 128, 'required' => false)),
       'password'         => new sfValidatorString(array('max_length' => 128, 'required' => false)),
       'is_active'        => new sfValidatorBoolean(array('required' => false)),
       'is_super_admin'   => new sfValidatorBoolean(array('required' => false)),
       'last_login'       => new sfValidatorDateTime(array('required' => false)),
-      'created_at'       => new sfValidatorDateTime(array('required' => false)),
-      'updated_at'       => new sfValidatorDateTime(array('required' => false)),
-      'groups_list'      => new sfValidatorDoctrineChoiceMany(array('model' => 'sfGuardGroup', 'required' => false)),
-      'permissions_list' => new sfValidatorDoctrineChoiceMany(array('model' => 'sfGuardPermission', 'required' => false)),
+      'address_1'        => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'address_2'        => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'city'             => new sfValidatorString(array('max_length' => 100, 'required' => false)),
+      'state'            => new sfValidatorString(array('max_length' => 100, 'required' => false)),
+      'zip'              => new sfValidatorString(array('max_length' => 100, 'required' => false)),
+      'phone_1'          => new sfValidatorString(array('max_length' => 100, 'required' => false)),
+      'phone_2'          => new sfValidatorString(array('max_length' => 100, 'required' => false)),
+      'email'            => new sfValidatorString(array('max_length' => 100, 'required' => false)),
+      'created_at'       => new sfValidatorDateTime(),
+      'updated_at'       => new sfValidatorDateTime(),
+      'groups_list'      => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardGroup', 'required' => false)),
+      'permissions_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardPermission', 'required' => false)),
     ));
 
     $this->validatorSchema->setPostValidator(
@@ -48,6 +67,8 @@ class BasesfGuardUserForm extends BaseFormDoctrine
     $this->widgetSchema->setNameFormat('sf_guard_user[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
+
+    $this->setupInheritance();
 
     parent::setup();
   }
@@ -75,10 +96,10 @@ class BasesfGuardUserForm extends BaseFormDoctrine
 
   protected function doSave($con = null)
   {
-    parent::doSave($con);
-
     $this->savegroupsList($con);
     $this->savepermissionsList($con);
+
+    parent::doSave($con);
   }
 
   public function savegroupsList($con = null)
@@ -94,17 +115,28 @@ class BasesfGuardUserForm extends BaseFormDoctrine
       return;
     }
 
-    if (is_null($con))
+    if (null === $con)
     {
       $con = $this->getConnection();
     }
 
-    $this->object->unlink('groups', array());
-
+    $existing = $this->object->groups->getPrimaryKeys();
     $values = $this->getValue('groups_list');
-    if (is_array($values))
+    if (!is_array($values))
     {
-      $this->object->link('groups', $values);
+      $values = array();
+    }
+
+    $unlink = array_diff($existing, $values);
+    if (count($unlink))
+    {
+      $this->object->unlink('groups', array_values($unlink));
+    }
+
+    $link = array_diff($values, $existing);
+    if (count($link))
+    {
+      $this->object->link('groups', array_values($link));
     }
   }
 
@@ -121,17 +153,28 @@ class BasesfGuardUserForm extends BaseFormDoctrine
       return;
     }
 
-    if (is_null($con))
+    if (null === $con)
     {
       $con = $this->getConnection();
     }
 
-    $this->object->unlink('permissions', array());
-
+    $existing = $this->object->permissions->getPrimaryKeys();
     $values = $this->getValue('permissions_list');
-    if (is_array($values))
+    if (!is_array($values))
     {
-      $this->object->link('permissions', $values);
+      $values = array();
+    }
+
+    $unlink = array_diff($existing, $values);
+    if (count($unlink))
+    {
+      $this->object->unlink('permissions', array_values($unlink));
+    }
+
+    $link = array_diff($values, $existing);
+    if (count($link))
+    {
+      $this->object->link('permissions', array_values($link));
     }
   }
 

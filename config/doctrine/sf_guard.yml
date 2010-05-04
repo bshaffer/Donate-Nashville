@@ -1,0 +1,11 @@
+# Adds to the schema in sfDoctrineGuardPlugin
+sfGuardUser:
+  columns:
+    address_1:             string(255)
+    address_2:             string(255)
+    city:                  string(100)
+    state:                 string(100)
+    zip:                   string(100)
+    phone_1:               string(100)
+    phone_2:               string(100)
+    email:                 string(100)

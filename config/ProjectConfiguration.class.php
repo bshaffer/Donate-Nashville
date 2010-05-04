@@ -9,6 +9,15 @@ class ProjectConfiguration extends sfProjectConfiguration
   {
     sfYaml::setSpecVersion('1.1');
     // for compatibility / remove and enable only the plugins you want
-    $this->enableAllPluginsExcept(array('sfPropelPlugin'));
+    $this->enablePlugins(array(
+      'sfDoctrinePlugin',
+      'sfDoctrineGuardPlugin',
+      'csDoctrineActAsSortablePlugin',
+      'sfFormExtraPlugin',
+      'sfGoogleAnalyticsPlugin',
+      'sfLucenePlugin',
+      'sfTaskExtraPlugin',
+      'sfFbConnectGuardPlugin',
+      ));
   }
 }

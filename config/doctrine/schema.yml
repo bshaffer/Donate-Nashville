@@ -1,0 +1,30 @@
+Resource:
+  columns:
+    user_id:
+      type:             integer(4)
+      notnull:          true
+    transaction_type:
+      type:             string(255)
+      notnull:          true
+  relations:
+    User:
+      class:            sfGuardUser
+      local:            user_id
+      foreignAlias:     Resoures
+      onDelete:       CASCADE
+      
+TimeResource:
+  inheritance:
+    extends:            Resource
+    type:               concrete
+
+MaterialResource:
+  inheritance:
+    extends:            Resource
+    type:               concrete
+
+HousingResource:
+  inheritance:
+    extends:            Resource
+    type:               concrete
+    

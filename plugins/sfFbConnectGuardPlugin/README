@@ -1,0 +1,148 @@
+sfFbConnectGuardPlugin
+================
+
+The sfFbConnectGuardPlugin adds a route, "fb_connect_auth", to allow Facebook Connect users to be created and logged in using the sfGuard plugin.
+
+The basic flow of events is as follows:
+
+* A user requests to sign up via FB Connect on your site.
+
+* Your site initiates a FB Connect request via Javascript (explained in detail later).
+
+* The user "connects" and Facebook forwards them to fb_connect_auth route.
+
+* sfFbConnectGuardPlugin receives the newly FB Connected user, creates them a sfGuard user, optionally logs them in, and forwards them exactly like sfGuard.
+
+The flow is nearly identical when a user is signing in via FB Connect EXCEPT that it is your responsibility to forward them to the fb_connect_auth in order for the plugin to recieve them and login their sfGuard user.
+
+Installation
+------------
+
+  * Create a Facebook Application - details at http://developers.facebook.com/get_started.php
+      * Important: Make a note of your Facebook API key and Facebook secret key
+      * Important: When configuring the application, on the "Connect" tab you need to set "Connect URL" to the URL where the "fb_connect_auth" route points. For example, `http://www.setfive.com/fb/auth`
+
+  * Install the plugin
+  
+            $ symfony plugin:install sfFbConnectGuardPlugin
+
+  * Configure the plugin in `app.yml`
+  
+          facebook_api_key: somekey # your Facebook application API key (get it from Facebook)
+          facebook_secret: somesecret # your Facebook application secret key (get it from Facebook)
+          sf_fb_connect_guard:
+            auto_login: false # if users should be automatically logged in after they sign up with FB Connect
+            
+            connect_successful: register_please_confirm # where users go after they succesfully connect
+            login_failed: someroute # where to go if the login failed
+            # where to go when a user successfully logs in versus registers with FB Connect
+            success_signin_url: someroute
+            
+            # An array of Facebook profile fields to grab on registration 
+            # more info at http://wiki.developers.facebook.com/index.php/Users.getInfo
+            profile_fields: [first_name, last_name]
+          
+            profile_class: SfGuardUserProfilePeer # The class to look for a create method in
+            # The method to call in the profile_class.
+            # Basically, customize this method to create users how you'd like
+            create_method: createFbUser
+
+So at this point, you've created a Facebook Application, installed the plugin, and have it configured.
+
+The last step is to include the Facebook Connect dependencies.
+
+A full guide is available here http://wiki.developers.facebook.com/index.php/Connect/Setting_Up_Your_Site
+
+Cliffnotes:
+
+* Create a file called "xd_receiver.htm" in your web directory. Paste the following into the file:
+          <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+              "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <body>
+              <script 
+                src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/XdCommReceiver.js" 
+                type="text/javascript"></script>
+            </body> 
+          </html>
+
+* In your layout file, change the <html> tag to look like
+          
+          <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+
+* Inside the <body> tag of your layout add
+          
+          <script 
+            src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/en_US" 
+            type="text/javascript">
+          </script>
+
+Usage
+------------
+
+Now that everything is loaded, using the FB Connect stuff is pretty straightforward.
+
+The easiest way is to use the default Facebook FBML. 
+
+Stick the following anywhere you want users to be able to sign up or login from.
+
+          
+          <fb:login-button onlogin="window.location='<?php url_for("fb_connect_auth");'"></fb:login-button>
+
+You'll also need to stick the following JavaScript on the same page.
+
+          
+          var isAuthenticated = <?php echo ($sf_user->isAuthenticated() ? "true" : "false"); ?>;
+          
+          // we set a no_login attribute on logout 
+          // so that fb connect users that logout aren't stuck constantly getting logged in
+          var noAutologin = <?php echo ($sf_user->getAttribute("no_login", false) ? "true" : "false"); ?>;
+          
+          FB_RequireFeatures(["Api"], 
+              function(){ 
+               FB.Facebook.init("<?php echo sfConfig::get("app_facebook_api_key"); ?>",
+                                "/xd_receiver.htm"); 
+               var api = FB.Facebook.apiClient;
+               
+               // if the user is connected do something
+               FB.Connect.ifUserConnected( 
+                   function(){
+                     fbIsConnected = true;
+                      if(!isAuthenticated && !noAutologin){
+                          window.location = "<?php echo url_for("fb_connect_auth"); ?>";
+                      }
+                    });
+          });
+
+You'll also probably want to customize the function that is specified by "create_method".
+
+Ours looks like
+
+            
+            // $fbId will be the users Facebook ID
+            // $profileFields is an array returned from Facebook's getUserInfo()
+            public static function createFbUser( $fbId, $profileFields ){
+              
+              $sfUser = new sfGuardUser();
+              $sfUser->setUserName( $email );
+              $sfUser->setIsActive(false);
+              $sfUser->save();
+              
+              $profile = $sfUser->getProfile();
+              $profile->setFirstName( $profileFields["first_name"] );
+              $profile->setLastName( $profileFields["last_name"] );
+              $profile->save();
+              
+              // YOU NEED TO RETURN THE NEW USER'S ID!!
+              return $sfUser->getId();
+            }
+
+Basically, customize the function to do whatever application specific configuration you normally do.
+
+You can also use it to pre-populate stuff from a user's Facebook account.
+
+One last thing, if a user has all ready been authenticated with sfGuard 
+
+and then they FB Connect, the plugin will link their sfGuard user with their Facebook account.
+
+Anyway, check out the Facebook Connect documentation for a better idea of how to do different things.
