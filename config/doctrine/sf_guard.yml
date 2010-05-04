@@ -12,3 +12,7 @@ sfGuardUser:
     phone_1:               string(100)
     phone_2:               string(100)
     email:                 string(100)
+    account_type:
+      type:                string(100)
+      default:             individual #  [individual, shelter, nonprofit]
+      notnull:             true

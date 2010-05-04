@@ -1,4 +1,7 @@
 Resource:
+  actAs:
+    Locatable:
+      fields:             [address_1, address_2, city, state, zip]
   columns:
     user_id:
       type:             integer(4)
@@ -11,6 +14,22 @@ Resource:
       notnull:          true
     description:
       type:             clob
+    address_1:
+      type:             string(255)
+    address_2:             
+      type:             string(255)
+    city:
+      type:             string(100)
+    state:
+      type:             string(100)
+    zip:
+      type:             string(100)
+    phone_1:
+      type:             string(100)
+    phone_2:
+      type:             string(100)
+    email:
+      type:             string(100)
   relations:
     User:
       class:            sfGuardUser
@@ -29,6 +48,8 @@ TimeResource:
     end_date:
       type:             timestamp
       notnull:          true
+    num_volunteers:
+      type:             integer
     
 MaterialResource:
   inheritance:
@@ -49,20 +70,4 @@ HousingResource:
       default:          1
     square_footage:
       type:             integer
-    address_1:
-      type:             string(255)
-    address_2:             
-      type:             string(255)
-    city:
-      type:             string(100)
-    state:
-      type:             string(100)
-    zip:
-      type:             string(100)
-    phone_1:
-      type:             string(100)
-    phone_2:
-      type:             string(100)
-    email:
-      type:             string(100)
     

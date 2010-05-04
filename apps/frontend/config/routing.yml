@@ -1,3 +1,11 @@
+donate:
+  url:   /
+  param: { module: donate, action: index }
+
+need:
+  url:   /
+  param: { module: need, action: index }
+
 # default rules
 homepage:
   url:   /
