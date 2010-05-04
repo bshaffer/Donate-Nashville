@@ -1,0 +1,17 @@
+ResourceSearch:
+  models: 
+    Resource:
+      route:   '@resource_show'
+      partial:  sfLucene/pluginResult
+      fields:
+        id:         unindexed
+        title:
+          boost: 1.5
+          type: text
+        description: 
+          type: text
+        
+      title:        title
+      description:  description
+
+  

@@ -1,6 +1,9 @@
 Resource:
+  actAs:
+    Locatable:
+      fields:             [address_1, address_2, city, state, zip]
   columns:
-    user_id:
+    owner_id:
       type:             integer(4)
       notnull:          true
     transaction_type:
@@ -11,10 +14,32 @@ Resource:
       notnull:          true
     description:
       type:             clob
+    show_contact_info:
+      type:             boolean
+      default:          true
+    is_satisfied:
+      type:             boolean
+      default:          false
+    address_1:
+      type:             string(255)
+    address_2:             
+      type:             string(255)
+    city:
+      type:             string(100)
+    state:
+      type:             string(100)
+    zip:
+      type:             string(100)
+    phone_1:
+      type:             string(100)
+    phone_2:
+      type:             string(100)
+    email:
+      type:             string(100)
   relations:
     User:
       class:            sfGuardUser
-      local:            user_id
+      local:            owner_id
       foreignAlias:     Resoures
       onDelete:       CASCADE
       
@@ -29,6 +54,8 @@ TimeResource:
     end_date:
       type:             timestamp
       notnull:          true
+    num_volunteers:
+      type:             integer
     
 MaterialResource:
   inheritance:
@@ -49,20 +76,14 @@ HousingResource:
       default:          1
     square_footage:
       type:             integer
-    address_1:
-      type:             string(255)
-    address_2:             
-      type:             string(255)
-    city:
-      type:             string(100)
-    state:
-      type:             string(100)
-    zip:
-      type:             string(100)
-    phone_1:
-      type:             string(100)
-    phone_2:
-      type:             string(100)
-    email:
-      type:             string(100)
+
+ResourceParticipant:
+  columns:
+    participant_id:
+      type:             integer(4)
+      notnull:          true
+    resource_id:
+      type:             integer(4)
+      notnull:          true
+  relations:
     
