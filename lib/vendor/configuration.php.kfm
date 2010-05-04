@@ -1,0 +1,109 @@
+<?php
+// This file needs to be copied to /lib/vendor/kfm/configuration.php
+
+require_once(dirname(__FILE__).'../../../../config/ProjectConfiguration.class.php');
+
+$configuration = ProjectConfiguration::getApplicationConfiguration('backend', 'prod', false);
+sfContext::createInstance($configuration);
+if (!sfContext::getInstance()->getUser()->isAuthenticated()) {
+ exit('Access denied! Please re-login to your administrative backend and try again.');
+}
+$kfm_symfony_db_options = Doctrine_Manager::connection()->getOptions();
+$kfm_symfony_db_dsn = Doctrine_Manager::parsePdoDsn($kfm_symfony_db_options['dsn']);
+$kfm_symfony_web_dir = substr(sfContext::getInstance()->getRequest()->getRelativeUrlRoot(), 0, strrpos(sfContext::getInstance()->getRequest()->getRelativeUrlRoot(), '/'));
+$kfm_username = '';
+$kfm_password = '';
+$kfm_db_type = (string)$kfm_symfony_db_dsn['scheme'];
+$kfm_db_prefix = 'kfm_';
+$kfm_db_host = (string)$kfm_symfony_db_dsn['host'];
+$kfm_db_name = (string)$kfm_symfony_db_dsn['dbname'];
+$kfm_db_username = (string)$kfm_symfony_db_options['username'];
+$kfm_db_password = (string)$kfm_symfony_db_options['password'];
+$kfm_db_port = (string)$kfm_symfony_db_dsn['port'];
+$kfm_hidden_panels = 'logs,search,widgets,directory_properties,file_details';
+$kfm_userfiles_address = sfConfig::get('sf_upload_dir');
+$kfm_userfiles_output = $kfm_symfony_web_dir . DIRECTORY_SEPARATOR . substr(strrchr(sfConfig::get('sf_upload_dir'), DIRECTORY_SEPARATOR), 1) . DIRECTORY_SEPARATOR;
+$kfm_file_handler = 'return';
+$kfm_allow_multiple_file_returns = FALSE;
+$kfm_workdirectory = sfConfig::get('sf_cache_dir');
+$kfm_files_name_length_displayed = 20;
+$kfm_files_name_length_in_list = 0;
+$kfm_allow_directory_delete = 1;
+$kfm_allow_directory_edit = 1;
+$kfm_allow_directory_move = 1;
+$kfm_allow_directory_create = 1;
+$kfm_allow_file_create = 1;
+$kfm_allow_file_delete = 1;
+$kfm_allow_file_edit = 1;
+$kfm_allow_file_move = 1;
+$kfm_allow_file_upload = 1;
+$kfm_banned_extensions = array('asp','cfm','cgi','php','php3','php4','php5','phtm','pl','sh','shtm','shtml');
+$kfm_banned_files = array('thumbs.db','/^\./');
+$kfm_banned_folders = array('/^\./');
+$kfm_editable_extensions = array('css','html','js','php','txt','xhtml','xml');
+$kfm_viewable_extensions = array('sql','php');
+$kfm_only_allow_image_upload = 0;
+$kfm_log_level = 0;
+$kfm_preferred_languages = array('en','de','da','es','fr','nl','ga');
+$kfm_theme = 'default';
+$kfm_use_imagemagick = 0;
+$kfm_imagemagick_path = '/usr/bin/convert';
+
+// use server's version of Pear?
+$kfm_use_servers_pear = false;
+
+// show files in groups of 'n', where 'n' is a number (helps speed up files display - use low numbers for slow machines)
+$kfm_show_files_in_groups_of = 10;
+
+// should disabled links be shown (but grayed out and unclickable), or completely hidden?
+// you might use this if you want your users to not know what it is that's been disabled, for example.
+$kfm_show_disabled_contextmenu_links = 1;
+
+// multiple file uploads are handled through the external SWFUpload flash application.
+// this can cause difficulties on some systems, so if you have problems uploading, then disable this.
+$kfm_use_multiple_file_upload = 0;
+
+// seconds between slides in a slideshow
+$kfm_slideshow_delay = 4;
+
+// allow users to resize/rotate images
+$kfm_allow_image_manipulation = 1;
+
+// set root folder name
+// Set to foldername to use actual folder name or root when $kfm_user_root_folder is not set
+$kfm_root_folder_name = substr(strrchr(sfConfig::get('sf_upload_dir'), DIRECTORY_SEPARATOR), 1);
+
+// if you are using a CMS and want to return the file's DB id instead of the URL, set this
+$kfm_return_file_id_to_cms = 0;
+
+//Permissions for uploaded files.  This only really needs changing if your
+//host has a weird permissions scheme.
+$kfm_default_upload_permission = '664';
+
+//Listview or icons
+$kfm_listview = 0;
+
+// how many files to attempt to draw at a time (use a low value for old client machines, and a higher value for newer machines)
+$kfm_show_files_in_groups_of = 10;
+
+// default directories. Separate with commas. These will be created if they don't already exist.
+// $kfm_default_directories='Documents,Music,Video';
+$kfm_default_directories='';
+
+// we would like to keep track of installations, to see how many there are, and what versions are in use.
+// if you do not want us to have this information, then set the following variable to '1'.
+$kfm_dont_send_metrics = 0;
+
+// hours to offset server time by.
+// for example, if the server is in GMT, and you are in Northern Territory, Australia, then the value to use is 9.5
+$kfm_server_hours_offset = 0;
+
+// 1=always move, 2=always copy, 3=give choice
+$kfm_drags_move_or_copy_files = 3;
+
+// allow files in the root directory
+$kfm_allow_files_in_root = 1;
+
+//$kfm_api_auth_override=1;
+
+?>

@@ -1,0 +1,18 @@
+# all:
+#   google_analytics:
+#     enabled:      off
+#     uacct:        ~       # Profile number
+#     insertion:    bottom  # Where to insert the tracking code (top or bottom)
+#     vars:                 # Custom init variables     - http://www.google.com/support/googleanalytics/bin/answer.py?answer=75129
+#       udn:        ~       # Set a custom domain name  - http://www.google.com/support/googleanalytics/bin/answer.py?answer=75129
+#       uccn:       ~       # Custom campaign variable  - http://www.google.com/support/googleanalytics/bin/answer.py?answer=75768
+#       ucsr:       ~       # Custom source variable
+#       ucmd:       ~       # Custom medium variable
+#       uctr:       ~       # Custom term variable
+#       ucct:       ~       # Custom content variable
+#       ulink:      ~       # Linker functionality      - http://www.google.com/support/googleanalytics/bin/answer.py?answer=74986
+#       utimeout:   ~       # Inactive timeout          - http://www.google.com/support/googleanalytics/bin/answer.py?answer=74927
+#       userv:      ~       # Urchin server             - http://www.google.com/support/googleanalytics/bin/answer.py?answer=74937
+#     custom:       []      # For __utmSetVar()         - http://www.google.com/support/googleanalytics/bin/answer.py?answer=75010
+#     usrc:         http://www.google-analytics.com/urchin.js
+#     usrc_ssl:     https://ssl.google-analytics.com/urchin.js

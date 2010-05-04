@@ -1,0 +1,9 @@
+rendering: ~
+security:
+  class: sfGuardBasicSecurityFilter
+
+# insert your own filters here
+
+cache:     ~
+
+execution: ~

@@ -1,0 +1,41 @@
+post_post:
+  class: sfDoctrineRouteCollection
+  options:
+    model:               Post
+    module:              post
+    prefix_path:         post
+    column:              id
+    with_wildcard_routes: true
+
+page_page:
+  class: sfDoctrineRouteCollection
+  options:
+    model:               Page
+    module:              page
+    prefix_path:         page
+    column:              id
+    with_wildcard_routes: true
+
+# default rules
+homepage:
+  url:   /
+  param: { module: default, action: index }
+  
+sf_guard_signin:
+  url:   /login
+  param: { module: sfGuardAuth, action: signin }
+
+sf_guard_signout:
+  url:   /logout
+  param: { module: sfGuardAuth, action: signout }
+
+sf_guard_password:
+  url:   /request_password
+  param: { module: sfGuardAuth, action: password }
+
+default_index:
+  url:   /login
+  param: { module: sfGuardAuth, action: signin }  
+
+default:
+  url:   /:module/:action/*

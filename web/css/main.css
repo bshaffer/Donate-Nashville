@@ -1,0 +1,66 @@
+/*@group HTML Elements*/
+a, img {
+	outline: none;
+}
+
+a {
+	color: #7AA6A4;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+/*@end*/
+
+/*@group Layout*/
+body {
+	background: #333333;
+	color: #333333;
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 18px;
+}
+
+#page {
+	background-color: #fff;
+	padding: 2em 0;
+}
+/*@end*/
+
+/*@group Header*/
+div#header {
+	padding: 0 0 2em 0;
+}
+ul#nav li {
+	display: inline;
+	font-size: 1.2em;
+	list-style: none;
+	margin: 0 15px;
+}
+/*@end*/
+
+/*@group sidebar-left*/
+label.subnav-label {
+	display: block;
+	font-size: 1.2em;
+	font-weight: bold;
+	margin-bottom: 1em;
+}
+/*@end*/
+
+/*@group footer*/
+
+div#footer {
+	padding-top: 1.5em;
+}
+ul#footer-nav {
+	display: block;
+	list-style: none;
+	text-align: center;
+}
+
+ul#footer-nav li {
+	display: inline;
+}
+/*@end*/

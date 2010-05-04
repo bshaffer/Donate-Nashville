@@ -1,0 +1,19 @@
+all:
+  doctrine:
+    class:        sfDoctrineDatabase
+    param:
+      classname:  DoctrinePDO
+      dsn:        mysql:dbname=PROJECTDATABASE;host=localhost
+      username:   root
+      password:   
+      encoding:   utf8
+      persistent: true
+      pooling:    true
+
+test:
+  doctrine:
+    class:        sfDoctrineDatabase
+    param:
+      dsn:        mysql:dbname=PROJECTDATABASE_test;host=localhost
+      username:   root
+      password:   
