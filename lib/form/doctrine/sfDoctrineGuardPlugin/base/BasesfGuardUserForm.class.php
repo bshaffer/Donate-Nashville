@@ -33,6 +33,8 @@ abstract class BasesfGuardUserForm extends BaseFormDoctrine
       'email'            => new sfWidgetFormInputText(),
       'created_at'       => new sfWidgetFormDateTime(),
       'updated_at'       => new sfWidgetFormDateTime(),
+      'latitude'         => new sfWidgetFormInputText(),
+      'longitude'        => new sfWidgetFormInputText(),
       'groups_list'      => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardGroup')),
       'permissions_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardPermission')),
     ));
@@ -56,6 +58,8 @@ abstract class BasesfGuardUserForm extends BaseFormDoctrine
       'email'            => new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'created_at'       => new sfValidatorDateTime(),
       'updated_at'       => new sfValidatorDateTime(),
+      'latitude'         => new sfValidatorPass(array('required' => false)),
+      'longitude'        => new sfValidatorPass(array('required' => false)),
       'groups_list'      => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardGroup', 'required' => false)),
       'permissions_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardPermission', 'required' => false)),
     ));

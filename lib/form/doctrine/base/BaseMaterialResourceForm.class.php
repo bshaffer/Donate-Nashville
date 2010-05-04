@@ -16,6 +16,9 @@ abstract class BaseMaterialResourceForm extends ResourceForm
   {
     parent::setupInheritance();
 
+    $this->widgetSchema   ['quantity'] = new sfWidgetFormInputText();
+    $this->validatorSchema['quantity'] = new sfValidatorInteger(array('required' => false));
+
     $this->widgetSchema->setNameFormat('material_resource[%s]');
   }
 

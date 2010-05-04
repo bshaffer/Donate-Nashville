@@ -16,7 +16,7 @@
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  * @version    SVN: $Id: sfWidgetFormTextarea.class.php 9046 2008-05-19 08:13:51Z FabianLange $
  */
-class sfWidgetFormTextareaJQuery extends sfWidgetFormTextarea
+class sfWidgetFormJQueryTextarea extends sfWidgetFormTextarea
 {
   /**
    * @param array $options     An array of options

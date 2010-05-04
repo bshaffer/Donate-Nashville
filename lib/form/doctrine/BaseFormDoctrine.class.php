@@ -27,7 +27,7 @@ abstract class BaseFormDoctrine extends sfFormDoctrine
     foreach ($this->getWidgetSchema()->getFields() as $key => $field) {
       switch($key) {
         case 'description':
-          $this->widgetSchema[$key] = $this->getTinymceWidget();
+          $this->widgetSchema[$key] = new sfWidgetFormJQueryTextarea();
           break;
         case 'title':
         case 'name':
@@ -82,27 +82,6 @@ abstract class BaseFormDoctrine extends sfFormDoctrine
     $formatter = new csWidgetFormSchemaFormatterTable($this->widgetSchema);
     $this->widgetSchema->addFormFormatter('cs-formatter', $formatter);
     $this->widgetSchema->setFormFormatterName('cs-formatter');
-  }
-  
-  // =====================
-  // = Tiny MCE Defaults =
-  // =====================
-  /**
-   * Default TinyMCE widget
-   *
-   * @return void
-   * @author Brent Shaffer
-   */
-  public function getTinymceWidget()
-  {
-    return new sfWidgetFormTextareaTinyMCE(
-        array(
-          'width' => '700',
-          'height' => '600',
-          'config' => TinyMceConfiguration::get(),
-          ),
-        array('class' => 'tinyMCE')
-      );
   }
 
   // =============================

@@ -16,6 +16,12 @@ abstract class BaseTimeResourceForm extends ResourceForm
   {
     parent::setupInheritance();
 
+    $this->widgetSchema   ['start_date'] = new sfWidgetFormDateTime();
+    $this->validatorSchema['start_date'] = new sfValidatorDateTime();
+
+    $this->widgetSchema   ['end_date'] = new sfWidgetFormDateTime();
+    $this->validatorSchema['end_date'] = new sfValidatorDateTime();
+
     $this->widgetSchema->setNameFormat('time_resource[%s]');
   }
 

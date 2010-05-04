@@ -18,12 +18,16 @@ abstract class BaseResourceForm extends BaseFormDoctrine
       'id'               => new sfWidgetFormInputHidden(),
       'user_id'          => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('User'), 'add_empty' => false)),
       'transaction_type' => new sfWidgetFormInputText(),
+      'title'            => new sfWidgetFormInputText(),
+      'description'      => new sfWidgetFormTextarea(),
     ));
 
     $this->setValidators(array(
       'id'               => new sfValidatorDoctrineChoice(array('model' => $this->getModelName(), 'column' => 'id', 'required' => false)),
       'user_id'          => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('User'))),
       'transaction_type' => new sfValidatorString(array('max_length' => 255)),
+      'title'            => new sfValidatorString(array('max_length' => 255)),
+      'description'      => new sfValidatorString(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('resource[%s]');

@@ -199,6 +199,17 @@ abstract class BasesfGuardUser extends sfDoctrineRecord
              'foreign' => 'user_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
+        $locatable0 = new Doctrine_Template_Locatable(array(
+             'fields' => 
+             array(
+              0 => 'address_1',
+              1 => 'address_2',
+              2 => 'city',
+              3 => 'state',
+              4 => 'zip',
+             ),
+             ));
         $this->actAs($timestampable0);
+        $this->actAs($locatable0);
     }
 }

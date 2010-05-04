@@ -1,8 +1,17 @@
 sfGuardUser:
   sgu_admin:
     username:       admin
-    password:       Client2009
+    password:       admin
     is_super_admin: true
+  sgu_bshaffer:
+    username:       bshaffer
+    password:       admin
+    is_super_admin: false
+    address_1:      5157 Whitaker Dr
+    city:           Nashville
+    state:          TN
+    zip:            37211
+
 
 sfGuardPermission:
   sgp_admin:

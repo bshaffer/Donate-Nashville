@@ -7,13 +7,19 @@
  * 
  * @property integer $user_id
  * @property string $transaction_type
+ * @property string $title
+ * @property clob $description
  * @property sfGuardUser $User
  * 
  * @method integer     getUserId()           Returns the current record's "user_id" value
  * @method string      getTransactionType()  Returns the current record's "transaction_type" value
+ * @method string      getTitle()            Returns the current record's "title" value
+ * @method clob        getDescription()      Returns the current record's "description" value
  * @method sfGuardUser getUser()             Returns the current record's "User" value
  * @method Resource    setUserId()           Sets the current record's "user_id" value
  * @method Resource    setTransactionType()  Sets the current record's "transaction_type" value
+ * @method Resource    setTitle()            Sets the current record's "title" value
+ * @method Resource    setDescription()      Sets the current record's "description" value
  * @method Resource    setUser()             Sets the current record's "User" value
  * 
  * @package    skeleton
@@ -35,6 +41,14 @@ abstract class BaseResource extends sfDoctrineRecord
              'type' => 'string',
              'notnull' => true,
              'length' => 255,
+             ));
+        $this->hasColumn('title', 'string', 255, array(
+             'type' => 'string',
+             'notnull' => true,
+             'length' => 255,
+             ));
+        $this->hasColumn('description', 'clob', null, array(
+             'type' => 'clob',
              ));
     }
 

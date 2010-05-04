@@ -14,11 +14,21 @@ abstract class BaseMaterialResourceFormFilter extends ResourceFormFilter
   {
     parent::setupInheritance();
 
+    $this->widgetSchema   ['quantity'] = new sfWidgetFormFilterInput();
+    $this->validatorSchema['quantity'] = new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false)));
+
     $this->widgetSchema->setNameFormat('material_resource_filters[%s]');
   }
 
   public function getModelName()
   {
     return 'MaterialResource';
+  }
+
+  public function getFields()
+  {
+    return array_merge(parent::getFields(), array(
+      'quantity' => 'Number',
+    ));
   }
 }
