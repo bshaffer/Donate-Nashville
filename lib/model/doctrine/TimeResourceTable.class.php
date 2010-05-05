@@ -8,21 +8,52 @@ class TimeResourceTable extends ResourceTable
     $query = $this->createQuery('p')
               ->select('p.title, LEFT(p.description, 200) as summary');
     
-    $this->addDateCondition($query, array('from' => $start_date, 'to' => $end_date));
+    $start_time = date('H:i:s', strtotime($start_date));
+    $start_date = date('Y-m-d', strtotime($start_date));
+
+    if ($end_date) 
+    {
+      $end_time = date('H:i:s', strtotime($end_date));
+      $end_date = date('Y-m-d', strtotime($end_date));
+    }
+    else
+    {
+      $end_time = null;
+    }
+    
+    $this->addDateQuery($query, 'resource_date', array('from' => $start_date, 'to' => $end_date));
+    
+    $query->andClause();
+    
+      $this->addOrDateQuery($query, 'start_time', array('from' => $start_time, 'to' => $end_time));
+      $this->addOrDateQuery($query, 'end_time', array('from' => $start_time, 'to' => $end_time));
+    
+    $query->endClause();
     
     return $query;
   }
   
-  public function addDateCondition(Doctrine_Query $query, $value)
+  protected function addDateQuery(Doctrine_Query $query, $fieldName, $values)
   {
-    $query->andClause();
-
-    $this->addOrDateQuery($query, 'start_date', $value);
-    $this->addOrDateQuery($query, 'end_date', $value);
-
-    $query->endClause();
-    
-    return $query;
+    if (isset($values['is_empty']) && $values['is_empty'])
+    {
+      $query->andWhere(sprintf('%s.%s IS NULL', $query->getRootAlias(), $fieldName));
+    }
+    else
+    {
+      if (null !== $values['from'] && null !== $values['to'])
+      {
+        $query->andWhere(sprintf('%s.%s >= ? AND %s.%s <= ?', $query->getRootAlias(), $fieldName, $query->getRootAlias(), $fieldName), array($values['from'], $values['to']));
+      }
+      else if (null !== $values['from'])
+      {
+        $query->andWhere(sprintf('%s.%s >= ?', $query->getRootAlias(), $fieldName), $values['from']);
+      }
+      else if (null !== $values['to'])
+      {
+        $query->andWhere(sprintf('%s.%s <= ?', $query->getRootAlias(), $fieldName), $values['to']);
+      }
+    }
   }
   
   protected function addOrDateQuery(Doctrine_Query $query, $fieldName, $values)

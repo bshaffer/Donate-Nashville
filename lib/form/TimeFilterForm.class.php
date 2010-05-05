@@ -16,5 +16,9 @@ class TimeFilterForm extends sfForm
       'start'           => new sfValidatorDate(),
       'end'           => new sfValidatorDate(),
       ));
+      
+    $this->setDefaults(array(
+      'start'         => date('Y-m-d'),
+      ));
   }
 }

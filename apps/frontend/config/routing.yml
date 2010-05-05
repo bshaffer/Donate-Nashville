@@ -62,6 +62,10 @@ user_resource:
   url:   /user/resource
   param: { module: user, action: resource }
 
+have_time_create:
+  url:   /have/time/create
+  param: { module: time, action: haveCreate }
+
 need_time_create:
   url:   /time/create
   param: { module: time, action: needCreate, type: need }
@@ -74,7 +78,17 @@ have_stuff_create:
   url:   /have/stuff/create
   param: { module: stuff, action: needCreate }
   
+stuff_match:
+  class:    sfDoctrineRoute
+  url:      /stuff/:id/match
+  options:  { type: object, model: StuffResource }
+  param:    { module: stuff, action: match }
 
+time_match:
+  class:    sfDoctrineRoute
+  url:   /time/:id/match
+  options:  { type: object, model: StuffResource }
+  param: { module: time, action: match }
 
 # default rules
 homepage:

@@ -20,12 +20,13 @@ $t->is($resources->count(), 1, 'One stuff item returned');
 $time = new TimeResource();
 $time['title'] = 'Time Resource ' . csFactory::generate();
 $time['owner_id'] = csFactory::selectRandomId('sfGuardUser');
-$time['start_date'] = date('Y-m-d', strtotime('-1 weeks'));
-$time['end_date']   = date('Y-m-d', strtotime('+1 weeks'));
+$time['resource_date'] = date('Y-m-d', strtotime('-1 weeks'));
+$time['start_time']    = '00:00:00';
+$time['end_time']      = '12:00:00';
 $time->save();
 
 $resources = Doctrine::getTable('TimeResource')
-                ->getListQuery(date('Y-m-d'))
+                ->getListQuery(date('Y-m-d 02:00:00', strtotime('-1 weeks')))
                 ->andWhere('title = ?', $time['title'])
                 ->execute();
 
@@ -41,7 +42,7 @@ $t->is($resources->count(), 1, 'One time item returned - start date before range
 $t->is($resources->getFirst()->getTitle(), $time['title'], 'correct resource title');
 
 $resources = Doctrine::getTable('TimeResource')
-                ->getListQuery(date('Y-m-d'), date('Y-m-d', strtotime('+1 months')))
+                ->getListQuery(date('Y-m-d', strtotime('-1 weeks')), date('Y-m-d', strtotime('+1 months')))
                 ->andWhere('title = ?', $time['title'])
                 ->execute();
 
