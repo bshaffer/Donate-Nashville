@@ -5,7 +5,11 @@ have:
 have_time:
   url:   /have/time
   param: { module: time, action: have }
-  
+
+have_time_create:
+  url:   /have/time/create
+  param: { module: time, action: haveCreate }
+
 have_stuff:
   url:   /have/stuff
   param: { module: stuff, action: have }
@@ -17,6 +21,10 @@ need:
 need_time:
   url:   /need/time
   param: { module: time, action: need }
+
+need_time_create:
+  url:   /need/time/create
+  param: { module: time, action: needCreate }
 
 need_stuff:
   url:   /need/stuff
