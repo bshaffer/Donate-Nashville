@@ -34,5 +34,5 @@ $resource_action will be 'have' or 'need'
 
 <h2>Search Form</h2>
 <div>
-<?php include_partial('resource/'.$resource_type.'_filter_form', array('resource_action' => $resource_action)); ?>
+<?php include_component('resource', $resource_type.'_filter_form', array('resource_action' => $resource_action)); ?>
 </div>

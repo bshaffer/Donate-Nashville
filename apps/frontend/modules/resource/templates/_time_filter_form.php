@@ -2,5 +2,7 @@
 
 	<div><label for="resource">I <?php echo ($resource_action == 'need' ? 'Need' : 'Have') ?></label><input type="text" class="resource" name="resource" value="" id="ResourceFilter"></div>
 
-	<input type="hidden" name="resource_type" value="time" id="ResourceType">
+  <?php echo $form['start']->render() ?>
+  
+  <?php echo $form['end']->render() ?>
 </form>
