@@ -14,11 +14,16 @@ sfGuardUserProfile:
     zip:               string(100)
     phone_1:           string(100)
     phone_2:           string(100)
+    facebook_uid:      string(20)
     account_type:
       type:            enum
       default:         individual
       values:          [individual, shelter, nonprofit]
       notnull:         true
+  indexes:
+    facebook_uid_index:
+      fields: [facebook_uid]
+      unique: true
   relations:
     User:
       class:           sfGuardUser
