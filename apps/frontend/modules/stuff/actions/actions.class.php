@@ -10,11 +10,14 @@
  */
 class stuffActions extends sfActions
 {
-
+  public function executeNeed(sfWebRequest $request)
+  {
+  }
+  
   /**
    * Displays the "need time" form
    */
-  public function executeNeed(sfWebRequest $request)
+  public function executeAddNeed(sfWebRequest $request)
   {
     $this->form = new NeedStuffResourceForm();
   }
@@ -22,19 +25,27 @@ class stuffActions extends sfActions
   /**
    * Submit for the "need time" form
    */
-  public function executeNeedCreate(sfWebRequest $request)
+  public function executeAddNeedCreate(sfWebRequest $request)
   {
     $this->form = new NeedStuffResourceForm();
     
-    $this->processNeedForm($request, $this->form);
+    $this->processAddNeedForm($request, $this->form);
   
-    $this->setTemplate('need');
+    $this->setTemplate('addNeed');
   }
-
   
-  public function executeHave(sfWebRequest $request)
+  /**
+   * Processes the "need stuff" form
+   */
+  protected function processAddNeedForm(sfWebRequest $request, sfForm $form)
   {
-    
+    $form->bind($request->getParameter($form->getName()));
+    if ($form->isValid())
+    {
+      $stuff = $form->save();
+      
+      $this->redirect('@add_need_stuff');
+    }
   }
   
   public function executeMatch(sfWebRequest $request)
@@ -42,10 +53,9 @@ class stuffActions extends sfActions
     $this->match = $this->getRoute()->getObject();
   }
   
-  public function executeNeedCreate(sfWebRequest $request)
+  public function executeHave(sfWebRequest $request)
   {
-
-    $this->setTemplate('need');
+    
   }
   
   public function executeHaveCreate(sfWebRequest $request)

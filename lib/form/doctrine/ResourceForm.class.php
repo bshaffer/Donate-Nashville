@@ -29,7 +29,7 @@ class ResourceForm extends BaseResourceForm
     throw new sfException('override this function');
   }
 
-  public function doUpdateObject($values = null)
+  public function doUpdateObject($values)
   {
     parent::doUpdateObject($values);
     

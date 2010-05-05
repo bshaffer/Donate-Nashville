@@ -14,7 +14,7 @@ class timeActions extends sfActions
   /**
    * Displays the "need time" form
    */
-  public function executeNeed(sfWebRequest $request)
+  public function executeAddNeed(sfWebRequest $request)
   {
     $this->form = new NeedTimeResourceForm();
   }
@@ -22,29 +22,29 @@ class timeActions extends sfActions
   /**
    * Submit for the "need time" form
    */
-  public function executeNeedCreate(sfWebRequest $request)
+  public function executeAddNeedCreate(sfWebRequest $request)
   {
     $this->form = new NeedTimeResourceForm();
     
-    $this->processNeedForm($request, $this->form);
+    $this->processAddNeedForm($request, $this->form);
   
-    $this->setTemplate('need');
+    $this->setTemplate('addNeed');
   }
 
   /**
    * Processes the "need time" form
    */
-  protected function processNeedForm(sfWebRequest $request, sfForm $form)
+  protected function processAddNeedForm(sfWebRequest $request, sfForm $form)
   {
     $form->bind($request->getParameter($form->getName()));
     if ($form->isValid())
     {
       $need = $form->save();
       
-      $this->redirect('@need_time');
+      $this->redirect('@add_need_time');
     }
   }
-
+  
   /**
    * The "have time" screen, where you search for time resources needed
    */
