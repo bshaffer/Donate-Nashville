@@ -33,10 +33,13 @@ class stuffActions extends sfActions
   public function executeNeedCreate(sfWebRequest $request)
   {
 
+    $this->setTemplate('need');
   }
   
   public function executeHaveCreate(sfWebRequest $request)
   {
     
+    $this->setTemplate('have');
+
   }
 }
