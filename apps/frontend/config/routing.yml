@@ -44,6 +44,19 @@ add_need_stuff_create:
   param: { module: stuff, action: addNeedCreate }
   requirements:
     sf_method: [post]
+# add have stuff resource routes
+add_have_stuff:
+  class:  sfRequestRoute
+  url:   /have/stuff/add
+  param: { module: stuff, action: addHave }
+  requirements:
+    sf_method: [get]
+add_have_stuff_create:
+  class:  sfRequestRoute
+  url:   /have/stuff/add
+  param: { module: stuff, action: addHaveCreate }
+  requirements:
+    sf_method: [post]
 
 # "static" pages for more information
 need_housing:
