@@ -1,5 +1,8 @@
 <?php
 
+//////////////////////////////
+// js
+
 // dependencies for resource filter
 use_javascript('/js/jquery/jquery.debounce.min.js');
 
@@ -15,12 +18,11 @@ use_javascript('/js/app/ResourceFilterInit.js');
 
 use_stylesheet('/css/app/resource_list.css');
 
-
 ?>
 
 <h2>Search Results</h2>
 <div id="ResourceResultsList">
-	This will be the resource list.
+	<div class="emptyList">[ Search for items below ]</div>
 </div>
 
 <h2>Search Form</h2>

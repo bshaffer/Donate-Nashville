@@ -1,5 +1,18 @@
 
+/* when no search results are shown */
 span.noResults {
 	color: #600;
-	
 }
+
+
+
+/* show a spinner while loading */
+#ResourceResultsList.searchLoading {
+	background: url('../images/ajax-loader.gif') no-repeat 8px 0;
+}
+
+/* Hide the currently displaying search results while loading new ones */
+#ResourceResultsList.searchLoading * {
+	opacity: 0.2;
+}
+

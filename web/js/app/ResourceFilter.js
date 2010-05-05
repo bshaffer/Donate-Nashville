@@ -63,11 +63,11 @@ ResourceFilter = $.extend({}, {
 	// start_date, end_date
 
 	updateUI: function(jq_input, loading) {
-		// if (loading) {
-		// 	jq_input.addClass('filterInputLoading');
-		// } else {
-		// 	jq_input.removeClass('filterInputLoading');
-		// }
+		if (loading) {
+			$('#ResourceResultsList').addClass('searchLoading');
+		} else {
+			$('#ResourceResultsList').removeClass('searchLoading');
+		}
 		
 	},
 
