@@ -101,6 +101,12 @@ time_match:
   options:  { type: object, model: TimeResource }
   param:    { module: time, action: match }
 
+user_contact:
+  class:    sfDoctrineRoute
+  url:      /user/:id/contact
+  options:  { type: object, model: sfGuardUser }
+  param:    { module: user, action: contact }
+
 # User management-related routes
 user_auth:
   url:   /auth/:token

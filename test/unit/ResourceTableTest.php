@@ -2,8 +2,8 @@
 
 include(dirname(__FILE__) . '/../bootstrap/Doctrine.php');
 
-// $app = 'frontend';
-// include(dirname(__FILE__) . '/../bootstrap/functional.php');
+$app = 'frontend';
+include(dirname(__FILE__) . '/../bootstrap/functional.php');
 
 $t = new lime_test(13, new lime_output_color());
 

@@ -52,4 +52,11 @@ class sfGuardUser extends PluginsfGuardUser
       ->andWhere('sr.owner_id = ?', $this->id)
       ->execute();
   }
+  
+  public function getFullName()
+  {
+    $name = array($this['first_name'], $this['last_name']);
+    
+    return implode(' ', array_filter($name));
+  }
 }

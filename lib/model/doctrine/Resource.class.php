@@ -12,15 +12,4 @@
  */
 class Resource extends BaseResource
 {
-  // public function preInsert($event)
-  // {
-  //   if (!array_filter(array($this['address_1'], $this['address_2'], $this['city'], $this['state'], $this['zip']))) 
-  //   {
-  //     $this['address_1'] = $this['User']['Profile']['address_1'];
-  //     $this['address_2'] = $this['User']['Profile']['address_2'];
-  //     $this['city'] = $this['User']['Profile']['city'];
-  //     $this['state'] = $this['User']['Profile']['state'];
-  //     $this['zip'] = $this['User']['Profile']['zip'];
-  //   }
-  // }
 }

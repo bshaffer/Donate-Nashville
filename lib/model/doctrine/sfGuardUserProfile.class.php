@@ -12,4 +12,16 @@
  */
 class sfGuardUserProfile extends BasesfGuardUserProfile
 {
+  public function getAddressArray()
+  {
+    $csz = array($this['city'], $this['state'], $this['zip']);
+    $address = array($this['address_1'], $this['address_2'], implode(', ', array_filter($csz)));
+    
+    return array_filter($address);
+  }
+  
+  public function getAddress($sep = '<br />')
+  {
+    return implode($sep, $this['address_array']);
+  }
 }
