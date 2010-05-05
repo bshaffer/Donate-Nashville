@@ -19,11 +19,11 @@
         <h1 id="site-title">Here is Your New Symfony Project</h1>
 
         <ul id="nav">
-            <li><a href="#"> Link 1</a></li>
-            <li><a href="#"> Link 2</a></li>
-            <li><a href="#"> Link 3</a></li>
-            <li><a href="#"> Link 4</a></li>
-            <li><a href="#"> Link 5</a></li>
+          <li><a href="#"> Link 1</a></li>
+          <li><a href="#"> Link 2</a></li>
+          <li><a href="#"> Link 3</a></li>
+          <li><a href="#"> Link 4</a></li>
+          <li><a href="#"> Link 5</a></li>
         </ul>
       </div>
       
@@ -33,11 +33,11 @@
       
       <div id="footer" class="container_16 clearfix">
         <ul id="footer-nav">
-            <li><a href="#"> Link 1</a></li>
-            <li><a href="#"> Link 2</a></li>
-            <li><a href="#"> Link 3</a></li>
-            <li><a href="#"> Link 4</a></li>
-            <li><a href="#"> Link 5</a></li>
+          <li><a href="#"> Link 1</a></li>
+          <li><a href="#"> Link 2</a></li>
+          <li><a href="#"> Link 3</a></li>
+          <li><a href="#"> Link 4</a></li>
+          <li><a href="#"> Link 5</a></li>
         </ul>
       </div>
   </body>
