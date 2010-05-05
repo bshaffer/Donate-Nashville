@@ -20,7 +20,7 @@ class resourceActions extends sfActions
 
   }
 
-  public function executeStuffResourceList(sfWebRequest $request)
+  public function executeStuffList(sfWebRequest $request)
   {  
     $results = Doctrine::getTable('StuffResource')
               ->getListQuery($request->getParameter('q'))
@@ -30,10 +30,10 @@ class resourceActions extends sfActions
     return $this->renderPartial('resource/list', array('results' => $results));
   }
 
-  public function executeTimeResourceList(sfWebRequest $request)
+  public function executeTimeList(sfWebRequest $request)
   {  
     $results = Doctrine::getTable('TimeResource')
-              ->getListQuery($request->getParameter('q'))
+              ->getListQuery($request->getParameter('start_date'), $request->getParameter('end_date'))
               ->limit(8)
               ->execute(Doctrine::HYDRATE_ARRAY);
     
