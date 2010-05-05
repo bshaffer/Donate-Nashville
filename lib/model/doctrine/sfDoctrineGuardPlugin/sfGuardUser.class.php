@@ -23,7 +23,7 @@ class sfGuardUser extends PluginsfGuardUser
       $this->username = $this->email_address;
     }
   }
-  
+
   public function getTimeResourcesByTransactionType($transaction_type)
   {
     return Doctrine_Query::create()

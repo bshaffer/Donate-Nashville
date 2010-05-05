@@ -5,4 +5,22 @@
 class sfGuardUserTable extends PluginsfGuardUserTable
 {
 
+  /**
+   * Gets or creates an sfGuardUser record by email
+   * 
+   * The password and any other information is auto-generated in sfGuardUser
+   */
+  public function getOrCreateUserByEmail($email)
+  {
+    $guardUser = $this->findOneByEmail($email);
+    
+    if(!$guardUser)
+    {
+      $guardUser = new sfGuardUser();
+      $guardUser->username = $email;
+      $guardUser->save();
+    }
+    
+    return $guardUser;
+  }
 }
