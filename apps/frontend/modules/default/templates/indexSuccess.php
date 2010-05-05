@@ -8,7 +8,7 @@
 
 <div id="home-action" class="grid_6 prefix_5">
   <ul>
-    <li><?php echo link_to('I Have...') ?></li>
-    <li><?php echo link_to('I Need...') ?></li>
+    <li><?php echo link_to('I Have...', '@have') ?></li>
+    <li><?php echo link_to('I Need...', '@need') ?></li>
   </ul>
 </div><!-- home-action -->
