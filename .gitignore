@@ -2,3 +2,5 @@ cache/*
 log/*
 web/uploads/*
 config/databases.yml
+lib/vendor/symfony
+base
