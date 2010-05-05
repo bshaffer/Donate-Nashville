@@ -33,7 +33,7 @@ class resourceActions extends sfActions
     
     $results = $query->execute(array(), Doctrine::HYDRATE_ARRAY);
     
-    return $this->renderPartial('resource/list', array('results' => $results));
+    return $this->renderPartial('stuff/list', array('results' => $results));
   }
 
   public function executeTimeList(sfWebRequest $request)
@@ -49,7 +49,7 @@ class resourceActions extends sfActions
     
     $results = $query->execute(array(), Doctrine::HYDRATE_ARRAY);
 
-    return $this->renderPartial('resource/list', array('results' => $results));
+    return $this->renderPartial('time/list', array('results' => $results));
   }
   
   public function executeMoney(sfWebRequest $request)

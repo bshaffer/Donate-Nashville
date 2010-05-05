@@ -29,12 +29,12 @@ use_stylesheet('/css/app/resource_list.css');
 
 ?>
 
-<h2>Search Results</h2>
-<div id="ResourceResultsList">
-	<div class="emptyList">[ Search for items below ]</div>
-</div>
-
 <h2>Search Form</h2>
 <div>
 <?php include_component('resource', $resource_type.'_filter_form', array('resource_action' => $resource_action)); ?>
+</div>
+
+<h2>Search Results</h2>
+<div id="ResourceResultsList">
+	<div class="emptyList">[ Search for items above ]</div>
 </div>
