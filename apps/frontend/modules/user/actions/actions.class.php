@@ -10,13 +10,20 @@
  */
 class userActions extends sfActions
 {
- /**
-  * Executes index action
-  *
-  * @param sfRequest $request A request object
-  */
-  public function executeIndex(sfWebRequest $request)
+
+  /**
+   * Handles authentication for the user based on a secret key
+   */
+  public function executeAuthenticate(sfWebRequest $request)
   {
-    $this->forward('default', 'module');
+    $hash = $request->getParameter('hash');
+    $user = Doctrine_Core::getTable('sfGuardUser')->findOneByPassword($hash);
+    
+    if ($user)
+    {
+      $user->signIn();
+      
+      $user->redirect('@user_resource');
+    }
   }
 }

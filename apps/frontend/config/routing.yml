@@ -62,6 +62,9 @@ have_stuff_list:
   url:   /stuff/list
   param: { module: resource, action: stuffList, type: have }
 
+user_auth:
+  url:   /auth/:token
+  param: { module: user, action: authenticate }
 
 
 # default rules
