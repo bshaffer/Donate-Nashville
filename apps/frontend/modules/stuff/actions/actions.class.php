@@ -42,12 +42,6 @@ class stuffActions extends sfActions
     $this->match = $this->getRoute()->getObject();
   }
   
-  public function executeNeedCreate(sfWebRequest $request)
-  {
-
-    $this->setTemplate('need');
-  }
-  
   public function executeHaveCreate(sfWebRequest $request)
   {
     
