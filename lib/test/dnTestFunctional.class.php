@@ -24,7 +24,7 @@ class dnTestFunctional extends sfTestFunctional
    */
   public function loadData()
   {
-    Doctrine_Core::loadData(sfConfig::get('sf_test_dir').'/fixtures.yml');
+    Doctrine_Core::loadData(sfConfig::get('sf_data_dir').'/fixtures');
     
     return $this;
   }
