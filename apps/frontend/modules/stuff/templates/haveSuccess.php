@@ -4,4 +4,4 @@
 include_partial('resource/resource_filter', array('resource_type' => 'stuff', 'resource_action' => 'have'));
 ?>
 
-<a href="<?php /* echo url_for('@have_stuff_create'); */ ?>">Add a New Item</a>
+<a href="<?php echo url_for('@add_have_stuff'); ?>">Add a New Item</a>
