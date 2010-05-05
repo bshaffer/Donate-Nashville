@@ -66,11 +66,11 @@ $browser
   
   ->with('request')->begin()
     ->isParameter('module', 'time')
-    ->isParameter('action', 'show')
+    ->isParameter('action', 'match')
   ->end()
   
   ->with('response')->begin()
     ->isStatusCode(200)
-    ->checkElement('h1', '/'.$submitValues['title'].'/')
+    ->matches('/'.$submitValues['title'].'/')
   ->end()
 ;

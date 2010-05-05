@@ -71,6 +71,6 @@ $browser
   
   ->with('response')->begin()
     ->isStatusCode(200)
-    ->checkElement('h1', '/'.$submitValues['title'].'/')
+    ->matches('/'.$submitValues['title'].'/')
   ->end()
 ;
