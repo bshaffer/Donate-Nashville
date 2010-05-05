@@ -12,7 +12,7 @@ class sfGuardUserTable extends PluginsfGuardUserTable
    */
   public function getOrCreateUserByEmail($email)
   {
-    $guardUser = $this->findOneByEmail($email);
+    $guardUser = $this->findOneByEmailAddress($email);
     
     if(!$guardUser)
     {

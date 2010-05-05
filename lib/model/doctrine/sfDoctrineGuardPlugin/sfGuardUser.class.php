@@ -17,10 +17,21 @@ class sfGuardUser extends PluginsfGuardUser
       $this->password = md5($this->created_at + rand(0, 1000));
     }
 
-    // we're not using both username and email, so user the email_address
-    if (!$this->username)
+    /*
+     * we're not really using both email_address and username. So if
+     * we find we have one but not the other, just copy it over
+     */
+    if ($this->isNew())
     {
-      $this->username = $this->email_address;
+      if (!$this->username)
+      {
+        $this->username = $this->email_address;
+      }
+
+      if (!$this->email_address)
+      {
+        $this->email_address = $this->username;
+      }
     }
   }
 
