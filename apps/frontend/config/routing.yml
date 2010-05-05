@@ -1,6 +1,6 @@
 have:
   url:   /donate
-  param: { module: donation, action: index }
+  param: { module: resource, action: have }
 
 have_time:
   url:   /donate/time
@@ -8,7 +8,7 @@ have_time:
   
 have_stuff:
   url:   /donate/stuff
-  param: { module: time, action: stuff }
+  param: { module: stuff, action: have }
 
 need:
   url:   /need
@@ -29,6 +29,14 @@ need_housing:
 need_money:
   url:   /need/money
   param: { module: resource, action: money }
+
+time_list:
+  url:   /time/list
+  param: { module: resource, action: timeList }
+
+stuff_list:
+  url:   /stuff/list
+  param: { module: resource, action: stuffList }
 
 
 # default rules
