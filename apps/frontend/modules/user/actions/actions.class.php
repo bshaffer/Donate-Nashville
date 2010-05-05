@@ -26,4 +26,14 @@ class userActions extends sfActions
       $user->redirect('@user_resource');
     }
   }
+  
+  public function executeResource(sfWebRequest $request)
+  {
+    $user = $this->getUser()->getGuardUser();
+    
+    $this->haveTimeResources = $user->getTimeResourcesByTransactionType('have');
+    $this->needTimeResources = $user->getTimeResourcesByTransactionType('need');
+    $this->haveStuffResources = $user->getStuffResourcesByTransactionType('have');
+    $this->needStuffResources = $user->getStuffResourcesByTransactionType('need');
+  }
 }
