@@ -67,7 +67,7 @@ user_auth:
   param: { module: user, action: authenticate }
 
 user_resource:
-  url:   /authenticate
+  url:   /user/resource
   param: { module: user, action: resource }
 
 need_time_create:
