@@ -1,6 +1,4 @@
 <?php if ($haveTimeResources->count() || $needTimeResources->count() || $haveStuffResources->count() || $needStuffResources->count()): ?>
-  
-<?php endif ?>
 
 <?php if ($haveTimeResources->count()): ?>
 <h3>Have Time</h3>
@@ -36,4 +34,8 @@
   <li><?php echo $needStuffResource->title ?></li>
 <?php endforeach; ?>
 </ul>
+<?php endif ?>
+
+<?php else: ?>
+  <p>You have no current activity! Click the links above to donate or search</p>
 <?php endif ?>

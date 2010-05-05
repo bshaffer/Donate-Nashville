@@ -1,3 +1,11 @@
+about:
+  url:  /about
+  param:  { module: default, action: about }
+
+terms_of_service:
+  url:  /tos
+  param:  { module: default, action: termsOfService }
+
 # The main "have" actions
 have:
   url:   /have

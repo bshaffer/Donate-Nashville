@@ -16,4 +16,14 @@ class defaultActions extends sfActions
   {
     
   }
+  
+  public function executeAbout(sfWebRequest $request)
+  {
+      
+  }
+  
+  public function executeTermsOfService(sfWebRequest $request)
+  {
+      
+  }
 }
