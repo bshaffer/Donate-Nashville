@@ -1,18 +1,14 @@
 donate:
   url:   /donate
-  param: { module: donate, action: index }
+  param: { module: donation, action: index }
 
 donate_time:
   url:   /donate/time
-  param: { module: donate, action: time }
+  param: { module: donation, action: time }
   
 donate_material:
   url:   /donate/stuff
-  param: { module: donate, action: material }
-
-donate_housing:
-  url:   /donate/place
-  param: { module: donate, action: housing }
+  param: { module: donation, action: material }
 
 need:
   url:   /need
@@ -29,6 +25,11 @@ need_material:
 need_housing:
   url:   /need/place
   param: { module: need, action: housing }
+
+need_money:
+  url:   /need/money
+  param: { module: need, action: money }
+
 
 # default rules
 homepage:

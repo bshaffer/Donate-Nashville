@@ -19,4 +19,5 @@ class resourceActions extends sfActions
   {
     $this->forward('default', 'module');
   }
+
 }
