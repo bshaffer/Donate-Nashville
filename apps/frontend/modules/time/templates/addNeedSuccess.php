@@ -36,26 +36,31 @@
     
     <div>
       <?php echo $form['address_1']->renderError() ?>
+      <?php echo $form['address_1']->renderLabel() ?>
       <?php echo $form['address_1']->render() ?>
     </div>
     
     <div>
       <?php echo $form['address_2']->renderError() ?>
+      <?php echo $form['address_2']->renderLabel() ?>
       <?php echo $form['address_2']->render() ?>
     </div>
     
     <div>
       <?php echo $form['city']->renderError() ?>
+      <?php echo $form['city']->renderLabel() ?>
       <?php echo $form['city']->render() ?>
     </div>
     
     <div>
       <?php echo $form['state']->renderError() ?>
+      <?php echo $form['state']->renderLabel() ?>
       <?php echo $form['state']->render() ?>
     </div>
     
     <div>
       <?php echo $form['zip']->renderError() ?>
+      <?php echo $form['zip']->renderLabel() ?>
       <?php echo $form['zip']->render() ?>
     </div>
   </div>
@@ -83,16 +88,19 @@
     
     <div>
       <?php echo $form['email']->renderError() ?>
+      <?php echo $form['email']->renderLabel() ?>
       <?php echo $form['email']->render() ?>
     </div>
     
     <div>
       <?php echo $form['phone_1']->renderError() ?>
+      <?php echo $form['phone_1']->renderLabel() ?>
       <?php echo $form['phone_1']->render() ?>
     </div>
     
     <div>
       <?php echo $form['phone_2']->renderError() ?>
+      <?php echo $form['phone_2']->renderLabel() ?>
       <?php echo $form['phone_2']->render() ?>
     </div>
   </div>
