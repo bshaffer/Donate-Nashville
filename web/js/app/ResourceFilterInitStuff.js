@@ -1,5 +1,5 @@
 jQuery(function() {
 	// onload code
-	ResourceFilter.set
+	ResourceFilter.setResourceType('stuff');
 	ResourceFilter.attachEvents();
 })
