@@ -47,21 +47,12 @@ class stuffActions extends sfActions
       $this->redirect('@add_need_stuff');
     }
   }
-  
+
+  /**
+   * Displays the actual resource
+   */
   public function executeMatch(sfWebRequest $request)
   {
-    $this->match = $this->getRoute()->getObject();
-  }
-  
-  public function executeHave(sfWebRequest $request)
-  {
-    
-  }
-
-  public function executeHaveCreate(sfWebRequest $request)
-  {
-    
-    $this->setTemplate('have');
-
+    $this->resource = $this->getRoute()->getObject();
   }
 }

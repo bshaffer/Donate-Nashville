@@ -1,20 +1,23 @@
+# The main "have" actions
 have:
   url:   /have
   param: { module: resource, action: have }
-
 have_time:
   url:   /have/time
   param: { module: time, action: have }
-
 have_stuff:
   url:   /have/stuff
   param: { module: stuff, action: have }
 
+# The main "need" screens (there is no need_time - goes straight to the form)
 need:
   url:   /need
   param: { module: resource, action: need }
+need_stuff:
+  url:   /need/stuff
+  param: { module: stuff, action: need }
 
-# Create time resource routes
+# Create "need time" resource routes
 add_need_time:
   class:  sfRequestRoute
   url:   /need/time/add
@@ -28,11 +31,7 @@ add_need_time_create:
   requirements:
     sf_method: [post]
 
-need_stuff:
-  url:   /need/stuff
-  param: { module: stuff, action: need }
-
-# Create stuff resource routes
+# Create "need stuff" resource routes
 add_need_stuff:
   class:  sfRequestRoute
   url:   /need/stuff/add
@@ -45,19 +44,19 @@ add_need_stuff_create:
   param: { module: stuff, action: addNeedCreate }
   requirements:
     sf_method: [post]
-  
+
+# "static" pages for more information
 need_housing:
   url:   /need/place
   param: { module: resource, action: housing }
-
 need_money:
   url:   /need/money
   param: { module: resource, action: money }
 
+# Actions for listing Resources
 time_list:
   url:   /time/list
   param: { module: resource, action: timeList }
-
 stuff_list:
   url:   /stuff/list
   param: { module: resource, action: stuffList }
@@ -65,38 +64,29 @@ stuff_list:
 need_time_list:
   url:   /time/list
   param: { module: resource, action: timeList, type: need }
-
 have_time_list:
   url:   /time/list
   param: { module: resource, action: timeList, type: have }
-
 need_stuff_list:
   url:   /stuff/list
   param: { module: resource, action: stuffList, type: need }
-
 have_stuff_list:
   url:   /stuff/list
   param: { module: resource, action: stuffList, type: have }
 
-need_stuff_create:
-  url:   /need/stuff/create
-  param: { module: stuff, action: haveCreate }
-
-have_stuff_create:
-  url:   /have/stuff/create
-  param: { module: stuff, action: needCreate }
-  
+# The "show" page for StuffResource
 stuff_match:
   class:    sfDoctrineRoute
   url:      /stuff/:id/match
   options:  { type: object, model: StuffResource }
   param:    { module: stuff, action: match }
 
+# The "show" page for TimeResource
 time_match:
   class:    sfDoctrineRoute
-  url:   /time/:id/match
-  options:  { type: object, model: StuffResource }
-  param: { module: time, action: match }
+  url:      /time/:id/match
+  options:  { type: object, model: TimeResource }
+  param:    { module: time, action: match }
 
 # User management-related routes
 user_auth:
