@@ -29,4 +29,14 @@ class stuffActions extends sfActions
   {
     
   }
+  
+  public function executeNeedCreate(sfWebRequest $request)
+  {
+
+  }
+  
+  public function executeHaveCreate(sfWebRequest $request)
+  {
+    
+  }
 }
