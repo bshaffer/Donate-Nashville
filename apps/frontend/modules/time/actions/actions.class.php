@@ -1,14 +1,14 @@
 <?php
 
 /**
- * donation actions.
+ * time actions.
  *
  * @package    skeleton
- * @subpackage donation
+ * @subpackage time
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class donationActions extends sfActions
+class timeActions extends sfActions
 {
  /**
   * Executes index action
@@ -20,17 +20,12 @@ class donationActions extends sfActions
 
   }
   
-  public function executeTime(sfWebRequest $request)
+  public function executeNeed(sfWebRequest $request)
   {
 
   }
   
-  public function executeMaterial(sfWebRequest $request)
-  {
-
-  }
-  
-  public function executeMoney(sfWebRequest $request)
+  public function executeHave(sfWebRequest $request)
   {
 
   }

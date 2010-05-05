@@ -1,14 +1,14 @@
 <?php
 
 /**
- * need actions.
+ * stuff actions.
  *
  * @package    skeleton
- * @subpackage need
+ * @subpackage stuff
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class needActions extends sfActions
+class stuffActions extends sfActions
 {
  /**
   * Executes index action
@@ -20,17 +20,12 @@ class needActions extends sfActions
 
   }
   
-  public function executeTime(sfWebRequest $request)
+  public function executeNeed(sfWebRequest $request)
   {
 
   }
   
-  public function executeMaterial(sfWebRequest $request)
-  {
-
-  }
-  
-  public function executeHousing(sfWebRequest $request)
+  public function executeHave(sfWebRequest $request)
   {
 
   }
