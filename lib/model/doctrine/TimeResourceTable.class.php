@@ -8,8 +8,6 @@ class TimeResourceTable extends ResourceTable
     $query = Doctrine::getTable('Resource')->createQuery('p')
               ->select('p.title, LEFT(p.description, 200) as summary');
     
-
-    
     if ($end_date) 
     {
       $this->addDateCondition($query, $end_date);
