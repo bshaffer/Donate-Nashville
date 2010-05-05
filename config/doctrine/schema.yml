@@ -15,8 +15,9 @@ Resource:
       notnull:          true
     description:
       type:             clob
-    show_contact_info:
-      type:             boolean
+    privacy:
+      type:             enum
+      values:           [show_info, web_form, send_to_interested]
       default:          true
     is_satisfied:
       type:             boolean
@@ -49,12 +50,14 @@ TimeResource:
     extends:            Resource
     type:               concrete
   columns:
-    start_date:
+    resource_date:
       type:             timestamp
       notnull:          true
-    end_date:
-      type:             timestamp
+    start_time:
+      type:             time
       notnull:          true
+    end_time:
+      type:             time
     num_volunteers:
       type:             integer
     

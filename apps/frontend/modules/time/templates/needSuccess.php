@@ -1,17 +1,24 @@
+<?php use_stylesheets_for_form($form) ?>
+<?php use_javascripts_for_form($form) ?>
+
 <form action="<?php echo url_for('@need_time_create') ?>" method="post" name="time_resource">
   <?php echo $form->renderGlobalErrors() ?>
   <?php echo $form->renderHiddenFields() ?>
   
   <div>
-    <div style="float:left;">
-      When
+    <label>When</label>
+    
+    <div>
+      <?php echo $form['resource_date']->render() ?>
+      <?php echo $form['resource_date']->renderError() ?>
     </div>
-    <div style="float:left;">
-      <?php echo $form['start_date']->renderError() ?>
-      <?php echo $form['start_date']->render() ?>
-      -
-      <?php echo $form['end_date']->renderError() ?>
-      <?php echo $form['end_date']->render() ?> 
+    
+    <div>
+      <?php echo $form['start_time']->render() ?>
+      <?php echo $form['start_time']->renderError() ?>
+      
+      <?php echo $form['end_time']->renderError() ?>
+      <?php echo $form['end_time']->render() ?> 
     </div>
   </div>
   
@@ -100,8 +107,8 @@
       Privacy
     </div>
     <div style="float:left;">
-      <?php echo $form['show_contact_info']->renderError() ?>
-      <?php echo $form['show_contact_info']->render() ?>
+      <?php echo $form['privacy']->renderError() ?>
+      <?php echo $form['privacy']->render() ?>
     </div>
   </div>
   

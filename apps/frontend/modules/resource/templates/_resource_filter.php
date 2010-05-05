@@ -1,4 +1,9 @@
 <?php
+/*
+Incoming variables:
+$resource_type will be 'stuff' or 'time'
+$resource_action will be 'have' or 'need'
+*/
 
 //////////////////////////////
 // js
@@ -11,7 +16,8 @@ use_javascript('/js/jquery/jquery.debounce.min.js');
 use_javascript('/js/app/ResourceFilter.js');
 
 // call the resource filter onload code
-use_javascript('/js/app/ResourceFilterInit.js');
+//  use different onload for time and stuff
+use_javascript('/js/app/ResourceFilterInit'.ucwords($resource_type).'.js');
 
 
 //////////////////////////////
@@ -21,10 +27,6 @@ use_stylesheet('/css/app/resource_list.css');
 
 
 
-/*
-$resource_type will be 'stuff' or 'time'
-$resource_action will be 'have' or 'need'
-*/
 ?>
 
 <h2>Search Results</h2>

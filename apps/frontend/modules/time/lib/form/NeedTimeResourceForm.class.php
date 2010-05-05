@@ -7,8 +7,9 @@ class NeedTimeResourceForm extends TimeResourceForm
     parent::configure();
     
     $this->useFields(array(
-      'start_date',
-      'end_date',
+      'resource_date',
+      'start_time',
+      'end_time',
       'title',
       'address_1',
       'address_2',
@@ -20,8 +21,10 @@ class NeedTimeResourceForm extends TimeResourceForm
       'email',
       'phone_1',
       'phone_2',
-      'show_contact_info'
+      'privacy'
     ));
+    
+    $this->widgetSchema['resource_date'] = new sfWidgetFormJQueryDate();
   }
   
   public function doSave($con = null)
