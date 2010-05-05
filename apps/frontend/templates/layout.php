@@ -10,9 +10,10 @@
 		<!-- google.load("jqueryui", "1.8.1"); -->
 		<script type="text/javascript" charset="utf-8">
 			google.load('jquery','1.4');
-			google.load('jqueryui', '1.8.1');
+			google.load('jqueryui', '1.8');
 		</script>
 
+		<?php use_stylesheet('http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.0/themes/cupertino/jquery-ui.css'); ?>		
     <?php include_stylesheets() ?>
     <?php include_javascripts() ?>
 </head>
