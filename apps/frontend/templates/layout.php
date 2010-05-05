@@ -15,15 +15,16 @@
   <body>
     <div id="page" class="container_16 clearfix">
       <div id="header" class="grid_16">
-          <h1 id="site-title">Here is Your New Symfony Project</h1>
+          
+        <h1 id="site-title">Here is Your New Symfony Project</h1>
 
-          <ul id="nav">
-              <li><a href="#"> Link 1</a></li>
-              <li><a href="#"> Link 2</a></li>
-              <li><a href="#"> Link 3</a></li>
-              <li><a href="#"> Link 4</a></li>
-              <li><a href="#"> Link 5</a></li>
-          </ul>
+        <ul id="nav">
+          <li><a href="#"> Link 1</a></li>
+          <li><a href="#"> Link 2</a></li>
+          <li><a href="#"> Link 3</a></li>
+          <li><a href="#"> Link 4</a></li>
+          <li><a href="#"> Link 5</a></li>
+        </ul>
       </div>
       
       <div id="content-area" class="grid_16">
@@ -31,13 +32,13 @@
       </div>
       
       <div id="footer" class="container_16 clearfix">
-          <ul id="footer-nav">
-              <li><a href="#"> Link 1</a></li>
-              <li><a href="#"> Link 2</a></li>
-              <li><a href="#"> Link 3</a></li>
-              <li><a href="#"> Link 4</a></li>
-              <li><a href="#"> Link 5</a></li>
-          </ul>
+        <ul id="footer-nav">
+          <li><a href="#"> Link 1</a></li>
+          <li><a href="#"> Link 2</a></li>
+          <li><a href="#"> Link 3</a></li>
+          <li><a href="#"> Link 4</a></li>
+          <li><a href="#"> Link 5</a></li>
+        </ul>
       </div>
   </body>
 </html>
