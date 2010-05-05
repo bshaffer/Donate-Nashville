@@ -19,4 +19,19 @@ class donationActions extends sfActions
   {
 
   }
+  
+  public function executeTime(sfWebRequest $request)
+  {
+
+  }
+  
+  public function executeMaterial(sfWebRequest $request)
+  {
+
+  }
+  
+  public function executeMoney(sfWebRequest $request)
+  {
+
+  }
 }

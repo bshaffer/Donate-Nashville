@@ -19,4 +19,19 @@ class needActions extends sfActions
   {
 
   }
+  
+  public function executeTime(sfWebRequest $request)
+  {
+
+  }
+  
+  public function executeMaterial(sfWebRequest $request)
+  {
+
+  }
+  
+  public function executeHousing(sfWebRequest $request)
+  {
+
+  }
 }
