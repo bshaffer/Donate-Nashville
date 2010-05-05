@@ -8,6 +8,7 @@ ResourceFilter = $.extend({}, {
 	
 	MINIMUM_FILTER_LENGTH: 3,
 	NO_RESULTS_STRING: '[ no results found ]',
+	resource_type: 'time', // stuff or time
 	
 	attachEvents: function() {
 		// keep form from submitting
@@ -16,7 +17,10 @@ ResourceFilter = $.extend({}, {
 		// attach the events to the text input
 		this.initSearchFilterForInput($('input.resource'));
 	},
-		
+
+	setResourceType: function(resource_type) {
+		this.resource_type = resource_type;
+	},
 
 	// attaches the handlers to the input that send the ajax request
 	initSearchFilterForInput: function(jq_input) {
