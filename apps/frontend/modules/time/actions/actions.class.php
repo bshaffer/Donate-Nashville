@@ -20,7 +20,7 @@ class timeActions extends sfActions
   }
 
   /**
-   * Submti for the "need time" form
+   * Submit for the "need time" form
    */
   public function executeNeedCreate(sfWebRequest $request)
   {
@@ -44,7 +44,10 @@ class timeActions extends sfActions
       $this->redirect('@need_time');
     }
   }
-  
+
+  /**
+   * The "have time" screen, where you search for time resources needed
+   */
   public function executeHave(sfWebRequest $request)
   {
 

@@ -10,10 +10,27 @@
  */
 class stuffActions extends sfActions
 {
+
+  /**
+   * Displays the "need time" form
+   */
   public function executeNeed(sfWebRequest $request)
   {
-
+    $this->form = new NeedStuffResourceForm();
   }
+
+  /**
+   * Submit for the "need time" form
+   */
+  public function executeNeedCreate(sfWebRequest $request)
+  {
+    $this->form = new NeedStuffResourceForm();
+    
+    $this->processNeedForm($request, $this->form);
+  
+    $this->setTemplate('need');
+  }
+
   
   public function executeHave(sfWebRequest $request)
   {

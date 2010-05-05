@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Form for "I need time resource" form. Creates TimeResource objects
+ * with transaction type "need".
+ * 
+ * @package     DN
+ * @subpackage  form
+ * @author      Ryan Weaver <ryan.weaver@iostudio.com>
+ */
 class NeedTimeResourceForm extends TimeResourceForm
 {
   public function configure()
@@ -25,5 +33,13 @@ class NeedTimeResourceForm extends TimeResourceForm
     ));
     
     $this->widgetSchema['resource_date'] = new sfWidgetFormJQueryDate();
+  }
+
+  /**
+   * @see ResourceForm
+   */
+  protected function getTransactionType()
+  {
+    return 'need';
   }
 }

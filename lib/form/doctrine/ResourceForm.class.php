@@ -17,6 +17,26 @@ class ResourceForm extends BaseResourceForm
   }
 
   /**
+   * Returns either "need" or "have". This should be implemented by
+   * subclasses, then it will be automatically set correct
+   * 
+   * This should be abstract, but for time I didn't do that because I
+   * didn't want to fool with making all the subclasses abstract and
+   * whatever might happen there.
+   */
+  protected function getTransactionType()
+  {
+    throw new sfException('override this function');
+  }
+
+  public function doUpdateObject($values = null)
+  {
+    parent::doUpdateObject($values);
+    
+    $this->getObject()->transaction_type = $this->getTransactionType();
+  }
+
+  /**
    * Overridden so that we can allow a user to simply enter an email
    * address, and they'll automatically be registered if not already
    * registered
