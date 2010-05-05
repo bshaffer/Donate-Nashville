@@ -1,15 +1,2 @@
-all:
-  facebook:
-    api_key:  somekey # your Facebook application API key (get it from Facebook)
-    secret:   somesecret # your Facebook application secret key (get it from Facebook)
-  sf_fb_connect_guard:
-    auto_login:         false # if users should be automatically logged in after they sign up with FB Connect
-
-    connect_successful: register_please_confirm # where users go after they succesfully connect
-    login_failed:       someroute # where to go if the login failed
-    # where to go when a user successfully logs in versus registers with FB Connect
-    success_signin_url: someroute
-
-    # An array of Facebook profile fields to grab on registration 
-    # more info at http://wiki.developers.facebook.com/index.php/Users.getInfo
-    profile_fields: [first_name, last_name]
+#defaults
+# all:
