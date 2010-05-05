@@ -20,23 +20,35 @@ class resourceActions extends sfActions
 
   }
 
-  public function executeStuffResourceList(sfWebRequest $request)
+  public function executeStuffList(sfWebRequest $request)
   {  
-    $results = Doctrine::getTable('StuffResource')
+    $query = Doctrine::getTable('StuffResource')
               ->getListQuery($request->getParameter('q'))
-              ->limit(8)
-              ->execute(Doctrine::HYDRATE_ARRAY);
+              ->limit(8);
+
+    if ($type = $request->getParameter('type')) 
+    {
+      $query->andWhere('transaction_type =?', $type);
+    }
+    
+    $results = $query->execute(array(), Doctrine::HYDRATE_ARRAY);
     
     return $this->renderPartial('resource/list', array('results' => $results));
   }
 
-  public function executeTimeResourceList(sfWebRequest $request)
+  public function executeTimeList(sfWebRequest $request)
   {  
-    $results = Doctrine::getTable('TimeResource')
-              ->getListQuery($request->getParameter('q'))
-              ->limit(8)
-              ->execute(Doctrine::HYDRATE_ARRAY);
+    $query = Doctrine::getTable('TimeResource')
+              ->getListQuery($request->getParameter('start'), $request->getParameter('end'))
+              ->limit(8);
+
+    if ($type = $request->getParameter('type')) 
+    {
+      $query->andWhere('transaction_type = ?', $type);
+    }
     
+    $results = $query->execute(Doctrine::HYDRATE_ARRAY);
+
     return $this->renderPartial('resource/list', array('results' => $results));
   }
   

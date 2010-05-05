@@ -10,10 +10,10 @@ sfGuardUser:
     is_super_admin: false
     email_address:  bshafs@gmail.com
   sgu_chayner:
-    is_super_admin: false
     username:       chayner
     password:       admin
-    email_address:  chayner@gmail.com
+    is_super_admin: false
+    email_address:  chayner@centresource.com
 
 sfGuardUserProfile:
   sgup_bshaffer:

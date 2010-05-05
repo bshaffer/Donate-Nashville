@@ -5,18 +5,26 @@ have:
 have_time:
   url:   /have/time
   param: { module: time, action: have }
-  
+
+have_time_create:
+  url:   /have/time/create
+  param: { module: time, action: haveCreate }
+
 have_stuff:
   url:   /have/stuff
   param: { module: stuff, action: have }
 
 need:
   url:   /need
-  param: { module: need, action: index }
+  param: { module: resource, action: need }
 
 need_time:
   url:   /need/time
   param: { module: time, action: need }
+
+need_time_create:
+  url:   /need/time/create
+  param: { module: time, action: needCreate }
 
 need_stuff:
   url:   /need/stuff
@@ -37,6 +45,23 @@ time_list:
 stuff_list:
   url:   /stuff/list
   param: { module: resource, action: stuffList }
+
+need_time_list:
+  url:   /time/list
+  param: { module: resource, action: timeList, type: need }
+
+have_time_list:
+  url:   /time/list
+  param: { module: resource, action: timeList, type: have }
+
+need_stuff_list:
+  url:   /stuff/list
+  param: { module: resource, action: stuffList, type: need }
+
+have_stuff_list:
+  url:   /stuff/list
+  param: { module: resource, action: stuffList, type: have }
+
 
 
 # default rules
