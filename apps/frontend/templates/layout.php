@@ -6,6 +6,9 @@
     <?php include_title() ?>
     <link rel="shortcut icon" href="/favicon.ico" />
   
+		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+		<script type="text/javascript" charset="utf-8">google.load('jquery','1.4');</script>
+
     <?php include_stylesheets() ?>
     <?php include_javascripts() ?>
 </head>
