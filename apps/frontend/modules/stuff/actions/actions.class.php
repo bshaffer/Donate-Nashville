@@ -10,16 +10,6 @@
  */
 class stuffActions extends sfActions
 {
- /**
-  * Executes index action
-  *
-  * @param sfRequest $request A request object
-  */
-  public function executeIndex(sfWebRequest $request)
-  {
-
-  }
-  
   public function executeNeed(sfWebRequest $request)
   {
 
