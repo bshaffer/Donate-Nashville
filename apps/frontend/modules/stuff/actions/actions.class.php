@@ -59,12 +59,14 @@ class stuffActions extends sfActions
       $request->setAttribute('resource', $stuff);
       $body = $this->getController()->getPresentationFor('stuff', 'needEmail');
       
-      $this->getMailer()->composeAndSend(
+      $message = $this->getMailer()->compose(
         sfConfig::get('app_email_from'),
         $form->getValue('email'),
         dnConfig::getEmailSubject('need_stuff_creation'),
         $body
       );
+      $message->setContentType('text/html');
+      $this->getMailer()->send($message);
       
       $this->redirect($this->generateUrl('stuff_match', array(
         'sf_subject' => $stuff
