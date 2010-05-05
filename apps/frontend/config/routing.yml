@@ -75,12 +75,12 @@ have_time_create:
   param: { module: time, action: create, type: have }
 
 need_stuff_create:
-  url:   /stuff/create
-  param: { module: need, action: create, type: need }
+  url:   /need/stuff/create
+  param: { module: stuff, action: haveCreate }
 
 have_stuff_create:
-  url:   /stuff/create
-  param: { module: need, action: create, type: have }
+  url:   /have/stuff/create
+  param: { module: stuff, action: needCreate }
 
 
 
