@@ -47,7 +47,7 @@ class resourceActions extends sfActions
       $query->andWhere('transaction_type = ?', $type);
     }
     
-    $results = $query->execute(Doctrine::HYDRATE_ARRAY);
+    $results = $query->execute(array(), Doctrine::HYDRATE_ARRAY);
 
     return $this->renderPartial('resource/list', array('results' => $results));
   }
