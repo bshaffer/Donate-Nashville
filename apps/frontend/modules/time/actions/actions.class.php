@@ -60,12 +60,15 @@ class timeActions extends sfActions
       $request->setAttribute('resource', $need);
       $body = $this->getController()->getPresentationFor('time', 'needEmail');
       
-      $this->getMailer()->composeAndSend(
+      $message = $this->getMailer()->compose(
         sfConfig::get('app_email_from'),
         $form->getValue('email'),
         dnConfig::getEmailSubject('need_time_creation'),
         $body
       );
+      $message->setContentType('text/html');
+      $this->getMailer()->send($message);
+
       
       $this->redirect($this->generateUrl('time_match', array(
         'sf_subject' => $need
