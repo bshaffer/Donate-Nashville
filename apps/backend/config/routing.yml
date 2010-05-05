@@ -32,10 +32,3 @@ sf_guard_signout:
 sf_guard_password:
   url:   /request_password
   param: { module: sfGuardAuth, action: password }
-
-default_index:
-  url:   /login
-  param: { module: sfGuardAuth, action: signin }  
-
-default:
-  url:   /:module/:action/*
