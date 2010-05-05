@@ -12,6 +12,22 @@ class timeActions extends sfActions
 {
 
   /**
+   * The main "have time" screen, a search screen
+   */
+  public function executeHave(sfWebRequest $request)
+  {
+    
+  }
+
+  /**
+   * Displays the actual Time Resource
+   */
+  public function executeMatch(sfWebRequet $request)
+  {
+    $this->resource = $this->getRoute()->getObject();
+  }
+
+  /**
    * Displays the "need time" form
    */
   public function executeAddNeed(sfWebRequest $request)
@@ -63,13 +79,5 @@ class timeActions extends sfActions
   {
     $this->resource = $request->getAttribute('resource');
     $this->setLayout('layoutEmail');
-  }
-
-  /**
-   * The "have time" screen, where you search for time resources needed
-   */
-  public function executeHave(sfWebRequest $request)
-  {
-
   }
 }

@@ -10,8 +10,20 @@
  */
 class stuffActions extends sfActions
 {
+
+  /**
+   * Main "need stuff" screen, which is a search
+   */
   public function executeNeed(sfWebRequest $request)
   {
+  }
+
+  /**
+   * Displays the actual resource
+   */
+  public function executeMatch(sfWebRequest $request)
+  {
+    $this->resource = $this->getRoute()->getObject();
   }
   
   /**
@@ -57,7 +69,7 @@ class stuffActions extends sfActions
       $this->redirect('@add_need_stuff');
     }
   }
-  
+
   /**
    * Internal action used to create the body for the email that goes out
    * to the creator of a "need stuff"
