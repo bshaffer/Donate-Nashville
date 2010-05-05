@@ -34,7 +34,7 @@ If you have sqlite on your computer, then do the following:
 
     cp config/databases.yml.dist config/databases.yml
     ./symfony doctrine:build --all --and-load
-    chmod 777 data/donate.sqlite
+    chmod 777 /tmp/donate.sqlite
 
 If you'd prefer to use mysql, then simply copy the `databases.yml` file
 as above, uncomment out the `dsn` line in front of the mysql string,

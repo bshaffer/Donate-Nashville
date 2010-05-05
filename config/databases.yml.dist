@@ -3,7 +3,7 @@ all:
     class:        sfDoctrineDatabase
     param:
       #dsn:        mysql://USER:PASSWORD@localhost/donate_nashville
-      dsn:         'sqlite:///%SF_DATA_DIR%/donate.sqlite'
+      dsn:         'sqlite:////tmp/donate.sqlite'
 
 test:
   doctrine:

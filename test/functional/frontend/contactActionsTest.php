@@ -2,7 +2,7 @@
 
 include(dirname(__FILE__).'/../../bootstrap/functional.php');
 
-$browser = new sfTestFunctional(new sfBrowser());
+$browser = new dnTestFunctional(new sfBrowser());
 
 $browser->
   get('/contact/index')->
