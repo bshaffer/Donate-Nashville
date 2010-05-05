@@ -2,6 +2,10 @@ have:
   url:   /have
   param: { module: resource, action: have }
 
+have_time:
+  url:   /have/time
+  param: { module: time, action: have }
+
 have_stuff:
   url:   /have/stuff
   param: { module: stuff, action: have }
@@ -10,10 +14,10 @@ need:
   url:   /need
   param: { module: resource, action: need }
 
+# Create time resource ruotes
 need_time:
   url:   /need/time
   param: { module: time, action: need }
-
 need_time_create:
   url:   /need/time/create
   param: { module: time, action: needCreate }
@@ -61,14 +65,6 @@ user_auth:
 user_resource:
   url:   /user/resource
   param: { module: user, action: resource }
-
-have_time_create:
-  url:   /have/time/create
-  param: { module: time, action: haveCreate }
-
-need_time_create:
-  url:   /time/create
-  param: { module: time, action: needCreate, type: need }
 
 need_stuff_create:
   url:   /need/stuff/create
