@@ -17,16 +17,15 @@ class timeActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
-
   }
   
   public function executeNeed(sfWebRequest $request)
   {
-
+    $this->form = new NeedTimeResourceForm();
   }
   
   public function executeHave(sfWebRequest $request)
   {
-
+    $this->form = new HaveTimeResourceForm();
   }
 }
