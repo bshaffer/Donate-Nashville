@@ -3,3 +3,4 @@ all:
     from:    contact@donatenashville.org
     subjects:
       need_time_creation:   Need for Time entry created at donatenashville.org
+      need_stuff_creation:  Need for Stuff entry created at donatenashville.org
