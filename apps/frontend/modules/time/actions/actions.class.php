@@ -41,8 +41,28 @@ class timeActions extends sfActions
     {
       $need = $form->save();
       
+      $request->setAttribute('resource', $need);
+      $body = $this->getController()->getPresentationFor('time', 'needEmail');
+      
+      $this->getMailer()->composeAndSend(
+        sfConfig::get('app_email_from'),
+        $form->getValue('email'),
+        dnConfig::getEmailSubject('need_time_creation'),
+        $body
+      );
+      
       $this->redirect('@need_time');
     }
+  }
+
+  /**
+   * Internal action used by create the body for the email that goes out
+   * to the creator of a "need time"
+   */
+  public function executeNeedEmail(sfWebRequest $request)
+  {
+    $this->resource = $request->getAttribute('resource');
+    $this->setLayout('layoutEmail');
   }
 
   /**

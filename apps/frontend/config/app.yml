@@ -1,2 +1,5 @@
-# default values
-#all:
+all:
+  email:
+    from:    contact@donatenashville.org
+    subjects:
+      need_time_creation:   Need for Time entry created at donatenashville.org
