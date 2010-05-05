@@ -6,4 +6,15 @@
 class sfGuardUser extends PluginsfGuardUser
 {
 
+  /**
+   * We don't really reqiure a password for a new user, but we do use
+   * it to generate a hash. So, we set one randomly if we have none.
+   */
+  public function preSave($event)
+  {
+    if (!$this->password)
+    {
+      $this->password = md5($this->created_at + rand(0, 1000));
+    }
+  }
 }
