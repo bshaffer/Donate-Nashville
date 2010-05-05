@@ -3,9 +3,11 @@
 
 class ResourceTable extends Doctrine_Table
 {
-    
-    public static function getInstance()
-    {
-        return Doctrine_Core::getTable('Resource');
-    }
+  public function getListQuery($search)
+  {
+    return Doctrine::getTable('Resource')->createQuery('p')
+                ->select('p.title, LEFT(p.description, 200) as summary')
+                ->addWhere('title like ?', "%$search%")
+                ->orWhere('description like ?', "%$search%");
+  }
 }
