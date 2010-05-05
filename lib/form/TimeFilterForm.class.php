@@ -9,8 +9,8 @@ class TimeFilterForm extends sfForm
   {
     $this->setWidgets(array(
       'resource_date'   => new sfWidgetFormJQueryDate(),
-      'start_time'      => new sfWidgetFormTime(),
-      'end_time'        => new sfWidgetFormTime(),
+      'start_time'      => new dnWidgetFormJQueryTimePicker(),
+      'end_time'        => new dnWidgetFormJQueryTimePicker(),
       ));
       
     $this->setValidators(array(
