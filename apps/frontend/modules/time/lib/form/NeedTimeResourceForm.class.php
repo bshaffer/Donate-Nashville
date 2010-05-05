@@ -26,14 +26,4 @@ class NeedTimeResourceForm extends TimeResourceForm
     
     $this->widgetSchema['resource_date'] = new sfWidgetFormJQueryDate();
   }
-  
-  public function doSave($con = null)
-  {
-    $email = $this->getValue('email');
-    $user = sfContext::getInstance()->getUser();
-    
-    $this->getObject()->User = $user->getGuardUserByEmail($email);
-    
-    parent::doSave($con);
-  }
 }
