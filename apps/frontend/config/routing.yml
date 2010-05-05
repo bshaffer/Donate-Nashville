@@ -66,6 +66,23 @@ user_auth:
   url:   /auth/:token
   param: { module: user, action: authenticate }
 
+need_time_create:
+  url:   /time/create
+  param: { module: time, action: create, type: need }
+
+have_time_create:
+  url:   /time/create
+  param: { module: time, action: create, type: have }
+
+need_stuff_create:
+  url:   /stuff/create
+  param: { module: need, action: create, type: need }
+
+have_stuff_create:
+  url:   /stuff/create
+  param: { module: need, action: create, type: have }
+
+
 
 # default rules
 homepage:
