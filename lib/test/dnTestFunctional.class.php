@@ -18,4 +18,14 @@ class dnTestFunctional extends sfTestFunctional
     
     $this->setTester('doctrine', 'sfTesterDoctrine');
   }
+
+  /**
+   * @return snTestFunctional
+   */
+  public function loadData()
+  {
+    Doctrine_Core::loadData(sfConfig::get('sf_test_dir').'/fixtures.yml');
+    
+    return $this;
+  }
 }

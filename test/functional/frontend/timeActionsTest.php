@@ -3,6 +3,7 @@
 include(dirname(__FILE__).'/../../bootstrap/functional.php');
 
 $browser = new dnTestFunctional(new sfBrowser());
+$browser->loadData();
 
 $submitValues = array(
   'resource_date' => date('Y-m-d', time() + 86400),
@@ -37,7 +38,11 @@ $browser->info('1 - You need time, fill out the form')
   
   ->info('  1.2 - Fill out a real form')
   ->click('form[name=time_resource] input[type=submit]', array('time_resource' => $submitValues))
-  
+
+  ->with('form')->begin()
+    ->hasErrors(false)
+  ->end()
+
   ->info('  1.3 - See that we sent the person an email')
   ->with('mailer')->begin()
     ->withMessage('ryan.weaver@iostudio.com')
