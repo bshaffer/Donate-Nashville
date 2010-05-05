@@ -1,4 +1,4 @@
-<h1><?php echo $resource->title ?></h1>
+<h1>Event Details: <?php echo $resource->title ?></h1>
 
 <!-- more details here -->
 
