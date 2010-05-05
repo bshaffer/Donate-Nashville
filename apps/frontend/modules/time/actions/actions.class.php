@@ -22,7 +22,7 @@ class timeActions extends sfActions
   /**
    * Displays the actual Time Resource
    */
-  public function executeMatch(sfWebRequet $request)
+  public function executeMatch(sfWebRequest $request)
   {
     $this->resource = $this->getRoute()->getObject();
   }
@@ -67,7 +67,9 @@ class timeActions extends sfActions
         $body
       );
       
-      $this->redirect('@add_need_time');
+      $this->redirect($this->generateUrl('time_match', array(
+        'sf_subject' => $need
+      )));
     }
   }
   

@@ -56,7 +56,9 @@ class stuffActions extends sfActions
     {
       $stuff = $form->save();
       
-      $this->redirect('@add_need_stuff');
+      $this->redirect($this->generateUrl('stuff_match', array(
+        'sf_subject' => $stuff
+      ));
     }
   }
 }
