@@ -70,6 +70,14 @@ class timeActions extends sfActions
    */
   public function executeHave(sfWebRequest $request)
   {
+    
+  }
 
+  /**
+   * Displays the actual Time Resource
+   */
+  public function executeMatch(sfWebRequet $request)
+  {
+    $this->resource = $this->getRoute()->getObject();
   }
 }
