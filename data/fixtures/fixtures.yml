@@ -9,6 +9,11 @@ sfGuardUser:
     password:       admin
     is_super_admin: false
     email_address:  bshafs@gmail.com
+  sgu_chayner:
+    username:       chayner
+    password:       admin
+    is_super_admin: false
+    email_address:  chayner@centresource.com
 
 sfGuardUserProfile:
   sgup_bshaffer:
@@ -17,10 +22,8 @@ sfGuardUserProfile:
     city:           Nashville
     state:          TN
     zip:            37211
-  sgu_chayner:
-    username:       chayner
-    password:       admin
-    is_super_admin: false
+  sgup_chayner:
+    User:           sgu_chayner
     address_1:      1313 N. 4th Ave
     city:           Nashville
     state:          TN

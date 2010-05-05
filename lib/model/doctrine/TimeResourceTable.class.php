@@ -5,7 +5,7 @@ class TimeResourceTable extends ResourceTable
 {
   public function getListQuery($start_date, $end_date = null)
   {
-    $query = Doctrine::getTable('Resource')->createQuery('p')
+    $query = $this->createQuery('p')
               ->select('p.title, LEFT(p.description, 200) as summary');
     
     if ($end_date) 

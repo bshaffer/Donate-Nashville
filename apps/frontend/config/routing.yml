@@ -38,6 +38,23 @@ stuff_list:
   url:   /stuff/list
   param: { module: resource, action: stuffList }
 
+need_time_list:
+  url:   /time/list
+  param: { module: resource, action: timeList, type: need }
+
+have_time_list:
+  url:   /time/list
+  param: { module: resource, action: timeList, type: have }
+
+need_stuff_list:
+  url:   /stuff/list
+  param: { module: resource, action: stuffList, type: need }
+
+have_stuff_list:
+  url:   /stuff/list
+  param: { module: resource, action: stuffList, type: have }
+
+
 
 # default rules
 homepage:
