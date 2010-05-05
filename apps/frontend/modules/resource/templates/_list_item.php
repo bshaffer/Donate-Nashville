@@ -1,0 +1,1 @@
+<li><?php echo $resource['title'] ?></li>
