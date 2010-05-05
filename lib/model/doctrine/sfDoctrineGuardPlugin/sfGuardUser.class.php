@@ -16,5 +16,11 @@ class sfGuardUser extends PluginsfGuardUser
     {
       $this->password = md5($this->created_at + rand(0, 1000));
     }
+
+    // we're not using both username and email, so user the email_address
+    if (!$this->username)
+    {
+      $this->username = $this->email_address;
+    }
   }
 }

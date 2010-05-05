@@ -8,7 +8,7 @@ class myUser extends sfGuardSecurityUser
     {
       $guard_user = Doctrine_Query::create()
         ->from('sfGuardUser')
-        ->where('email = ?', $email)
+        ->where('email_address = ?', $email)
         ->fetchOne();
       
       if(!$guard_user)

@@ -29,7 +29,7 @@ class NeedTimeResourceForm extends TimeResourceForm
     $email = $this->getValue('email');
     $user = sfContext::getInstance()->getUser();
     
-    $this->User = $user->getGuardUserByEmail($email);
+    $this->getObject()->User = $user->getGuardUserByEmail($email);
     
     parent::doSave($con);
   }
