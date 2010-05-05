@@ -5,6 +5,7 @@
 */
 class csFactory
 {
+  const DEFAULT_PASSWORD = 'password';
   protected static $lastRandom = array();
   
   /**
