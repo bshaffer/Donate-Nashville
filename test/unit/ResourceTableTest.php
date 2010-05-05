@@ -13,3 +13,14 @@ $resources = Doctrine::getTable('StuffResource')
               ->getListQuery(csFactory::last());
 
 $t->is($resources->count(), 1, 'One stuff item returned');
+
+$time = new TimeResource();
+$time['title'] = 'Time Resource ' . csFactory::generate();
+$time['owner_id'] = csFactory::selectRandomId('sfGuardUser');
+$time['start_date'] = date('Y-m-d', strtotime('-1 weeks'));
+$time->save();
+
+$resources = Doctrine::getTable('StuffResource')
+              ->getListQuery(csFactory::last());
+
+$t->is($resources->count(), 1, 'One stuff item returned');
