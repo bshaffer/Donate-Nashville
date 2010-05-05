@@ -6,3 +6,4 @@ lib/vendor/symfony
 lib/vendor/symfony*
 base
 data/sql/schema.sql
+data/donate.sqlite
