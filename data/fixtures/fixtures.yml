@@ -3,10 +3,16 @@ sfGuardUser:
     username:       admin
     password:       admin
     is_super_admin: true
+    email_address:  thedude@gmail.com
   sgu_bshaffer:
     username:       bshaffer
     password:       admin
     is_super_admin: false
+    email_address:  bshafs@gmail.com
+
+sfGuardUserProfile:
+  sgup_bshaffer:
+    User:           sgu_bshaffer
     address_1:      5157 Whitaker Dr
     city:           Nashville
     state:          TN
@@ -25,10 +31,10 @@ sfGuardGroup:
 
 sfGuardGroupPermission:
   sggp_admin:
-    sfGuardGroup:       sgg_admin
-    sfGuardPermission:  sgp_admin
+    Group:       sgg_admin
+    Permission:  sgp_admin
 
 sfGuardUserGroup:
   sgug_admin:
-    sfGuardGroup:       sgg_admin
-    sfGuardUser:        sgu_admin
+    Group:       sgg_admin
+    User:        sgu_admin
