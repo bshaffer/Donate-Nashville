@@ -5,105 +5,84 @@
   <?php use_stylesheets_for_form($form) ?>
   <?php use_javascripts_for_form($form) ?>
 
+  <?php use_helper('dh','FormField') ?>
+
   <form action="<?php echo url_for('@add_need_time_create') ?>" method="post" name="time_resource" class="styled-form">
     <?php echo $form->renderGlobalErrors() ?>
     <?php echo $form->renderHiddenFields() ?>
 
     <fieldset>
+    <legend>* Required field</legend>
     <ul>
+    <h2>Resource Info</h2>
     <li class="form-date">
-      <label>When</label>
+      <label>When *</label>
     
       <div>
-        <?php echo $form['resource_date']->render() ?>
-        <?php echo $form['resource_date']->renderError() ?>
+        <?php echo outputFormField($form['resource_date']) ?>
       </div>
     
       <div>
-        <?php echo $form['start_time']->render() ?>
-        <?php echo $form['start_time']->renderError() ?>
+        <?php echo outputFormField($form['start_time']) ?>
         to
-        <?php echo $form['end_time']->renderError() ?>
-        <?php echo $form['end_time']->render() ?> 
+        <?php echo outputFormField($form['end_time']) ?>
       </div>
     </li>
   
     <li>
       <label>What</label>
-    
-      <div>
-        <?php echo $form['title']->renderError() ?>
-        <?php echo $form['title']->render() ?>
-      </div>
+      <?php echo outputFormField($form['title']) ?>
     </li>
-  
-    <li>
-      <?php echo $form['address_1']->renderLabel() ?>
-      <div>
-        <?php echo $form['address_1']->renderError() ?>
-        <?php echo $form['address_1']->render() ?>
-      </div>
-    
-      <div>
-        <?php echo $form['address_2']->renderError() ?>
-        <?php echo $form['address_2']->render() ?>
-      </div>
-    
-      <?php echo $form['city']->renderLabel() ?>
-      <div>
-        <?php echo $form['city']->renderError() ?>
-        <?php echo $form['city']->render() ?>
-      </div>
-    
-      <?php echo $form['zip']->renderLabel() ?>
-      <div>
-        <?php echo $form['zip']->renderError() ?>
-        <?php echo $form['zip']->render() ?>
-      </div>
-    </li>
-  
+
     <li class="form-description">
-      <?php echo $form['description']->renderLabel() ?>
-      <div>
-        <?php echo $form['description']->renderError() ?>
-        <?php echo $form['description']->render() ?>
-      </div>
+      <label>Description *</label>
+      <?php echo outputFormField($form['description']) ?>
     </li>
   
     <li>
-      <?php echo $form['num_volunteers']->renderLabel() ?>
-      <div>
-        <?php echo $form['num_volunteers']->renderError() ?>
-        <?php echo $form['num_volunteers']->render() ?>
-      </div>
+      <label># of Volunteers</label>
+      <?php echo outputFormField($form['num_volunteers']) ?>
+    </li>
+
+    <br clear="all" />
+    <br clear="all" />
+
+    <h2>Contact Info</h2>
+
+    <li>
+      <label>Address</label>
+      <?php echo outputFormField($form['address_1']) ?><br/>
+      <?php echo outputFormField($form['address_2']) ?>
+    </li>
+
+    <li>
+      <label>City</label>
+      <?php echo outputFormField($form['city']) ?>
+    </li>
+
+    <li>
+      <label>Zip</label>
+      <?php echo outputFormField($form['zip']) ?>
     </li>
   
     <li>
-      <?php echo $form['email']->renderLabel() ?>
-      <div>
-        <?php echo $form['email']->renderError() ?>
-        <?php echo $form['email']->render() ?>
-      </div>
+      <label>Email *</label>
+        <?php echo outputFormField($form['email']) ?>
+    </li>
     
-      <?php echo $form['phone_1']->renderLabel() ?>
-      <div>
-        <?php echo $form['phone_1']->renderError() ?>
-        <?php echo $form['phone_1']->render() ?>
-      </div>
+    <li>
+      <label>Primary Phone Number</label>
+        <?php echo outputFormField($form['phone_1']) ?>
+    </li>
     
-      <?php echo $form['phone_2']->renderLabel() ?>
-      <div>
-        <?php echo $form['phone_2']->renderError() ?>
-        <?php echo $form['phone_2']->render() ?>
-      </div>
+    <li>
+      <label>Alternate Phone Number</label>
+        <?php echo outputFormField($form['phone_2']) ?>
     </li>
   
     <li>
-      <?php echo $form['privacy']->renderLabel() ?>
-      <div>
-        <?php echo $form['privacy']->renderError() ?>
-        <?php echo $form['privacy']->render() ?>
-      </div>
+      <label>Privacy *</label>
+        <?php echo outputFormField($form['privacy']) ?>
     </li>
   
     <li><input type="submit" value="submit" class="button"/></li>
