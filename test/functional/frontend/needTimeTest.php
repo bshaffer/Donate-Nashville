@@ -10,6 +10,6 @@ $browser
   ->click('Need')
     ->isModuleAction('resource', 'need')
     
-  ->click('Time')
-    ->isModuleAction('time', 'need')
+  ->click('Help')
+    ->isModuleAction('time', 'addNeed')
 ;
