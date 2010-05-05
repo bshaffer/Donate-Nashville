@@ -10,20 +10,18 @@
  */
 class timeActions extends sfActions
 {
- /**
-  * Executes index action
-  *
-  * @param sfRequest $request A request object
-  */
-  public function executeIndex(sfWebRequest $request)
-  {
-  }
-  
+
+  /**
+   * Displays the "need time" form
+   */
   public function executeNeed(sfWebRequest $request)
   {
     $this->form = new NeedTimeResourceForm();
   }
-  
+
+  /**
+   * Submti for the "need time" form
+   */
   public function executeNeedCreate(sfWebRequest $request)
   {
     $this->form = new NeedTimeResourceForm();
@@ -32,7 +30,10 @@ class timeActions extends sfActions
   
     $this->setTemplate('need');
   }
-  
+
+  /**
+   * Processes the "need time" form
+   */
   protected function processNeedForm(sfWebRequest $request, sfForm $form)
   {
     $form->bind($request->getParameter($form->getName()));
