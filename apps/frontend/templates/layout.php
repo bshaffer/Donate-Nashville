@@ -21,14 +21,11 @@
     <div id="page" class="container_16 clearfix">
       <div id="header" class="grid_16">
           
-        <h1 id="site-title"><a href="<?php echo url_for('@homepage') ?>">Here is Your New Symfony Project</a></h1>
+        <h1 id="site-title"><a href="<?php echo url_for('@homepage') ?>">Donate Nashville</a></h1>
 
-        <ul id="nav">
-          <li><a href="#"> Link 1</a></li>
-          <li><a href="#"> Link 2</a></li>
-          <li><a href="#"> Link 3</a></li>
-          <li><a href="#"> Link 4</a></li>
-          <li><a href="#"> Link 5</a></li>
+        <ul id="nav" class="grid_5 prefix_11">
+          <li><?php echo link_to('I Have...', '@have') ?></li>
+          <li><?php echo link_to('I Need...', '@need') ?></li>
         </ul>
       </div>
       
@@ -36,14 +33,12 @@
         <?php echo $sf_content ?>
       </div>
       
-      <div id="footer" class="container_16 clearfix">
+      <div id="footer" class="grid_16 clearfix">
         <ul id="footer-nav">
-          <li><a href="#"> Link 1</a></li>
-          <li><a href="#"> Link 2</a></li>
-          <li><a href="#"> Link 3</a></li>
-          <li><a href="#"> Link 4</a></li>
-          <li><a href="#"> Link 5</a></li>
+          <li><?php echo link_to('About DonateNashville', '@homepage') ?></li>
+          <li class="last"><?php echo link_to('Terms of Service', '@homepage') ?></li>
         </ul>
+        <p>&copy;<?php echo date('Y') ?> Donate Nashville.</p>
       </div>
   </body>
 </html>

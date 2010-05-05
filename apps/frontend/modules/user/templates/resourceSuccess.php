@@ -37,5 +37,5 @@
 <?php endif ?>
 
 <?php else: ?>
-  <p>You have no current activity! Click the links above to donate or search</p>
+  <p>You have no current activity! Click the links above to donate or find</p>
 <?php endif ?>

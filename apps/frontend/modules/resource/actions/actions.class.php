@@ -70,4 +70,44 @@ class resourceActions extends sfActions
   {
 
   }
+  
+  public function executeFulfill(sfWebRequest $request)
+  {
+    $resource = $this->getRoute()->getObject();
+    $user = $this->getUser()->getGuardUser();
+    
+    $this->forward403Unless($user['id'] != $resource['owner_id']);
+    
+    $resource['is_fulfilled'] = true;
+    $resource->save();
+    
+    $this->getUser()->setFlash('notice', sprintf('"%s" has been fulfilled', $resource));
+    
+    $referer = $request->getReferer();
+    $this->redirect($referer ? $referer : '@homepage');    
+  }
+  
+  public function executeDelete(sfWebRequest $request)
+  {
+    $resource = $this->getRoute()->getObject();
+
+    $this->forward403Unless($user['id'] != $resource['owner_id']);
+
+    $resource->delete();
+
+    $this->getUser()->setFlash('notice', sprintf('"%s" has been removed', $resource));
+
+    $referer = $request->getReferer();
+    $this->redirect($referer ? $referer : '@homepage');
+  }
+
+  public function forward403Unless($bool)
+  {
+    if (!$bool) 
+    {
+      $this->getUser()->setFlash('error', 'You do not have the permission to edit this object');
+      $request->setStatusCode(403);
+      $this->forward(sfConfig::get('sf_secure_module'), sfConfig::get('sf_secure_module'));
+    }
+  }
 }

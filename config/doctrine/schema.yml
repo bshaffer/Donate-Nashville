@@ -19,7 +19,7 @@ Resource:
       type:             enum
       values:           [show_info, web_form, send_to_interested]
       default:          true
-    is_satisfied:
+    is_fulfilled:
       type:             boolean
       default:          false
     address_1:

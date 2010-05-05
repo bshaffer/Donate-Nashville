@@ -95,6 +95,16 @@ have_stuff_list:
   url:   /stuff/list
   param: { module: resource, action: stuffList, type: have }
 
+resource_fulfill:
+  url:   /resource/:id/fulfill
+  param:  { module: resource, action: fulfill }
+  options: { sf_method: POST }
+
+resource_delete:
+  url:   /resource/:id
+  param:  { module: resource, action: delete }
+  options: { sf_method: DELETE }
+  
 # The "show" page for StuffResource
 stuff_match:
   class:    sfDoctrineRoute

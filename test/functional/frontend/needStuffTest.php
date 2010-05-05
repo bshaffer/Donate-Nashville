@@ -7,7 +7,7 @@ $browser = new dnTestFunctional(new sfBrowser());
 $browser
   ->get('/')
   
-  ->click('Need')
+  ->click('I Need...')
     ->isModuleAction('resource', 'need')
     
   ->click('Stuff')

@@ -45,7 +45,8 @@ $browser->info('1 - You have stuff, fill out the form')
 
   ->info('  1.3 - See that we sent the person an email')
   ->with('mailer')->begin()
-    ->withMessage('ryan.weaver@iostudio.com')
+    ->withMessage($submitValues['email'])
+    ->checkBody('/auth\//')
   ->end()
   
   ->with('doctrine')->begin()
@@ -74,3 +75,41 @@ $browser
     ->matches('/'.$submitValues['title'].'/')
   ->end()
 ;
+
+$user = Doctrine_Core::getTable('sfGuardUser')->findOneByUsername($submitValues['email']);
+
+$browser
+  ->info('going to the link from the email and verify we have an account')
+  
+  ->get('/auth/foo-bar')
+  
+  ->with('request')->begin()
+    ->isParameter('module', 'user')
+    ->isParameter('action', 'authenticate')
+  ->end()
+  
+  ->with('user')
+    ->isAuthenticated(false)
+  
+  ->get('/auth/'.$user->password)
+  
+  ->with('request')->begin()
+    ->isParameter('module', 'user')
+    ->isParameter('action', 'authenticate')
+  ->end()
+  
+  ->with('user')
+    ->isAuthenticated(true)
+  
+  ->with('response')->begin()
+    ->isRedirected()
+    ->followRedirect()
+  ->end()
+  
+  ->with('request')->begin()
+    ->isParameter('module', 'user')
+    ->isParameter('action', 'resource')
+  ->end()
+;
+
+
