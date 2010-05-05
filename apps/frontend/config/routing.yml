@@ -43,10 +43,3 @@ stuff_list:
 homepage:
   url:   /
   param: { module: default, action: index }
-
-default_index:
-  url:   /:module
-  param: { action: index }
-
-default:
-  url:   /:module/:action/*

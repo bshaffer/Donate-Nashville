@@ -1,0 +1,3 @@
+[submodule "plugins/sfDoctrineGuardPlugin"]
+	path = plugins/sfDoctrineGuardPlugin
+	url = git://github.com/annismckenzie/sfDoctrineGuardPlugin.git
