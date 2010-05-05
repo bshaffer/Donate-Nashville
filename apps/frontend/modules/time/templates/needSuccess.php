@@ -16,103 +16,95 @@
     <div>
       <?php echo $form['start_time']->render() ?>
       <?php echo $form['start_time']->renderError() ?>
-      
+      to
       <?php echo $form['end_time']->renderError() ?>
       <?php echo $form['end_time']->render() ?> 
     </div>
   </div>
   
-  <br style="clear:both;" />
-  
   <div>
-    <div style="float:left;">
-      What
-    </div>
-    <div style="float:left;">
+    <label>What</label>
+    
+    <div>
       <?php echo $form['title']->renderError() ?>
       <?php echo $form['title']->render() ?>
     </div>
   </div>
   
-  <br style="clear:both;" />
-  
   <div>
-    <div style="float:left;">
-      Where
-    </div>
-    <div style="float:left;">
+    <label>Where</label>
+    
+    <div>
       <?php echo $form['address_1']->renderError() ?>
       <?php echo $form['address_1']->render() ?>
-      <br />
+    </div>
+    
+    <div>
       <?php echo $form['address_2']->renderError() ?>
       <?php echo $form['address_2']->render() ?>
-      <br />
+    </div>
+    
+    <div>
       <?php echo $form['city']->renderError() ?>
       <?php echo $form['city']->render() ?>
-      <br />
+    </div>
+    
+    <div>
       <?php echo $form['state']->renderError() ?>
       <?php echo $form['state']->render() ?>
-      <br />
+    </div>
+    
+    <div>
       <?php echo $form['zip']->renderError() ?>
       <?php echo $form['zip']->render() ?>
     </div>
   </div>
   
-  <br style="clear:both;" />
-  
   <div>
-    <div style="float:left;">
-      Description
-    </div>
-    <div style="float:left;">
+    <label>Description</label>
+
+    <div>
       <?php echo $form['description']->renderError() ?>
       <?php echo $form['description']->render() ?>
     </div>
   </div>
   
-  <br style="clear:both;" />
-  
   <div>
-    <div style="float:left;">
-      # of Volunteers
-    </div>
-    <div style="float:left;">
+    <label># of Volunteers</label>
+    
+    <div>
       <?php echo $form['num_volunteers']->renderError() ?>
       <?php echo $form['num_volunteers']->render() ?>
     </div>
   </div>
   
-  <br style="clear:both;" />
-  
   <div>
-    <div style="float:left;">
-      Contact Info
-    </div>
-    <div style="float:left;">
+    <label>Contact Info</label>
+    
+    <div>
       <?php echo $form['email']->renderError() ?>
       <?php echo $form['email']->render() ?>
-      <br />
+    </div>
+    
+    <div>
       <?php echo $form['phone_1']->renderError() ?>
       <?php echo $form['phone_1']->render() ?>
-      <br />
+    </div>
+    
+    <div>
       <?php echo $form['phone_2']->renderError() ?>
       <?php echo $form['phone_2']->render() ?>
     </div>
   </div>
   
-  <br style="clear:both;" />
-  
   <div>
-    <div style="float:left;">
-      Privacy
-    </div>
-    <div style="float:left;">
+    <label>Privacy</label>
+    
+    <div>
       <?php echo $form['privacy']->renderError() ?>
       <?php echo $form['privacy']->render() ?>
     </div>
   </div>
-  
-  <br style="clear:both;" />
   
   <input type="submit" value="submit" />
 </form>
