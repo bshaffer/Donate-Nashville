@@ -16,11 +16,17 @@ need:
 
 # Create time resource routes
 add_need_time:
+  class:  sfRequestRoute
   url:   /need/time/add
   param: { module: time, action: addNeed }
+  requirements:
+    sf_method: [get]
 add_need_time_create:
-  url:   /need/time/add/create
+  class:  sfRequestRoute
+  url:   /need/time/add
   param: { module: time, action: addNeedCreate }
+  requirements:
+    sf_method: [post]
 
 need_stuff:
   url:   /need/stuff
@@ -28,11 +34,17 @@ need_stuff:
 
 # Create stuff resource routes
 add_need_stuff:
+  class:  sfRequestRoute
   url:   /need/stuff/add
   param: { module: stuff, action: addNeed }
+  requirements:
+    sf_method: [get]
 add_need_stuff_create:
-  url:   /need/stuff/add/create
+  class:  sfRequestRoute
+  url:   /need/stuff/add
   param: { module: stuff, action: addNeedCreate }
+  requirements:
+    sf_method: [post]
   
 need_housing:
   url:   /need/place

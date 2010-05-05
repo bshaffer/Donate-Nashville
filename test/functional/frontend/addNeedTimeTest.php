@@ -18,7 +18,7 @@ $dbValues['transaction_type'] = 'need';
 
 
 $browser->info('1 - You need time, fill out the form')
-  ->get('/need/time')
+  ->get('/need/time/add')
   
   ->with('response')->begin()
     ->checkForm('NeedTimeResourceForm')
@@ -29,7 +29,7 @@ $browser->info('1 - You need time, fill out the form')
   
   ->with('request')->begin()
     ->isParameter('module', 'time')
-    ->isParameter('action', 'needCreate')
+    ->isParameter('action', 'addNeedCreate')
   ->end()
   
   ->with('form')->begin()
@@ -71,6 +71,6 @@ $browser
   
   ->with('response')->begin()
     ->isStatusCode(200)
-    ->checkElement('h1', '/A test volunteer event/')
+    ->checkElement('h1', '/'.$submitValues['title'].'/')
   ->end()
 ;
