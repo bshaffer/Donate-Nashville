@@ -64,7 +64,7 @@
     
     <div id="footer" class="grid_16 clearfix">
   		<ul>
-  			<li><a href="#" title="">Home</a></li>
+  			<li><?php echo link_to('Home', '@homepage') ?></li>
   			<li><?php echo link_to('I Need', '@need') ?></li>
   			<li><?php echo link_to('I Have', '@have') ?></li>
   			<li><?php echo link_to('About DonateNashville', '@about') ?></li>
