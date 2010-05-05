@@ -1,24 +1,26 @@
 <?php
 
-// include filter libraries
+// dependencies for resource filter
 use_javascript('/js/jquery/jquery.debounce.min.js');
+
+// include filter library
 use_javascript('/js/app/ResourceFilter.js');
 
+// call the resource filter onload code
+use_javascript('/js/app/ResourceFilterInit.js');
 
-javsacript_tag("
-ResourceFilter.attachEvent('test');
-");
 
 ?>
 
-<div>
+<h2>Search Results</h2>
+<div id="ResourceResultsList">
 	This will be the resource list.
 </div>
 
+<h2>Search Form</h2>
 <div>
-	<form action="_resource_filter_submit" method="post" accept-charset="utf-8">
-		<div><label for="need">Need</label><input type="text" name="need" value="" id="NeedFilter"></div>
-		
-
-		<p><input type="submit" value="Continue &rarr;"></p>
+	
+	<form class="resourceFilter" action="" method="post" accept-charset="utf-8">
+		<div><label for="resource">Need</label><input type="text" class="resource" name="resource" value="" id="ResourceFilter"></div>
 	</form>
+</div>

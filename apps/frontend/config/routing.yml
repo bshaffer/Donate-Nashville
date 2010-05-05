@@ -8,7 +8,7 @@ have_time:
   
 have_stuff:
   url:   /donate/stuff
-  param: { module: time, action: stuff }
+  param: { module: stuff, action: have }
 
 need:
   url:   /need
@@ -43,10 +43,3 @@ stuff_list:
 homepage:
   url:   /
   param: { module: default, action: index }
-
-default_index:
-  url:   /:module
-  param: { action: index }
-
-default:
-  url:   /:module/:action/*

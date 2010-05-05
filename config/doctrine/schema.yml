@@ -1,10 +1,10 @@
 Resource:
   actAs:
     Locatable:
-      fields:             [address_1, address_2, city, state, zip]
+      fields:           [address_1, address_2, city, state, zip]
   columns:
     owner_id:
-      type:             integer(4)
+      type:             integer
       notnull:          true
     transaction_type:
       type:             enum
@@ -70,10 +70,10 @@ StuffResource:
 ResourceParticipant:
   columns:
     participant_id:
-      type:             integer(4)
+      type:             integer
       notnull:          true
     resource_id:
-      type:             integer(4)
+      type:             integer
       notnull:          true
   relations:
     

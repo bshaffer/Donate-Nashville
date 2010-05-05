@@ -5,3 +5,4 @@ config/databases.yml
 lib/vendor/symfony
 lib/vendor/symfony*
 base
+data/sql/schema.sql
