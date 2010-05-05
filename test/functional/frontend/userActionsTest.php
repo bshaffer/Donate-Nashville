@@ -4,16 +4,41 @@ include(dirname(__FILE__).'/../../bootstrap/functional.php');
 
 $browser = new dnTestFunctional(new sfBrowser());
 
-$browser->
-  get('/user/index')->
+$user = Doctrine_Query::create()->from('sfGuardUser')->fetchOne();
 
-  with('request')->begin()->
-    isParameter('module', 'user')->
-    isParameter('action', 'index')->
-  end()->
+$browser->info('1 - Test the user authentication hash system')
+  ->info('  1.1 - Try an invalid authentication')
 
-  with('response')->begin()->
-    isStatusCode(200)->
-    checkElement('body', '!/This is a temporary page/')->
-  end()
+  ->get('/auth/fake')
+  ->with('request')->begin()
+    ->isParameter('module', 'user')
+    ->isParameter('action', 'authenticate')
+  ->end()
+  
+  ->with('response')->begin()
+    ->isStatusCode(401)
+    ->matches('/Invalid Token/')
+  ->end()
+  
+  ->info('  1.2 - Use the auth with a real key')
+  ->get('/auth/'.$user->password)
+  ->with('request')->begin()
+    ->isParameter('module', 'user')
+    ->isParameter('action', 'authenticate')
+  ->end()
+  
+  ->with('response')->begin()
+    ->isRedirected()->followRedirect()
+  ->end()
+  
+  ->info('  1.3 - The user is now authenticated')
+  ->with('user')->begin()
+    ->isAuthenticated(true)
+  ->end()
+  
+  ->info('  1.4 - Page is redirected to user resource')
+  ->with('request')->begin()
+    ->isParameter('module', 'user')
+    ->isParameter('action', 'resource')
+  ->end()
 ;
