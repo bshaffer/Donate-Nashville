@@ -16,15 +16,17 @@ class userActions extends sfActions
    */
   public function executeAuthenticate(sfWebRequest $request)
   {
-    $hash = $request->getParameter('hash');
-    $user = Doctrine_Core::getTable('sfGuardUser')->findOneByPassword($hash);
+    $token = $request->getParameter('token');
+    $user = Doctrine_Core::getTable('sfGuardUser')->findOneByPassword($token);
     
     if ($user)
     {
-      $user->signIn();
+      $this->getUser()->signIn($user, true);
       
-      $user->redirect('@user_resource');
+      $this->redirect('@user_resource');
     }
+    
+    $this->getResponse()->setStatusCode(401);
   }
   
   public function executeResource(sfWebRequest $request)
