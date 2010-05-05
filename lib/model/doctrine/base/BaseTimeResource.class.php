@@ -7,11 +7,14 @@
  * 
  * @property timestamp $start_date
  * @property timestamp $end_date
+ * @property integer $num_volunteers
  * 
- * @method timestamp    getStartDate()  Returns the current record's "start_date" value
- * @method timestamp    getEndDate()    Returns the current record's "end_date" value
- * @method TimeResource setStartDate()  Sets the current record's "start_date" value
- * @method TimeResource setEndDate()    Sets the current record's "end_date" value
+ * @method timestamp    getStartDate()      Returns the current record's "start_date" value
+ * @method timestamp    getEndDate()        Returns the current record's "end_date" value
+ * @method integer      getNumVolunteers()  Returns the current record's "num_volunteers" value
+ * @method TimeResource setStartDate()      Sets the current record's "start_date" value
+ * @method TimeResource setEndDate()        Sets the current record's "end_date" value
+ * @method TimeResource setNumVolunteers()  Sets the current record's "num_volunteers" value
  * 
  * @package    skeleton
  * @subpackage model
@@ -31,6 +34,9 @@ abstract class BaseTimeResource extends Resource
         $this->hasColumn('end_date', 'timestamp', null, array(
              'type' => 'timestamp',
              'notnull' => true,
+             ));
+        $this->hasColumn('num_volunteers', 'integer', null, array(
+             'type' => 'integer',
              ));
     }
 

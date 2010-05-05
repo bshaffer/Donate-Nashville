@@ -21,6 +21,7 @@
  * @property string $phone_1
  * @property string $phone_2
  * @property string $email
+ * @property enum $account_type
  * @property Doctrine_Collection $groups
  * @property Doctrine_Collection $permissions
  * @property Doctrine_Collection $sfGuardUserPermission
@@ -45,6 +46,7 @@
  * @method string               getPhone1()                Returns the current record's "phone_1" value
  * @method string               getPhone2()                Returns the current record's "phone_2" value
  * @method string               getEmail()                 Returns the current record's "email" value
+ * @method enum                 getAccountType()           Returns the current record's "account_type" value
  * @method Doctrine_Collection  getGroups()                Returns the current record's "groups" collection
  * @method Doctrine_Collection  getPermissions()           Returns the current record's "permissions" collection
  * @method Doctrine_Collection  getSfGuardUserPermission() Returns the current record's "sfGuardUserPermission" collection
@@ -68,6 +70,7 @@
  * @method sfGuardUser          setPhone1()                Sets the current record's "phone_1" value
  * @method sfGuardUser          setPhone2()                Sets the current record's "phone_2" value
  * @method sfGuardUser          setEmail()                 Sets the current record's "email" value
+ * @method sfGuardUser          setAccountType()           Sets the current record's "account_type" value
  * @method sfGuardUser          setGroups()                Sets the current record's "groups" collection
  * @method sfGuardUser          setPermissions()           Sets the current record's "permissions" collection
  * @method sfGuardUser          setSfGuardUserPermission() Sets the current record's "sfGuardUserPermission" collection
@@ -155,6 +158,17 @@ abstract class BasesfGuardUser extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
+        $this->hasColumn('account_type', 'enum', null, array(
+             'type' => 'enum',
+             'default' => 'individual',
+             'values' => 
+             array(
+              0 => 'individual',
+              1 => 'shelter',
+              2 => 'nonprofit',
+             ),
+             'notnull' => true,
+             ));
 
 
         $this->index('is_active_idx', array(
@@ -196,7 +210,7 @@ abstract class BasesfGuardUser extends sfDoctrineRecord
 
         $this->hasMany('Resource as Resoures', array(
              'local' => 'id',
-             'foreign' => 'user_id'));
+             'foreign' => 'owner_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $locatable0 = new Doctrine_Template_Locatable(array(

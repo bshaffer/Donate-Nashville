@@ -20,6 +20,9 @@ abstract class BaseTimeResourceFormFilter extends ResourceFormFilter
     $this->widgetSchema   ['end_date'] = new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false));
     $this->validatorSchema['end_date'] = new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59'))));
 
+    $this->widgetSchema   ['num_volunteers'] = new sfWidgetFormFilterInput();
+    $this->validatorSchema['num_volunteers'] = new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false)));
+
     $this->widgetSchema->setNameFormat('time_resource_filters[%s]');
   }
 
@@ -33,6 +36,7 @@ abstract class BaseTimeResourceFormFilter extends ResourceFormFilter
     return array_merge(parent::getFields(), array(
       'start_date' => 'Date',
       'end_date' => 'Date',
+      'num_volunteers' => 'Number',
     ));
   }
 }

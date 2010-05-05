@@ -7,8 +7,9 @@ Resource:
       type:             integer(4)
       notnull:          true
     transaction_type:
-      type:             string(255)
+      type:             enum
       notnull:          true
+      values:           [need, have]
     title:
       type:             string(255)
       notnull:          true
@@ -41,7 +42,7 @@ Resource:
       class:            sfGuardUser
       local:            owner_id
       foreignAlias:     Resoures
-      onDelete:       CASCADE
+      onDelete:         CASCADE
       
 TimeResource:
   inheritance:
@@ -57,7 +58,7 @@ TimeResource:
     num_volunteers:
       type:             integer
     
-MaterialResource:
+StuffResource:
   inheritance:
     extends:            Resource
     type:               concrete

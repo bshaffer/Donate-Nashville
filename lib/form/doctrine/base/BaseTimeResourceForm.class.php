@@ -22,6 +22,9 @@ abstract class BaseTimeResourceForm extends ResourceForm
     $this->widgetSchema   ['end_date'] = new sfWidgetFormDateTime();
     $this->validatorSchema['end_date'] = new sfValidatorDateTime();
 
+    $this->widgetSchema   ['num_volunteers'] = new sfWidgetFormInputText();
+    $this->validatorSchema['num_volunteers'] = new sfValidatorInteger(array('required' => false));
+
     $this->widgetSchema->setNameFormat('time_resource[%s]');
   }
 
