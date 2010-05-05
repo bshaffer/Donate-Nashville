@@ -25,13 +25,12 @@ class resourceActions extends sfActions
     $query = Doctrine::getTable('StuffResource')
               ->getListQuery($request->getParameter('q'))
               ->limit(8);
-              
-    if ($type = $request->getParameter('type')) 
-    {
-      $query->andWhere('transaction_type =?', $type);
-    }
-    
-    $results = $query->execute(Doctrine::HYDRATE_ARRAY);
+
+    // if ($type = $request->getParameter('type')) 
+    // {
+    //   $query->andWhere('transaction_type =?', $type);
+    // }
+    $results = $query->execute(array(), Doctrine::HYDRATE_ARRAY);
     
     return $this->renderPartial('resource/list', array('results' => $results));
   }
@@ -44,7 +43,7 @@ class resourceActions extends sfActions
 
     if ($type = $request->getParameter('type')) 
     {
-      $query->andWhere('transaction_type =?', $type);
+      $query->andWhere('transaction_type = ?', $type);
     }
     
     $results = $query->execute(Doctrine::HYDRATE_ARRAY);

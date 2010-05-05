@@ -9,7 +9,7 @@ class StuffResourceTable extends ResourceTable
     
     $query = $this->createQuery('p')
               ->select('p.title, LEFT(p.description, 200) as summary')
-              ->addWhere('title like ?', "%$search%")
+              ->andWhere('title like ?', "%$search%")
               ->orWhere('description like ?', "%$search%");
     
     return $query;
