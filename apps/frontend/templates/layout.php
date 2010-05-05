@@ -21,7 +21,7 @@
     <div id="page" class="container_16 clearfix">
       <div id="header" class="grid_16">
           
-        <h1 id="site-title">Here is Your New Symfony Project</h1>
+        <h1 id="site-title"><a href="<?php echo url_for('@homepage') ?>">Here is Your New Symfony Project</a></h1>
 
         <ul id="nav">
           <li><a href="#"> Link 1</a></li>

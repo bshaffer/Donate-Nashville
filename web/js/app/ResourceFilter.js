@@ -30,6 +30,17 @@ ResourceFilter = $.extend({}, {
 		}
 	},
 	
+	// sends the ajax request and populates the search results
+	//  in the same way as if an input change event was triggered
+	forceUpdate: function() {
+		if (this.resource_type == 'stuff') {
+			this.runFilterForStuff($('input.resource'));
+		} else {
+			this.dateSelectChanged();
+		}
+	},
+	
+	
 	
 	////////////////////////////////////////////////////////////
 	/// Stuff
