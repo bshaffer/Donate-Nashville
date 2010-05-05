@@ -27,7 +27,7 @@ class stuffActions extends sfActions
   }
   
   /**
-   * Displays the "need time" form
+   * Displays the "need stuff" form
    */
   public function executeAddNeed(sfWebRequest $request)
   {
@@ -35,7 +35,7 @@ class stuffActions extends sfActions
   }
 
   /**
-   * Submit for the "need time" form
+   * Submit for the "need stuff" form
    */
   public function executeAddNeedCreate(sfWebRequest $request)
   {
@@ -73,12 +73,70 @@ class stuffActions extends sfActions
       )));
     }
   }
-
+  
   /**
    * Internal action used to create the body for the email that goes out
    * to the creator of a "need stuff"
    */
   public function executeNeedEmail(sfWebRequest $request)
+  {
+    $this->resource = $request->getAttribute('resource');
+    $this->setLayout('layoutEmail');
+  }
+  
+  /**
+   * Displays the "have stuff" form
+   */
+  public function executeAddHave(sfWebRequest $request)
+  {
+    $this->form = new HaveStuffResourceForm();
+  }
+
+  /**
+   * Submit for the "have stuff" form
+   */
+  public function executeAddHaveCreate(sfWebRequest $request)
+  {
+    $this->form = new HaveStuffResourceForm();
+    
+    $this->processAddHaveForm($request, $this->form);
+  
+    $this->setTemplate('addHave');
+  }
+  
+  /**
+   * Processes the "have stuff" form
+   */
+  protected function processAddHaveForm(sfWebRequest $request, sfForm $form)
+  {
+    $form->bind($request->getParameter($form->getName()));
+    if ($form->isValid())
+    {
+      $stuff = $form->save();
+      
+      $request->setAttribute('resource', $stuff);
+      $body = $this->getController()->getPresentationFor('stuff', 'haveEmail');
+      
+      $message = $this->getMailer()->compose(
+        sfConfig::get('app_email_from'),
+        $form->getValue('email'),
+        dnConfig::getEmailSubject('have_stuff_creation'),
+        $body
+      );
+      $message->setContentType('text/html');
+      $this->getMailer()->send($message);
+      
+      $this->redirect($this->generateUrl('stuff_match', array(
+        'sf_subject' => $stuff
+      )));
+    }
+  }
+  
+  /**
+   * Internal action used to create the body for the email that goes out
+   * to the creator of a "have stuff"
+   */
+  public function executeHaveEmail(sfWebRequest $request)
   {
     $this->resource = $request->getAttribute('resource');
     $this->setLayout('layoutEmail');
