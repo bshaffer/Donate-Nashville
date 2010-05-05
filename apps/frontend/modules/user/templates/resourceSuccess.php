@@ -1,19 +1,39 @@
-Have Time<br />
-<?php foreach($haveTimeResources as $haveTimeResource): ?>
-  <?php echo $haveTimeResource->title ?><br />
-<?php endforeach; ?>
+<?php if ($haveTimeResources->count() || $needTimeResources->count() || $haveStuffResources->count() || $needStuffResources->count()): ?>
+  
+<?php endif ?>
 
-Need Time<br />
+<?php if ($haveTimeResources->count()): ?>
+<h3>Have Time</h3>
+<ul>
+  <?php foreach($haveTimeResources as $haveTimeResource): ?>
+    <li><?php echo $haveTimeResource->title ?></li>
+  <?php endforeach; ?>  
+</ul>
+<?php endif ?>
+
+<?php if ($needTimeResources->count()): ?>
+<h3>Need Time</h3>
+<ul>
 <?php foreach($needTimeResources as $needTimeResource): ?>
-  <?php echo $needTimeResource->title ?><br />
+  <li><?php echo $needTimeResource->title ?><br /></li>
 <?php endforeach; ?>
+</ul>
+<?php endif ?>
 
-Have Stuff<br />
+<?php if ($haveStuffResources->count()): ?>
+<h3>Need Time</h3>
+<ul>
 <?php foreach($haveStuffResources as $haveStuffResource): ?>
-  <?php echo $haveStuffResource->title ?><br />
+  <li><?php echo $haveStuffResource->title ?></li>
 <?php endforeach; ?>
+</ul>
+<?php endif ?>
 
-Need Stuff<br />
+<?php if ($needStuffResources->count()): ?>
+<h3>Need Stuff</h3>
+<ul>
 <?php foreach($needStuffResources as $needStuffResource): ?>
-  <?php echo $needStuffResource->title ?><br />
+  <li><?php echo $needStuffResource->title ?></li>
 <?php endforeach; ?>
+</ul>
+<?php endif ?>
