@@ -1,5 +1,9 @@
+// onload code for the stuff form
 jQuery(function() {
-	// onload code
 	ResourceFilter.setResourceType('stuff');
-	ResourceFilter.attachEvents();
-})
+	
+	// attach events AFTER all the document ready code has all executed
+	setTimeout(function() {
+		ResourceFilter.attachEvents();
+	}, 0);
+});
