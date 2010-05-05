@@ -68,7 +68,7 @@ class stuffActions extends sfActions
       
       $this->redirect($this->generateUrl('stuff_match', array(
         'sf_subject' => $stuff
-      ));
+      )));
     }
   }
 
@@ -82,20 +82,12 @@ class stuffActions extends sfActions
     $this->setLayout('layoutEmail');
   }
   
-  public function executeMatch(sfWebRequest $request)
-  {
-    $this->match = $this->getRoute()->getObject();
-  }
-  
   public function executeHave(sfWebRequest $request)
   {
-    
   }
 
   public function executeHaveCreate(sfWebRequest $request)
   {
-    
     $this->setTemplate('have');
-
   }
 }
