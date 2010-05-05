@@ -17,27 +17,47 @@ a:hover {
 body {
 	background: #333333;
 	color: #333333;
-	font-size: 12px;
 	font-family: Arial, Helvetica, sans-serif;
 	line-height: 18px;
 }
 
 #page {
 	background-color: #fff;
-	padding: 2em 0;
+	padding: 2em 0 0 0;
 }
 /*@end*/
 
 /*@group Header*/
 div#header {
-	padding: 0 0 2em 0;
+	border-bottom:5px solid #333;
+	margin-bottom:15px;
 }
-ul#nav li {
-	display: inline;
-	font-size: 1.2em;
+div#header h1#site-title {
+  font-size:32px;
+}
+ul#nav li,
+div#home-action ul li {
+	float:left;
+	font-size:18px;
 	list-style: none;
-	margin: 0 15px;
+	margin: 0 15px 0 0;
 }
+div#home-action ul li { font-size:28px; }
+ul#nav li a,
+ul#nav li a:visited,
+div#home-action ul li a,
+div#home-action ul li a:visited {
+  background-color:#333;
+  border-radius:8px;
+  color:#fff;
+  display:block;
+  padding:10px 20px;
+  text-decoration:none;
+  -moz-border-radius:8px;
+  -webkit-border-radius:8px;
+  -webkit-transition:background-color 0.25s ease;
+}
+ul#nav li a:hover, div#home-action ul li a:hover { background-color:#555; text-decoration:none; }
 /*@end*/
 
 /*@group sidebar-left*/
@@ -53,14 +73,21 @@ label.subnav-label {
 
 div#footer {
 	padding-top: 1.5em;
+	font-size:12px;
 }
 ul#footer-nav {
 	display: block;
 	list-style: none;
-	text-align: center;
+	margin:0 0 5px 0;
+	padding:0;
 }
 
 ul#footer-nav li {
+  border-right:1px solid #7AA6A4;
 	display: inline;
+	line-height:100%;
+	margin:0 10px 0 0;
+	padding:0 10px 0 0;
 }
+ul#footer-nav li.last { border:none; }
 /*@end*/
