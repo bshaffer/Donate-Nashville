@@ -33,6 +33,8 @@ class NeedTimeResourceForm extends TimeResourceForm
     ));
     
     $this->widgetSchema['resource_date'] = new sfWidgetFormJQueryDate();
+    $this->widgetSchema['start_time'] = new dnWidgetFormJQueryTimePicker();
+    $this->widgetSchema['end_time'] = new dnWidgetFormJQueryTimePicker();
   }
 
   /**
