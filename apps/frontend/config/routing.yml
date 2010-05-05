@@ -66,14 +66,6 @@ have_stuff_list:
   url:   /stuff/list
   param: { module: resource, action: stuffList, type: have }
 
-user_auth:
-  url:   /auth/:token
-  param: { module: user, action: authenticate }
-
-user_resource:
-  url:   /user/resource
-  param: { module: user, action: resource }
-
 need_stuff_create:
   url:   /need/stuff/create
   param: { module: stuff, action: haveCreate }
@@ -94,7 +86,14 @@ time_match:
   options:  { type: object, model: StuffResource }
   param: { module: time, action: match }
 
-# default rules
+# User management-related routes
+user_auth:
+  url:   /auth/:token
+  param: { module: user, action: authenticate }
+user_resource:
+  url:   /user/resource
+  param: { module: user, action: resource }
+
 homepage:
   url:   /
   param: { module: default, action: index }
