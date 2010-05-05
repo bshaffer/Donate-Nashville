@@ -1,7 +1,7 @@
 <?php use_stylesheets_for_form($form) ?>
 <?php use_javascripts_for_form($form) ?>
 
-<form action="<?php echo url_for('@add_need_stuff') ?>" method="post" name="time_resource">
+<form action="<?php echo url_for('@add_need_stuff') ?>" method="post" name="stuff_resource">
   <?php echo $form->renderGlobalErrors() ?>
   <?php echo $form->renderHiddenFields() ?>
   

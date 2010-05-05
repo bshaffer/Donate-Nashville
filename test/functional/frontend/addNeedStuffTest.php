@@ -18,7 +18,7 @@ $dbValues['transaction_type'] = 'need';
 
 
 $browser->info('1 - You need stuff, fill out the form')
-  ->get('/need/stuff')
+  ->get('/need/stuff/add')
   
   ->with('response')->begin()
     ->checkForm('NeedStuffResourceForm')

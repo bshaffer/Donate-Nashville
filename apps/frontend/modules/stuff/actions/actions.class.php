@@ -44,8 +44,28 @@ class stuffActions extends sfActions
     {
       $stuff = $form->save();
       
+      $request->setAttribute('resource', $stuff);
+      $body = $this->getController()->getPresentationFor('stuff', 'needEmail');
+      
+      $this->getMailer()->composeAndSend(
+        sfConfig::get('app_email_from'),
+        $form->getValue('email'),
+        dnConfig::getEmailSubject('need_stuff_creation'),
+        $body
+      );
+      
       $this->redirect('@add_need_stuff');
     }
+  }
+  
+  /**
+   * Internal action used to create the body for the email that goes out
+   * to the creator of a "need stuff"
+   */
+  public function executeNeedEmail(sfWebRequest $request)
+  {
+    $this->resource = $request->getAttribute('resource');
+    $this->setLayout('layoutEmail');
   }
   
   public function executeMatch(sfWebRequest $request)
