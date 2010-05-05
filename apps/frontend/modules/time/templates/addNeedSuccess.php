@@ -30,7 +30,7 @@
     </li>
   
     <li>
-      <label>What</label>
+      <label>What *</label>
       <?php echo outputFormField($form['title']) ?>
     </li>
 
