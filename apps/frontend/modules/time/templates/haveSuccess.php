@@ -4,3 +4,6 @@ include_partial('resource/resource_filter', array('resource_type' => 'time', 're
 ?>
 
 </form>
+
+
+<a href="<?php echo url_for('@add_need_time') ?>">Add new event</a>
