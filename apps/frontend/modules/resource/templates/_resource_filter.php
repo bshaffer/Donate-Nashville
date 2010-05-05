@@ -10,6 +10,12 @@ use_javascript('/js/app/ResourceFilter.js');
 use_javascript('/js/app/ResourceFilterInit.js');
 
 
+//////////////////////////////
+// css
+
+use_stylesheet('/css/app/resource_list.css');
+
+
 ?>
 
 <h2>Search Results</h2>
@@ -19,8 +25,7 @@ use_javascript('/js/app/ResourceFilterInit.js');
 
 <h2>Search Form</h2>
 <div>
-	
-	<form class="resourceFilter" action="" method="post" accept-charset="utf-8">
+	<form class="resourceFilter" action="<?php echo url_for('@stuff_list'); ?>" method="get" accept-charset="utf-8">
 		<div><label for="resource">Need</label><input type="text" class="resource" name="resource" value="" id="ResourceFilter"></div>
 	</form>
 </div>
