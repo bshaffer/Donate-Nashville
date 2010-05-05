@@ -20,15 +20,17 @@ class resourceActions extends sfActions
     $this->forward('default', 'module');
   }
 
+  public function executeStuffResourceList(sfWebRequest $request)
+  {  
+    $query = Doctrine::getTable('ListResource')
+              ->getListQuery($request->getParameter('q'));
+
+  }
+
   public function executeTimeResourceList(sfWebRequest $request)
   {  
-    $query = Doctrine::getTable('TimeResource')->createQuery('p')
-                ->select('p.title, LEFT(p.description, 200) as summary')
-                ->addWhere('title like ?', "%$q%")
-                ->orWhere('description like ?', "%$q%")
-                ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
-                ->limit(8)
-                ->groupBy('p.id');
+    $query = Doctrine::getTable('ListResource')
+              ->getListQuery($request->getParameter('q'));
 
   }
   
@@ -38,6 +40,15 @@ class resourceActions extends sfActions
   }
   
   public function executeHousing(sfWebRequest $request)
+  {
+
+  }
+  public function executeHave(sfWebRequest $request)
+  {
+      
+  }
+  
+  public function executeNeed(sfWebRequest $request)
   {
 
   }

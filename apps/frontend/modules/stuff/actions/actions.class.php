@@ -27,6 +27,6 @@ class stuffActions extends sfActions
   
   public function executeHave(sfWebRequest $request)
   {
-
+    
   }
 }
