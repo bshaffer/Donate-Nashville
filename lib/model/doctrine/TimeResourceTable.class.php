@@ -26,7 +26,10 @@ class TimeResourceTable extends ResourceTable
     $query->andClause();
     
       $this->addOrDateQuery($query, 'start_time', array('from' => $start_time, 'to' => $end_time));
-      $this->addOrDateQuery($query, 'end_time', array('from' => $start_time, 'to' => $end_time));
+
+      $this->addDateQuery($query, 'end_time', array('from' => $start_time, 'to' => $end_time));
+
+      $this->addOrDateQuery($query, 'end_time', array('is_empty' => true)); // When end time isn't set
     
     $query->endClause();
     

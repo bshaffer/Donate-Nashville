@@ -16,7 +16,6 @@ class timeActions extends sfActions
    */
   public function executeHave(sfWebRequest $request)
   {
-    
   }
 
   /**

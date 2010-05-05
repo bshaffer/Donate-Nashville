@@ -86,13 +86,13 @@ ResourceFilter = $.extend({}, {
 		var self = this;
 		
 		// bind an onchange event to all the pulldowns
-		$('#start_month, #start_day, #start_year, #start_hour, #start_minute, #end_month, #end_day, #end_year, #end_hour, #end_minute').bind('change', function(e) {
+		$('#resource_date_month, #resource_date_day, #resource_date_year, #start_time_hour, #start_time_minute, #end_time_hour, #end_time_minute').bind('change', function(e) {
 			self.dateSelectChanged();
 		});
 
 		// add to onSelect event for date pickers
-		this.attachEventsForDatePicker('start');
-		this.attachEventsForDatePicker('end');
+		this.attachEventsForDatePicker('resource_date');
+    // this.attachEventsForDatePicker('end');
 	},
 	
 	attachEventsForDatePicker: function(prefix) {
@@ -117,8 +117,7 @@ ResourceFilter = $.extend({}, {
 	dateSelectChanged: function() {
 		// get the start and end dates
 		var values = this.getDateValues();
-		
-		
+
 		// make sure there is at least a valid start date
 		if (values.start) {
 			this.runFilterForTime(values.start, values.end);
@@ -126,11 +125,36 @@ ResourceFilter = $.extend({}, {
 	},
 	
 	getDateValues: function() {
+	  var date = this.extractDateValue('resource_date');
 		var values = {};
-		values.start = this.extractDateValue('start');
-		values.end = this.extractDateValue('end');
+		values.start =  date + ' ' + this.extractTimeValue('start_time');
+		var endTime = this.extractTimeValue('end_time', true);
+		values.end =  endTime ? date + ' ' + endTime : '';
 		return values;
 	},
+	
+	extractTimeValue: function(prefix, required) {
+		var time_text = '';
+		
+		// a temporary function to extract a date field and verify an integer value
+		var extractIntVal = function(field_name) {
+			var text_val = $('#'+prefix+'_'+field_name).val();
+			var int_val = parseInt(text_val, 10);
+			if (isNaN(int_val)) { return null; }
+			return text_val;
+		};
+
+		// hour can be blank if required is false
+		var hour = extractIntVal('hour');
+		if (hour === null) { if(required) { return false; } else {hour = '00'}; }
+		// minute can be blank
+		var minute = extractIntVal('minute');
+		if (minute === null) { minute = '00'; }
+		
+		// return the date in y-m-d h:m:s
+		return hour+':'+minute+':00';
+	},
+	
 	
 	extractDateValue: function(prefix) {
 		var date_text = '';
@@ -150,15 +174,9 @@ ResourceFilter = $.extend({}, {
 		if (month === null) { return false; }
 		var day = extractIntVal('day');
 		if (day === null) { return false; }
-
-		// hour and minute can be blank
-		var hour = extractIntVal('hour');
-		if (hour === null) { hour = '00'; }
-		var minute = extractIntVal('minute');
-		if (minute === null) { minute = '00'; }
 		
 		// return the date in y-m-d h:m:s
-		return year+'-'+month+'-'+day+' '+hour+':'+minute+':00';
+		return year+'-'+month+'-'+day;
 	},
 	
 	
@@ -171,7 +189,7 @@ ResourceFilter = $.extend({}, {
 	
 		if (start_date) {
 			// get the action from the form
-			var action = $('#start_month').closest('form').attr('action')+'';
+			var action = $('#resource_date_month').closest('form').attr('action')+'';
 
 			// set the query vars
 			//  the end date is optional
