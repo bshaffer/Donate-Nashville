@@ -9,7 +9,7 @@ require_once dirname(__FILE__).'/../lib/sfGuardUserGeneratorHelper.class.php';
  * @package    sfGuardPlugin
  * @subpackage sfGuardUser
  * @author     Fabien Potencier
- * @version    SVN: $Id: actions.class.php 23319 2009-10-25 12:22:23Z Kris.Wallsmith $
+ * @version    SVN: $Id$
  */
 class sfGuardUserActions extends autoSfGuardUserActions
 {

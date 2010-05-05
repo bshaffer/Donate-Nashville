@@ -6,7 +6,7 @@
  * @package    sfDoctrineGuardPlugin
  * @subpackage form
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
- * @version    SVN: $Id: sfGuardUserAdminForm.class.php 23536 2009-11-02 21:41:21Z Kris.Wallsmith $
+ * @version    SVN: $Id$
  */
 class sfGuardUserAdminForm extends BasesfGuardUserAdminForm
 {

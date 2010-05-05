@@ -1,24 +1,18 @@
 sfGuardGroup:
-  actAs:
-    Timestampable: ~
+  actAs: [Timestampable]
   columns:
-    id:
-      type: integer(4)
-      primary: true
-      autoincrement: true
     name:
       type: string(255)
       unique: true
-    description:
-      type: string(1000)
+    description: string(1000)
   relations:
-    users:
+    Users:
       class: sfGuardUser
       refClass: sfGuardUserGroup
       local: group_id
       foreign: user_id
       foreignAlias: Groups
-    permissions:
+    Permissions:
       class: sfGuardPermission
       local: group_id
       foreign: permission_id
@@ -26,49 +20,45 @@ sfGuardGroup:
       foreignAlias: Groups
 
 sfGuardPermission:
-  actAs:
-    Timestampable: ~
+  actAs: [Timestampable]
   columns:
-    id:
-      type: integer(4)
-      primary: true
-      autoincrement: true
     name:
       type: string(255)
       unique: true
-    description:
-      type: string(1000)
+    description: string(1000)
 
 sfGuardGroupPermission:
   options:
     symfony:
       form:   false
       filter: false
-  actAs:
-    Timestampable: ~
+  actAs: [Timestampable]
   columns:
     group_id:
-      type: integer(4)
+      type: integer
       primary: true
     permission_id:
-      type: integer(4)
+      type: integer
       primary: true
   relations:
-    sfGuardGroup:
+    Group:
+      class: sfGuardGroup
       local: group_id
       onDelete: CASCADE
-    sfGuardPermission:
+    Permission:
+      class: sfGuardPermission
       local: permission_id
       onDelete: CASCADE
 
 sfGuardUser:
-  actAs:
-    Timestampable: ~
+  actAs: [Timestampable]
   columns:
-    id:
-      type: integer(4)
-      primary: true
-      autoincrement: true
+    first_name: string(255)
+    last_name: string(255)
+    email_address:
+      type: string(255)
+      notnull: true
+      unique: true
     username:
       type: string(128)
       notnull: true
@@ -77,10 +67,8 @@ sfGuardUser:
       type: string(128)
       default: sha1
       notnull: true
-    salt:
-      type: string(128)
-    password:
-      type: string(128)
+    salt: string(128)
+    password: string(128)
     is_active:
       type: boolean
       default: 1
@@ -93,13 +81,13 @@ sfGuardUser:
     is_active_idx:
       fields: [is_active]
   relations:
-    groups:
+    Groups:
       class: sfGuardGroup
       local: user_id
       foreign: group_id
       refClass: sfGuardUserGroup
       foreignAlias: Users
-    permissions:
+    Permissions:
       class: sfGuardPermission
       local: user_id
       foreign: permission_id
@@ -111,20 +99,21 @@ sfGuardUserPermission:
     symfony:
       form:   false
       filter: false
-  actAs:
-    Timestampable: ~
+  actAs: [Timestampable]
   columns:
     user_id:
-      type: integer(4)
+      type: integer
       primary: true
     permission_id:
-      type: integer(4)
+      type: integer
       primary: true
   relations:
-    sfGuardUser:
+    User:
+      class: sfGuardUser
       local: user_id
       onDelete: CASCADE
-    sfGuardPermission:
+    Permission:
+      class: sfGuardPermission
       local: permission_id
       onDelete: CASCADE
 
@@ -133,20 +122,21 @@ sfGuardUserGroup:
     symfony:
       form:   false
       filter: false
-  actAs:
-    Timestampable: ~
+  actAs: [Timestampable]
   columns:
     user_id:
-      type: integer(4)
+      type: integer
       primary: true
     group_id:
-      type: integer(4)
+      type: integer
       primary: true
   relations:
-    sfGuardUser:
+    User:
+      class: sfGuardUser
       local: user_id
       onDelete: CASCADE
-    sfGuardGroup:
+    Group:
+      class: sfGuardGroup
       local: group_id
       onDelete: CASCADE
 
@@ -155,23 +145,38 @@ sfGuardRememberKey:
     symfony:
       form:   false
       filter: false
-  actAs:
-    Timestampable: ~
+  actAs: [Timestampable]
   columns:
-    id:
-      type: integer(4)
-      primary: true
-      autoincrement: true
-    user_id:
-      type: integer(4)
-    remember_key:
-      type: string(32)
-    ip_address:
-      type: string(50)
-      primary: true
+    user_id: integer
+    remember_key: string(32)
+    ip_address: string(50)
   relations:
-    sfGuardUser:
+    User:
+      class: sfGuardUser
       local: user_id
       foreignAlias: RememberKeys
       foreignType: one
+      onDelete: CASCADE
+
+sfGuardForgotPassword:
+  options:
+    symfony:
+      form:   false
+      filter: false
+  actAs: [Timestampable]
+  columns:
+    user_id:
+      type: integer
+      notnull: true
+    unique_key: string(255)
+    expires_at:
+      type: timestamp
+      notnull: true
+  relations:
+    User:
+      class: sfGuardUser
+      local: user_id
+      type: one
+      foreignType: one
+      foreignAlias: ForgotPassword
       onDelete: CASCADE

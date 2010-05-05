@@ -14,7 +14,8 @@
  * @package    sfDoctrineGuardPlugin
  * @subpackage config
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
- * @version    SVN: $Id: sfDoctrineGuardPluginConfiguration.class.php 23319 2009-10-25 12:22:23Z Kris.Wallsmith $
+ * @author     Jonathan H. Wage <jonwage@gmail.com>
+ * @version    SVN: $Id$
  */
 class sfDoctrineGuardPluginConfiguration extends sfPluginConfiguration
 {
@@ -28,11 +29,11 @@ class sfDoctrineGuardPluginConfiguration extends sfPluginConfiguration
       $this->dispatcher->connect('routing.load_configuration', array('sfGuardRouting', 'listenToRoutingLoadConfigurationEvent'));
     }
 
-    foreach (array('sfGuardUser', 'sfGuardGroup', 'sfGuardPermission') as $module)
+    foreach (array('sfGuardUser', 'sfGuardGroup', 'sfGuardPermission', 'sfGuardRegister', 'sfGuardForgotPassword') as $module)
     {
       if (in_array($module, sfConfig::get('sf_enabled_modules', array())))
       {
-        $this->dispatcher->connect('routing.load_configuration', array('sfGuardRouting', 'addRouteForAdmin'.str_replace('sfGuard', '', $module)));
+        $this->dispatcher->connect('routing.load_configuration', array('sfGuardRouting', 'addRouteFor'.str_replace('sfGuard', '', $module)));
       }
     }
   }

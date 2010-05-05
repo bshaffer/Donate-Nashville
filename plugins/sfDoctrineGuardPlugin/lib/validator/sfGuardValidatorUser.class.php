@@ -13,7 +13,7 @@
  * @package    symfony
  * @subpackage plugin
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
- * @version    SVN: $Id: sfGuardValidatorUser.class.php 23319 2009-10-25 12:22:23Z Kris.Wallsmith $
+ * @version    SVN: $Id$
  */
 class sfGuardValidatorUser extends sfValidatorBase
 {
@@ -31,14 +31,27 @@ class sfGuardValidatorUser extends sfValidatorBase
     $username = isset($values[$this->getOption('username_field')]) ? $values[$this->getOption('username_field')] : '';
     $password = isset($values[$this->getOption('password_field')]) ? $values[$this->getOption('password_field')] : '';
 
-    // user exists?
-    if ($username && $user = $this->getTable()->retrieveByUsername($username))
+    $allowEmail = sfConfig::get('app_sf_guard_plugin_allow_login_with_email', true);
+    $method = $allowEmail ? 'retrieveByUsernameOrEmailAddress' : 'retrieveByUsername';
+
+    // don't allow to sign in with an empty username
+    if ($username)
     {
-      // password is ok?
-      if ($user->getIsActive() && $user->checkPassword($password))
-      {
-        return array_merge($values, array('user' => $user));
-      }
+       if ($callable = sfConfig::get('app_sf_guard_plugin_retrieve_by_username_callable'))
+       {
+           $user = call_user_func_array($callable, array($username));
+       } else {
+           $user = $this->getTable()->retrieveByUsername($username);
+       }
+        // user exists?
+       if($user)
+       {
+          // password is ok?
+          if ($user->getIsActive() && $user->checkPassword($password))
+          {
+            return array_merge($values, array('user' => $user));
+          }
+       }
     }
 
     if ($this->getOption('throw_global_error'))

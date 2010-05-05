@@ -15,7 +15,7 @@
  * @subpackage task
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  * @author     Hugo Hamon <hugo.hamon@sensio.com>
- * @version    SVN: $Id: sfGuardPromoteSuperAdminTask.class.php 23319 2009-10-25 12:22:23Z Kris.Wallsmith $
+ * @version    SVN: $Id$
  */
 class sfGuardPromoteSuperAdminTask extends sfBaseTask
 {
@@ -55,7 +55,7 @@ EOF;
   {
     $databaseManager = new sfDatabaseManager($this->configuration);
 
-    $user = Doctrine::getTable('sfGuardUser')->retrieveByUsername($arguments['username']);
+    $user = Doctrine_Core::getTable('sfGuardUser')->retrieveByUsername($arguments['username']);
 
     if (!$user)
     {

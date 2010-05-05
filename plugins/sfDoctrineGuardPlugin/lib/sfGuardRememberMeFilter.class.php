@@ -22,7 +22,7 @@
  * @package    symfony
  * @subpackage plugin
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
- * @version    SVN: $Id: sfGuardRememberMeFilter.class.php 23170 2009-10-18 17:30:33Z FabianLange $
+ * @version    SVN: $Id$
  */
 class sfGuardRememberMeFilter extends sfFilter
 {
@@ -43,13 +43,13 @@ class sfGuardRememberMeFilter extends sfFilter
       $cookie = $this->context->getRequest()->getCookie($cookieName)
     )
     {
-      $q = Doctrine::getTable('sfGuardRememberKey')->createQuery('r')
-            ->innerJoin('r.sfGuardUser u')
+      $q = Doctrine_Core::getTable('sfGuardRememberKey')->createQuery('r')
+            ->innerJoin('r.User u')
             ->where('r.remember_key = ?', $cookie);
 
       if ($q->count())
       {
-        $this->context->getUser()->signIn($q->fetchOne()->sfGuardUser);
+        $this->context->getUser()->signIn($q->fetchOne()->User);
       }
     }
 
