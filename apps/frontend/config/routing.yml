@@ -16,7 +16,7 @@ have_stuff:
 
 need:
   url:   /need
-  param: { module: need, action: index }
+  param: { module: resource, action: need }
 
 need_time:
   url:   /need/time
