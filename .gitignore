@@ -4,3 +4,4 @@ web/uploads/*
 config/databases.yml
 lib/vendor/symfony
 base
+data/sql/schema.sql
