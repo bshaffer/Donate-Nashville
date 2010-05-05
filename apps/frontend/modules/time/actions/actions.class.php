@@ -46,6 +46,6 @@ class timeActions extends sfActions
   
   public function executeHave(sfWebRequest $request)
   {
-    $this->form = new HaveTimeResourceForm();
+
   }
 }
