@@ -17,7 +17,14 @@ sfGuardUserProfile:
     city:           Nashville
     state:          TN
     zip:            37211
-
+  sgu_chayner:
+    username:       chayner
+    password:       admin
+    is_super_admin: false
+    address_1:      1313 N. 4th Ave
+    city:           Nashville
+    state:          TN
+    zip:            37213
 
 sfGuardPermission:
   sgp_admin:
@@ -38,3 +45,52 @@ sfGuardUserGroup:
   sgug_admin:
     Group:       sgg_admin
     User:        sgu_admin
+    
+StuffResource:
+  stuff_resource1:
+    User:               sgu_bshaffer
+    title:              Car
+    transaction_type:   need
+  stuff_resource2:
+    User:               sgu_bshaffer
+    title:              Broom
+    transaction_type:   need
+  stuff_resource3:
+    User:               sgu_bshaffer
+    title:              Picnic Table
+    transaction_type:   need
+  stuff_resource4:
+    User:               sgu_chayner
+    title:              Gardening Hose
+    transaction_type:   have
+  stuff_resource4:
+    User:               sgu_chayner
+    title:              Sump Pump
+    transaction_type:   have
+    
+
+TimeResource:
+  time_resource1:
+    User:               sgu_bshaffer
+    title:              5/4 from 6:00 to 8:00
+    transaction_type:   need
+    start_date:         "2010-05-04 6:00:00"
+    end_date:           "2010-05-04 8:00:00"
+  time_resource2:
+    User:               sgu_bshaffer
+    title:              5/5 from 6:00 to 8:00
+    transaction_type:   need
+    start_date:         "2010-05-05 6:00:00"
+    end_date:           "2010-05-05 8:00:00"
+  time_resource3:
+    User:               sgu_chayner
+    title:              5/4 from 12:00 to 8:00
+    transaction_type:   want
+    start_date:         "2010-05-04 12:00:00"
+    end_date:           "2010-05-04 8:00:00"
+  time_resource4:
+    User:               sgu_chayner
+    title:              5/4 to 5/5
+    transaction_type:   want
+    start_date:         "2010-05-04 12:00:00"
+    end_date:           "2010-05-05 12:00:00"

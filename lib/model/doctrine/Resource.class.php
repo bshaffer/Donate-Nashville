@@ -14,7 +14,7 @@ class Resource extends BaseResource
 {
   public function preInsert($event)
   {
-    if (!array_filter($this['address_1'], $this['address_2'], $this['city'], $this['state'], $this['zip'])) 
+    if (!array_filter(array($this['address_1'], $this['address_2'], $this['city'], $this['state'], $this['zip']))) 
     {
       $this['address_1'] = $this['User']['address_1'];
       $this['address_2'] = $this['User']['address_2'];

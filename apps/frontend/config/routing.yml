@@ -1,13 +1,13 @@
 have:
-  url:   /donate
+  url:   /have
   param: { module: resource, action: have }
 
 have_time:
-  url:   /donate/time
+  url:   /have/time
   param: { module: time, action: have }
   
 have_stuff:
-  url:   /donate/stuff
+  url:   /have/stuff
   param: { module: stuff, action: have }
 
 need:
