@@ -10,8 +10,8 @@ $browser
   ->click('I Need...')
     ->isModuleAction('resource', 'need')
     
-  ->click('Housing')
-    ->isModuleAction('resource', 'housing')
+  ->click('A Place')
+    ->isModuleAction('resource', 'place')
     
   ->with('response')->begin()
     ->matches('/Tennessean/')

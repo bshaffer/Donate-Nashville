@@ -21,7 +21,7 @@ class stuffActions extends sfActions
   /**
    * Displays the actual resource
    */
-  public function executeMatch(sfWebRequest $request)
+  public function executeShow(sfWebRequest $request)
   {
     $this->resource = $this->getRoute()->getObject();
     $this->type = $this->resource['transaction_type'] == 'need' ? 'have' : 'need';
@@ -78,7 +78,9 @@ class stuffActions extends sfActions
       $message->setContentType('text/html');
       $this->getMailer()->send($message);
       
-      $this->redirect($this->generateUrl('stuff_match', array(
+      $this->getUser()->setOwner($stuff);
+      
+      $this->redirect($this->generateUrl('stuff_show', array(
         'sf_subject' => $stuff
       )));
     }
@@ -136,7 +138,9 @@ class stuffActions extends sfActions
       $message->setContentType('text/html');
       $this->getMailer()->send($message);
       
-      $this->redirect($this->generateUrl('stuff_match', array(
+      $this->getUser()->setOwner($stuff);
+      
+      $this->redirect($this->generateUrl('stuff_show', array(
         'sf_subject' => $stuff
       )));
     }

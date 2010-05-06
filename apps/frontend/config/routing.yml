@@ -67,11 +67,17 @@ add_have_stuff_create:
     sf_method: [post]
 
 # "static" pages for more information
-need_housing:
-  url:   /need/place
-  param: { module: resource, action: housing }
+need_place:
+  url:   /place
+  param: { module: resource, action: place }
 need_money:
-  url:   /need/money
+  url:   /money
+  param: { module: resource, action: money }
+have_place:
+  url:   /need/place
+  param: { module: resource, action: place }
+have_money:
+  url:   /have/money
   param: { module: resource, action: money }
 
 # Actions for listing Resources
@@ -95,29 +101,51 @@ have_stuff_list:
   url:   /stuff/list
   param: { module: resource, action: stuffList, type: have }
 
-resource_fulfill:
-  url:   /resource/:id/fulfill
-  param:  { module: resource, action: fulfill }
-  options: { sf_method: POST }
-
-resource_delete:
-  url:   /resource/:id
-  param:  { module: resource, action: delete }
-  options: { sf_method: DELETE }
-  
-# The "show" page for StuffResource
-stuff_match:
+time_fulfill:
   class:    sfDoctrineRoute
-  url:      /stuff/:id/match
+  url:      /time/:id/fulfill
+  param:    { module: resource, action: fulfill }
+  options:  { type: object, model: TimeResource }
+  requirements:
+    sf_method:  POST
+
+time_delete:
+  class:    sfDoctrineRoute
+  url:      /time/:id
+  param:    { module: resource, action: delete }
+  options:  { type: object, model: TimeResource }
+  requirements:
+    sf_method:  DELETE
+    
+stuff_fulfill:
+  class:    sfDoctrineRoute
+  url:   /stuff/:id/fulfill
+  param:  { module: resource, action: fulfill }
+  options: { sf_method: POST, type: object, model: StuffResource }
+  requirements:
+    sf_method:  POST
+    
+stuff_delete:
+  class:    sfDoctrineRoute
+  url:      /stuff/:id
+  param:    { module: resource, action: delete }
+  options:  { sf_method: DELETE, type: object, model: StuffResource }
+  requirements:
+    sf_method:  DELETE
+    
+# The "show" page for StuffResource
+stuff_show:
+  class:    sfDoctrineRoute
+  url:      /stuff/:id
   options:  { type: object, model: StuffResource }
-  param:    { module: stuff, action: match }
+  param:    { module: stuff, action: show }
 
 # The "show" page for TimeResource
-time_match:
+time_show:
   class:    sfDoctrineRoute
-  url:      /time/:id/match
+  url:      /time/:id
   options:  { type: object, model: TimeResource }
-  param:    { module: time, action: match }
+  param:    { module: time, action: show }
 
 user_contact:
   class:    sfDoctrineRoute

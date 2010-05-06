@@ -12,4 +12,8 @@
  */
 class TimeResource extends BaseTimeResource
 {
+  public function getType()
+  {
+    return 'time';
+  }
 }

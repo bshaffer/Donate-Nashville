@@ -4,6 +4,8 @@ include(dirname(__FILE__).'/../../bootstrap/functional.php');
 
 $browser = new dnTestFunctional(new sfBrowser());
 
+Doctrine::getTable('StuffResource')->getListQuery('pump')->delete()->execute();
+
 $browser
   ->get('/')
   
@@ -31,7 +33,7 @@ $browser
   ->end()
     
   ->click('Picnic Table')
-    ->isModuleAction('stuff', 'match')
+    ->isModuleAction('stuff', 'show')
     
   ->with('response')->begin()
     ->matches('/5157 Whitaker Dr/')
