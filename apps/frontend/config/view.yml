@@ -9,7 +9,7 @@ default:
     #language:     en
     #robots:       index, follow
 
-  stylesheets:     [reset.css, text.css, 960.css, base.css, forms.css, donatenashville.css]
+  stylesheets:     [reset.css, text.css, 960.css, base.css, forms.css, donatenashville.css, ie7.css: {condition: lte IE 7}]
 
   javascripts:    []
 

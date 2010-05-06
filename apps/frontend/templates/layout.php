@@ -75,7 +75,7 @@
 		    </div>
 		  <?php endif ?>
     
-      <div id="footer" class="grid_16 clearfix">
+    <div id="footer" class="grid_16 clearfix">
   		<ul>
   			<li><a href="#" title="">Home</a></li>
   			<li><?php echo link_to('I Need', '@need') ?></li>
@@ -85,6 +85,12 @@
   			<li><a href="#" title="">Contact Us</a></li>
   			<li><a href="http://www.twitter.com/donateNashville" title="@donateNashville">Twitter</a></li>
   		</ul>
+  		<ul id="partners">
+        <li class="partner_wearenashville"><a href="http://www.wearenashville.org" title="We Are Nashville">We Are Nashville</a></li>
+        <li class="partner_nashvillest"><a href="http://www.nashvillest.com" title="Nashvillest">Nashvillest</a></li>
+        <li class="partner_unitedway"><a href="http://www.unitedwaynashville.org" title="United Way">United Way Nashville</a></li>
+        <li class="partner_coolpeoplecare"><a href="http://coolpeoplecare.org" title="Cool People Care">Cool People Care</a></li>
+      </ul>
   		<div class="center">&copy;<?php echo date('Y') ?> Donate Nashville</div>
 		</div>
 	</div>

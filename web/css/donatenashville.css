@@ -408,3 +408,39 @@ ul.breadcrumbs {
 		display:inline;
 		margin:0 10px;
 	}
+	
+	#footer ul#partners {
+		margin-top: 35px;
+	}
+	
+		#footer ul#partners li {
+			display: inline-block;
+			margin: 0 15px;
+			height: 30px;
+			background: transparent no-repeat top left;
+			overflow: hidden;
+		}
+		
+		#footer ul#partners a {
+			display: block;
+			width: 100%;
+			height: 100%;
+			text-indent: -9999px;
+		}
+		
+			#footer ul#partners .partner_wearenashville {
+				background-image: url(../images/partners/wearenashville.png);
+				width: 148px;
+			}
+			#footer ul#partners .partner_nashvillest {
+				background-image: url(../images/partners/nashvillest.png);
+				width: 178px;
+			}
+			#footer ul#partners .partner_unitedway {
+				background-image: url(../images/partners/unitedway.png);
+				width: 156px;
+			}
+			#footer ul#partners .partner_coolpeoplecare {
+				background-image: url(../images/partners/coolpeoplecare.png);
+				width: 209px;
+			}
