@@ -35,12 +35,18 @@ class NeedTimeResourceForm extends TimeResourceForm
     $this->widgetSchema['resource_date'] = new sfWidgetFormJQueryDate();
     $this->widgetSchema['start_time'] = new dnWidgetFormJQueryTimePicker();
     $this->widgetSchema['end_time'] = new dnWidgetFormJQueryTimePicker();
-    
+
     $this->validatorSchema['start_time']->setOption('required', true);
     $this->validatorSchema['end_time']->setOption('required', true);
     $this->mergePostValidator(
       new sfValidatorCallback(array('callback' => array($this, 'validateStartEnd')))
     );
+
+    // set some labels
+    $this->widgetSchema->setLabel('address_1', 'Where (address)');
+    $this->widgetSchema->setLabel('num_volunteers', '# of Volunteers');
+    $this->widgetSchema->setLabel('phone_1', 'Primary Phone Number');
+    $this->widgetSchema->setLabel('phone_2', 'Alternate Phone Number');
   }
 
   /**

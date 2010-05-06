@@ -21,7 +21,7 @@ class timeActions extends sfActions
   /**
    * Displays the actual Time Resource
    */
-  public function executeMatch(sfWebRequest $request)
+  public function executeShow(sfWebRequest $request)
   {
     $this->resource = $this->getRoute()->getObject();
     $this->type = $this->resource['transaction_type'] == 'need' ? 'have' : 'need';
@@ -79,7 +79,7 @@ class timeActions extends sfActions
       $this->getMailer()->send($message);
 
       
-      $this->redirect($this->generateUrl('time_match', array(
+      $this->redirect($this->generateUrl('time_show', array(
         'sf_subject' => $need
       )));
     }
