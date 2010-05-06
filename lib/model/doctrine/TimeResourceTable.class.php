@@ -14,6 +14,7 @@ class TimeResourceTable extends ResourceTable
     if ($end_date) 
     {
       $end_time = date('H:i:s', strtotime($end_date));
+      $end_time = $end_time == '00:00:00' ? null : $end_time;
       $end_date = date('Y-m-d', strtotime($end_date));
     }
     else
