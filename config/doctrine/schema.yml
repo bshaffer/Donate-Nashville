@@ -17,7 +17,7 @@ Resource:
       type:             clob
     privacy:
       type:             enum
-      values:           [show_info, web_form, send_to_interested]
+      values:           [show_info, web_form]
       default:          true
     is_fulfilled:
       type:             boolean
