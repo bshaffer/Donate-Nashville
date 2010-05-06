@@ -168,6 +168,20 @@ user_resource:
   url:   /user/resource
   param: { module: user, action: resource }
 
+# have your token sent to you
+send_login_token:
+  class:  sfRequestRoute
+  url:   /user/send-token
+  param: { module: user, action: sendLoginToken }
+  requirements:
+    sf_method: [get]
+send_login_token_process:
+  class:  sfRequestRoute
+  url:   /user/send-token
+  param: { module: user, action: sendLoginTokenProcess }
+  requirements:
+    sf_method: [post]
+
 homepage:
   url:   /
   param: { module: default, action: index }

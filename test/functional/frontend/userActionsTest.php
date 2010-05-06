@@ -3,6 +3,7 @@
 include(dirname(__FILE__).'/../../bootstrap/functional.php');
 
 $browser = new dnTestFunctional(new sfBrowser());
+$browser->loadData();
 
 $user = Doctrine_Query::create()->from('sfGuardUser')->fetchOne();
 
@@ -42,3 +43,48 @@ $browser->info('1 - Test the user authentication hash system')
     ->isParameter('action', 'resource')
   ->end()
 ;
+
+$browser->info('2 - Request my login token')
+  ->get('/user/send-token')
+  
+  ->with('response')->begin()
+    ->isStatusCode(200)
+    ->checkForm('sendLoginTokenForm')
+  ->end()
+  
+  ->info('  2.1 - Submit an invalid form')
+  ->click('form[id=send-token-form] input[type=submit]', array('send_login' => array(
+    'email' => 'fake@fake.com'
+  )))
+
+  ->with('request')->begin()
+    ->isParameter('module', 'user')
+    ->isParameter('action', 'sendLoginTokenProcess')
+  ->end()
+
+  ->with('form')->begin()
+    ->hasErrors(true)
+  ->end()
+  
+  ->info('  2.2 - Submit a valid form')
+  ->click('form[id=send-token-form] input[type=submit]', array('send_login' => array(
+    'email' => 'bshafs@gmail.com'
+  )))
+  
+  ->with('mailer')->begin()
+    ->hasSent(1)
+    ->withMessage('bshafs@gmail.com')
+  ->end()
+  
+  ->with('response')->begin()
+    ->matches('/Please check your email/')
+  ->end()
+;
+
+
+
+
+
+
+
+

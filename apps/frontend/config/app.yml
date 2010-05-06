@@ -5,3 +5,4 @@ all:
       need_time_creation:   Need for Time entry created at donatenashville.org
       need_stuff_creation:  Need for Stuff entry created at donatenashville.org
       have_stuff_creation:  Have Stuff entry created at donatenashville.org
+      send_token_email:     Your login link from donatenashville.org

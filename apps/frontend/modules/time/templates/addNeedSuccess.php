@@ -51,12 +51,6 @@
       <?php echo $form['city']->render() ?>
     </div>
     
-    <?php echo $form['state']->renderLabel() ?>
-    <div>
-      <?php echo $form['state']->renderError() ?>
-      <?php echo $form['state']->render() ?>
-    </div>
-    
     <?php echo $form['zip']->renderLabel() ?>
     <div>
       <?php echo $form['zip']->renderError() ?>
