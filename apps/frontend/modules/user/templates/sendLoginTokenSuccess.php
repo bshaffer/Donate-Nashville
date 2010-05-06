@@ -13,3 +13,5 @@
 <div>
   <?php include_partial('user/sendLoginTokenForm', array('form' => $form)); ?>
 </div>
+
+<?php slot('breadcrumbs', get_component('default', 'breadcrumbs')) ?>
