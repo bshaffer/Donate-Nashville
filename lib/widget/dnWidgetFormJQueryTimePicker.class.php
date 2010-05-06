@@ -22,7 +22,7 @@ class dnWidgetFormJQueryTimePicker extends sfWidgetFormInputText
   $(document).ready(function(){
     $('#%s').timePicker({
       show24Hours: false,
-      step: 15,
+      step: 30,
       startTime: '05:00',
       endTime:   '23:00'
     });
