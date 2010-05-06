@@ -18,14 +18,8 @@ div.noResults {
 
 /* show a spinner while loading */
 #ResourceResultsList.searchLoading {
-	background: url('../images/ajax-loader.gif') no-repeat 8px 0;
+	background: url('../images/ajax-loader.gif') no-repeat 0px 2px;
 }
-
-/* Hide the currently displaying search results while loading new data */
-#ResourceResultsList.searchLoading * {
-	opacity: 0.2;
-}
-
 
 /* some elements are hidden on initial page load */
 #ResourceResultsList .hidden { display: none; }

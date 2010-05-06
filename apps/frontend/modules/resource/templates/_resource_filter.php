@@ -34,8 +34,12 @@ use_stylesheet('/css/app/resource_list.css');
 <h2 class="half-margin"><?php echo $resource_action == 'have' ? 'Needed Items' : 'Available Items'  ?></h2>
 <hr />
 <div id="ResourceResultsList">
-	<div class="emptyList">Please search for items above.</div>
+	<div id="ResultsContainer">
 
-	<?php /* the following line is shown only when a search is executed and no results are found. */ ?>
-	<div class="noResults hidden">No results were found for this search.</div>
+		<div class="emptyList">Please search for items above.</div>
+
+		<?php /* the following line is shown only when a search is executed and no results are found. */ ?>
+		<div class="noResults hidden">No results were found for this search.</div>
+
+	</div>
 </div>
