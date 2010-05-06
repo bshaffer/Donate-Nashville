@@ -43,27 +43,38 @@ class resourceActions extends frontendActions
   }
 
   /**
+   * The base "I have" page
+   */
+  public function executeHave(sfWebRequest $request)
+  {
+    $this->breadcrumbs->add('Have');
+  }
+
+  /**
+   * The base "I need" page
+   */
+  public function executeNeed(sfWebRequest $request)
+  {
+    $this->breadcrumbs->add('Need');
+  }
+  
+
+  /**
    * The "I have money" page, just shows static content
    */
   public function executeMoney(sfWebRequest $request)
   {
     $this->breadcrumbs->add('Have', '@have')->add('Money');
   }
-  
+
+  /**
+   * The "I need a place" page, just show static content
+   */
   public function executePlace(sfWebRequest $request)
   {
-    $this->breadcrumbs->add('Place');
+    $this->breadcrumbs->add('Need', '@need')->add('Place');
   }
-  public function executeHave(sfWebRequest $request)
-  {
-    $this->breadcrumbs->add('Have');
-  }
-  
-  public function executeNeed(sfWebRequest $request)
-  {
-    $this->breadcrumbs->add('Need');
-  }
-  
+
   public function executeFulfill(sfWebRequest $request)
   {
     $resource = $this->getRoute()->getObject();
