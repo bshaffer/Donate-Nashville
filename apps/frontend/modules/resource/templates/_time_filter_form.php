@@ -1,3 +1,6 @@
+<?php include_javascripts_for_form($form) ?>
+<?php include_stylesheets_for_form($form) ?>
+
 <form class="resourceFilter timeFilter" action="<?php echo url_for('@time_list'); ?>" method="get" accept-charset="utf-8">
 	<label for="resource">I <?php echo ($resource_action == 'need' ? 'Need' : 'Have') ?> Time:</label>
 
@@ -9,8 +12,8 @@
 		  <?php echo $form['resource_date']->render(); ?>
 		</li>
 		<li>
-		  <a href="#" onclick="javascript:$('.time-form').show();$(this).hide()">Specify Time</a>
-		  <div class="time-form" style="display:none">
+		  <a href="#" onclick="javascript:$('.time-form').css('visibility', 'visible'); $(this).hide(); return false;">Specify Time</a>
+		  <div class="time-form" style="visibility:hidden">
 			  <label for="time">Time</label>
   		  <ul>
       		<li>
