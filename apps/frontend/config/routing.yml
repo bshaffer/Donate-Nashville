@@ -147,6 +147,13 @@ time_show:
   options:  { type: object, model: TimeResource }
   param:    { module: time, action: show }
 
+new_message_match_found:
+  class:  sfRequestRoute
+  url:   /stuff/:id/message
+  param: { module: stuff, action: newMessage }
+  requirements:
+    sf_method: [post]
+
 user_contact:
   class:    sfDoctrineRoute
   url:      /user/:id/contact

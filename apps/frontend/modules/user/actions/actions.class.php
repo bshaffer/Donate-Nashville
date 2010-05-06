@@ -10,7 +10,7 @@
  */
 class userActions extends sfActions
 {
-
+  
   /**
    * Handles authentication for the user based on a secret key
    */
@@ -38,7 +38,7 @@ class userActions extends sfActions
     $this->haveStuffResources = $user->getStuffResourcesByTransactionType('have');
     $this->needStuffResources = $user->getStuffResourcesByTransactionType('need');
   }
-
+  
   /**
    * Functions as the "signin" action - but is actually just a box where
    * you fill in your email address and we send you the login token
@@ -92,4 +92,5 @@ class userActions extends sfActions
     $this->user = $request->getAttribute('user');
     $this->setLayout('layoutEmail');
   }
+
 }

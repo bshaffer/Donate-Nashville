@@ -164,4 +164,34 @@ class stuffActions extends sfActions
   {
     $this->setTemplate('have');
   }
+  
+  public function executeNewMessage(sfWebRequest $request)
+  {
+    $this->resource = Doctrine_Core::getTable('stuffResource')->find($request->getParameter('id'));
+    
+    $this->form = new ContactResourceOwnerForm();
+    
+    $this->form->bind($request->getParameter($this->form->getName()));
+    
+    if ($this->form->isValid())
+    {
+      $this->contact = $this->form->getValue('contact');
+      
+      // send email to owner of resource
+      $this->sendMatchFoundEmail($this->resource, $this->contact);
+      
+      // say thanks to the user
+      $this->setTemplate('newMessageSent');
+    }
+  }
+  
+  /**
+   * send an email to the resource owner letting them know that a match was
+   * submitted, along with the contact info
+   */
+  protected function sendMatchFoundEmail($resource, $contact)
+  {
+    // send email based on $resource->transaction_type
+    var_dump($contact);
+  }
 }
