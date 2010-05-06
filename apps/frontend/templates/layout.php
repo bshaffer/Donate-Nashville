@@ -23,7 +23,7 @@
           
         <h1 id="site-title"><a href="<?php echo url_for('@homepage') ?>">Donate Nashville</a></h1>
         
-        <a href="<?php echo url_for('@send_login_token') ?>">manage posts</a>
+        <a href="<?php echo url_for('@user_resource') ?>">manage posts</a>
 
         <ul id="nav" class="grid_5 prefix_11">
           <li><?php echo link_to('I Have...', '@have') ?></li>
