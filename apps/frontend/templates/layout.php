@@ -26,7 +26,7 @@
 				<div class="grid_6"><a href="<?php echo url_for('@user_resource') ?>">manage posts</a></div>
 				<div class="grid_5">
 					<div class="twitter-single header right">
-						<strong>twitter.com/donateNashville</strong>
+						<strong><a href="http://www.twitter.com/donateNashville" title="@donateNashville">twitter.com/donateNashville</a></strong>
 						Mail gift cards (Home Depot, Wal-Mart, Kroger, etc.) to church office &amp; they'll get to those who need them. <a href="#">www.ottercreek.org</a> <a href="#">about 2 hours ago</a>
 					</div>
 				</div>
@@ -80,7 +80,7 @@
   			<li><?php echo link_to('About DonateNashville', '@about') ?></li>
   			<li><?php echo link_to('Terms of Service', '@terms_of_service') ?></li>
   			<li><a href="#" title="">Contact Us</a></li>
-  			<li><a href="#" title="">Twitter</a></li>
+  			<li><a href="http://www.twitter.com/donateNashville" title="@donateNashville">Twitter</a></li>
   		</ul>
   		<div class="center">&copy;<?php echo date('Y') ?> Donate Nashville</div>
 		</div>
