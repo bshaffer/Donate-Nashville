@@ -54,21 +54,21 @@ class resourceActions extends sfActions
   
   public function executeMoney(sfWebRequest $request)
   {
-      
+    sfBreadcrumbs::getInstance()->addItem('Money');
   }
   
   public function executePlace(sfWebRequest $request)
   {
-
+    sfBreadcrumbs::getInstance()->addItem('Place');
   }
   public function executeHave(sfWebRequest $request)
   {
-      
+    sfBreadcrumbs::getInstance()->addItem('Have');
   }
   
   public function executeNeed(sfWebRequest $request)
   {
-    
+    sfBreadcrumbs::getInstance()->addItem('Need');
   }
   
   public function executeFulfill(sfWebRequest $request)

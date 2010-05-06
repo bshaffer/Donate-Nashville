@@ -34,7 +34,7 @@ $browser
     ->isModuleAction('stuff', 'show')
     
   ->with('response')->begin()
-    ->matches('/5157 Whitaker Dr/')
+    ->matches(sprintf('/%s/', ))
     // ->checkForm('contactResrouceOwnerForm')
   ->end()
 ;

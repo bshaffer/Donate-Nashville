@@ -41,3 +41,5 @@
 		</ul>
 	</div>
 <?php end_slot() ?>
+
+<?php slot('breadcrumbs', get_component('default', 'breadcrumbs')) ?>

@@ -4,6 +4,7 @@ class defaultActions extends sfActions
 {
   public function executeError404(sfWebRequest $request)
   {
+    exit("!!!!!");
     $this->getResponse()->setStatusCode(404, 'This page does not exist');
   }
   
