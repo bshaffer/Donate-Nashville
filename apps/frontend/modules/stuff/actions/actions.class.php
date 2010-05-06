@@ -84,6 +84,8 @@ class stuffActions extends sfActions
         'sf_subject' => $stuff
       )));
     }
+    
+    $this->getUser()->setFlash('error', 'You are missing some of the required fields below.');
   }
   
   /**

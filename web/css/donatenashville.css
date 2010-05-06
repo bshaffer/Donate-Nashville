@@ -84,6 +84,10 @@ form ul li input.button, form ul li input.secondButton {
 	padding:5px 20px;
 }
 
+form div.wysiwyg ul li,
+form ul.error_list li {
+	clear: none !important;
+}
 
 /* FROM BASE.CSS */
 hr {border-color:#fff; border-style:dashed;}
