@@ -1,0 +1,37 @@
+/* FORMS 
+****************************************************************************************************/
+.item-error{background:#FFC2C8 url('../images/icons/error-small.png') no-repeat 4px 2px;color:#A80500;padding:3px 8px 4px 22px;font-size:10px;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;border:1px solid;width:160px;position:absolute;top:17px;left:240px;}
+form ul li.super-large .item-error{left:410px;}
+form ul li.large .item-error{left:295px;}
+form ul li.birthday .item-error{left:270px;}
+form ul li.medium .item-error{left:115px;}
+form ul li.small .item-error{left:65px;}
+form fieldset{padding:10px;display:block;border:1px solid #eee;margin-bottom:18px;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;}
+form fieldset legend{font:bold 11px Arial,Sans-serif;color:#999;padding:0px 3px 0px 3px;}
+form fieldset legend span{color:#A80500;}
+form ul li{list-style:none;margin:0px 0px 10px 0px;padding:0px 0px 10px 0px;clear:both;position:relative;float:left;}
+form ul li label{font-size:11px;font-weight:bold;color:#333;display:block;height:17px;}
+form ul li label span{color:#A80500;margin:0 0 0 2px;}
+form ul li input{width:225px;border:1px solid #aaa;padding:3px;font-size:12px;color:#333;outline:none;}
+form ul li textarea{width:395px;border:1px solid #aaa;padding:3px;font-size:12px;color:#333;font-family:Arial, "Helvetica Neue", Helvetica, sans-serif;outline:none;}
+form ul li.short textarea{height:60px;}
+form ul li.long textarea{height:500px;}
+form ul li.medium input{width:100px;}
+form ul li.small input{width:50px;}
+form ul li.checkbox input,form ul li.radio input{width:13px;padding:0;margin:0 4px 0 0;float:none;border:none;}
+form ul li.checkbox span,form ul li.radio span{margin:0 20px 0 0;float:none;}
+form ul li.heading{background-color:#E3EDF0;border-bottom:1px solid #ddd;margin:0 0 10px;padding:10px 10px 0;}
+form ul li input.button,form ul li input.second-button{width:auto;padding:3px 8px 3px 8px;background:#ddd;font:bold 14px/18px Arial, "Helvetica Neue", Helvetica, sans-serif;color:#333;cursor:pointer;height:auto;}
+form ul li input.second-button{margin-left:10px;cursor:pointer;}
+form ul li select{padding:3px;border:1px solid #aaa;}
+form ul li select option{padding-right:2em;}
+form ul li input.secondary,form ul li select.secondary{margin:10px 0px 0px 120px;}
+form ul li.noborder{border:none;}
+form ul li.medium span.note{left:120px;}
+form ul li.small span.note{left:70px;}
+form ul li.super-large span.note{left:410px;}
+form ul li .focusField{border:1px solid #000;-webkit-box-shadow:0 0 5px rgba(0, 0, 0, 0.8);-moz-box-shadow:0 0 5px rgba(0, 0, 0, 0.8); box-shadow:0 0 5px rgba(0, 0, 0, 0.8);}
+form ul li input:focus,form ul li select:focus,form ul li textarea:focus {border:1px solid #c9e0ed;-webkit-box-shadow:0 0 5px rgba(0, 0, 0, 0.8);-moz-box-shadow:0 0 5px rgba(0, 0, 0, 0.8); box-shadow:0 0 5px rgba(0, 0, 0, 0.8);}
+form ul li .upload{width:235px;margin:5px 0 10px;float:left;font-size:11px;}
+form ul li .upload img{float:left;margin:0 5px 0 0;}
+.form-tooltips{color:#c9e0ed;font-size:10px;display:none;width:175px;margin:0;}
