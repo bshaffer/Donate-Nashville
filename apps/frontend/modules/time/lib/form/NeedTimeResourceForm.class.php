@@ -22,7 +22,6 @@ class NeedTimeResourceForm extends TimeResourceForm
       'address_1',
       'address_2',
       'city',
-      'state',
       'zip',
       'description',
       'num_volunteers',

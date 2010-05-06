@@ -9,6 +9,8 @@
 <?php if ($resource['is_fulfilled']): ?>
   <span class="fulfilled"><?php echo image_tag('/sfDoctrinePlugin/images/tick.png', array('alt' => 'fulfilled')) ?>&nbsp;Fulfilled</span>
 <?php elseif(!$sf_user->isOwner($resource)): ?>
-  <!-- call to action here, which depends on whether this is a "need" looking for a "have" or vice versa -->
-  <?php include_partial('resource/resource_contact_owner_form', array('form' => $form, 'type' => $type)) ?>
+  <div>
+    <!-- call to action here, which depends on whether this is a "need" looking for a "have" or vice versa -->
+    <?php include_partial('resource/resource_contact_owner_form', array('form' => $form, 'resource' => $resource)) ?>
+  </div>
 <?php endif ?>
