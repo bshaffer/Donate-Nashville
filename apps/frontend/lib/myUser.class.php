@@ -1,27 +1,46 @@
 <?php
 
+/**
+ * User class for frontend
+ * 
+ * @package     dn
+ * @subpackage  user
+ * @author      Brent Shaffer <bshafs@gmail.com>
+ * @author      Ryan Weaver <ryan@thatsquality.com>
+ */
 class myUser extends sfGuardSecurityUser
 {
   protected $ownedIds = array();
-  
-  public function isOwner($object)
+
+  /**
+   * Returns boolean of whether or not the current user owns the given resource
+   * 
+   * @param Resource $resource
+   * @return boolean
+   */
+  public function isOwner($resource)
   {
     if ($this->isAuthenticated()) 
     {
-      return $object['owner_id'] == $this->getGuardUser()->getId();
+      return $resource['owner_id'] == $this->getGuardUser()->getId();
     }
     
-    return isset($this->ownedIds[get_class($object)]) 
-            && in_array($object['id'], $this->ownedIds[get_class($object)]);
+    return isset($this->ownedIds[get_class($resource)]) 
+            && in_array($resource['id'], $this->ownedIds[get_class($resource)]);
   }
-  
-  public function setOwner($object)
+
+  /**
+   * Sets the current user object as an owner of the current resource
+   * 
+   * @param Resource $resource
+   */
+  public function setOwner(Resource $resource)
   {
-    if (!isset($this->ownedIds[get_class($object)])) 
+    if (!isset($this->ownedIds[get_class($resource)])) 
     {
-      $this->ownedIds[get_class($object)] = array();
+      $this->ownedIds[get_class($resource)] = array();
     }
     
-    $this->ownedIds[get_class($object)][] = $object['id'];   
+    $this->ownedIds[get_class($resource)][] = $resource['id'];   
   }
 }
