@@ -4,6 +4,6 @@ jQuery(function() {
 	
 	// attach events AFTER all the document ready code has all executed
 	setTimeout(function() {
-		ResourceFilter.attachEvents();
+		ResourceFilter.init();
 	}, 0);
 });
