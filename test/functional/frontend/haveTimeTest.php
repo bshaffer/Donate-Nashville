@@ -12,4 +12,19 @@ $browser
     
   ->click('Time')
     ->isModuleAction('time', 'have')
+    
+  ->call('/time/list', 'post', $parameters = array('start'=>'2010-05-04 00:00:00'))
+    ->isModuleAction('resource', 'timeList')
+    
+  ->with('response')->begin()
+    ->matches('/<li><a href/')
+  ->end()
+    
+  ->click('5/5 from 6:00 to 8:00')
+    ->isModuleAction('time', 'match')
+    
+  ->with('response')->begin()
+    ->matches('/5157 Whitaker Dr/')
+    // ->checkForm('contactResrouceOwnerForm')
+  ->end()
 ;

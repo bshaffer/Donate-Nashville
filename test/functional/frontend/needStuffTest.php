@@ -13,6 +13,15 @@ $browser
   ->click('Stuff')
     ->isModuleAction('stuff', 'need')
     
+  ->info('first we will look for something that is a needed resource, a picnic table, and expect no results')
+  ->call('/stuff/list', 'post', $parameters = array('q'=>'picnic'))
+    ->isModuleAction('resource', 'stuffList')
+    
+  ->info('you need a picnic table? yeah well so does everyone else')
+  ->with('response')->begin()
+    ->matches('!/picnic/i')
+  ->end()
+    
   ->call('/stuff/list', 'post', $parameters = array('q'=>'pump'))
     ->isModuleAction('resource', 'stuffList')
     
@@ -25,7 +34,6 @@ $browser
     
   ->with('response')->begin()
     ->matches('/1313 N. 4th Ave/')
-    ->matches('/Contact This User/')
+    // ->checkForm('contactResrouceOwnerForm')
   ->end()
-  
 ;
