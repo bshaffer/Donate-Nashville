@@ -1,7 +1,7 @@
 <h1>Manage your stuff</h1>
 
 <p>
-  Need to manage your posts or mark them as satisfied? Just fill out the
+  Need to manage your posts or mark them as fulfilled? Just fill out the
   form below and we'll email you a link where you can manage your posts.
 </p>
 
