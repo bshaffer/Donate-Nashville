@@ -1,16 +1,13 @@
 sfGuardUser:
   sgu_admin:
-    username:       admin
     password:       admin
     is_super_admin: true
     email_address:  thedude@gmail.com
   sgu_bshaffer:
-    username:       bshaffer
     password:       admin
     is_super_admin: false
     email_address:  bshafs@gmail.com
   sgu_chayner:
-    username:       chayner
     password:       admin
     is_super_admin: false
     email_address:  chayner@centresource.com
