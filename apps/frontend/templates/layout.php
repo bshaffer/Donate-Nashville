@@ -3,7 +3,11 @@
   <head>
     <?php include_http_metas() ?>
     <?php include_metas() ?>
-    <?php include_title() ?>
+    <?php if (has_slot('title')): ?>
+      <title><?php echo get_slot('title') ?> | DonateNashville.org</title>
+    <?php else: ?>
+      <?php include_title() ?>
+    <?php endif; ?>
     <link rel="shortcut icon" href="/favicon.ico" />
   
 		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
