@@ -1,10 +1,11 @@
 <h1>Stuff Details: <?php echo $resource->title ?></h1>
 
-<!-- more details here -->
-<h3>Contact Info</h3>
-<div class='contact-info'>
-  <?php include_partial('user/contact_info', array('user' => $resource['User'])) ?>
-</div>
+<?php if ($resource->showContactInformation()): ?>
+  <h3>Contact Info</h3>
+  <div class='contact-info'>
+    <?php include_partial('user/contact_info', array('user' => $resource['User'])) ?>
+  </div>
+<?php endif; ?>
 
 <?php if ($resource['is_fulfilled']): ?>
   <span class="fulfilled"><?php echo image_tag('/sfDoctrinePlugin/images/tick.png', array('alt' => 'fulfilled')) ?>&nbsp;Fulfilled</span>
