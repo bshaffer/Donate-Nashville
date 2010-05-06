@@ -3,11 +3,11 @@
 <?php use_stylesheets_for_form($form) ?>
 <?php use_javascripts_for_form($form) ?>
 
-<form action="<?php echo url_for('@add_need_time_create') ?>" method="post" name="time_resource">
+<form action="<?php echo url_for('@add_need_time_create') ?>" method="post" name="time_resource" class="styled-form">
   <?php echo $form->renderGlobalErrors() ?>
   <?php echo $form->renderHiddenFields() ?>
   
-  <div>
+  <div class="form-date">
     <label>When</label>
     
     <div>
@@ -34,42 +34,39 @@
   </div>
   
   <div>
-    <label>Where</label>
-    
+    <?php echo $form['address_1']->renderLabel() ?>
     <div>
       <?php echo $form['address_1']->renderError() ?>
-      <?php echo $form['address_1']->renderLabel() ?>
       <?php echo $form['address_1']->render() ?>
     </div>
     
+    <?php echo $form['address_2']->renderLabel() ?>
     <div>
       <?php echo $form['address_2']->renderError() ?>
-      <?php echo $form['address_2']->renderLabel() ?>
       <?php echo $form['address_2']->render() ?>
     </div>
     
+    <?php echo $form['city']->renderLabel() ?>
     <div>
       <?php echo $form['city']->renderError() ?>
-      <?php echo $form['city']->renderLabel() ?>
       <?php echo $form['city']->render() ?>
     </div>
     
+    <?php echo $form['state']->renderLabel() ?>
     <div>
       <?php echo $form['state']->renderError() ?>
-      <?php echo $form['state']->renderLabel() ?>
       <?php echo $form['state']->render() ?>
     </div>
     
+    <?php echo $form['zip']->renderLabel() ?>
     <div>
       <?php echo $form['zip']->renderError() ?>
-      <?php echo $form['zip']->renderLabel() ?>
       <?php echo $form['zip']->render() ?>
     </div>
   </div>
   
-  <div>
-    <label>Description</label>
-
+  <div class="form-description">
+    <?php echo $form['description']->renderLabel() ?>
     <div>
       <?php echo $form['description']->renderError() ?>
       <?php echo $form['description']->render() ?>
@@ -77,8 +74,7 @@
   </div>
   
   <div>
-    <label># of Volunteers</label>
-    
+    <?php echo $form['num_volunteers']->renderLabel() ?>
     <div>
       <?php echo $form['num_volunteers']->renderError() ?>
       <?php echo $form['num_volunteers']->render() ?>
@@ -86,30 +82,27 @@
   </div>
   
   <div>
-    <label>Contact Info</label>
-    
+    <?php echo $form['email']->renderLabel() ?>
     <div>
       <?php echo $form['email']->renderError() ?>
-      <?php echo $form['email']->renderLabel() ?>
       <?php echo $form['email']->render() ?>
     </div>
     
+    <?php echo $form['phone_1']->renderLabel() ?>
     <div>
       <?php echo $form['phone_1']->renderError() ?>
-      <?php echo $form['phone_1']->renderLabel() ?>
       <?php echo $form['phone_1']->render() ?>
     </div>
     
+    <?php echo $form['phone_2']->renderLabel() ?>
     <div>
       <?php echo $form['phone_2']->renderError() ?>
-      <?php echo $form['phone_2']->renderLabel() ?>
       <?php echo $form['phone_2']->render() ?>
     </div>
   </div>
   
   <div>
-    <label>Privacy</label>
-    
+    <?php echo $form['privacy']->renderLabel() ?>
     <div>
       <?php echo $form['privacy']->renderError() ?>
       <?php echo $form['privacy']->render() ?>
