@@ -4,7 +4,6 @@
     <dd><?php echo $name ?></dd>    
   <?php endif ?>
   
-  
   <?php if ($phone1 = $user['Profile']['phone_1']): ?>
     <dt>Phone 1</dt>
     <dd><?php echo $phone1 ?></dd>    
