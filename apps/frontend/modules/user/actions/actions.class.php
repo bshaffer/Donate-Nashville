@@ -38,4 +38,58 @@ class userActions extends sfActions
     $this->haveStuffResources = $user->getStuffResourcesByTransactionType('have');
     $this->needStuffResources = $user->getStuffResourcesByTransactionType('need');
   }
+
+  /**
+   * Functions as the "signin" action - but is actually just a box where
+   * you fill in your email address and we send you the login token
+   */
+  public function executeSendLoginToken(sfWebRequest $request)
+  {
+    $this->form = new sendLoginTokenForm();
+  }
+
+  /**
+   * Handles the form submit. Is submitted via ajax, doesn't degrade,
+   * tough, we're in a hurry
+   */
+  public function executeSendLoginTokenProcess(sfWebRequest $request)
+  {
+    $this->form = new sendLoginTokenForm();
+
+    $this->form->bind($request->getParameter('send_login'));
+    if ($this->form->isValid())
+    {
+      $user = $this->form->getUser();
+      $request->setAttribute('user', $user);
+      $body = $this->getController()->getPresentationFor('user', 'sendLoginTokenEmail');
+      
+      $message = $this->getMailer()->compose(
+        sfConfig::get('app_email_from'),
+        $this->form->getValue('email'),
+        dnConfig::getEmailSubject('send_token_email'),
+        $body
+      );
+      $message->setContentType('text/html');
+      $this->getMailer()->send($message);
+
+      // render the confirmation partial
+      $this->email = $this->form->getValue('email');
+      $this->renderPartial('user/sendTokenConfirmation');
+    }
+    else
+    {
+      $this->renderPartial('sendLoginTokenForm');
+    }
+    
+    return sfView::NONE;
+  }
+
+  /**
+   * Builds the body for the send token email
+   */
+  public function executeSendLoginTokenEmail(sfWebRequest $request)
+  {
+    $this->user = $request->getAttribute('user');
+    $this->setLayout('layoutEmail');
+  }
 }

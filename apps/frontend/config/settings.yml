@@ -24,6 +24,10 @@ test:
     etag:                   false
 
 all:
+  .actions:
+    login_module:      user
+    login_action:      sendLoginToken
+
   .settings:
     # Form security secret (CSRF protection)
     csrf_secret:       false     # Unique secret to enable CSRF protection or false to disable
