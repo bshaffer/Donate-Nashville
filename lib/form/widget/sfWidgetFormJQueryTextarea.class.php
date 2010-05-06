@@ -51,7 +51,17 @@ class sfWidgetFormJQueryTextarea extends sfWidgetFormTextarea
     $javascript = <<<EOF
       <script type="text/javascript" charset="utf-8">
         $(document).ready(function(){
-          $('#%s').wysiwyg();
+          $('#%s').wysiwyg({
+            controls : {
+              indent  : { visible : false },
+              outdent : { visible : false },
+              separator02 : { visible : false },
+
+              subscript   : { visible : false },
+              subscript   : { visible : false },
+              separator03 : { visible : false }
+            }
+          });
         });
     </script>
 EOF;
