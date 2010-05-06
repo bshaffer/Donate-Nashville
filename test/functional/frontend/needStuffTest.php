@@ -37,6 +37,21 @@ $browser
     
   ->with('response')->begin()
     ->matches('/1313 N. 4th Ave/')
-    // ->checkForm('contactResrouceOwnerForm')
+    ->checkForm('ContactResourceOwnerForm')
   ->end()
+;
+
+$resource = Doctrine_Core::getTable('stuffResource')->findOneByTitle('Sump Pump');
+
+$browser
+  ->call('/stuff/'.$resource->id.'/message', 'post', array('contact'=>array(
+      'email'=>'lacyrhoades@gmail.com',
+      'name'=>'Lacy',
+      'phone'=>'12345',
+      'notes'=>'Takin notes!'
+    )))
+  
+  ->with('mailer')->begin()
+    ->hasSent(true)
+    ->withMessage($resource->User->username)
 ;

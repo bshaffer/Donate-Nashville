@@ -20,7 +20,7 @@ class ContactResourceOwnerForm extends BaseForm
     ));
     
     $this->setValidators(array(
-      'email' => new sfValidatorString(array('max_length' => 255, 'required' => true)),
+      'email' => new sfValidatorEmail(array('max_length' => 255, 'required' => true)),
       'name' => new sfValidatorString(array('max_length' => 255)),
       'phone' => new sfValidatorString(array('max_length' => 100)),
       'notes' => new sfValidatorString(),
