@@ -12,6 +12,7 @@ $submitValues = array(
   'title'       => 'I need some stufffs',
   'email'       => 'ryan.weaver@iostudio.com',
   'privacy'     => 'web_form',
+  'description' => 'I need some money',
 );
 $dbValues = $submitValues;
 $dbValues['transaction_type'] = 'need';
