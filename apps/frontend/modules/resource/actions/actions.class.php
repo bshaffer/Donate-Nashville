@@ -10,16 +10,6 @@
  */
 class resourceActions extends sfActions
 {
- /**
-  * Executes index action
-  *
-  * @param sfRequest $request A request object
-  */
-  public function executeIndex(sfWebRequest $request)
-  {
-
-  }
-
   public function executeStuffList(sfWebRequest $request)
   {  
     $query = Doctrine::getTable('StuffResource')
@@ -28,9 +18,9 @@ class resourceActions extends sfActions
 
     if ($type = $request->getParameter('type')) 
     {
-      $query->andWhere('transaction_type =?', $type);
+      $query->whereWrap()->andWhere('transaction_type =?', $type);
     }
-    
+
     $results = $query->execute(array(), Doctrine::HYDRATE_ARRAY);
     
     return $this->renderPartial('stuff/list', array('results' => $results));
@@ -44,7 +34,7 @@ class resourceActions extends sfActions
 
     if ($type = $request->getParameter('type')) 
     {
-      $query->andWhere('transaction_type = ?', $type);
+      $query->whereWrap()->andWhere('transaction_type = ?', $type);
     }
     
     $results = $query->execute(array(), Doctrine::HYDRATE_ARRAY);
@@ -54,21 +44,21 @@ class resourceActions extends sfActions
   
   public function executeMoney(sfWebRequest $request)
   {
-      
+    sfBreadcrumbs::getInstance()->addItem('Money');
   }
   
   public function executePlace(sfWebRequest $request)
   {
-
+    sfBreadcrumbs::getInstance()->addItem('Place');
   }
   public function executeHave(sfWebRequest $request)
   {
-      
+    sfBreadcrumbs::getInstance()->addItem('Have');
   }
   
   public function executeNeed(sfWebRequest $request)
   {
-    
+    sfBreadcrumbs::getInstance()->addItem('Need');
   }
   
   public function executeFulfill(sfWebRequest $request)

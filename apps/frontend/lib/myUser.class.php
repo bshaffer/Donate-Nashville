@@ -10,8 +10,6 @@
  */
 class myUser extends sfGuardSecurityUser
 {
-  protected $ownedIds = array();
-
   /**
    * Returns boolean of whether or not the current user owns the given resource
    * 
@@ -25,8 +23,9 @@ class myUser extends sfGuardSecurityUser
       return $resource['owner_id'] == $this->getGuardUser()->getId();
     }
     
-    return isset($this->ownedIds[get_class($resource)]) 
-            && in_array($resource['id'], $this->ownedIds[get_class($resource)]);
+    $ownedIds = $this->getAttribute('ownedIds', array());
+    return isset($ownedIds[get_class($resource)]) 
+            && in_array($resource['id'], $ownedIds[get_class($resource)]);
   }
 
   /**
@@ -36,11 +35,15 @@ class myUser extends sfGuardSecurityUser
    */
   public function setOwner(Resource $resource)
   {
-    if (!isset($this->ownedIds[get_class($resource)])) 
+    $ownedIds = $this->getAttribute('ownedIds', array());
+
+    if (!isset($ownedIds[get_class($resource)])) 
     {
-      $this->ownedIds[get_class($resource)] = array();
+      $ownedIds[get_class($resource)] = array();
     }
     
-    $this->ownedIds[get_class($resource)][] = $resource['id'];   
+    $ownedIds[get_class($resource)][] = $resource['id'];   
+    
+    $this->setAttribute('ownedIds', $ownedIds);
   }
 }

@@ -7,3 +7,5 @@
   <li><a href="#">Red Cross</a></li>
   <li><a href="#">Red Cross</a></li>
 </ul>
+
+<?php slot('breadcrumbs', get_component('default', 'breadcrumbs')) ?>

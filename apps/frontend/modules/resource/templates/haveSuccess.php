@@ -4,19 +4,19 @@
 		<li>
 			<h2 class="no-margin"><?php echo link_to('Time', '@have_time') ?></h2>
 			<p class="text-large">
-				<strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</strong> Ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+				<strong>Find a hands-on activity requiring volunteer labor, like cleanup and repair.</strong>
 			</p>
 		</li>
 		<li>
 			<h2 class="no-margin"><?php echo link_to('Stuff', '@have_stuff') ?></h2>
 			<p class="text-large">
-				<strong>Ut enim ad minim veniam</strong>. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+				<strong>Click here to donate goods like food, water, clothing, toiletries, and other supplies.</strong>
 			</p>
 		</li>
 		<li>
 			<h2 class="no-margin"><?php echo link_to('Money', '@have_money') ?></h2>
 			<p class="text-large">
-				<strong>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</strong>. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+				<strong>Click here for organizations accepting disaster relief donations.</strong>
 			</p>
 		</li>
 	</ul>
@@ -41,3 +41,5 @@
 		</ul>
 	</div>
 <?php end_slot() ?>
+
+<?php slot('breadcrumbs', get_component('default', 'breadcrumbs')) ?>
