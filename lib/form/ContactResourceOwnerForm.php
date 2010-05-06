@@ -25,6 +25,8 @@ class ContactResourceOwnerForm extends BaseForm
       'phone' => new sfValidatorString(array('max_length' => 100)),
       'notes' => new sfValidatorString(),
     ));
+    
+    $this->widgetSchema->setNameFormat('contact[%s]');
   }
 
   public function save()

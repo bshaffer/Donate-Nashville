@@ -10,7 +10,7 @@
  */
 class userActions extends sfActions
 {
-
+  
   /**
    * Handles authentication for the user based on a secret key
    */
@@ -38,4 +38,5 @@ class userActions extends sfActions
     $this->haveStuffResources = $user->getStuffResourcesByTransactionType('have');
     $this->needStuffResources = $user->getStuffResourcesByTransactionType('need');
   }
+  
 }
