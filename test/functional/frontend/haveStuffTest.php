@@ -4,8 +4,6 @@ include(dirname(__FILE__).'/../../bootstrap/functional.php');
 
 $browser = new dnTestFunctional(new sfBrowser());
 
-Doctrine::getTable('StuffResource')->getListQuery('pump')->delete()->execute();
-
 $browser
   ->get('/')
   
@@ -17,7 +15,7 @@ $browser
   
   ->info('first we will look for something that is a have-resource, a pump, and expect no results')
   
-  ->call('/stuff/list', 'post', $parameters = array('q'=>'pump'))
+  ->call('/stuff/list', 'post', $parameters = array('q' => 'pump', 'type' => 'need'))
     ->isModuleAction('resource', 'stuffList')
     
   ->info('you have a pump? yeah so do we.')
@@ -25,7 +23,7 @@ $browser
     ->matches('!/pump/i')
   ->end()
     
-  ->call('/stuff/list', 'post', $parameters = array('q'=>'picnic'))
+  ->call('/stuff/list', 'post', $parameters = array('q' => 'picnic', 'type' => 'need'))
     ->isModuleAction('resource', 'stuffList')
     
   ->with('response')->begin()

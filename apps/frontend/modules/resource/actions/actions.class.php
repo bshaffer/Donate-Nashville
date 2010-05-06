@@ -28,9 +28,9 @@ class resourceActions extends sfActions
 
     if ($type = $request->getParameter('type')) 
     {
-      $query->andWhere('transaction_type =?', $type);
+      $query->whereWrap()->andWhere('transaction_type =?', $type);
     }
-    
+
     $results = $query->execute(array(), Doctrine::HYDRATE_ARRAY);
     
     return $this->renderPartial('stuff/list', array('results' => $results));
@@ -44,7 +44,7 @@ class resourceActions extends sfActions
 
     if ($type = $request->getParameter('type')) 
     {
-      $query->andWhere('transaction_type = ?', $type);
+      $query->whereWrap()->andWhere('transaction_type = ?', $type);
     }
     
     $results = $query->execute(array(), Doctrine::HYDRATE_ARRAY);
