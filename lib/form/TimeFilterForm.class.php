@@ -8,7 +8,7 @@ class TimeFilterForm extends sfForm
   public function configure()
   {
     $this->setWidgets(array(
-      'resource_date'   => new sfWidgetFormJQueryDate(),
+      'resource_date'   => new sfWidgetFormDateJQueryUI(array('theme' => false)),
       'start_time'      => new dnWidgetFormJQueryTimePicker(),
       'end_time'        => new dnWidgetFormJQueryTimePicker(),
       ));

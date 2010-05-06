@@ -35,8 +35,8 @@
       
       <div id="footer" class="grid_16 clearfix">
         <ul id="footer-nav">
-          <li><?php echo link_to('About DonateNashville', '@homepage') ?></li>
-          <li class="last"><?php echo link_to('Terms of Service', '@homepage') ?></li>
+          <li><?php echo link_to('About DonateNashville', '@about') ?></li>
+          <li class="last"><?php echo link_to('Terms of Service', '@terms_of_service') ?></li>
         </ul>
         <p>&copy;<?php echo date('Y') ?> Donate Nashville.</p>
       </div>

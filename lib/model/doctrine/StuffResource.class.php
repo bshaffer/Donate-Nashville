@@ -12,4 +12,8 @@
  */
 class StuffResource extends BaseStuffResource
 {
+  public function getType()
+  {
+    return 'stuff';
+  }
 }

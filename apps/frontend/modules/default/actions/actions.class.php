@@ -7,7 +7,7 @@ class defaultActions extends sfActions
     $this->getResponse()->setStatusCode(404, 'This page does not exist');
   }
   
-  public function executeError403(sfWebRequest $request)
+  public function executeSecure(sfWebRequest $request)
   {
     $this->getResponse()->setStatusCode(403);
   }

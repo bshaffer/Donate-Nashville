@@ -4,6 +4,9 @@ include(dirname(__FILE__).'/../../bootstrap/functional.php');
 
 $browser = new dnTestFunctional(new sfBrowser());
 
+// Delete all existing data
+Doctrine::getTable('StuffResource')->getListQuery('picnic')->delete()->execute();
+
 $browser
   ->get('/')
   
@@ -30,7 +33,7 @@ $browser
   ->end()
     
   ->click('Sump Pump')
-    ->isModuleAction('stuff', 'match')
+    ->isModuleAction('stuff', 'show')
     
   ->with('response')->begin()
     ->matches('/1313 N. 4th Ave/')

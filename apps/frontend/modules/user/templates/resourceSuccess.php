@@ -4,7 +4,7 @@
 <h3>Have Time</h3>
 <ul>
   <?php foreach($haveTimeResources as $haveTimeResource): ?>
-    <li><?php echo $haveTimeResource->title ?></li>
+  <?php include_partial('resource/list_item', array('resource' => $haveTimeResource)) ?>
   <?php endforeach; ?>  
 </ul>
 <?php endif ?>
@@ -13,7 +13,7 @@
 <h3>Need Time</h3>
 <ul>
 <?php foreach($needTimeResources as $needTimeResource): ?>
-  <li><?php echo $needTimeResource->title ?><br /></li>
+  <?php include_partial('resource/list_item', array('resource' => $needTimeResource)) ?>
 <?php endforeach; ?>
 </ul>
 <?php endif ?>
@@ -22,7 +22,7 @@
 <h3>Need Time</h3>
 <ul>
 <?php foreach($haveStuffResources as $haveStuffResource): ?>
-  <li><?php echo $haveStuffResource->title ?></li>
+  <?php include_partial('resource/list_item', array('resource' => $haveStuffResource)) ?>
 <?php endforeach; ?>
 </ul>
 <?php endif ?>
@@ -31,7 +31,7 @@
 <h3>Need Stuff</h3>
 <ul>
 <?php foreach($needStuffResources as $needStuffResource): ?>
-  <li><?php echo $needStuffResource->title ?></li>
+  <?php include_partial('resource/list_item', array('resource' => $needStuffResource)) ?>
 <?php endforeach; ?>
 </ul>
 <?php endif ?>

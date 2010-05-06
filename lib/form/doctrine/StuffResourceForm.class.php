@@ -30,6 +30,11 @@ class StuffResourceForm extends BaseStuffResourceForm
       'privacy'
     ));
     
+    // set some labels
+    $this->widgetSchema->setLabel('address_1', 'Where (address)');
+    $this->widgetSchema->setLabel('phone_1', 'Primary Phone Number');
+    $this->widgetSchema->setLabel('phone_2', 'Alternate Phone Number');
+    
     parent::configure();
   }
 }
