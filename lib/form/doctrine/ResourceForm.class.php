@@ -20,6 +20,13 @@ class ResourceForm extends BaseResourceForm
     $this->validatorSchema['state'] = new sfValidatorChoice(array(
       'choices' => sfWidgetFormSelectUSState::getStateAbbreviations(),
     ));
+    
+    $this->validatorSchema['email'] = new sfValidatorEmail();
+    
+    $this->widgetSchema['privacy'] = new sfWidgetFormChoice(array('choices' => array(
+      'show_info' => 'Show my info as well as a contact form',
+      'web_form'  => 'Show a contact form, but hide my information',
+    )));
   }
 
   /**
