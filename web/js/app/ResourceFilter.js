@@ -183,7 +183,7 @@ ResourceFilter = $.extend({}, {
 	
 		if (start_date) {
 			// get the action from the form
-			var action = $('#resource_date_month').closest('form').attr('action')+'';
+			var action = $('#resource_date').closest('form').attr('action')+'';
 
 			// set the query vars
 			//  the end date is optional
