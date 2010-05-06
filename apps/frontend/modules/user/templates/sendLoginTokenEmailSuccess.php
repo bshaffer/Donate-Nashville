@@ -3,7 +3,7 @@
 <p>
   To manage your account, please login here:
   
-  <a href="<?php echo url_for('@user_auth?token='.$resource->User->password, array('absolute' => true)); ?>">
-    <?php echo url_for('@user_auth?token='.$resource->User->password, array('absolute' => true)); ?>
+  <a href="<?php echo url_for('@user_auth?token='.$user->password, array('absolute' => true)); ?>">
+    <?php echo url_for('@user_auth?token='.$user->password, array('absolute' => true)); ?>
   </a>
 </p>
