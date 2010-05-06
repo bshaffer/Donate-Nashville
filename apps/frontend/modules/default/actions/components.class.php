@@ -28,7 +28,7 @@ class defaultComponents extends sfComponents
   
   public function executeNavigation()
   {
-    
+    $this->section = $this->getRequest()->getParameter('section');
   }
   
   public function executeTwitter()
