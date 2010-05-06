@@ -5,46 +5,49 @@
 
 <h2>I <?php echo ucfirst(opposite_of($resource->transaction_type)) ?> This!</h2>
 <?php echo $form->renderFormTag(url_for('new_message_match_found', array('id'=>$resource->id)), array('class'=>'async')) ?>
+<fieldset>
+  <legend><span>*</span>Required Field</legend>
   <?php echo $form->renderGlobalErrors() ?>
   <?php echo $form->renderHiddenFields() ?>
-  
-  <div>
+  <ul>
+  <li>
     <label><?php echo $form['email']->renderLabel() ?></label>
     
     <div>
       <?php echo $form['email']->renderError() ?>
       <?php echo $form['email']->render() ?>
     </div>
-  </div>
+  </li>
   
-  <div>
+  <li>
     <label><?php echo $form['name']->renderLabel() ?></label>
     
     <div>
       <?php echo $form['name']->renderError() ?>
       <?php echo $form['name']->render() ?>
     </div>
-  </div>
+  </li>
   
-  <div>
+  <li>
     <label><?php echo $form['phone']->renderLabel() ?></label>
     
     <div>
       <?php echo $form['phone']->renderError() ?>
       <?php echo $form['phone']->render() ?>
     </div>
-  </div>
+  </li>
   
-  <div>
+  <li>
     <label><?php echo $form['notes']->renderLabel() ?></label>
     
     <div>
       <?php echo $form['notes']->renderError() ?>
       <?php echo $form['notes']->render() ?>
     </div>
-  </div>
-  
+  </li>
+  </ul>
   <input type="submit" value="Send my info" />
+</fieldset>
 </form>
 
 <?php use_javascript('jquery/jquery.form.js')?>

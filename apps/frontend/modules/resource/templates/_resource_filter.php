@@ -28,13 +28,11 @@ use_stylesheet('/css/app/resource_list.css');
 
 
 ?>
-
-<h2>Search Form</h2>
-<div>
+<?php echo image_tag('icons/magnify-large.png', array('class'=>"left", 'width'=>"44", 'height'=>"41", 'alt'=>"Magnify Large")) ?>
 <?php include_component('resource', $resource_type.'_filter_form', array('resource_action' => $resource_action)); ?>
-</div>
-
-<h2>Search Results</h2>
+<div class="clear">&nbsp;</div>
+<h2 class="half-margin"><?php echo $resource_action == 'have' ? 'Needed Items' : 'Available Items'  ?></h2>
+<hr />
 <div id="ResourceResultsList">
 	<div class="emptyList">[ Search for items above ]</div>
 </div>

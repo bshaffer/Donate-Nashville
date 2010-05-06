@@ -1,4 +1,4 @@
-<dl>
+<dl class="no-margin">
   <?php if ($name = $user->getFullName()): ?>
     <dt>Name</dt>
     <dd><?php echo $name ?></dd>    

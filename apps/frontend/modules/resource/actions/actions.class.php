@@ -10,16 +10,6 @@
  */
 class resourceActions extends frontendActions
 {
- /**
-  * Executes index action
-  *
-  * @param sfRequest $request A request object
-  */
-  public function executeIndex(sfWebRequest $request)
-  {
-
-  }
-
   public function executeStuffList(sfWebRequest $request)
   {  
     $query = Doctrine::getTable('StuffResource')
