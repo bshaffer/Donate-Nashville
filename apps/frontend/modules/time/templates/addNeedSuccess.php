@@ -40,7 +40,6 @@
       <?php echo $form['address_1']->render() ?>
     </div>
     
-    <?php echo $form['address_2']->renderLabel() ?>
     <div>
       <?php echo $form['address_2']->renderError() ?>
       <?php echo $form['address_2']->render() ?>
