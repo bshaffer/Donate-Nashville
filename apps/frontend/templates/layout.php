@@ -45,7 +45,7 @@
 						<li><?php echo link_to('I Have', '@have') ?></li>
 					</ul>
 					<div class="left">
-						Have a question? <a href="#">Contact Us</a>
+						Have a question? <?php echo link_to('Contact Us', '@new_contact_message') ?>
 					</div>
 				</div>
 			</div>
@@ -83,7 +83,7 @@
   			<li><?php echo link_to('I Have', '@have') ?></li>
   			<li><?php echo link_to('About DonateNashville', '@about') ?></li>
   			<li><?php echo link_to('Terms of Service', '@terms_of_service') ?></li>
-  			<li><a href="#" title="">Contact Us</a></li>
+  			<li><?php echo link_to('Contact Us', '@new_contact_message') ?></li>
   			<li><a href="http://www.twitter.com/donateNashville" title="@donateNashville">Twitter</a></li>
   		</ul>
   		<ul id="partners">
