@@ -179,6 +179,7 @@ class stuffActions extends sfActions
     
     if ($this->form->isValid())
     {
+      $this->form->save();
       $this->contact = $request->getParameter($this->form->getName());
       
       // send email to owner of resource

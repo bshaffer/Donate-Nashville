@@ -7,3 +7,4 @@ all:
       have_stuff_creation:  Have Stuff entry created at donatenashville.org
       send_token_email:     Your login link from donatenashville.org
       match_found:          We found a match for you at donatenashville.org
+      contact:              Contact Us form used at donatenashville.org

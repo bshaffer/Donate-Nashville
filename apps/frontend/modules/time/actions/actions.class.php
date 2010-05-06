@@ -31,7 +31,8 @@ class timeActions extends sfActions
       $this->form->bind($request->getParameter('resource_contact_owner'));
       if($this->form->isValid())
       {
-        $contact_info = $this->form->save();
+        $this->form['resource_id'] = $this->resource['id'];
+        $this->form->save();
       }
     }
   }
