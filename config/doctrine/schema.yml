@@ -70,6 +70,15 @@ StuffResource:
       type:             integer
       default:          1
 
+InfoResource:
+  inheritance:
+    extends:            Resource
+    type:               concrete
+  columns:
+    keywords:
+      type:             string(255)
+
+
 ResourceParticipant:
   columns:
     participant_id:
