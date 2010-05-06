@@ -23,7 +23,7 @@ class resourceActions extends frontendActions
 
     $results = $query->execute(array(), Doctrine::HYDRATE_ARRAY);
     
-    return $this->renderPartial('stuff/list', array('results' => $results));
+    return $this->renderPartial('stuff/list', array('results' => $results, 'transaction_type' => $type));
   }
 
   public function executeTimeList(sfWebRequest $request)

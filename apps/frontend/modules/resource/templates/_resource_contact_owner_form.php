@@ -45,8 +45,12 @@
       <?php echo $form['notes']->render() ?>
     </div>
   </li>
+  <li>
+    <input type="submit" value="Send my info" class="button"/>
+    <p>By clicking the "Send my info" button, you agree to Donate Nashville's <a href="<?php echo url_for('terms_of_service')?>" target="_blank">Terms of Service</a>.</p>
+  </li>
   </ul>
-  <input type="submit" value="Send my info" />
+  
 </fieldset>
 </form>
 

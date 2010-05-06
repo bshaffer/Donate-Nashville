@@ -27,7 +27,7 @@
 				<div class="grid_5">
 					<a href="<?php echo url_for('@homepage') ?>" title="Donate Nashville"><?php echo image_tag("logo-DN.gif", array('class'=>'logo', 'alt'=>"Logo Donate Nashville"))?></a>
 				</div>
-				<div class="grid_6"><a href="<?php echo url_for('@user_resource') ?>">manage posts</a></div>
+				<div class="grid_6">&nbsp;</div>
 				<div class="grid_5">
 					<div class="twitter-single header right">
 						<strong><a href="http://www.twitter.com/donateNashville" title="@donateNashville">twitter.com/donateNashville</a></strong>
@@ -37,19 +37,7 @@
 			</div>
 		</div>
 
-		<div id="main-nav">
-			<div class="container_16 clearfix">
-				<div class="grid_16">
-					<ul class="left">
-						<li><?php echo link_to('I Need', '@need') ?></li>
-						<li><?php echo link_to('I Have', '@have') ?></li>
-					</ul>
-					<div class="left">
-						Have a question? <a href="#">Contact Us</a>
-					</div>
-				</div>
-			</div>
-		</div>
+    <?php include_component('default', 'navigation') ?>
 
     <?php if (has_slot('breadcrumbs')): ?>
   		<div class="container_16 clearfix">
