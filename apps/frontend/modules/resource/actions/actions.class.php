@@ -41,10 +41,13 @@ class resourceActions extends frontendActions
 
     return $this->renderPartial('time/list', array('results' => $results));
   }
-  
+
+  /**
+   * The "I have money" page, just shows static content
+   */
   public function executeMoney(sfWebRequest $request)
   {
-    $this->breadcrumbs->add('Money');
+    $this->breadcrumbs->add('Have', '@have')->add('Money');
   }
   
   public function executePlace(sfWebRequest $request)
