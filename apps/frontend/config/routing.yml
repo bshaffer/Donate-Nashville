@@ -13,33 +13,33 @@ terms_of_service:
 # The main "have" actions
 have:
   url:   /have
-  param: { module: resource, action: have }
+  param: { module: resource, action: have, section: have }
 have_time:
   url:   /have/time
-  param: { module: time, action: have }
+  param: { module: time, action: have, section: have }
 have_stuff:
   url:   /have/stuff
-  param: { module: stuff, action: have }
+  param: { module: stuff, action: have, section: have }
 
 # The main "need" screens (there is no need_time - goes straight to the form)
 need:
   url:   /need
-  param: { module: resource, action: need }
+  param: { module: resource, action: need, section: need }
 need_stuff:
   url:   /need/stuff
-  param: { module: stuff, action: need }
+  param: { module: stuff, action: need, section: need }
 
 # Create "need time" resource routes
 add_need_time:
   class:  sfRequestRoute
   url:   /need/time/add
-  param: { module: time, action: addNeed }
+  param: { module: time, action: addNeed, section: need }
   requirements:
     sf_method: [get]
 add_need_time_create:
   class:  sfRequestRoute
   url:   /need/time/add
-  param: { module: time, action: addNeedCreate }
+  param: { module: time, action: addNeedCreate, section: need }
   requirements:
     sf_method: [post]
 
@@ -47,42 +47,42 @@ add_need_time_create:
 add_need_stuff:
   class:  sfRequestRoute
   url:   /need/stuff/add
-  param: { module: stuff, action: addNeed }
+  param: { module: stuff, action: addNeed, section: need }
   requirements:
     sf_method: [get]
 add_need_stuff_create:
   class:  sfRequestRoute
   url:   /need/stuff/add
-  param: { module: stuff, action: addNeedCreate }
+  param: { module: stuff, action: addNeedCreate, section: need }
   requirements:
     sf_method: [post]
 # add have stuff resource routes
 add_have_stuff:
   class:  sfRequestRoute
   url:   /have/stuff/add
-  param: { module: stuff, action: addHave }
+  param: { module: stuff, action: addHave, section: have }
   requirements:
     sf_method: [get]
 add_have_stuff_create:
   class:  sfRequestRoute
   url:   /have/stuff/add
-  param: { module: stuff, action: addHaveCreate }
+  param: { module: stuff, action: addHaveCreate, section: have }
   requirements:
     sf_method: [post]
 
 # "static" pages for more information
 need_place:
   url:   /place
-  param: { module: resource, action: place }
+  param: { module: resource, action: place, section: need }
 need_money:
   url:   /money
-  param: { module: resource, action: money }
+  param: { module: resource, action: money, section: need }
 have_place:
   url:   /need/place
-  param: { module: resource, action: place }
+  param: { module: resource, action: place, section: have }
 have_money:
   url:   /have/money
-  param: { module: resource, action: money }
+  param: { module: resource, action: money, section: have }
 
 # Actions for listing Resources
 time_list:
