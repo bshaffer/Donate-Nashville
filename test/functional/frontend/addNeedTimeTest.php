@@ -52,6 +52,11 @@ $browser->info('1 - You need time, fill out the form')
     ->info('  1.4 - See that the user was created an account')
     ->check('sfGuardUser', array('username' => $submitValues['email'], 'email_address' => $submitValues['email']))
   ->end()
+  
+  ->with('user')->begin()
+    ->info('  1.4.1 - What, you think because you created an account that you\'re logged in?  Not a chance.')
+    ->isAuthenticated(false)
+  ->end()
 ;
 $user = Doctrine_Core::getTable('sfGuardUser')->findOneByUsername($submitValues['email']);
 $dbValues['owner_id'] = $user->id;

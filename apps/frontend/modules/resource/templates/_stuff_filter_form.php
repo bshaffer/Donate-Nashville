@@ -1,4 +1,5 @@
-<form class="resourceFilter" action="<?php echo url_for('@stuff_list'); ?>" method="get" accept-charset="utf-8">
+<?php use_helper('dh') ?>
+<form class="resourceFilter" action="<?php echo url_for('@stuff_list?type='.opposite_of($resource_action)); ?>" method="get" accept-charset="utf-8">
 	<fieldset>
 		
 	<ul>
