@@ -14,29 +14,31 @@ class TimeResourceTable extends ResourceTable
     if ($end_date) 
     {
       $end_time = date('H:i:s', strtotime($end_date));
+      $end_time = $end_time == '00:00:00' ? null : $end_time;
       $end_date = date('Y-m-d', strtotime($end_date));
     }
     else
     {
+      $end_date = $start_date;
       $end_time = null;
     }
-    
+        
     $this->addDateQuery($query, 'resource_date', array('from' => $start_date, 'to' => $end_date));
-    
+        
     $query->andClause();
     
       $this->addOrDateQuery($query, 'start_time', array('from' => $start_time, 'to' => $end_time));
       
       $query->orClause();
-
+    
         $this->addDateQuery($query, 'end_time', array('from' => $start_time, 'to' => $end_time));
-
+    
         $this->addOrDateQuery($query, 'end_time', array('is_empty' => true)); // When end time isn't set
-
+    
       $query->endClause();
         
     $query->endClause();
-    
+        
     return $query;
   }
   

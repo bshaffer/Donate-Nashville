@@ -1,0 +1,7 @@
+authenticateSuccess:
+  metas:
+    title: User Login | DonateNashville.org
+
+sendLoginTokenSuccess:
+  metas:
+    title: Manage Your Stuff | DonateNashville.org

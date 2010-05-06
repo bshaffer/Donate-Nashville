@@ -4,19 +4,19 @@
 		<li>
 			<h2 class="no-margin"><?php echo link_to('Help', '@add_need_time') ?></h2>
 			<p class="text-large">
-				<strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</strong> Ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+				<strong>Find help with tasks like cleanup, repair and any other activities requiring volunteer labor.</strong>
 			</p>
 		</li>
 		<li>
 			<h2 class="no-margin"><?php echo link_to('Stuff', '@need_stuff') ?></h2>
 			<p class="text-large">
-				<strong>Ut enim ad minim veniam</strong>. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+				<strong>Find donated goods such as food, water, clothing, toiletries, and other supplies.</strong>
 			</p>
 		</li>
 		<li>
 			<h2 class="no-margin"><?php echo link_to('A Place', '@need_place') ?></h2>
 			<p class="text-large">
-				<strong>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</strong>. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+				<strong>Find out more about temporary housing options for displaced flood victims.</strong>
 			</p>
 		</li>
 	</ul>
@@ -41,3 +41,5 @@
 		</ul>
 	</div>
 <?php end_slot() ?>
+
+<?php slot('breadcrumbs', get_component('default', 'breadcrumbs')) ?>

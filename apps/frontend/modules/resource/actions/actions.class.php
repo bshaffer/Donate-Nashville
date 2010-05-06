@@ -8,18 +8,8 @@
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class resourceActions extends sfActions
+class resourceActions extends frontendActions
 {
- /**
-  * Executes index action
-  *
-  * @param sfRequest $request A request object
-  */
-  public function executeIndex(sfWebRequest $request)
-  {
-
-  }
-
   public function executeStuffList(sfWebRequest $request)
   {  
     $query = Doctrine::getTable('StuffResource')
@@ -28,9 +18,9 @@ class resourceActions extends sfActions
 
     if ($type = $request->getParameter('type')) 
     {
-      $query->andWhere('transaction_type =?', $type);
+      $query->whereWrap()->andWhere('transaction_type =?', $type);
     }
-    
+
     $results = $query->execute(array(), Doctrine::HYDRATE_ARRAY);
     
     return $this->renderPartial('stuff/list', array('results' => $results));
@@ -44,7 +34,7 @@ class resourceActions extends sfActions
 
     if ($type = $request->getParameter('type')) 
     {
-      $query->andWhere('transaction_type = ?', $type);
+      $query->whereWrap()->andWhere('transaction_type = ?', $type);
     }
     
     $results = $query->execute(array(), Doctrine::HYDRATE_ARRAY);
@@ -54,21 +44,21 @@ class resourceActions extends sfActions
   
   public function executeMoney(sfWebRequest $request)
   {
-      
+    $this->breadcrumbs->add('Money');
   }
   
   public function executePlace(sfWebRequest $request)
   {
-
+    $this->breadcrumbs->add('Place');
   }
   public function executeHave(sfWebRequest $request)
   {
-      
+    $this->breadcrumbs->add('Have');
   }
   
   public function executeNeed(sfWebRequest $request)
   {
-    
+    $this->breadcrumbs->add('Need');
   }
   
   public function executeFulfill(sfWebRequest $request)

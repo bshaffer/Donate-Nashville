@@ -5,19 +5,17 @@ include(dirname(__FILE__).'/../../bootstrap/functional.php');
 $browser = new dnTestFunctional(new sfBrowser());
 
 // Delete all existing data
-Doctrine::getTable('StuffResource')->getListQuery('picnic')->delete()->execute();
-
 $browser
   ->get('/')
   
-  ->click('I Need...')
+  ->click('I Need')
     ->isModuleAction('resource', 'need')
     
   ->click('Stuff')
     ->isModuleAction('stuff', 'need')
     
   ->info('first we will look for something that is a needed resource, a picnic table, and expect no results')
-  ->call('/stuff/list', 'post', $parameters = array('q'=>'picnic'))
+  ->call('/stuff/list', 'post', $parameters = array('q' => 'picnic', 'type' => 'have'))
     ->isModuleAction('resource', 'stuffList')
     
   ->info('you need a picnic table? yeah well so does everyone else')
@@ -25,7 +23,7 @@ $browser
     ->matches('!/picnic/i')
   ->end()
     
-  ->call('/stuff/list', 'post', $parameters = array('q'=>'pump'))
+  ->call('/stuff/list', 'post', $parameters = array('q' => 'pump', 'type' => 'have'))
     ->isModuleAction('resource', 'stuffList')
     
   ->with('response')->begin()

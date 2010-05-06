@@ -2,6 +2,10 @@ about:
   url:  /about
   param:  { module: default, action: about }
 
+new_contact_message:
+  url: /contact
+  param:  { module: default, action: newContactMessage }
+
 terms_of_service:
   url:  /tos
   param:  { module: default, action: termsOfService }

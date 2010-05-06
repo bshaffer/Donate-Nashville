@@ -42,7 +42,7 @@ Resource:
     User:
       class:            sfGuardUser
       local:            owner_id
-      foreignAlias:     Resoures
+      foreignAlias:     Resources
       onDelete:         CASCADE
       
 TimeResource:
@@ -80,3 +80,25 @@ ResourceParticipant:
       notnull:          true
   relations:
     
+Contact:
+  columns:
+    resource_id:
+      type:             integer
+      length:           8
+    email:
+      type:             string
+      length:           255
+      notnull:          true
+    name:
+      type:             string
+      length:           255
+    phone:
+      type:             string
+      length:           100
+    notes:
+      type:             clob
+  relations:
+    Resource:
+      local:            resource_id
+      foreignAlias:     Contacts
+      onDelete:         CASCADE

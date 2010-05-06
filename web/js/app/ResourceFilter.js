@@ -97,7 +97,8 @@ ResourceFilter = $.extend({}, {
 		var self = this;
 		
 		// add to onSelect event for date pickers
-		this.attachEventsForDatePicker('resource_date');
+		this.attachEventsForDatePicker('start_date');
+		this.attachEventsForDatePicker('end_date');
 
 		// add to onchange event for time pickers
 		this.attachEventsForTimePicker('start_time');
@@ -143,18 +144,27 @@ ResourceFilter = $.extend({}, {
 	getDateValues: function() {
 		var values = {};
 
-	  var date = this.extractDateValue('resource_date');
-		if (!date.length) {
+	  var start_date = this.extractDateValue('start_date');
+		if (!start_date.length) {
 			return null;
 		}
 
 		// calculate start, with or without a time
 		var start_time = this.extractTimeValue('start_time');
-		values.start =  date + (start_time.length ? ' ' + start_time : '');
+		values.start =  start_date + (start_time.length ? ' ' + start_time : '');
 
-		// calculate end, if an end time was specified
-		var end_time = this.extractTimeValue('end_time');
-		values.end = (end_time ? date + ' ' + end_time : '');
+	  var end_date = this.extractDateValue('end_date');
+    
+    if (end_date) 
+    {
+  		// calculate end, if an end time was specified
+  		var end_time = this.extractTimeValue('end_time');
+  		values.end = (end_time ? end_date + ' ' + end_time : end_date);      
+    }
+    else
+    {
+      values.end = '';
+    }
 
 		return values;
 	},
@@ -183,7 +193,7 @@ ResourceFilter = $.extend({}, {
 	
 		if (start_date) {
 			// get the action from the form
-			var action = $('#resource_date').closest('form').attr('action')+'';
+			var action = $('#start_date').closest('form').attr('action')+'';
 
 			// set the query vars
 			//  the end date is optional
