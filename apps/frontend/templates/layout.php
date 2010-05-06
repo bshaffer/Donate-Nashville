@@ -50,10 +50,7 @@
     <?php if (has_slot('breadcrumbs')): ?>
   		<div class="container_16 clearfix">
   			<div class="grid_16">
-  				<ul class="breadcrumbs">
-  					<li><a href="index.html">Donate Nashville</a>&raquo;</li>
-  					<li>I Need</li>
-  				</ul>
+          <?php include_slot('breadcrumbs') ?>
   			</div>
   		</div>
     <?php endif; ?>
