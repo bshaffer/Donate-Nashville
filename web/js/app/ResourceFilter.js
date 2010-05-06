@@ -3,7 +3,10 @@ var ResourceFilter;
 ResourceFilter = $.extend({}, {
 	
 	MINIMUM_FILTER_LENGTH: 3,
-	KEYPRESS_DEBOUNCE_RATE: 400, // delays this long (in ms) after each keypress to prevent too many ajax requests
+	KEYPRESS_DEBOUNCE_RATE: 450, // delays this long (in ms) after each keypress to prevent too many ajax requests
+	FADE_TIME: 300, // fade in/out takes this long
+
+	// these are specified in the resource filter template
 	NO_RESULTS_STRING: '', // this will be loaded from the html (see resource filter template)
 	DEFAULT_STRING: '', // this will be loaded from the html (see resource filter template)
 
@@ -15,8 +18,10 @@ ResourceFilter = $.extend({}, {
 	
 	// called after the document is ready and initial documentReady functions are run
 	init: function() {
+		// attach the change events to do the ajax search
 		this.attachEvents();
 		
+		// read the NO_RESULTS_STRING and DEFAULT_STRING from the HTML
 		this.readStringsFromHTML();
 	},
 	
@@ -77,20 +82,18 @@ ResourceFilter = $.extend({}, {
 
 			// send the ajax request
 			var vars = {'q': value};
-			$('#ResourceResultsList').load(action, vars, function(data, status) {
-				// mark as not loading
-				self.updateUI(false);
-				
-				// if we got a blank string, show the no results string instead
-				if (data.length < 1) {
+			$.get(action, vars, function(data, status) {
+				if (data.length > 0) {
+					// got data back - show the html string
+					self.showContent(data);
+				} else {
+					// if we got a blank string, show the no results string instead
 					self.showNoResults();
 				}
+				
 			}, 'html');
 		} else {
 			// didn't get enough characters
-
-			//  show as not loading
-			self.updateUI(false);
 			
 			// fill the default string
 			self.showDefaultString();
@@ -210,21 +213,19 @@ ResourceFilter = $.extend({}, {
 			if (end_date.length) { vars.end = end_date; }
 
 			// send the request
-			$('#ResourceResultsList').load(action, vars, function(data, status) {
-				// mark as not loading
-				self.updateUI(false);
-				
-				// if we got a blank string, show the no results string instead
-				if (data.length < 1) {
+			$.get(action, vars, function(data, status) {
+				if (data.length > 0) {
+					// got data back - show the html string
+					self.showContent(data);
+				} else {
+					// if we got a blank string, show the no results string instead
 					self.showNoResults();
 				}
+
 			}, 'html');
 		} else {
 			// didn't get a start date
 
-			//  show as not loading
-			self.updateUI(false);
-			
 			// fill no results string
 			self.showDefaultString();
 		}
@@ -236,11 +237,28 @@ ResourceFilter = $.extend({}, {
 
 	// shows when no results are available
 	showNoResults: function() {
-		$('#ResourceResultsList').html('<div class="noResults">'+this.NO_RESULTS_STRING+'</div>');
+		this.showContent('<div class="noResults">'+this.NO_RESULTS_STRING+'</div>');
 	},
 	
 	showDefaultString: function() {
-		$('#ResourceResultsList').html('<div class="emptyList">'+this.DEFAULT_STRING+'</div>');
+		this.showContent('<div class="emptyList">'+this.DEFAULT_STRING+'</div>');
+	},
+	
+	
+	////////////////////////////////////////////////////////////
+	/// UI Updates
+	
+	showContent: function(new_content) {
+		var self = this;
+		
+		// update content
+		$('#ResultsContainer').queue(function() {
+			$(this).html(new_content);
+			$(this).dequeue();
+
+			// mark as no longer loading after the content is applied
+			self.updateUI(false);
+		});
 	},
 	
 	
@@ -248,16 +266,18 @@ ResourceFilter = $.extend({}, {
 	updateUI: function(loading) {
 		if (loading) {
 			$('#ResourceResultsList').addClass('searchLoading');
+			$('#ResultsContainer').animate({opacity:0}, this.FADE_TIME);
 		} else {
 			$('#ResourceResultsList').removeClass('searchLoading');
+			$('#ResultsContainer').animate({opacity:1}, this.FADE_TIME);
 		}
 		
 	},
 	
 	// reads the no results and default strings from the html
 	readStringsFromHTML: function() {
-		this.NO_RESULTS_STRING = $('#ResourceResultsList .noResults').html();
-		this.DEFAULT_STRING = $('#ResourceResultsList .emptyList').html();
+		this.NO_RESULTS_STRING = $('#ResultsContainer .noResults').html();
+		this.DEFAULT_STRING = $('#ResultsContainer .emptyList').html();
 	},
 	
 
