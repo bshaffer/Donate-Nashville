@@ -35,6 +35,12 @@ class NeedTimeResourceForm extends TimeResourceForm
     $this->widgetSchema['resource_date'] = new sfWidgetFormJQueryDate();
     $this->widgetSchema['start_time'] = new dnWidgetFormJQueryTimePicker();
     $this->widgetSchema['end_time'] = new dnWidgetFormJQueryTimePicker();
+    
+    $this->validatorSchema['start_time']->setOption('required', true);
+    $this->validatorSchema['end_time']->setOption('required', true);
+    $this->mergePostValidator(
+      new sfValidatorCallback(array('callback' => array($this, 'validateStartEnd')))
+    );
   }
 
   /**
@@ -43,5 +49,22 @@ class NeedTimeResourceForm extends TimeResourceForm
   protected function getTransactionType()
   {
     return 'need';
+  }
+  
+  /**
+   * make sure the start time is before the end time
+   */
+  public function validateStartEnd($validator, $values)
+  {
+    $start = strtotime($values['start_time']);
+    $end = strtotime($values['end_time']);
+    if ($start > $end)
+    {
+      // start time is later than end time, throw an error
+      throw new sfValidatorError($validator, 'Start time cannot be later than end time');
+    }
+ 
+    // times are fine, return values
+    return $values;
   }
 }
