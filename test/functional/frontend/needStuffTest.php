@@ -36,7 +36,7 @@ $browser
     ->isModuleAction('stuff', 'show')
     
   ->with('response')->begin()
-    ->matches('/1313 N. 4th Ave/')
+    ->matches('/Stuff Details: Sump Pump/')
     ->checkForm('ContactResourceOwnerForm')
   ->end()
 ;
