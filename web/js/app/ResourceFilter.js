@@ -36,7 +36,7 @@ ResourceFilter = $.extend({}, {
 		if (this.resource_type == 'stuff') {
 			this.runFilterForStuff($('input.resource'));
 		} else {
-			this.dateSelectChanged();
+			this.dateOrTimeChanged();
 		}
 	},
 	
@@ -96,98 +96,81 @@ ResourceFilter = $.extend({}, {
 	attachEventsForTime: function() {
 		var self = this;
 		
-		// bind an onchange event to all the pulldowns
-		$('#resource_date_month, #resource_date_day, #resource_date_year, #start_time_hour, #start_time_minute, #end_time_hour, #end_time_minute').bind('change', function(e) {
-			self.dateSelectChanged();
-		});
-
 		// add to onSelect event for date pickers
 		this.attachEventsForDatePicker('resource_date');
-    // this.attachEventsForDatePicker('end');
+
+		// add to onchange event for time pickers
+		this.attachEventsForTimePicker('start_time');
+		this.attachEventsForTimePicker('end_time');
+		
 	},
 	
-	attachEventsForDatePicker: function(prefix) {
+	attachEventsForDatePicker: function(date_field_id) {
 		var self = this;
 
 		// attach an onSelect event for the changed date when the datepicker is used
-		var date_control = $('#'+prefix+'_jquery_control');
+		var date_control = $('#'+date_field_id);
 
 		// capture the old onSelect function and call it
-		var old_event_func = date_control.datepicker('option', 'onSelect');
 		date_control.datepicker('option', 'onSelect', function(date_text, datepicker_instance) {
-			// call the old function
-			(old_event_func)(date_text, datepicker_instance);
-			
 			// call our function
-			self.dateSelectChanged();
+			self.dateOrTimeChanged();
 		});
 	},
 	
-	// called when any date is changed - either manually or with the date picker
-	// here we will pull the start date, the end date and send the appropriate request
-	dateSelectChanged: function() {
+	attachEventsForTimePicker: function(time_field_id) {
+		var self = this;
+
+		$('#'+time_field_id).bind('change', function(e) {
+			self.dateOrTimeChanged();
+		});
+	},
+	
+	
+	// called when any date or time is changed - either manually or with the date picker or time picker
+	//   here we pull the start date, the end date and send the appropriate request
+	dateOrTimeChanged: function() {
 		// get the start and end dates
 		var values = this.getDateValues();
 
 		// make sure there is at least a valid start date
-		if (values.start) {
+		if (values !== null && values.start) {
 			this.runFilterForTime(values.start, values.end);
 		}
 	},
 	
+	// this can return null for a non-existant date
 	getDateValues: function() {
-	  var date = this.extractDateValue('resource_date');
 		var values = {};
-		values.start =  date + ' ' + this.extractTimeValue('start_time');
-		var endTime = this.extractTimeValue('end_time', true);
-		values.end =  endTime ? date + ' ' + endTime : '';
+
+	  var date = this.extractDateValue('resource_date');
+		if (!date.length) {
+			return null;
+		}
+
+		// calculate start, with or without a time
+		var start_time = this.extractTimeValue('start_time');
+		values.start =  date + (start_time.length ? ' ' + start_time : '');
+
+		// calculate end, if an end time was specified
+		var end_time = this.extractTimeValue('end_time');
+		values.end = (end_time ? date + ' ' + end_time : '');
+
 		return values;
 	},
 	
-	extractTimeValue: function(prefix, required) {
+	extractTimeValue: function(time_field_id) {
 		var time_text = '';
-		
-		// a temporary function to extract a date field and verify an integer value
-		var extractIntVal = function(field_name) {
-			var text_val = $('#'+prefix+'_'+field_name).val();
-			var int_val = parseInt(text_val, 10);
-			if (isNaN(int_val)) { return null; }
-			return text_val;
-		};
-
-		// hour can be blank if required is false
-		var hour = extractIntVal('hour');
-		if (hour === null) { if(required) { return false; } else {hour = '00'}; }
-		// minute can be blank
-		var minute = extractIntVal('minute');
-		if (minute === null) { minute = '00'; }
-		
-		// return the date in y-m-d h:m:s
-		return hour+':'+minute+':00';
+		var text_val = $('#'+time_field_id).val();
+		return text_val;
 	},
 	
 	
-	extractDateValue: function(prefix) {
-		var date_text = '';
+	extractDateValue: function(date_field_id) {
+		var date_text = $('#'+date_field_id).val();
 		
-		// a temporary function to extract a date field and verify an integer value
-		var extractIntVal = function(field_name) {
-			var text_val = $('#'+prefix+'_'+field_name).val();
-			var int_val = parseInt(text_val, 10);
-			if (isNaN(int_val)) { return null; }
-			return text_val;
-		};
-		
-		// year/month/day must have a value
-		var year = extractIntVal('year');
-		if (year === null) { return false; }
-		var month = extractIntVal('month');
-		if (month === null) { return false; }
-		var day = extractIntVal('day');
-		if (day === null) { return false; }
-		
-		// return the date in y-m-d h:m:s
-		return year+'-'+month+'-'+day;
+		// convert from m/d/y to y-m-d
+		return date_text.replace(/(\d+)\/(\d+)\/(\d+)/,'$3-$1-$2');
 	},
 	
 	
