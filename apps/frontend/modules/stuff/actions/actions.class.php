@@ -165,6 +165,10 @@ class stuffActions extends sfActions
     $this->setTemplate('have');
   }
   
+  /**
+   * function to take in a contact form submission from a contact form on 
+   * the show page and send the resource's owner an email about it
+   */
   public function executeNewMessage(sfWebRequest $request)
   {
     $this->resource = Doctrine_Core::getTable('stuffResource')->find($request->getParameter('id'));
@@ -175,7 +179,7 @@ class stuffActions extends sfActions
     
     if ($this->form->isValid())
     {
-      $this->contact = $this->form->getValue('contact');
+      $this->contact = $request->getParameter($this->form->getName());
       
       // send email to owner of resource
       $this->sendMatchFoundEmail($this->resource, $this->contact);
@@ -192,6 +196,17 @@ class stuffActions extends sfActions
   protected function sendMatchFoundEmail($resource, $contact)
   {
     // send email based on $resource->transaction_type
-    var_dump($contact);
+    $body = var_export($contact, true);
+    
+    $message = $this->getMailer()->compose(
+      sfConfig::get('app_email_from'),
+      $resource->User->username,
+      dnConfig::getEmailSubject('match_found'),
+      $body
+    );
+    
+    $message->setContentType('text/html');
+    $this->getMailer()->send($message);
+    
   }
 }
