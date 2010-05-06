@@ -18,30 +18,75 @@
     <?php include_javascripts() ?>
 </head>
   <body>
-    <div id="page" class="container_16 clearfix">
-      <div id="header" class="grid_16">
-          
-        <h1 id="site-title"><a href="<?php echo url_for('@homepage') ?>">Donate Nashville</a></h1>
-        
-        <a href="<?php echo url_for('@user_resource') ?>">manage posts</a>
+    <div id="header">
+			<div class="container_16 clearfix">
+				<div class="grid_5">
+					<a href="<?php echo url_for('@homepage') ?>" title="Donate Nashville"><?php echo image_tag("logo-DN.gif", array('class'=>'logo', 'alt'=>"Logo Donate Nashville"))?></a>
+				</div>
+				<div class="grid_6"><a href="<?php echo url_for('@user_resource') ?>">manage posts</a></div>
+				<div class="grid_5">
+					<div class="twitter-single header right">
+						<strong>twitter.com/donateNashville</strong>
+						Mail gift cards (Home Depot, Wal-Mart, Kroger, etc.) to church office &amp; they'll get to those who need them. <a href="#">www.ottercreek.org</a> <a href="#">about 2 hours ago</a>
+					</div>
+				</div>
+			</div>
+		</div>
 
-        <ul id="nav" class="grid_5 prefix_11">
-          <li><?php echo link_to('I Have...', '@have') ?></li>
-          <li><?php echo link_to('I Need...', '@need') ?></li>
-        </ul>
-      </div>
-      
-      <div id="content-area" class="grid_16">
-        <?php echo $sf_content ?>
-      </div>
-      
+		<div id="main-nav">
+			<div class="container_16 clearfix">
+				<div class="grid_16">
+					<ul class="left">
+						<li><?php echo link_to('I Need', '@need') ?></li>
+						<li><?php echo link_to('I Have', '@have') ?></li>
+					</ul>
+					<div class="left">
+						Have a question? <a href="#">Contact Us</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+    <?php if (has_slot('breadcrumbs')): ?>
+  		<div class="container_16 clearfix">
+  			<div class="grid_16">
+  				<ul class="breadcrumbs">
+  					<li><a href="index.html">Donate Nashville</a>&raquo;</li>
+  					<li>I Need</li>
+  				</ul>
+  			</div>
+  		</div>
+    <?php endif; ?>
+		
+		<div id="page" class="container_16 clearfix">
+		  
+		  <?php if (has_slot('sidebar')): ?>
+  		  <div id="content-area" class="clearfix">
+  		    <div class="grid_12">
+  		       <?php echo $sf_content ?>
+  		    </div>
+    		  <div class="grid_4">
+            <?php include_slot('sidebar'); ?>
+          </div>
+    		</div>		    
+		  <?php else: ?>
+		    <div class="grid_16">
+		       <?php echo $sf_content ?>
+		    </div>
+		  <?php endif ?>
+    
       <div id="footer" class="grid_16 clearfix">
-        <ul id="footer-nav">
-          <li><?php echo link_to('About DonateNashville', '@about') ?></li>
-          <li class="last"><?php echo link_to('Terms of Service', '@terms_of_service') ?></li>
-        </ul>
-        <p>&copy;<?php echo date('Y') ?> Donate Nashville.</p>
-      </div>
-  </body>
+  		<ul>
+  			<li><a href="#" title="">Home</a></li>
+  			<li><?php echo link_to('I Need', '@need') ?></li>
+  			<li><?php echo link_to('I Have', '@have') ?></li>
+  			<li><?php echo link_to('About DonateNashville', '@about') ?></li>
+  			<li><?php echo link_to('Terms of Service', '@terms_of_service') ?></li>
+  			<li><a href="#" title="">Contact Us</a></li>
+  			<li><a href="#" title="">Twitter</a></li>
+  		</ul>
+  		<div class="center">&copy;<?php echo date('Y') ?> Donate Nashville</div>
+		</div>
+	</div>
+</body>
 </html>
-

@@ -1,0 +1,110 @@
+/* 
+	DonateNashville.com: base.css
+	Created: 2010-05-10
+	Author: Justin Seiter
+*/
+
+/* TABLE OF CONTENTS
+****************************************************************************************************
+	RESET
+	TYPOGRAPHY
+	IMAGES
+	LINKS
+	FLASH MESSAGES
+	HELPERS
+*/
+
+/* RESET
+*****************************************************************************************************/
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { border: 0; margin: 0; padding: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; }
+
+body { line-height: 1.5; }
+
+/* Tables still need 'cellspacing="0"' in the markup. */
+table { border-collapse: separate; border-spacing: 0; }
+caption, th, td { font-weight: normal; text-align: left; }
+table, td, th { vertical-align: middle; }
+
+/* Remove possible quote marks (") from <q>, <blockquote>. */
+blockquote:before, blockquote:after, q:before, q:after { content: ""; }
+blockquote, q { quotes: "" ""; }
+
+/* Remove annoying border on linked images. */
+a img { border: none; }
+
+hr { border-color:#eee; border-style:solid; border-width:1px 0 0; clear:both; height:0 }
+
+ol { list-style:decimal; list-style-position: inside;}
+ul { list-style:none; list-style-position: inside; }
+li { margin:0 0 10px 0; }
+
+p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset { margin-bottom:20px; }
+
+
+/* TYPOGRAPHY
+*****************************************************************************************************/
+h1 { font-size:27px; }
+h2 { font-size:24px; }
+h3 { font-size:18px; }
+h4 { font-size:14px; }
+h5 { font-size:12px; }
+h6 { font-size:10px; }
+
+.text-tiny { font-size:10px; }
+.text-medium { font-size:12px; }
+.text-large { font-size:16px; }
+.text-right { text-align:right; }
+.text-danger { color:#A80500; }
+.text-capitalize { text-transform: capitalize;}
+.text-highlite { background-color:#fffecc; padding:0 0.2em; /* Light Yellow */ }
+.text-highlite-danger { color:#A80500; background:#FFC2C8; padding:0 0.2em; /* Reds */ }
+.text-highlite-okay { color:#166F00; background:#D3FFB9;padding:0 0.2em;  /* Greens */ }
+.text-right { text-align:right; }
+
+
+/* IMAGES
+*****************************************************************************************************/
+img.left, img.right { margin: 0 10px 5px; }
+
+	img.left { margin-left: 0; }
+	img.right { margin-right: 0; }
+	
+img.icon { vertical-align:middle; }
+	
+
+/* LINKS
+*****************************************************************************************************/
+a { text-decoration: none; outline:none; }
+
+a:link, a:visited { color: #333; }
+
+a:hover, a:active { color: #666; }
+
+a.danger { color:#A80500; /* Red */ }
+a.danger:hover { color:#A80500; /* Red */ }
+
+
+/* FLASH MESSAGES
+*****************************************************************************************************/
+.flash-error { text-align:left;display:block;padding:14px 14px 14px 30px;font-weight:bold;font-size:14px;background:#FFC2C8 url('../images/icons/error.png') no-repeat 10px 16px;color:#A80500;margin-bottom:24px;border:1px solid;-khtml-border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px; }
+.flash-error p { margin:0 0 10px 20px; }
+.flash-error li { margin:0 0 6px 35px;list-style-type:circle;font-size:12px;font-weight:normal; }
+.flash-notice { text-align:left;display:block;padding:14px 14px 14px 32px;font-size:14px;font-weight:bold;background:#FFEB8F url('../images/icons/warning-triangle.png') no-repeat 10px 16px;color:#6F4000;margin-bottom:24px;border:1px solid;-khtml-border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px; }
+.flash-confirm { text-align:left;display:block;padding:14px 14px 14px 32px;font-size:14px;font-weight:bold;background:#D3FFB9 url('../images/icons/okay.png') no-repeat 10px 16px;color:#166F00;margin-bottom:24px;border:1px solid;-khtml-border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px; }
+
+
+/* HELPERS
+*****************************************************************************************************/
+.left { float:left; }
+.right { float:right; }
+.center { text-align:center; margin:0 auto; display:block; }
+.half { width:45%; /* Not exactly half to account for paddings, margins etc. */ }
+.pad5 { padding:5px; }
+.pad10 { padding:10px; }
+.pad20 { padding:20px; }
+.full-margin { margin:0 0 20px 0; }
+.half-margin { margin:0 0 10px 0; }
+.no-margin { margin:0; }
+
+/* Hide stuff without resorting to display:none; */
+.hide { visibility:hidden; width:0!important; height:0!important; line-height:0!important;padding:0!important;margin:0!important; }
