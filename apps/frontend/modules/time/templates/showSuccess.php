@@ -6,5 +6,9 @@
   <?php include_partial('user/contact_info', array('user' => $resource['User'])) ?>
 </div>
 
-<!-- call to action here, which depends on whether this is a "need" looking for a "have" or vice versa -->
-<?php include_partial('resource/resource_contact_owner_form', array('form' => $form, 'type' => $type)) ?>
+<?php if ($resource['is_fulfilled'] || $sf_user->isOwner($resource)): ?>
+  <span class="fulfilled"><?php echo image_tag('/sfDoctrinePlugin/images/tick.png', array('alt' => 'fulfilled')) ?>&nbsp;Fulfilled</span>
+<?php else: ?>
+  <!-- call to action here, which depends on whether this is a "need" looking for a "have" or vice versa -->
+  <?php include_partial('resource/resource_contact_owner_form', array('form' => $form, 'type' => $type)) ?>
+<?php endif ?>

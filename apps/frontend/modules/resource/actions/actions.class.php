@@ -57,7 +57,7 @@ class resourceActions extends sfActions
       
   }
   
-  public function executeHousing(sfWebRequest $request)
+  public function executePlace(sfWebRequest $request)
   {
 
   }

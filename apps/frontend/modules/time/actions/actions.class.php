@@ -64,9 +64,9 @@ class timeActions extends sfActions
     $form->bind($request->getParameter($form->getName()));
     if ($form->isValid())
     {
-      $need = $form->save();
+      $time = $form->save();
 
-      $request->setAttribute('resource', $need);
+      $request->setAttribute('resource', $time);
       $body = $this->getController()->getPresentationFor('time', 'needEmail');
       
       $message = $this->getMailer()->compose(
@@ -78,9 +78,10 @@ class timeActions extends sfActions
       $message->setContentType('text/html');
       $this->getMailer()->send($message);
 
+      $this->getUser()->setOwner($time);
       
       $this->redirect($this->generateUrl('time_show', array(
-        'sf_subject' => $need
+        'sf_subject' => $time
       )));
     }
   }

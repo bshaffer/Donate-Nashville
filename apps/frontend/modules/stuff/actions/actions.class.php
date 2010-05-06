@@ -78,6 +78,8 @@ class stuffActions extends sfActions
       $message->setContentType('text/html');
       $this->getMailer()->send($message);
       
+      $this->getUser()->setOwner($stuff);
+      
       $this->redirect($this->generateUrl('stuff_show', array(
         'sf_subject' => $stuff
       )));
@@ -135,6 +137,8 @@ class stuffActions extends sfActions
       );
       $message->setContentType('text/html');
       $this->getMailer()->send($message);
+      
+      $this->getUser()->setOwner($stuff);
       
       $this->redirect($this->generateUrl('stuff_show', array(
         'sf_subject' => $stuff

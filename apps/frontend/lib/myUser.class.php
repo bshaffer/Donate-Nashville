@@ -8,7 +8,7 @@ class myUser extends sfGuardSecurityUser
   {
     if ($this->isAuthenticated()) 
     {
-      return $object['owner_id'] == $this->getUser()->getId();
+      return $object['owner_id'] == $this->getGuardUser()->getId();
     }
     
     return isset($this->ownedIds[get_class($object)]) 

@@ -21,7 +21,7 @@ $browser
   ->end()
     
   ->click('5/5 from 6:00 to 8:00')
-    ->isModuleAction('time', 'match')
+    ->isModuleAction('time', 'show')
     
   ->with('response')->begin()
     ->matches('/5157 Whitaker Dr/')

@@ -67,7 +67,7 @@ $browser
   
   ->with('request')->begin()
     ->isParameter('module', 'stuff')
-    ->isParameter('action', 'match')
+    ->isParameter('action', 'show')
   ->end()
   
   ->with('response')->begin()

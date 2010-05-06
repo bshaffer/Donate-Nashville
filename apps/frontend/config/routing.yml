@@ -67,11 +67,17 @@ add_have_stuff_create:
     sf_method: [post]
 
 # "static" pages for more information
-need_housing:
-  url:   /need/place
-  param: { module: resource, action: housing }
+need_place:
+  url:   /place
+  param: { module: resource, action: place }
 need_money:
-  url:   /need/money
+  url:   /money
+  param: { module: resource, action: money }
+have_place:
+  url:   /need/place
+  param: { module: resource, action: place }
+have_money:
+  url:   /have/money
   param: { module: resource, action: money }
 
 # Actions for listing Resources
