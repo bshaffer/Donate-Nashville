@@ -7,5 +7,4 @@
 </div>
 
 <!-- call to action here, which depends on whether this is a "need" looking for a "have" or vice versa -->
-
-<input type="button" value="Contact This User" onclick="window.location = '<?php echo url_for('@user_contact?id='.$resource['owner_id']) ?>';"/>
+<?php include_partial('resource/resource_contact_owner_form', array('form' => $form, 'type' => $type)) ?>

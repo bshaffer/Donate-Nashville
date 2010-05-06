@@ -36,3 +36,7 @@ all:
     param:
       generate_shortest_url:            true
       extra_parameters_as_query_string: true
+  mailer:
+    param:
+      transport:
+        class:  Swift_MailTransport

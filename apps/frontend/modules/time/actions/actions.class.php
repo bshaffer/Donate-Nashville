@@ -24,6 +24,16 @@ class timeActions extends sfActions
   public function executeMatch(sfWebRequest $request)
   {
     $this->resource = $this->getRoute()->getObject();
+    $this->type = $this->resource['transaction_type'] == 'need' ? 'have' : 'need';
+    $this->form = new ContactResourceOwnerForm();
+    if($request->isMethod('POST'))
+    {
+      $this->form->bind($request->getParameter('resource_contact_owner'));
+      if($this->form->isValid())
+      {
+        $contact_info = $this->form->save();
+      }
+    }
   }
 
   /**
