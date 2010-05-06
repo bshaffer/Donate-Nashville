@@ -30,4 +30,8 @@ class defaultComponents extends sfComponents
   {
     
   }
+  
+  public function executeTwitter()
+  {
+  }
 }
