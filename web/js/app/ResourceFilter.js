@@ -121,7 +121,7 @@ ResourceFilter = $.extend({}, {
 		// attach an onSelect event for the changed date when the datepicker is used
 		var date_control = $('#'+date_field_id);
 
-		// capture the old onSelect function and call it
+		// add an onSelect function to the datepicker
 		date_control.datepicker('option', 'onSelect', function(date_text, datepicker_instance) {
 			// call our function
 			self.dateOrTimeChanged();
@@ -226,7 +226,7 @@ ResourceFilter = $.extend({}, {
 			self.updateUI(false);
 			
 			// fill no results string
-			self.showNoResults();
+			self.showDefaultString();
 		}
 	},
 
