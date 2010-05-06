@@ -2,4 +2,5 @@
 <ul>
   <li><?php echo link_to('Help', '@add_need_time') ?></li>
   <li><?php echo link_to('Stuff', '@need_stuff') ?></li>
+  <li><?php echo link_to('Housing', '@need_housing') ?></li>
 </ul>
