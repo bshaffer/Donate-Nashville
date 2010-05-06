@@ -3,3 +3,5 @@
 
   <?php include_partial('default/contact_form', array('form' => $form)) ?>
 </div>
+
+<?php slot('breadcrumbs', get_component('default', 'breadcrumbs')) ?>

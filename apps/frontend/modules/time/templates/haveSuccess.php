@@ -31,3 +31,5 @@ include_partial('resource/resource_filter', array('resource_type' => 'time', 're
   	</p>
   </div>
 <?php end_slot() ?>
+
+<?php slot('breadcrumbs', get_component('default', 'breadcrumbs')) ?>

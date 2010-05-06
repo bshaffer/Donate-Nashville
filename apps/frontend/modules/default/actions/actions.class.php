@@ -42,6 +42,8 @@ class defaultActions extends frontendActions
         $this->setTemplate('newContactMessageSent');
       }
     }
+    
+    $this->breadcrumbs->add('Contact');
   }
   
   /**

@@ -4,13 +4,22 @@ ResourceFilter = $.extend({}, {
 	
 	MINIMUM_FILTER_LENGTH: 3,
 	KEYPRESS_DEBOUNCE_RATE: 400, // delays this long (in ms) after each keypress to prevent too many ajax requests
-	NO_RESULTS_STRING: '[ no results found ]',
+	NO_RESULTS_STRING: '', // this will be loaded from the html (see resource filter template)
+	DEFAULT_STRING: '', // this will be loaded from the html (see resource filter template)
 
 	resource_type: 'time', // stuff or time
 	
 	
 	////////////////////////////////////////////////////////////
 	/// Init handlers
+	
+	// called after the document is ready and initial documentReady functions are run
+	init: function() {
+		this.attachEvents();
+		
+		this.readStringsFromHTML();
+	},
+	
 	
 	// set to stuff or time
 	setResourceType: function(resource_type) {
@@ -83,8 +92,8 @@ ResourceFilter = $.extend({}, {
 			//  show as not loading
 			self.updateUI(false);
 			
-			// fill no results string
-			self.showNoResults();
+			// fill the default string
+			self.showDefaultString();
 		}
 	},
 
@@ -112,7 +121,7 @@ ResourceFilter = $.extend({}, {
 		// attach an onSelect event for the changed date when the datepicker is used
 		var date_control = $('#'+date_field_id);
 
-		// capture the old onSelect function and call it
+		// add an onSelect function to the datepicker
 		date_control.datepicker('option', 'onSelect', function(date_text, datepicker_instance) {
 			// call our function
 			self.dateOrTimeChanged();
@@ -217,7 +226,7 @@ ResourceFilter = $.extend({}, {
 			self.updateUI(false);
 			
 			// fill no results string
-			self.showNoResults();
+			self.showDefaultString();
 		}
 	},
 
@@ -227,8 +236,13 @@ ResourceFilter = $.extend({}, {
 
 	// shows when no results are available
 	showNoResults: function() {
-		$('#ResourceResultsList').html('<span class="noResults">'+this.NO_RESULTS_STRING+'</span>');
+		$('#ResourceResultsList').html('<div class="noResults">'+this.NO_RESULTS_STRING+'</div>');
 	},
+	
+	showDefaultString: function() {
+		$('#ResourceResultsList').html('<div class="emptyList">'+this.DEFAULT_STRING+'</div>');
+	},
+	
 	
 	// updates the user interface to add a "searchLoading" class
 	updateUI: function(loading) {
@@ -239,6 +253,13 @@ ResourceFilter = $.extend({}, {
 		}
 		
 	},
+	
+	// reads the no results and default strings from the html
+	readStringsFromHTML: function() {
+		this.NO_RESULTS_STRING = $('#ResourceResultsList .noResults').html();
+		this.DEFAULT_STRING = $('#ResourceResultsList .emptyList').html();
+	},
+	
 
 	
 	__end: null
