@@ -12,4 +12,15 @@
  */
 class Resource extends BaseResource
 {
+
+  /**
+   * Whether or not to publicly display the owner's contact information
+   * based on the value of the privacy field
+   * 
+   * @return boolean
+   */
+  public function showContactInformation()
+  {
+    return ($this->privacy == 'show_info');
+  }
 }
