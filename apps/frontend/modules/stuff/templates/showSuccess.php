@@ -22,6 +22,8 @@
   <?php endif ?>
 </div>
 
+<?php slot('breadcrumbs', get_component('default', 'breadcrumbs')) ?>
+
 <?php slot('sidebar') ?>
   
 <?php end_slot() ?>

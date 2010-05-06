@@ -86,3 +86,5 @@
   
   <input type="submit" value="submit" />
 </form>
+
+<?php slot('breadcrumbs', get_component('default', 'breadcrumbs')) ?>

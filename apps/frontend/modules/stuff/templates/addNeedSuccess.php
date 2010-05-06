@@ -100,7 +100,12 @@
     </fieldset>
   </form>
 </div>
+  <input type="submit" value="submit" />
+</form>
+
 
 <?php slot('sidebar') ?>
   
 <?php end_slot() ?>
+
+<?php slot('breadcrumbs', get_component('default', 'breadcrumbs')) ?>

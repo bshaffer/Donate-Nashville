@@ -8,14 +8,14 @@
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class stuffActions extends sfActions
+class stuffActions extends frontendActions
 {
-
   /**
    * Main "need stuff" screen, which is a search
    */
   public function executeNeed(sfWebRequest $request)
   {
+    $this->breadcrumbs->add('Need', '@need')->add('Stuff');
   }
 
   /**
@@ -24,7 +24,7 @@ class stuffActions extends sfActions
   public function executeShow(sfWebRequest $request)
   {
     $this->resource = $this->getRoute()->getObject();
-    $this->type = $this->resource['transaction_type'] == 'need' ? 'have' : 'need';
+    $this->type = $this->resource->getOppositeType();
     $this->form = new ContactResourceOwnerForm();
     if($request->isMethod('POST'))
     {
@@ -34,6 +34,8 @@ class stuffActions extends sfActions
         $contact_info = $this->form->save();
       }
     }
+    
+    $this->breadcrumbs->add('Stuff', '@need_stuff')->add($this->resource['title']);
   }
   
   /**
@@ -42,6 +44,8 @@ class stuffActions extends sfActions
   public function executeAddNeed(sfWebRequest $request)
   {
     $this->form = new NeedStuffResourceForm();
+    
+    $this->breadcrumbs->add('Need', '@need')->add('Stuff', '@need_stuff')->add('Add');
   }
 
   /**
@@ -54,6 +58,8 @@ class stuffActions extends sfActions
     $this->processAddNeedForm($request, $this->form);
   
     $this->setTemplate('addNeed');
+    
+    $this->breadcrumbs->add('Need', '@need')->add('Stuff', '@need_stuff')->add('Add');
   }
   
   /**
@@ -104,6 +110,8 @@ class stuffActions extends sfActions
   public function executeAddHave(sfWebRequest $request)
   {
     $this->form = new HaveStuffResourceForm();
+
+    $this->breadcrumbs->add('Have', '@have')->add('Stuff', '@have_stuff')->add('Add');
   }
 
   /**
@@ -116,6 +124,8 @@ class stuffActions extends sfActions
     $this->processAddHaveForm($request, $this->form);
   
     $this->setTemplate('addHave');
+    
+    $this->breadcrumbs->add('Have', '@have')->add('Stuff', '@have_stuff')->add('Add');
   }
   
   /**
@@ -160,11 +170,7 @@ class stuffActions extends sfActions
   
   public function executeHave(sfWebRequest $request)
   {
-  }
-
-  public function executeHaveCreate(sfWebRequest $request)
-  {
-    $this->setTemplate('have');
+    $this->breadcrumbs->add('Have', '@have')->add('Stuff');
   }
   
   /**
@@ -181,6 +187,7 @@ class stuffActions extends sfActions
     
     if ($this->form->isValid())
     {
+      $this->form->save();
       $this->contact = $request->getParameter($this->form->getName());
       
       // send email to owner of resource

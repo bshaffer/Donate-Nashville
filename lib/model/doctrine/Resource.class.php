@@ -23,4 +23,9 @@ class Resource extends BaseResource
   {
     return ($this->privacy == 'show_info');
   }
+  
+  public function getOppositeType()
+  {
+    return $this['transaction_type'] == 'need' ? 'have' : 'need';
+  }
 }
