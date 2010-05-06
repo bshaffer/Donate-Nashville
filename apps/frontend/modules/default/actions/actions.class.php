@@ -1,6 +1,6 @@
 <?php
 
-class defaultActions extends sfActions
+class defaultActions extends frontendActions
 {
   public function executeError404(sfWebRequest $request)
   {
@@ -19,7 +19,7 @@ class defaultActions extends sfActions
   
   public function executeAbout(sfWebRequest $request)
   {
-      
+    $this->breadcrumbs->add('About');
   }
   
   public function executeNewContactMessage(sfWebRequest $request)
@@ -67,6 +67,6 @@ class defaultActions extends sfActions
   
   public function executeTermsOfService(sfWebRequest $request)
   {
-      
+    $this->breadcrumbs->add('Terms of Service');
   }
 }

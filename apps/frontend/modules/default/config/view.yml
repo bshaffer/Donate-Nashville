@@ -1,0 +1,19 @@
+aboutSuccess:
+  metas:
+    title: About | DonateNashville.org
+
+error404Success:
+  metas:
+    title: 404 Page Not Found | DonateNashville.org
+
+indexSuccess:
+  metas:
+    title: Home | DonateNashville.org
+
+secureSuccess:
+  metas:
+    title: Not Authorized | DonateNashville.org
+
+termsOfServiceSuccess:
+  metas:
+    title: Terms of Service | DonateNashville.org

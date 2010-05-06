@@ -3,7 +3,7 @@ default:
     content-type: text/html
 
   metas:
-    title:        DonateNashville.org
+    title:        Home | DonateNashville.org
     #description:  symfony project
     #keywords:     symfony, project
     #language:     en

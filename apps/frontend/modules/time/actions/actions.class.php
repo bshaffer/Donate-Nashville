@@ -8,7 +8,7 @@
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class timeActions extends sfActions
+class timeActions extends frontendActions
 {
 
   /**
@@ -16,6 +16,7 @@ class timeActions extends sfActions
    */
   public function executeHave(sfWebRequest $request)
   {
+    $this->breadcrumbs->add('Have', '@have')->add('Time');
   }
 
   /**
@@ -24,7 +25,7 @@ class timeActions extends sfActions
   public function executeShow(sfWebRequest $request)
   {
     $this->resource = $this->getRoute()->getObject();
-    $this->type = $this->resource['transaction_type'] == 'need' ? 'have' : 'need';
+    $this->type = $this->resource->getOppositeType();
     $this->form = new ContactResourceOwnerForm();
     if($request->isMethod('POST'))
     {
@@ -35,6 +36,8 @@ class timeActions extends sfActions
         $this->form->save();
       }
     }
+    
+    $this->breadcrumbs->add('Time', '@have_time')->add($this->resource['title']);
   }
 
   /**
@@ -43,6 +46,8 @@ class timeActions extends sfActions
   public function executeAddNeed(sfWebRequest $request)
   {
     $this->form = new NeedTimeResourceForm();
+    
+    $this->breadcrumbs->add('Need', '@need')->add('Add Time');
   }
 
   /**
@@ -55,6 +60,8 @@ class timeActions extends sfActions
     $this->processAddNeedForm($request, $this->form);
   
     $this->setTemplate('addNeed');
+
+    $this->breadcrumbs->add('Need', '@need')->add('Add Time');
   }
 
   /**

@@ -5,7 +5,7 @@ include(dirname(__FILE__) . '/../bootstrap/Doctrine.php');
 $app = 'frontend';
 include(dirname(__FILE__) . '/../bootstrap/functional.php');
 
-$t = new lime_test(13, new lime_output_color());
+$t = new lime_test(12, new lime_output_color());
 
 $stuff = new StuffResource();
 $stuff['title'] = 'Stuff Resource ' . csFactory::generate();
@@ -26,19 +26,18 @@ $time['end_time']      = '12:00:00';
 $time->save();
 
 $resources = Doctrine::getTable('TimeResource')
+                ->getListQuery(date('Y-m-d 02:00:00', strtotime('-1 weeks, -1 days')))
+                ->andWhere('title = ?', $time['title'])
+                ->execute();
+
+$t->is($resources->count(), 0, 'No time items returned - start date out of range, end date not specified');
+
+$resources = Doctrine::getTable('TimeResource')
                 ->getListQuery(date('Y-m-d 02:00:00', strtotime('-1 weeks')))
                 ->andWhere('title = ?', $time['title'])
                 ->execute();
 
 $t->is($resources->count(), 1, 'One time item returned - start date in range');
-$t->is($resources->getFirst()->getTitle(), $time['title'], 'correct resource title');
-
-$resources = Doctrine::getTable('TimeResource')
-                ->getListQuery(date('Y-m-d', strtotime('-1 months')))
-                ->andWhere('title = ?', $time['title'])
-                ->execute();
-
-$t->is($resources->count(), 1, 'One time item returned - start date before range');
 $t->is($resources->getFirst()->getTitle(), $time['title'], 'correct resource title');
 
 $resources = Doctrine::getTable('TimeResource')

@@ -1,4 +1,5 @@
 <h1>Donate Nashville</h1>
+
 <h2>Connecting people in need with neighbors who care</h2>
 
 <p>When disaster strikes - large or small - there will always be a need that falls through the cracks:
@@ -29,3 +30,5 @@ strategists and, well, basically anyone else who showed up. We came together aro
 community rallied around the phrase "We are Nashville."</p>
 
 <p>For non-resource-related inquires about Donate Nashville and partnering opportunities, contact <a href="mailto:&#x69;&#x6E;&#x66;&#x6F;&#x40;&#x64;&#x6F;&#x6E;&#x61;&#x74;&#x65;&#x6E;&#x61;&#x73;&#x68;&#x76;&#x69;&#x6C;&#x6C;&#x65;&#x2E;&#x63;&#x6F;&#x6D;">info@donatenashville.com</a>.</p>
+
+<?php slot('breadcrumbs', get_component('default', 'breadcrumbs')) ?>
