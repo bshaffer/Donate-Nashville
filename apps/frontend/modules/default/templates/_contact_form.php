@@ -7,43 +7,48 @@
   <?php echo $form->renderGlobalErrors() ?>
   <?php echo $form->renderHiddenFields() ?>
   
-  <div>
-    <label><?php echo $form['email']->renderLabel() ?></label>
+<fieldset>
+<legend>* Required field</legend>
+  <ul>
+    <li>
+      <label><?php echo $form['email']->renderLabel() ?></label>
+      
+      <div>
+        <?php echo $form['email']->renderError() ?>
+        <?php echo $form['email']->render() ?>
+      </div>
+    </li>
     
-    <div>
-      <?php echo $form['email']->renderError() ?>
-      <?php echo $form['email']->render() ?>
-    </div>
-  </div>
-  
-  <div>
-    <label><?php echo $form['name']->renderLabel() ?></label>
+    <li>
+      <label><?php echo $form['name']->renderLabel() ?></label>
+      
+      <div>
+        <?php echo $form['name']->renderError() ?>
+        <?php echo $form['name']->render() ?>
+      </div>
+    </li>
     
-    <div>
-      <?php echo $form['name']->renderError() ?>
-      <?php echo $form['name']->render() ?>
-    </div>
-  </div>
-  
-  <div>
-    <label><?php echo $form['phone']->renderLabel() ?></label>
+    <li>
+      <label><?php echo $form['phone']->renderLabel() ?></label>
+      
+      <div>
+        <?php echo $form['phone']->renderError() ?>
+        <?php echo $form['phone']->render() ?>
+      </div>
+    </li>
     
-    <div>
-      <?php echo $form['phone']->renderError() ?>
-      <?php echo $form['phone']->render() ?>
-    </div>
-  </div>
+    <li class="long">
+      <label><?php echo $form['notes']->renderLabel() ?></label>
+      
+      <div>
+        <?php echo $form['notes']->renderError() ?>
+        <?php echo $form['notes']->render() ?>
+      </div>
+    </li>
   
-  <div>
-    <label><?php echo $form['notes']->renderLabel() ?></label>
-    
-    <div>
-      <?php echo $form['notes']->renderError() ?>
-      <?php echo $form['notes']->render() ?>
-    </div>
-  </div>
-  
-  <input type="submit" value="Send my question" />
+    <li><input type="submit" value="Send my question" /></li>
+  </ul>
+</fieldset>
 </form>
 
 <?php use_javascript('jquery/jquery.form.js')?>
