@@ -303,7 +303,7 @@ ul.breadcrumbs {
 	}
 	
 .widget.special {
-	background: url('../images/stripe-bg-gray.png') repeat;
+	background: url('../images/stripe-bg-ltgray.png') repeat;
 	-khtml-border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
@@ -392,13 +392,17 @@ ul.breadcrumbs {
 		padding:5px;
 		border-bottom:1px solid #D2DDE7;
 		margin:0;
-		padding:10px 5px 10px;
+		padding:10px 6px 10px;
 	}
 	
 	.search-results li.alt {
 		background:#edf2f7;
 	}
 
+	.search-results li h3 span {
+		font-size: 14px;
+		color: #6b8fb5;
+	}
 /* FOOTER
 ****************************************************************************************************/
 #footer {

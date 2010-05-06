@@ -6,7 +6,7 @@ class TimeResourceTable extends ResourceTable
   public function getListQuery($start_date, $end_date = null)
   {
     $query = $this->createQuery('p')
-              ->select('p.title, LEFT(p.description, 200) as summary');
+              ->select('p.title, LEFT(p.description, 200) as summary, p.city, p.num_volunteers, p.resource_date, p.start_time, p.end_time, p.num_volunteers, p.created_at');
     
     $start_time = date('H:i:s', strtotime($start_date));
     $start_date = date('Y-m-d', strtotime($start_date));

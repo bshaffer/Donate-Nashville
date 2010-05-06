@@ -1,18 +1,25 @@
-
-/* when no search results are shown */
-span.noResults {
-	color: #600;
+/* when the form is first loaded and nothing has been searched for */
+div.emptyList {
+	color: #555;
+	font-size: 16px;
 }
 
+/* when no search results are shown */
+div.noResults {
+	color: #555;
+	font-size: 16px;
+}
+
+/* some very basic styling for the results list */
+#ResourceResultsList {
+	margin-bottom: 16px;
+}
 
 
 /* show a spinner while loading */
 #ResourceResultsList.searchLoading {
-	background: url('../images/ajax-loader.gif') no-repeat 8px 0;
+	background: url('../images/ajax-loader.gif') no-repeat 0px 2px;
 }
 
-/* Hide the currently displaying search results while loading new ones */
-#ResourceResultsList.searchLoading * {
-	opacity: 0.2;
-}
-
+/* some elements are hidden on initial page load */
+#ResourceResultsList .hidden { display: none; }

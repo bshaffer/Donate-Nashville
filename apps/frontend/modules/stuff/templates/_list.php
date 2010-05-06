@@ -7,8 +7,9 @@
 			<?php echo link_to('More Info', '@stuff_show?id='. $result['id'], array('class'=>'button')) ?>
 		</div>
 		<h3 class="no-margin"><?php echo link_to($result['title'], '@stuff_show?id='. $result['id']) ?></h3>
-		<strong>Quantity Available:</strong> 3&nbsp;&bull;&nbsp;<span class=""><strong>Added:</strong> May 5, 2010</span>&nbsp;&bull;&nbsp;<strong>Germantown</strong>
+		<strong>Quantity <?php echo $transaction_type == 'have' ? 'Available' : 'Needed' ?>:</strong> 3&nbsp;&bull;&nbsp;<span class=""><strong>Added:</strong> May 5, 2010</span>&nbsp;&bull;&nbsp;<strong>Germantown</strong>
   </li>
+  <?php $i++; ?>
 <?php endforeach ?>
 </ul>  
 <?php endif ?>

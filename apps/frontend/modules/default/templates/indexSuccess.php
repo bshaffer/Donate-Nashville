@@ -2,11 +2,9 @@
   <h1 id="power-line">Connecting people in need with neighbors who care.</h1>
 
   <div id="homepage-desc">
-    When a community faces large-scale challenges, needs can easily fall through the cracks. We created Donate Nashville
-    to fill in the gaps, inviting our community to post its needs, no matter how small or unusual, as well as its many
-    resources. If you have a pressing challenge, let us know. If you have stuff to donate, post specifics here. If you're
-    a concerned neighbor, search for a place to volunteer your time. As neighbors, our generous community will work in
-    creative and personal ways to solve our city's most pressing challenges. <?php echo link_to('More Info', '@about') ?>
+    When a community faces large-scale challenges, needs can easily fall through the cracks. We created
+    Donate Nashville to fill in the gaps, inviting our community to post its needs, no matter how small
+    or unusual, as well as its many resources. <?php echo link_to('More Info', '@about') ?>
   </div>
 
   <div class="options-block">

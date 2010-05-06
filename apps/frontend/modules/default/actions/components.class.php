@@ -25,4 +25,13 @@ class defaultComponents extends sfComponents
     
     $this->items = $breadcrumb->getItems($this->offset);
   }  
+  
+  public function executeNavigation()
+  {
+    $this->section = $this->getRequest()->getParameter('section');
+  }
+  
+  public function executeTwitter()
+  {
+  }
 }

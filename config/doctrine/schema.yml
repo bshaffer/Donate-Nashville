@@ -1,5 +1,6 @@
 Resource:
   actAs:
+    Timestampable:      []
     Locatable:
       fields:           [address_1, address_2, city, state, zip]
   columns:

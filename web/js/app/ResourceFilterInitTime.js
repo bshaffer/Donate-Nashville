@@ -4,7 +4,7 @@ jQuery(function() {
 
 	// attach events AFTER all the document ready code has all executed
 	setTimeout(function() {
-		ResourceFilter.attachEvents();
+		ResourceFilter.init();
 		
 		// also send an ajax call once to prepopulate the search results based on today's date
 		ResourceFilter.forceUpdate();
