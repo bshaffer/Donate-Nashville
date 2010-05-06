@@ -399,6 +399,10 @@ ul.breadcrumbs {
 		background:#edf2f7;
 	}
 
+	.search-results li h3 span {
+		font-size: 14px;
+		color: #6b8fb5;
+	}
 /* FOOTER
 ****************************************************************************************************/
 #footer {

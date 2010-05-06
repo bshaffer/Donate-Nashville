@@ -6,8 +6,9 @@
     <div class="right">
 			<?php echo link_to('More Info', '@time_show?id='. $result['id'], array('class'=>'button')) ?>
 		</div>
-		<h3 class="no-margin"><?php echo link_to($result['title'], '@time_show?id='. $result['id']) ?></h3>
-		<strong>Volunteers Needed:</strong> 3&nbsp;&bull;&nbsp;<span class=""><strong>Added:</strong> May 5, 2010</span>&nbsp;&bull;&nbsp;<strong>Germantown</strong>
+		<h3 class="no-margin"><?php echo link_to($result['title'], '@time_show?id='. $result['id']) ?> <?php if ($result['city']): ?><span>(<strong><?php echo $result['city'] ?></strong>)</span><?php endif ?></h3>
+		<strong>Date:</strong> <?php echo date('M j', strtotime($result['resource_date'])) ?>, <?php echo date('g:ia', strtotime($result['start_time'])) ?> - <?php echo date('g:ia', strtotime($result['end_time'])) ?>
+		<?php if ($result['num_volunteers']): ?>&bull;&nbsp;<strong>Volunteers Needed:</strong> <?php echo $result['num_volunteers'] ?><?php endif ?>
   </li>
   <?php $i++; ?>
 <?php endforeach ?>
