@@ -39,3 +39,5 @@
 <li><h4>INDEMNITY</h4>
 
 <p>You agree to indemnify and hold Donate Nashville, its officers, subsidiaries, affiliates, successors, assigns, directors, officers, agents, service providers, suppliers and employees, harmless from any claim or demand, including reasonable attorney fees and court costs, made by any third party due to or arising out of Content you submit, post or make available through the Service, your use of the Service, your violation of the TOU, your breach of any of the representations and warranties herein, or your violation of any rights of another.</p></li>
+
+<?php slot('breadcrumbs', get_component('default', 'breadcrumbs')) ?>

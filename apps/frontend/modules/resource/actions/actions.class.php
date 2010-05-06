@@ -8,7 +8,7 @@
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class resourceActions extends sfActions
+class resourceActions extends frontendActions
 {
  /**
   * Executes index action
@@ -54,21 +54,21 @@ class resourceActions extends sfActions
   
   public function executeMoney(sfWebRequest $request)
   {
-    sfBreadcrumbs::getInstance()->addItem('Money');
+    $this->breadcrumbs->add('Money');
   }
   
   public function executePlace(sfWebRequest $request)
   {
-    sfBreadcrumbs::getInstance()->addItem('Place');
+    $this->breadcrumbs->add('Place');
   }
   public function executeHave(sfWebRequest $request)
   {
-    sfBreadcrumbs::getInstance()->addItem('Have');
+    $this->breadcrumbs->add('Have');
   }
   
   public function executeNeed(sfWebRequest $request)
   {
-    sfBreadcrumbs::getInstance()->addItem('Need');
+    $this->breadcrumbs->add('Need');
   }
   
   public function executeFulfill(sfWebRequest $request)

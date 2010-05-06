@@ -55,6 +55,8 @@ class sfBreadcrumbs
   public function add($text, $uri = null)
   {
     $this->addItem($text, $uri);
+
+    return $this;
   }
 
   /**

@@ -7,7 +7,7 @@ $browser = new dnTestFunctional(new sfBrowser());
 $browser
   ->get('/')
   
-  ->click('I Have...')
+  ->click('I Have')
     ->isModuleAction('resource', 'have')
     
   ->click('Stuff')
@@ -34,7 +34,7 @@ $browser
     ->isModuleAction('stuff', 'show')
     
   ->with('response')->begin()
-    ->matches(sprintf('/%s/', ))
+    ->matches(sprintf('/%s/', 'Picnic Table'))
     // ->checkForm('contactResrouceOwnerForm')
   ->end()
 ;

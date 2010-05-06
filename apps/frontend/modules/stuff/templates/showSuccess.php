@@ -15,3 +15,5 @@
     <?php include_partial('resource/resource_contact_owner_form', array('form' => $form, 'resource' => $resource)) ?>
   </div>
 <?php endif ?>
+
+<?php slot('breadcrumbs', get_component('default', 'breadcrumbs')) ?>
