@@ -22,7 +22,6 @@ class NeedStuffResourceForm extends StuffResourceForm
       'address_1',
       'address_2',
       'city',
-      'state',
       'zip',
       'description',
       'email',

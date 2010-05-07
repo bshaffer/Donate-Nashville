@@ -7,12 +7,13 @@ $browser->loadData();
 
 $submitValues = array(
   'resource_date' => date('Y-m-d', time() + 86400),
-  'start_time'  => '17:30',
-  'end_time'    => '19:30',
-  'title'       => 'A test volunteer event',
-  'email'       => 'ryan.weaver@iostudio.com',
-  'privacy'     => 'web_form',
-  'description' => 'we\'re going to work on some stuffs',
+  'start_time'    => '17:30',
+  'end_time'      => '19:30',
+  'title'         => 'A test volunteer event',
+  'email'         => 'ryan.weaver@iostudio.com',
+  'privacy'       => 'web_form',
+  'description'   => 'we\'re going to work on some stuffs',
+  'neighborhood'  => 'Downtown Nashville'
 );
 $dbValues = $submitValues;
 $dbValues['transaction_type'] = 'need';

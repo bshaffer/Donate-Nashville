@@ -9,10 +9,11 @@ $browser = new dnTestFunctional(new sfBrowser());
 $browser->loadData();
 
 $submitValues = array(
-  'title'       => 'I need some stufffs',
-  'email'       => 'ryan.weaver@iostudio.com',
-  'privacy'     => 'web_form',
-  'description' => 'I need some money',
+  'title'         => 'I need some stufffs',
+  'email'         => 'ryan.weaver@iostudio.com',
+  'privacy'       => 'web_form',
+  'description'   => 'I need some money',
+  'neighborhood'  => 'Downtown Nashville',
 );
 $dbValues = $submitValues;
 $dbValues['transaction_type'] = 'need';
