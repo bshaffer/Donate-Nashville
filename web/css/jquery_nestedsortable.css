@@ -1,0 +1,164 @@
+.nsw-list-wrap {
+  padding: 0em 1em 1em 1em;
+}
+
+.nsw-header-wrap {
+  padding: 1em 1em 0em 1em;
+}
+
+.nsw-wrap {
+}
+
+.nsw-wrap ul li {
+  list-style: none !important;
+}
+
+.nsw-drop {
+  background: #F0F8FF;
+  color: #A0A0A0;
+  text-align: center;
+  margin: 0.5em 0 0.5em 0;
+  padding: 1em 0 1em 0;
+  border-color: #F2F2F2 rgb(232, 232, 232) rgb(232, 232, 232) rgb(242, 242, 242);
+  border-style: solid;
+  border-width: 1px;
+}
+
+.nsw-active-drop {
+  background: yellow;
+}
+
+.nsw-nav-previous {
+  float: left;
+}
+
+.nsw-nav-next {
+  float: right;
+}
+
+.nsw-nav-links {
+  display: block;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  text-align: center;
+  clear: both;
+  float: none;
+}
+
+.nsw-list-holder, .nsw-header {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nsw-clear {
+  clear: both;
+}
+
+.nsw-item , .nsw-header-item {
+  margin: 0;
+  padding: 0;
+}
+
+.nsw-alt-cell {
+  background: #F1F1F1 !important;
+}
+
+.nsw-item-row div div {
+  background: #F8F8F8;
+}
+
+.nsw-item-row div a,
+.nsw-item-row div a:link,
+.nsw-item-row div a:visited {
+  color: #444444;
+  text-decoration: none;
+}
+
+.nsw-item-row div a:active,
+.nsw-item-row div a:hover,
+.nsw-item-row div a:focus {
+  color: #D9A577;
+  text-decoration: underline;
+}
+
+.nsw-header-item div div {
+  background: #DFDFDF;
+  font-weight: bold;
+  width: 700px;
+}
+
+.nsw-save-button,
+.nsw-disabled-save-button, 
+.nsw-disabled-save-button:focus, 
+.nsw-disabled-save-button:active, 
+.nsw-save-button:focus {
+  background-color: #557777 !important;
+  border-color:#CCCCCC rgb(153, 153, 153) rgb(153, 153, 153) rgb(204, 204, 204);
+  border-style:double;
+  border-width:3px;
+  color:#333333;
+  padding:0.25em;
+  float:right;
+}
+
+.nsw-disabled-save-button,
+.nsw-disabled-save-button:focus, 
+.nsw-disabled-save-button:active {
+  color: #AAAAAA;
+}
+
+.nsw-save-button:active {
+  background: #F4F4F4 none repeat scroll 0%;
+  border-color: #999999 rgb(204, 204, 204) rgb(204, 204, 204) rgb(153, 153, 153);
+  border-style: double;
+  border-width: 3px;
+}
+
+.nsw-progress {
+  background: center url(../images/jquery-nestedsortable/progress_indicator.gif) no-repeat;
+  width: 16px;
+  height: 16px;
+  left: 50%;
+  top: 0.5em;
+  position: absolute;
+}
+
+.nsw-warning {
+  left: 30%;
+  top: 0.5em;
+  width: 40%;
+  position: absolute;
+  background: yellow;
+  border: solid 1px;
+  border-color:#CCCCCC rgb(153, 153, 153) rgb(153, 153, 153) rgb(204, 204, 204);
+  text-align: center;
+}
+
+.nsw-save-progress-wrap {
+  position: static;
+}
+
+.nsw-progress-warning-wrap {
+  position: relative;
+}
+
+.nsw-item-row div {
+  padding-left: 27px !important;
+  position: relative;
+  overflow: hidden;
+  text-indent: none !important;
+}
+
+.nsw-handle {
+  width: 16px;
+  height: 16px;
+  background: center url(../images/jquery-nestedsortable/grabber.png) no-repeat;
+  position: absolute;
+  left: 7px;
+  text-indent: -9999px;
+}
+
+.nsw-helper {
+  border: 2px dashed #777777;
+}
