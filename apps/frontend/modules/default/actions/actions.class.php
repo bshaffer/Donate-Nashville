@@ -36,7 +36,7 @@ class defaultActions extends frontendActions
         $this->contact = $request->getParameter($this->form->getName());
         
         // send email to owner of resource
-        $this->sendContactEmail($this->contact);
+        $this->sendContactEmail($this->contact, $this->form->getFormSummary());
         
         // say thanks to the user
         $this->setTemplate('newContactMessageSent');
@@ -50,11 +50,9 @@ class defaultActions extends frontendActions
    * send an email to the resource owner letting them know that a match was
    * submitted, along with the contact info
    */
-  protected function sendContactEmail($contact)
+  protected function sendContactEmail($contact, $body)
   {
     // send email based on $resource->transaction_type
-    $body = var_export($contact, true);
-    
     $message = $this->getMailer()->compose(
       sfConfig::get('app_email_from'),
       sfConfig::get('app_email_from'),
