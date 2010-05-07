@@ -38,10 +38,9 @@ all:
       extra_parameters_as_query_string: true
   mailer:
     param:
-<?php if (file_exists('config/mailer.yml')): ?>
-<?php include('config/mailer.yml') ?>
+<?php if (file_exists(dirname(__FILE__).'/../../../config/mailer.yml')): ?>
+<?php include(dirname(__FILE__).'/../../../config/mailer.yml') ?>
 <?php else: ?>
       transport:
         class:  Swift_MailTransport
-
 <?php endif ?>
