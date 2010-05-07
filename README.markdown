@@ -30,13 +30,12 @@ on your computer and then create a symbolic link into your project:
 
 ### Setup your database
 
-If you have sqlite on your computer, then do the following:
+To set up your mysql database:
 
     cp config/databases.yml.dist config/databases.yml
-    ./symfony doctrine:build --all --and-load
-    chmod 777 /tmp/donate.sqlite
 
-If you'd prefer to use mysql, then simply copy the `databases.yml` file
-as above, uncomment out the `dsn` line in front of the mysql string,
-then update that string with the correct username and password. You
-should then be able to run the `doctrine:build` task as described above.
+Uncomment out the `dsn` line in front of the mysql string,
+then update that string with the correct username and password.
+Finally, run the Symfony command to build the database.
+
+    ./symfony doctrine:build --all --and-load

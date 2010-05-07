@@ -66,6 +66,12 @@ body {
 /* FORM OVERRIDES 
 ****************************************************************************************************/
 /* FROM FORMS.CSS */
+
+form ul li input {
+	padding: 5px;
+	font-size: 16px;
+}
+
 form ul li label {color:#204F7E;}
 
 form fieldset {border:1px solid #fff;}
