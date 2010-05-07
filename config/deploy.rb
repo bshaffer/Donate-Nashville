@@ -1,15 +1,6 @@
 set :stages, %w(production)
 require 'capistrano/ext/multistage'
 
-set :application, "donatenashvill.org"
-set :domain, "beta.donatenashville.org"
-set :server_path, "/var/www"
-set :deploy_to, "#{server_path}/#{application}"
-
-set :scm, :git
-set :repository, "git@github.com:bshaffer/Donate-Nashville.git"
-
-set :symfony_lib, "/usr/local/lib/symfony"
 set :symfony_version, 'RELEASE_1_4_4'
 
 set :app_symlinks, %w{uploads}
@@ -17,8 +8,6 @@ set :app_symlinks, %w{uploads}
 # =============================================================================
 # CAPISTRANO OPTIONS
 # =============================================================================
-set :user, 'donatenash'
-set :use_sudo, false
 set :keep_releases, 3
 set :deploy_via, :remote_cache
 
