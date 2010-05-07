@@ -4,6 +4,6 @@
   <?php else: ?>
     Volunteer Opportunities
   <?php endif ?>
-<?php else: ?>  
+<?php else: ?>
     Available Items
 <?php endif ?>

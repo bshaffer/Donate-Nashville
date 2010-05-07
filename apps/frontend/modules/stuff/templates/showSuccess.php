@@ -20,7 +20,7 @@
   	<hr />
     <div>
       <!-- call to action here, which depends on whether this is a "need" looking for a "have" or vice versa -->
-      <?php include_partial('resource/resource_contact_owner_form', array('form' => $form, 'resource' => $resource)) ?>
+      <?php include_partial('resource/resource_contact_owner_form', array('type' => $resource['transaction_type'], 'resource_type' => 'stuff', 'form' => $form, 'resource' => $resource)) ?>
     </div>
   <?php endif ?>
 </div>

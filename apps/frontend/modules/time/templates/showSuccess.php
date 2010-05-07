@@ -29,7 +29,7 @@
     <span class="fulfilled"><?php echo image_tag('/sfDoctrinePlugin/images/tick.png', array('alt' => 'fulfilled')) ?>&nbsp;Fulfilled</span>
   <?php elseif(!$sf_user->isOwner($resource)): ?>
     <!-- call to action here, which depends on whether this is a "need" looking for a "have" or vice versa -->
-    <?php include_partial('resource/resource_contact_owner_form', array('resource' => $resource, 'form' => $form, 'type' => $type)) ?>
+    <?php include_partial('resource/resource_contact_owner_form', array('resource_type' => 'time', 'resource' => $resource, 'form' => $form, 'type' => $type)) ?>
   <?php endif ?>
 </div>
 

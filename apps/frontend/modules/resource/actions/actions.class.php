@@ -39,7 +39,7 @@ class resourceActions extends frontendActions
     
     $results = $query->execute(array(), Doctrine::HYDRATE_ARRAY);
 
-    return $this->renderPartial('time/list', array('results' => $results));
+    return $this->renderPartial('time/list', array('results' => $results, 'transaction_type' => $type));
   }
 
   /**

@@ -403,6 +403,19 @@ ul.breadcrumbs {
 		font-size: 14px;
 		color: #6b8fb5;
 	}
+	
+	#time-info {
+		font-size: 1.2em;
+	}
+
+	#time-info li {
+		margin-bottom: 0;
+	}
+
+	#time-info strong {
+		color: #6b8fb5;
+		font-size: 1.2em;
+	}
 /* FOOTER
 ****************************************************************************************************/
 #footer {

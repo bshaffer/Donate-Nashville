@@ -87,13 +87,13 @@ TimeResource:
   time_resource3:
     User:               sgu_chayner
     title:              5/4 from 12:00 to 8:00
-    transaction_type:   want
+    transaction_type:   have
     resource_date:      '2010-05-04'
     start_time:         '12:00'
     end_time:           '20:00'
   time_resource4:
     User:               sgu_chayner
     title:              5/4 to 5/5
-    transaction_type:   want
+    transaction_type:   have
     resource_date:      '2010-05-04'
     start_time:         '00:00'

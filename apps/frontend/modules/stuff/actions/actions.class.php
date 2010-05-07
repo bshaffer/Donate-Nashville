@@ -26,6 +26,7 @@ class stuffActions extends frontendActions
     $this->resource = $this->getRoute()->getObject();
     $this->type = $this->resource->getOppositeType();
     $this->form = new ContactResourceOwnerForm();
+    
     if($request->isMethod('POST'))
     {
       $this->form->bind($request->getParameter('resource_contact_owner'));

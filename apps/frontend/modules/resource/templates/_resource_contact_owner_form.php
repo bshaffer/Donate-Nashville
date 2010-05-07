@@ -3,7 +3,7 @@
 
 <?php use_helper('dh') ?>
 
-<h2>I <?php echo ucfirst(opposite_of($resource->transaction_type)) ?> This!</h2>
+<h2><?php include_partial('resource/resource_contact_header', array('transaction_type' => $type, 'resource_type' => $resource_type)) ?></h2>
 <?php echo $form->renderFormTag(url_for('new_message_match_found', array('id'=>$resource->id)), array('class'=>'async')) ?>
 <fieldset>
   <legend><span>*</span>Required Field</legend>
