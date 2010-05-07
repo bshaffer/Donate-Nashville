@@ -8,8 +8,9 @@
   </div>
 
   <div class="options-block">
-    <a href="<?php echo url_for('@need') ?>" title="I Need"><?php echo image_tag("buttons/need-super.png", array('class'=> 'button', 'width'=>'203', 'height' => '100', 'alt'=>"Need Super"))?></a>
-  	<div class="left">
+    <div class="left">
+      <a href="<?php echo url_for('@need') ?>" title="I Need"><?php echo image_tag("buttons/need-super.png", array('class'=> 'button', 'width'=>'203', 'height' => '100', 'alt'=>"Need Super"))?></a>
+  	
   	  <p>Click here if you <strong>need assistance</strong> in any of the following areas:</p>
       <ul>
         <li>Physical <strong>help</strong>, such as removing debris, repairing damage, cleaning, preparing meals and other volunteer-based activities.</li>
@@ -18,8 +19,9 @@
       </ul>
     </div>
   	<?php echo image_tag('options-box-separator.png', array('class' => 'left', 'width' => '3', 'height' => '320', 'alt' => 'Options Box Separator')) ?>
-    <a href="<?php echo url_for('@have') ?>" title="I Have"><?php echo image_tag("buttons/have-super.png", array('class'=> 'button', 'width'=>'203', 'height' => '100', 'alt'=>"Need Super"))?></a>
-  	<div class="left">
+    <div class="left">
+      <a href="<?php echo url_for('@have') ?>" title="I Have"><?php echo image_tag("buttons/have-super.png", array('class'=> 'button', 'width'=>'203', 'height' => '100', 'alt'=>"Need Super"))?></a>
+  	
   		<p>Click here to <strong>offer assistance</strong> in any of the following areas:</p>
       <ul>
         <li>Volunteer <strong>hours</strong> to remove debris, repair damages, clean, serve meals and other volunteer-based activities.</li>

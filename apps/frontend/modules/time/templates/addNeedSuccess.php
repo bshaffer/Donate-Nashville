@@ -1,5 +1,5 @@
 <div class="main-col">
-  <h1>I Need Help...</h1>
+  <h1>I Need a Hand...</h1>
 
   <?php include_partial('default/flashes') ?>
   <?php use_stylesheets_for_form($form) ?>
@@ -16,7 +16,7 @@
     <fieldset>
     <legend>* Required field</legend>
     <ul>
-    <h2>Resource Info</h2>
+    <h2>Opportunity Info</h2>
     
     <li>
       <label>Community *</label>
@@ -100,7 +100,7 @@
         <?php echo outputFormField($form['privacy']) ?>
     </li>
   
-    <li><input type="submit" value="submit" class="button"/></li>
+    <li><input type="submit" value="add my opportunity" class="button"/></li>
     </ul>
     </fieldset>
   </form>

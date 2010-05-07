@@ -181,9 +181,9 @@ div#homepage-desc a {
 }
 
 	.options-block img.button {
-		margin:10px 10px 0 5px;
-		float:left;
-		display:inline;
+		margin:0 auto 20px;
+		
+		display:block;
 	}
 	
 	.options-block div {
@@ -191,8 +191,8 @@ div#homepage-desc a {
 		padding: 0 10px;
 		float:left;
 		display:inline;
-		width:210px;
-		font-size: 16px;
+		width:430px;
+		font-size: 15px;
 	}
 
 	.options-block p {
@@ -202,7 +202,9 @@ div#homepage-desc a {
 	.options-block li {
 		font-size: 14px;
 		line-height: 1.5em;
-		margin-bottom: 15px;
+		margin: 0 0 10px 20px;
+		list-style-type: disc;
+		list-style-position: outside;
 	}
 
 	
@@ -438,7 +440,8 @@ ul.breadcrumbs {
 	}
 	
 	.info-resource a.button,
-	.search-results a.button {
+	.search-results a.button,
+  div.button-inactive {
 		font-size:16px;
 		-khtml-border-radius: 5px;
 		-moz-border-radius: 5px;
@@ -446,10 +449,13 @@ ul.breadcrumbs {
 		border-radius: 5px;
 		background:#84B400;
 		padding:4px 24px;
-		margin:5px 0;
+		margin:5px 5px;
 		float:right;
 		color:#fff;
 	}
+  div.button-inactive {
+    background:#594938;
+  }
 	
 	.search-results li {
 		padding:5px;

@@ -1,40 +1,49 @@
 <div class="main-col">
-<h1>Dashboard</h1>
+<h1 class="half-margin">Manage Posts</h1>
 
 <?php if ($haveTimeResources->count() || $needTimeResources->count() || $haveStuffResources->count() || $needStuffResources->count()): ?>
+<hr>
   <?php if ($haveTimeResources->count()): ?>
   <h3>Have Time</h3>
-  <ul>
+  <ul class="results-list search-results clearfix">
+    <?php $i = 0; ?>
     <?php foreach($haveTimeResources as $haveTimeResource): ?>
-    <?php include_partial('resource/list_item', array('resource' => $haveTimeResource)) ?>
+    <?php include_partial('resource/list_item', array('resource' => $haveTimeResource, 'class' => $i % 2 == 0 ? 'alt' : '')) ?>
+    <?php $i++; ?>
     <?php endforeach; ?>  
   </ul>
   <?php endif ?>
 
   <?php if ($needTimeResources->count()): ?>
   <h3>Need Time</h3>
-  <ul>
-  <?php foreach($needTimeResources as $needTimeResource): ?>
-    <?php include_partial('resource/list_item', array('resource' => $needTimeResource)) ?>
-  <?php endforeach; ?>
+  <ul class="results-list search-results clearfix">
+    <?php $i = 0; ?>
+    <?php foreach($needTimeResources as $needTimeResource): ?>
+    <?php include_partial('resource/list_item', array('resource' => $needTimeResource, 'class' => $i % 2 == 0 ? 'alt' : '')) ?>
+    <?php $i++; ?>
+    <?php endforeach; ?>
   </ul>
   <?php endif ?>
 
   <?php if ($haveStuffResources->count()): ?>
-  <h3>Need Time</h3>
-  <ul>
-  <?php foreach($haveStuffResources as $haveStuffResource): ?>
-    <?php include_partial('resource/list_item', array('resource' => $haveStuffResource)) ?>
-  <?php endforeach; ?>
+  <h3>Have Stuff</h3>
+  <ul class="results-list search-results clearfix">
+    <?php $i = 0; ?>
+    <?php foreach($haveStuffResources as $haveStuffResource): ?>
+    <?php include_partial('resource/list_item', array('resource' => $haveStuffResource, 'class' => $i % 2 == 0 ? 'alt' : '')) ?>
+    <?php $i++; ?>
+    <?php endforeach; ?>
   </ul>
   <?php endif ?>
 
   <?php if ($needStuffResources->count()): ?>
   <h3>Need Stuff</h3>
-  <ul>
-  <?php foreach($needStuffResources as $needStuffResource): ?>
-    <?php include_partial('resource/list_item', array('resource' => $needStuffResource)) ?>
-  <?php endforeach; ?>
+  <ul class="results-list search-results clearfix">
+    <?php $i = 0; ?>
+    <?php foreach($needStuffResources as $needStuffResource): ?>
+    <?php include_partial('resource/list_item', array('resource' => $needStuffResource, 'class' => $i % 2 == 0 ? 'alt' : '')) ?>
+    <?php $i++; ?>
+    <?php endforeach; ?>
   </ul>
   <?php endif ?>
 
