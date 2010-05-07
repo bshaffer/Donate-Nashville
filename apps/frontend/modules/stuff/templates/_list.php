@@ -1,15 +1,17 @@
+<?php use_helper('dh') ?>
+  
 <?php if (count($results)): ?>
 <ul class="results-list search-results clearfix">
 <?php $i = 0; ?>
 <?php foreach ($results as $result): ?>
   <li <?php echo $i % 2 == 0 ? 'class="alt"' : '' ?>>
     <div class="right">
-			<?php echo link_to('More Info', '@stuff_show?id='. $result['id'], array('class'=>'button')) ?>
+			<?php echo link_to('More Info', '@'.opposite_of($transaction_type).'_stuff_show?id='. $result['id'], array('class'=>'button')) ?>
 		</div>
-		<h3 class="no-margin"><?php echo link_to($result['title'], '@stuff_show?id='. $result['id']) ?></h3>
+		<h3 class="no-margin"><?php echo link_to($result['title'], '@'.opposite_of($transaction_type).'_stuff_show?id='. $result['id']) ?></h3>
 		<strong>Quantity <?php echo $transaction_type == 'have' ? 'Available' : 'Needed' ?>:</strong> 3&nbsp;&bull;&nbsp;<span class=""><strong>Added:</strong> May 5, 2010</span>&nbsp;&bull;&nbsp;<strong>Germantown</strong>
   </li>
   <?php $i++; ?>
 <?php endforeach ?>
-</ul>  
+</ul>
 <?php endif ?>

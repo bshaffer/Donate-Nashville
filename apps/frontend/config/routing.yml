@@ -151,6 +151,19 @@ stuff_show:
   options:  { type: object, model: StuffResource }
   param:    { module: stuff, action: show }
 
+need_stuff_show:
+    class:    sfDoctrineRoute
+    url:      /need/stuff/:id
+    options:  { type: object, model: StuffResource }
+    param:    { module: stuff, action: show, section: need  }
+
+
+have_stuff_show:
+  class:    sfDoctrineRoute
+  url:      /have/stuff/:id
+  options:  { type: object, model: StuffResource }
+  param:    { module: stuff, action: show, section: have  }
+
 # The "show" page for TimeResource
 time_show:
   class:    sfDoctrineRoute
@@ -158,6 +171,19 @@ time_show:
   options:  { type: object, model: TimeResource }
   param:    { module: time, action: show }
 
+need_time_show:
+  class:    sfDoctrineRoute
+  url:      /need/time/:id
+  options:  { type: object, model: TimeResource }
+  param:    { module: time, action: show, section: need }
+
+have_time_show:
+  class:    sfDoctrineRoute
+  url:      /have/time/:id
+  options:  { type: object, model: TimeResource }
+  param:    { module: time, action: show, section: have }
+      
+      
 new_message_match_found:
   class:  sfRequestRoute
   url:   /stuff/:id/message
