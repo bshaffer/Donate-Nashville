@@ -36,7 +36,9 @@ class stuffActions extends frontendActions
       }
     }
     
-    $this->breadcrumbs->add('Stuff', '@need_stuff')->add($this->resource['title']);
+    $this->breadcrumbs
+      ->add(ucwords($this->type). ' Stuff', sprintf('@%s_stuff', $this->type))
+      ->add($this->resource['title']);
   }
   
   /**

@@ -37,7 +37,9 @@ class timeActions extends frontendActions
       }
     }
     
-    $this->breadcrumbs->add('Time', '@have_time')->add($this->resource['title']);
+    $this->breadcrumbs
+      ->add(ucwords($this->type). ' Time', sprintf('@%s_time', $this->type))
+      ->add($this->resource['title']);
   }
 
   /**

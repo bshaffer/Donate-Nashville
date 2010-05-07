@@ -8,11 +8,11 @@
   <?php endif; ?>
   
   <ul id="resource-info" class="text-large">
-    <li>
-      <strong>Community:</strong> <?php echo $resource['neighborhood'] ?>
-    </li>
+    <?php if ($resource['neighborhood']): ?>
+      <li><strong>Community:</strong> <?php echo $resource['neighborhood'] ?></li>
+    <?php endif ?>
     <?php if ($resource->quantity): ?>
-    <li class="quantity"><strong>Quantity <?php echo $resource->transaction_type == 'have' ? 'Available' : 'Needed' ?>:</strong> <?php echo $resource->quantity ?></li>
+      <li class="quantity"><strong>Quantity <?php echo $resource->transaction_type == 'have' ? 'Available' : 'Needed' ?>:</strong> <?php echo $resource->quantity ?></li>
     <?php endif ?>
   </ul>
 

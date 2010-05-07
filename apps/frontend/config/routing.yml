@@ -39,6 +39,12 @@ have_stuff:
 need:
   url:   /need
   param: { module: resource, action: need, section: need }
+need_time:
+  class:  sfRequestRoute
+  url:   /need/time/add
+  param: { module: time, action: addNeed, section: need }
+  requirements:
+    sf_method: [get]
 need_stuff:
   url:   /need/stuff
   param: { module: stuff, action: need, section: need }
