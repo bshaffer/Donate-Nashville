@@ -7,7 +7,7 @@
 
   <br />
 	<p class="text-large">
-		<strong>Is this your search not currently listed as a need?</strong>
+		<strong>Is your search not currently listed as a need?</strong>
 		<br />
 		Simply <a class="text-highlite" href="<?php echo url_for('@add_have_stuff') ?>">Add the item</a> you have and we'll notify you as soon as someone needs it!
 	</p>
