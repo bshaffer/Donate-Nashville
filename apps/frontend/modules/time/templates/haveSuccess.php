@@ -14,6 +14,9 @@ include_partial('resource/resource_filter', array('resource_type' => 'time', 're
 </div>
 
 <?php slot('sidebar') ?>
+  <div class="widget clearfix" id="SidebarContainer">
+  </div>
+  
   <div class="widget clearfix special">
     <h3 class="no-margin">How does this work?</h3>
     <p class="no-margin">

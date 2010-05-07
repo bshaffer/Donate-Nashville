@@ -14,13 +14,13 @@
 </div>
 
 <?php slot('sidebar') ?>
+  <div class="widget clearfix" id="SidebarContainer">
+  </div>
   <div class="widget clearfix special">
     <h3 class="no-margin">How does this work?</h3>
     <p class="no-margin">
       <strong>Search for your specific need. See below for matching items, or add a new item if no matching goods are available.</strong>
     </p>
-  </div>
-  <div class="widget clearfix" id="SidebarContainer">
   </div>
 <?php end_slot() ?>
 
