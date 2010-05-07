@@ -22,6 +22,8 @@ Resource:
     is_fulfilled:
       type:             boolean
       default:          false
+    neighborhood:
+      type:             string(100)
     address_1:
       type:             string(255)
     address_2:             
@@ -31,6 +33,8 @@ Resource:
     state:
       type:             string(100)
     zip:
+      type:             string(100)
+    county:
       type:             string(100)
     phone_1:
       type:             string(100)

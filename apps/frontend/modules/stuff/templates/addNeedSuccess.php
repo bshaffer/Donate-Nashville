@@ -29,6 +29,12 @@
       </li>
   
       <li>
+        <?php echo $form['neighborhood']->renderLabel() ?>
+        <div>
+          <?php echo $form['neighborhood']->renderError() ?>
+          <?php echo $form['neighborhood']->render() ?>
+        </div>
+
         <?php echo $form['address_1']->renderLabel() ?>
         <div>
           <?php echo $form['address_1']->renderError() ?>

@@ -62,6 +62,10 @@ StuffResource:
     User:               sgu_bshaffer
     title:              Car
     transaction_type:   need
+    address_1:          5157 Whitaker Dr
+    city:               Nashville
+    state:              TN
+    zip:                37211
   stuff_resource2:
     User:               sgu_bshaffer
     title:              Broom

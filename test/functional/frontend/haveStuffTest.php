@@ -4,6 +4,10 @@ include(dirname(__FILE__).'/../../bootstrap/functional.php');
 
 $browser = new dnTestFunctional(new sfBrowser());
 
+$neededStuff = csFactory::create('StuffResource', array('transaction_type' => 'need', 'title' => csFactory::generate('Stuff Resource '), 'owner_id' => csFactory::selectRandomId('sfGuardUser')));
+
+$neededStuff->save();
+
 $browser
   ->get('/')
   
@@ -22,19 +26,25 @@ $browser
   ->with('response')->begin()
     ->matches('!/pump/i')
   ->end()
-    
+
   ->call('/stuff/list', 'post', $parameters = array('q' => 'picnic', 'type' => 'need'))
+    ->isModuleAction('resource', 'stuffList')
+
+  ->with('response')->begin()
+    ->matches('/picnic/i')
+  ->end()
+    
+  ->call('/stuff/list', 'post', $parameters = array('q' => $neededStuff['title'], 'type' => 'need'))
     ->isModuleAction('resource', 'stuffList')
     
   ->with('response')->begin()
-    ->matches('/picnic table/i')
+    ->matches(sprintf('/%s/i', $neededStuff['title']))
   ->end()
     
-  ->click('Picnic Table')
+  ->get(sprintf('/have/stuff/%s', $neededStuff['id']))
     ->isModuleAction('stuff', 'show')
     
   ->with('response')->begin()
-    ->matches(sprintf('/%s/', 'Picnic Table'))
-    // ->checkForm('contactResrouceOwnerForm')
+    ->matches(sprintf('/%s/', $neededStuff['title']))
   ->end()
 ;

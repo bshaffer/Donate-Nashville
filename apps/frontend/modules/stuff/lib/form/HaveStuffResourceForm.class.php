@@ -17,6 +17,7 @@ class HaveStuffResourceForm extends StuffResourceForm
     $this->useFields(array(
       'title',
       'quantity',
+      'neighborhood',
       'address_1',
       'address_2',
       'city',

@@ -27,6 +27,24 @@ class ResourceForm extends BaseResourceForm
       'show_info' => 'Show my info as well as a contact form',
       'web_form'  => 'Show a contact form, but hide my information',
     )));
+    
+    $neighborhoods = array(
+      'Outside Nashville'   => 'Outside Nashville',
+      'areas'               => ' -- Nashville Areas --',
+        'North Nashville'   => 'North Nashville',
+        'South Nashville'   => 'South Nashville',
+        'East Nashville'    => 'East Nashville',
+        'West Nashville'    => 'West Nashville',
+      'neighborhoods'       => ' -- Nashville Neighborhoods --',
+        'Antioch'           => 'Antioch',
+        'Brentwood'         => 'Brentwood',
+      );
+    
+    $this->widgetSchema['neighborhood'] = new sfWidgetFormChoice(array('choices' => $neighborhoods));
+    
+    // Unset invalid options
+    unset($neighborhoods['areas'], $neighborhoods['neighborhoods']); 
+    $this->validatorSchema['neighborhood'] = new sfValidatorChoice(array('choices' => array_keys($neighborhoods)));
   }
 
   /**

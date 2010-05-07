@@ -28,4 +28,50 @@ class Resource extends BaseResource
   {
     return $this['transaction_type'] == 'need' ? 'have' : 'need';
   }
+  
+  /* 
+    Code to capture the county for the item
+  */
+  public function retrieveGeocodesFromUrl($url)
+  {
+    $locationInfo = array('latitude' => null, 'longitude' => null, 'county' => null);
+    
+    $json = json_decode(file_get_contents($url));
+    
+    if (!isset($json->Placemark[0])) 
+    {
+      return $locationInfo;
+    }
+    
+    $info = $json->Placemark[0];
+    
+    if (isset($info->Point->coordinates)) 
+    {
+      $coordinates = $info->Point->coordinates;
+      $locationInfo['latitude'] = $coordinates[1];
+      $locationInfo['longitude'] = $coordinates[0];
+    }
+    
+    if (isset($info->AddressDetails->Country->AdministrativeArea->SubAdministrativeArea->SubAdministrativeAreaName))
+    {
+      $county = $info->AddressDetails->Country->AdministrativeArea->SubAdministrativeArea->SubAdministrativeAreaName;
+      $locationInfo['county'] = $county;
+    }
+    
+    return $locationInfo;
+  }
+  
+  public function refreshGeocodes($url = null)
+  {
+    if (!$url) 
+    {
+      $url = $this->buildUrlFromQuery($this->buildGeoQuery());
+      $url = substr($url, 0, strrpos($url, 'csv')) . 'json';
+    }
+
+    $geocodes = $this->retrieveGeocodesFromUrl($url);
+    $this['latitude'] = $geocodes['latitude'];
+    $this['longitude'] = $geocodes['longitude'];
+    $this['county'] = $geocodes['county'];
+  }
 }

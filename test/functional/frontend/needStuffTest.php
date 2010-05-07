@@ -4,6 +4,10 @@ include(dirname(__FILE__).'/../../bootstrap/functional.php');
 
 $browser = new dnTestFunctional(new sfBrowser());
 
+$availableStuff = csFactory::create('StuffResource', array('transaction_type' => 'have', 'title' => csFactory::generate('Stuff Resource '), 'owner_id' => csFactory::selectRandomId('sfGuardUser')));
+
+$availableStuff->save();
+
 // Delete all existing data
 $browser
   ->get('/')
@@ -30,18 +34,32 @@ $browser
     ->matches('/sump/i')
   ->end()
     
-  ->click('Sump Pump')
+  ->call('/stuff/list', 'post', $parameters = array('q' => $availableStuff['title'], 'type' => 'have'))
+    ->isModuleAction('resource', 'stuffList')
+    
+  ->with('response')->begin()
+    ->matches(sprintf('/%s/i', $availableStuff['title']))
+  ->end()
+    
+  ->get(sprintf('/need/stuff/%s', $availableStuff['id']))
     ->isModuleAction('stuff', 'show')
     
   ->with('response')->begin()
-    ->matches('/Stuff Details: Sump Pump/')
-    ->checkForm('ContactResourceOwnerForm')
+    ->matches(sprintf('/%s/', $availableStuff['title']))
   ->end()
 ;
 
 $resource = Doctrine_Core::getTable('stuffResource')->findOneByTitle('Sump Pump');
 
 $browser
+  ->get(sprintf('/need/stuff/%s', $resource['id']))
+    ->isModuleAction('stuff', 'show')
+
+  ->with('response')->begin()
+    ->matches(sprintf('/%s/', $resource['title']))
+    ->checkForm('ContactResourceOwnerForm')
+  ->end()
+
   ->call('/stuff/'.$resource->id.'/message', 'post', array('contact'=>array(
       'email'=>'lacyrhoades@gmail.com',
       'name'=>'Lacy',
