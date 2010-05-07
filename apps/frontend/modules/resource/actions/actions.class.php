@@ -14,11 +14,12 @@ class resourceActions extends frontendActions
   {  
     $query = Doctrine::getTable('StuffResource')
               ->getListQuery($request->getParameter('q'))
+              ->andWhere('is_fulfilled = ?', false)
               ->limit(8);
 
     if ($type = $request->getParameter('type')) 
     {
-      $query->whereWrap()->andWhere('transaction_type = ?', $type);
+      $query->andWhere('transaction_type = ?', $type);
     }
 
     $results = $query->execute(array(), Doctrine::HYDRATE_ARRAY);
@@ -40,6 +41,7 @@ class resourceActions extends frontendActions
   {  
     $query = Doctrine::getTable('TimeResource')
               ->getListQuery($request->getParameter('start'), $request->getParameter('end'))
+              ->andWhere('is_fulfilled = ?', false)
               ->limit(8);
 
     if ($type = $request->getParameter('type')) 
