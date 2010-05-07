@@ -1,3 +1,12 @@
+info_resource:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                InfoResource
+    module:               info
+    prefix_path:          /info
+    column:               id
+    with_wildcard_routes: true
+
 about:
   url:  /about
   param:  { module: default, action: about }

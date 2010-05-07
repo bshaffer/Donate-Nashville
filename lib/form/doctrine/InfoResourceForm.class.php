@@ -16,5 +16,28 @@ class InfoResourceForm extends BaseInfoResourceForm
   public function configure()
   {
     parent::configure();
+    
+    $this->useFields(array(
+      'title',
+      'description',
+      'abstract',
+      'transaction_type',
+      'privacy',
+      'address_1',
+      'address_2',
+      'city',
+      'state',
+      'zip',
+      'phone_1',
+      'phone_2',
+      'email',
+      'keywords',
+      'url',
+      ));
+  }
+  
+  protected function getTransactionType()
+  {
+    return $this->getValue('transaction_type');
   }
 }

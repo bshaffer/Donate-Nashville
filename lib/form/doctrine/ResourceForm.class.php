@@ -45,6 +45,8 @@ class ResourceForm extends BaseResourceForm
     // Unset invalid options
     unset($neighborhoods['areas'], $neighborhoods['neighborhoods']); 
     $this->validatorSchema['neighborhood'] = new sfValidatorChoice(array('choices' => array_keys($neighborhoods)));
+    
+    $this->setDefault('state', 'TN');
   }
 
   /**

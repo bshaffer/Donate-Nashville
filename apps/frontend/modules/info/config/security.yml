@@ -1,0 +1,26 @@
+show:
+  is_secure:  false
+
+index:
+  is_secure:  true
+  credentials: [admin]
+  
+new:
+  is_secure:  true
+  credentials: [admin]
+
+create:
+  is_secure:  true
+  credentials: [admin]
+  
+edit:
+  is_secure:  true
+  credentials: [admin]
+
+update:
+  is_secure:  true
+  credentials: [admin]
+  
+delete:
+  is_secure:  true
+  credentials: [admin]
