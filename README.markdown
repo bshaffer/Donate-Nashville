@@ -39,3 +39,18 @@ then update that string with the correct username and password.
 Finally, run the Symfony command to build the database.
 
     ./symfony doctrine:build --all --and-load
+
+### Push a new version of the site to the live server
+
+Make sure you have ruby and rubygems installed!
+Install Capistrano and Capistrano EXT gems
+
+    gem install capistrano capistrano-ext --no-ri --no-rdoc
+
+To push an update to the code.
+
+    cap production deploy
+
+To push an update to the code with migrations.
+
+    cap production deploy:migrations
