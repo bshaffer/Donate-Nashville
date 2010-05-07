@@ -2,7 +2,6 @@ set :stages, %w(production)
 require 'capistrano/ext/multistage'
 
 set :symfony_version, 'RELEASE_1_4_4'
-
 set :app_symlinks, %w{uploads}
 
 # =============================================================================
@@ -18,6 +17,7 @@ namespace :deploy do
   desc 'Overwrite the start task to set the permissions on the project.'
   task :start do
     run "php #{release_path}/symfony project:permissions"
+    run "php #{release_path}/symfony doctrine:build --all --and-load --no-confirmation"
   end
   
   desc 'Overwrite the restart task because we dont need it.'
@@ -69,7 +69,7 @@ namespace :symlink do
   
   desc 'Symlink the symfony library.'
   task :symfony do
-    run "ln -nfs #{symfony_lib}/#{symfony_version} #{release_path}/lib/symfony"
+    run "ln -nfs #{symfony_lib}/#{symfony_version} #{release_path}/lib/vendor/symfony"
   end
 end
 
