@@ -33,5 +33,8 @@ class defaultComponents extends sfComponents
   
   public function executeTwitter()
   {
+    $json = json_decode(file_get_contents('http://twitter.com/statuses/user_timeline/140289211.json'), true);
+    $this->tweet = csToolkit::parse_tweet($json[0]['text']);
+    $this->time =  $json[0]['created_at'];
   }
 }

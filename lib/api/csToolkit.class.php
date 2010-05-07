@@ -90,5 +90,25 @@ class csToolkit
     
     return $object;
   }
+  
+  public static function parse_tweet($twit) 
+  {
+     // Convert URLs into hyperlinks
+     $twit = preg_replace("/(http:\/\/)(.*?)\/([\w\.\/\&\=\?\-\,\:\;\#\_\~\%\+]*)/", 
+            "<a href=\"\\0\">\\0</a>", $twit);
+
+     // Convert usernames (@) into links 
+     $twit = preg_replace("(@([a-zA-Z0-9\_]+))", 
+          "<a href=\"http://www.twitter.com/\\1\">\\0</a>", $twit);
+
+     // Convert hash tags (#) to links 
+     $twit = preg_replace('/(^|\s)#(\w+)/', 
+          '\1<a href="http://search.twitter.com/search?q=%23\2">#\2</a>', $twit);
+
+     //Specifically for non-English tweets, converts UTF-8 into ISO-8859-1
+     $twit = iconv("UTF-8", "ISO-8859-1//TRANSLIT", $twit);
+   
+    return $twit;
+   }
 }
 

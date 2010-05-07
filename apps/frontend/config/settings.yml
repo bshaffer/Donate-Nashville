@@ -2,6 +2,7 @@ prod:
   .settings:
     no_script_name:         true
     logging_enabled:        false
+    cache:                  true
 
   .actions:
     error_404_module:       default   # To be called when a 404 error is raised
@@ -22,6 +23,14 @@ test:
     web_debug:              false
     no_script_name:         false
     etag:                   false
+
+cache:
+  .settings:
+    error_reporting: <?php echo (E_ALL | E_STRICT)."\n" ?>
+    web_debug:       on
+    cache:           on
+    etag:            off
+
 
 all:
   .actions:
