@@ -27,7 +27,7 @@ class TimeResourceTable extends ResourceTable
         
     $query->andClause();
     
-      $this->addOrDateQuery($query, 'start_time', array('from' => $start_time, 'to' => $end_time));
+      $this->addOrDateQuery($query, 'start_time', array('from' => $start_time, 'to' => $end_time), 'resource_date', array('from' => $start_date));
       
       $query->orClause();
     
@@ -38,7 +38,7 @@ class TimeResourceTable extends ResourceTable
       $query->endClause();
         
     $query->endClause();
-        
+
     return $query;
   }
   
@@ -65,7 +65,7 @@ class TimeResourceTable extends ResourceTable
     }
   }
   
-  protected function addOrDateQuery(Doctrine_Query $query, $fieldName, $values)
+  protected function addOrDateQuery(Doctrine_Query $query, $fieldName, $values, $secondaryFromFieldName=null, $secondaryFromValues=null)
   {
     if (isset($values['is_empty']) && $values['is_empty'])
     {
@@ -75,11 +75,19 @@ class TimeResourceTable extends ResourceTable
     {
       if (null !== $values['from'] && null !== $values['to'])
       {
-        $query->orWhere(sprintf('%s.%s >= ? AND %s.%s <= ?', $query->getRootAlias(), $fieldName, $query->getRootAlias(), $fieldName), array($values['from'], $values['to']));
+        if (null !== $secondaryFromFieldName) {
+          $query->orWhere(sprintf('%s.%s > ? OR (%s.%s = ? AND %s.%s >= ?) AND %s.%s <= ?', $query->getRootAlias(), $secondaryFromFieldName, $query->getRootAlias(), $secondaryFromFieldName, $query->getRootAlias(), $fieldName, $query->getRootAlias(), $fieldName), array($secondaryFromValues['from'], $secondaryFromValues['from'], $values['from'], $values['to']));
+        } else {
+          $query->orWhere(sprintf('%s.%s >= ? AND %s.%s <= ?', $query->getRootAlias(), $fieldName, $query->getRootAlias(), $fieldName), array($values['from'], $values['to']));
+        }
       }
       else if (null !== $values['from'])
       {
-        $query->orWhere(sprintf('%s.%s >= ?', $query->getRootAlias(), $fieldName), $values['from']);
+        if (null !== $secondaryFromFieldName) {
+          $query->orWhere(sprintf('%s.%s > ? OR  (%s.%s = ? AND %s.%s >= ?)', $query->getRootAlias(), $secondaryFromFieldName, $query->getRootAlias(), $secondaryFromFieldName, $query->getRootAlias(), $fieldName), array($secondaryFromValues['from'], $secondaryFromValues['from'], $values['from']));
+        } else {
+          $query->orWhere(sprintf('%s.%s >= ?', $query->getRootAlias(), $fieldName), $values['from']);
+        }
       }
       else if (null !== $values['to'])
       {
