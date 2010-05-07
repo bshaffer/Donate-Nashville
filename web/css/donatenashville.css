@@ -438,7 +438,8 @@ ul.breadcrumbs {
 	}
 	
 	.info-resource a.button,
-	.search-results a.button {
+	.search-results a.button,
+  div.button-inactive {
 		font-size:16px;
 		-khtml-border-radius: 5px;
 		-moz-border-radius: 5px;
@@ -446,10 +447,13 @@ ul.breadcrumbs {
 		border-radius: 5px;
 		background:#84B400;
 		padding:4px 24px;
-		margin:5px 0;
+		margin:5px 5px;
 		float:right;
 		color:#fff;
 	}
+  div.button-inactive {
+    background:#594938;
+  }
 	
 	.search-results li {
 		padding:5px;

@@ -47,20 +47,20 @@
 		
 		<div id="page" class="container_16 clearfix">
 		  
-		  <?php if (has_slot('sidebar')): ?>
-  		  <div id="content-area" class="clearfix">
+  		<div id="content-area" class="clearfix">
+		    <?php if (has_slot('sidebar')): ?>
   		    <div class="grid_12">
   		       <?php echo $sf_content ?>
   		    </div>
     		  <div class="grid_4" id="sidebar">
             <?php include_slot('sidebar'); ?>
           </div>
-    		</div>		    
-		  <?php else: ?>
-		    <div class="grid_16">
-		       <?php echo $sf_content ?>
-		    </div>
-		  <?php endif ?>
+		    <?php else: ?>
+		      <div class="grid_16">
+		         <?php echo $sf_content ?>
+		      </div>
+		    <?php endif ?>
+    	</div>		    
     
     <div id="footer" class="grid_16 clearfix">
   		<ul>
