@@ -351,6 +351,27 @@ ul.breadcrumbs {
 	border:1px solid #e3eaf1;
 }
 
+.widget ul.infobox-list {
+	margin: 0;
+}
+
+.widget ul.infobox-list li {
+	padding: 10px;
+	background: url('../images/stripe-bg-ltgray.png') repeat;
+	-khtml-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	border:1px solid #84B400;
+	overflow: hidden;
+	margin-bottom: 20px;
+	color: #476500;
+}
+
+.widget ul.infobox-list li a{
+	color: #84B400;
+}
+
 
 /* CONTENT AREA
 ****************************************************************************************************/
@@ -416,6 +437,7 @@ ul.breadcrumbs {
 		color:#84B400;
 	}
 	
+	.info-resource a.button,
 	.search-results a.button {
 		font-size:16px;
 		-khtml-border-radius: 5px;

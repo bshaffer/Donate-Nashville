@@ -74,7 +74,6 @@ ResourceFilter = $.extend({}, {
 
 		// mark as loading
 		self.updateUI(true, 'list');
-		self.updateUI(true, 'sidebar');
 	  
 		var value = $.trim(jq_input.val());
 		if (value.length >= this.MINIMUM_FILTER_LENGTH) {
@@ -96,10 +95,8 @@ ResourceFilter = $.extend({}, {
 				data.info = $.trim(data.info);
 				if (data.info.length > 0) {
 					// got data back - show the html string
+				  self.updateUI(true, 'sidebar');
 					self.showSidebarContent(data.info);
-				} else {
-					// if we got a blank string, show the default content instead
-					self.showNoSidebarResults();
 				}
 				
 			});
