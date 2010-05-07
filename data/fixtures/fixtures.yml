@@ -111,23 +111,32 @@ TimeResource:
 
 InfoResource:
   info_resource1:
+    User:               sgu_united_way
     title:              Food with the United Way
+    abstract:           211 with The United Way is a service set up to help with food requests.
+    transaction_type:   have
     keywords:           food
     url:                'http://tn211.mycommunitypt.com/index.php?option=com_cpx&task=search.query&any=food+pantries&none=inspection+safety&city=Nashville'
-    User:               sgu_united_way
+    privacy:            show_info
   info_resource2:
+    User:               sgu_united_way
     title:              Furniture with the United Way
     keywords:           furniture
+    transaction_type:   have
     url:                'http://tn211.mycommunitypt.com/index.php?option=com_cpx&task=search.query&all=furniture&city=Nashville'
-    User:               sgu_united_way
+    privacy:            show_info
   info_resource3:
+    User:               sgu_united_way
     title:              Clothing with the United Way
     keywords:           clothing
+    transaction_type:   have
     url:                'http://tn211.mycommunitypt.com/index.php?option=com_cpx&task=search.query&all=clothing&city=nashville'
-    User:               sgu_united_way
+    privacy:            show_info
   info_resource4:
+    User:               sgu_united_way
     title:              Housing with the United Way
     keywords:           housing
+    transaction_type:   have
     url:                'http://tn211.mycommunitypt.com/index.php?option=com_cpx&task=search.query&all=housing&city=Nashville'
-    User:               sgu_united_way
+    privacy:            show_info
 

@@ -137,6 +137,13 @@ stuff_delete:
   requirements:
     sf_method:  DELETE
     
+# The "show" page for InfoResource
+info_show:
+  class:    sfDoctrineRoute
+  url:      /info/:id
+  options:  { type: object, model: InfoResource }
+  param:    { module: info, action: show }
+
 # The "show" page for StuffResource
 stuff_show:
   class:    sfDoctrineRoute

@@ -75,6 +75,8 @@ InfoResource:
     extends:            Resource
     type:               concrete
   columns:
+    abstract:
+      type:             clob
     keywords:
       type:             string(255)
     url:

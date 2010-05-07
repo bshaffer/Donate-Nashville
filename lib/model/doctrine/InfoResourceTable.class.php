@@ -8,7 +8,7 @@ class InfoResourceTable extends ResourceTable
     $search = str_replace(' ', '%', trim($search));
     
     $query = $this->createQuery('p')
-              ->select('p.title, LEFT(p.description, 200) as summary, p.created_at')
+              ->select('p.title, description, abstract, p.created_at')
               ->andWhere('keywords like ?', "%$search%");
 
     if ($type) 

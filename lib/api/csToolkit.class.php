@@ -25,7 +25,7 @@ class csToolkit
    return implode($sep, $ret);
  }
  
-  static function truncate_text($text, $length = 30, $truncate_string = '...', $truncate_lastspace = false)
+  static function truncate($text, $length = 30, $truncate_string = '...', $truncate_lastspace = false)
   {
     if ($text == '')
     {
