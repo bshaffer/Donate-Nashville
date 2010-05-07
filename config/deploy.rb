@@ -80,5 +80,4 @@ namespace :symfony do
   end
 end
 
-after 'deploy:finalize_update', 'symlink:symfony', 'deploy:create_dirs', 'symfony:clear_cache'
-after 'deploy:symlink', 'symlink:db'
+after 'deploy:finalize_update', 'symlink:symfony', 'deploy:create_dirs', 'symfony:clear_cache', 'symlink:db'
