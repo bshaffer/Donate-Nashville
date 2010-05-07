@@ -33,7 +33,7 @@ class resourceActions extends frontendActions
     
     $infoList = $infoResults ? $this->getPartial('info/list', array('results' => $infoResults)) : '';
     
-    return $this->renderText(json_encode(array('stuff' => $stuffList, 'info' => $infoList)));
+    return $this->renderText(json_encode(array('stuff' => trim($stuffList), 'info' => trim($infoList))));
   }
 
   public function executeTimeList(sfWebRequest $request)
