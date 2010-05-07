@@ -23,6 +23,7 @@ class InfoResourceForm extends BaseInfoResourceForm
       'abstract',
       'transaction_type',
       'privacy',
+      'contact_name',
       'address_1',
       'address_2',
       'city',

@@ -18,6 +18,7 @@ class HaveStuffResourceForm extends StuffResourceForm
       'title',
       'quantity',
       'neighborhood',
+      'contact_name',
       'address_1',
       'address_2',
       'city',

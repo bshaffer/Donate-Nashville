@@ -67,7 +67,8 @@ body {
 ****************************************************************************************************/
 /* FROM FORMS.CSS */
 
-form ul li input {
+form ul li input,
+form ul li select {
 	padding: 5px;
 	font-size: 16px;
 }
@@ -90,9 +91,38 @@ form ul li input.button, form ul li input.secondButton {
 	padding:5px 20px;
 }
 
+form .error-msg {
+	width: auto;
+}
+
+form ul li.form-date .error-msg {
+	left: 350px;
+	top: 0;
+}
+
+form ul li.form-description div.wysiwyg {
+	width: 455px !important; 
+}
+
+form ul li.form-description .error-msg{left: 475px;}
+
 form div.wysiwyg ul li,
 form ul.error_list li {
 	clear: none !important;
+}
+
+form ul li.form-date select {
+	margin: 0 5px;
+	width: 75px;
+}
+
+form ul li.form-date ul {
+	margin: 5px 0 0 15px;
+}
+
+form ul li.form-date ul label {
+	display: inline;
+	margin-right: 5px;
 }
 
 /* FROM BASE.CSS */
@@ -223,6 +253,10 @@ div#homepage-desc a {
 	font-weight:bold;
 	margin:0 0 10px 0;
 }
+
+	#main-nav a {
+		color: #a9bccf;
+	}
 	
 	#main-nav li {
 		float:left;
@@ -337,6 +371,7 @@ ul.breadcrumbs {
 	-webkit-border-radius: 15px;
 	border-radius: 15px;
 	padding:10px 20px;
+	overflow: hidden;
 }
 
 .contact-info {
@@ -410,15 +445,15 @@ ul.breadcrumbs {
 		color: #6b8fb5;
 	}
 	
-	#time-info {
+	#resource-info {
 		font-size: 1.2em;
 	}
 
-	#time-info li {
+	#resource-info li {
 		margin-bottom: 0;
 	}
 
-	#time-info strong {
+	#resource-info strong {
 		color: #6b8fb5;
 		font-size: 1.2em;
 	}

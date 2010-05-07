@@ -6,6 +6,8 @@
   <?php use_javascripts_for_form($form) ?>
 
   <?php use_helper('dh','FormField') ?>
+  
+  <?php include_partial('default/flashes') ?>
 
   <form action="<?php echo url_for('@add_need_time_create') ?>" method="post" name="time_resource" class="styled-form">
     <?php echo $form->renderGlobalErrors() ?>
@@ -15,23 +17,36 @@
     <legend>* Required field</legend>
     <ul>
     <h2>Resource Info</h2>
+    
+    <li>
+      <label>Community *</label>
+      <?php echo outputFormField($form['neighborhood']) ?>
+    </li>
+    
     <li class="form-date">
       <label>When *</label>
     
-      <div>
-        <?php echo outputFormField($form['resource_date']) ?>
-      </div>
+      <ul>
+        <li>
+        <label>Date:</label> <?php echo outputFormField($form['resource_date']) ?>
+        </li>
     
-      <div>
-        <?php echo outputFormField($form['start_time']) ?>
-        to
-        <?php echo outputFormField($form['end_time']) ?>
-      </div>
+        <li class="medium">
+          <label>Time:</label> <?php echo outputFormField($form['start_time']) ?>
+          to
+            <?php echo outputFormField($form['end_time']) ?>
+        </li>
+      </ul>
     </li>
   
-    <li>
-      <label>What</label>
+    <li class="large">
+      <label>What *</label>
       <?php echo outputFormField($form['title']) ?>
+    </li>
+
+    <li class="small">
+      <label># of Volunteers</label>
+      <?php echo outputFormField($form['num_volunteers']) ?>
     </li>
 
     <li class="form-description">
@@ -39,17 +54,17 @@
       <?php echo outputFormField($form['description']) ?>
     </li>
   
-    <li>
-      <label># of Volunteers</label>
-      <?php echo outputFormField($form['num_volunteers']) ?>
-    </li>
-
-    <br clear="all" />
-    <br clear="all" />
+    </ul>
+    <hr/>
 
     <h2>Contact Info</h2>
-
+    <ul>
     <li>
+      <label>Contact Name</label>
+      <?php echo outputFormField($form['contact_name']) ?>
+    </li>
+
+    <li class="large">
       <label>Address</label>
       <?php echo outputFormField($form['address_1']) ?><br/>
       <?php echo outputFormField($form['address_2']) ?>
@@ -60,7 +75,7 @@
       <?php echo outputFormField($form['city']) ?>
     </li>
 
-    <li>
+    <li class="medium">
       <label>Zip</label>
       <?php echo outputFormField($form['zip']) ?>
     </li>

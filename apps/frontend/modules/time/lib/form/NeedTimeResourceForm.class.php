@@ -19,6 +19,8 @@ class NeedTimeResourceForm extends TimeResourceForm
       'start_time',
       'end_time',
       'title',
+      'neighborhood',
+      'contact_name',
       'address_1',
       'address_2',
       'city',

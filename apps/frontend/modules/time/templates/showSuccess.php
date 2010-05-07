@@ -7,7 +7,10 @@
     </div>
   <?php endif; ?>
   
-  <ul id="time-info">
+  <ul id="resource-info">
+    <li>
+      <strong>Community:</strong> <?php echo $resource['neighborhood'] ?>
+    </li>
     <li>
       <strong>Date:</strong> <?php echo date('M j', strtotime($resource['resource_date'])) ?>, <?php echo date('g:ia', strtotime($resource['start_time'])) ?> - <?php echo date('g:ia', strtotime($resource['end_time'])) ?>
     </li>

@@ -19,6 +19,11 @@ terms_of_service:
   url:  /tos
   param:  { module: default, action: termsOfService }
 
+flood_resources:
+  url:  /flood
+  param:  { module: default, action: floodResources }
+
+
 # The main "have" actions
 have:
   url:   /have

@@ -11,8 +11,8 @@
 				<li><?php echo link_to('I Need', '@need', $need_class) ?></li>
 				<li><?php echo link_to('I Have', '@have', $have_class) ?></li>
 			</ul>
-			<div class="left">
-				Have a question? <?php echo link_to('Contact Us', '@new_contact_message') ?>
+			<div id="quicknav" class="left">
+				<?php echo link_to('Nashville Flood Resources', '@flood_resources') ?>
 			</div>
 			<div class="right">
 			  <a href="<?php echo url_for('@user_resource') ?>">manage posts</a>

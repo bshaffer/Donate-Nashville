@@ -24,6 +24,8 @@ Resource:
       default:          false
     neighborhood:
       type:             string(100)
+    contact_name:
+      type:             string(100)
     address_1:
       type:             string(255)
     address_2:             

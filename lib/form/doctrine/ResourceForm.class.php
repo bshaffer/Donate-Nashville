@@ -24,8 +24,8 @@ class ResourceForm extends BaseResourceForm
     $this->validatorSchema['email'] = new sfValidatorEmail();
     
     $this->widgetSchema['privacy'] = new sfWidgetFormChoice(array('choices' => array(
+      'web_form'  => 'Hide my contact info, but show a contact form',
       'show_info' => 'Show my contact info as well as a contact form',
-      'web_form'  => 'Show a contact form, but hide my contact information',
     )));
     
     $neighborhoods = array(

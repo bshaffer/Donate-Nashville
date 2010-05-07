@@ -92,6 +92,8 @@ class timeActions extends frontendActions
         'sf_subject' => $time
       )));
     }
+    
+    $this->getUser()->setFlash('error', 'You are missing some of the required fields below.');
   }
   
   /**
