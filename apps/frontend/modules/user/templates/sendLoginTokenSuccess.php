@@ -14,5 +14,8 @@
   <div>
     <?php include_partial('user/sendLoginTokenForm', array('form' => $form)); ?>
   </div>
+  <p>
+    ...or click <?php echo link_to('here', '@user_password_login') ?> to log in with a password.
+  </p>
 </div>
 <?php slot('breadcrumbs', get_component('default', 'breadcrumbs')) ?>

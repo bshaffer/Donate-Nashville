@@ -212,6 +212,9 @@ user_contact:
   param:    { module: user, action: contact }
 
 # User management-related routes
+user_password_login:
+  url:   /auth/login
+  param: { module: user, action: passwordLogin }
 user_auth:
   url:   /auth/:token
   param: { module: user, action: authenticate }

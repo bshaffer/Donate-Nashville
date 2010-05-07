@@ -1,6 +1,7 @@
-<?php if ($haveTimeResources->count() || $needTimeResources->count() || $haveStuffResources->count() || $needStuffResources->count()): ?>
-
 <div class="main-col">
+<h1>Dashboard</h1>
+
+<?php if ($haveTimeResources->count() || $needTimeResources->count() || $haveStuffResources->count() || $needStuffResources->count()): ?>
   <?php if ($haveTimeResources->count()): ?>
   <h3>Have Time</h3>
   <ul>
