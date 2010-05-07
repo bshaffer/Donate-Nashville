@@ -1,24 +1,12 @@
 set :stages, %w(production)
 require 'capistrano/ext/multistage'
 
-set :application, "donatenashvill.org"
-set :domain, "beta.donatenashville.org"
-set :server_path, "/var/www"
-set :deploy_to, "#{server_path}/#{application}"
-
-set :scm, :git
-set :repository, "git@github.com:bshaffer/Donate-Nashville.git"
-
-set :symfony_lib, "/usr/local/lib/symfony"
 set :symfony_version, 'RELEASE_1_4_4'
-
 set :app_symlinks, %w{uploads}
 
 # =============================================================================
 # CAPISTRANO OPTIONS
 # =============================================================================
-set :user, 'donatenash'
-set :use_sudo, false
 set :keep_releases, 3
 set :deploy_via, :remote_cache
 
@@ -29,6 +17,7 @@ namespace :deploy do
   desc 'Overwrite the start task to set the permissions on the project.'
   task :start do
     run "php #{release_path}/symfony project:permissions"
+    run "php #{release_path}/symfony doctrine:build --all --and-load --no-confirmation"
   end
   
   desc 'Overwrite the restart task because we dont need it.'
@@ -80,7 +69,7 @@ namespace :symlink do
   
   desc 'Symlink the symfony library.'
   task :symfony do
-    run "ln -nfs #{symfony_lib}/#{symfony_version} #{release_path}/lib/symfony"
+    run "ln -nfs #{symfony_lib}/#{symfony_version} #{release_path}/lib/vendor/symfony"
   end
 end
 
@@ -91,5 +80,4 @@ namespace :symfony do
   end
 end
 
-after 'deploy:finalize_update', 'symlink:symfony', 'deploy:create_dirs', 'symfony:clear_cache'
-after 'deploy:symlink', 'symlink:db'
+after 'deploy:finalize_update', 'symlink:symfony', 'deploy:create_dirs', 'symfony:clear_cache', 'symlink:db'

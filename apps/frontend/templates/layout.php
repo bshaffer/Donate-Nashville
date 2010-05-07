@@ -81,5 +81,39 @@
   		<div class="center">&copy;<?php echo date('Y') ?> Donate Nashville</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+  var uservoiceOptions = {
+    /* required */
+    key: 'donatenashville',
+    host: 'donatenashville.uservoice.com', 
+    forum: '55628',
+    showTab: true,  
+    /* optional */
+    alignment: 'left',
+    background_color:'#f00', 
+    text_color: 'white',
+    hover_color: '#06C',
+    lang: 'en'
+  };
+
+  function _loadUserVoice() {
+    var s = document.createElement('script');
+    s.setAttribute('type', 'text/javascript');
+    s.setAttribute('src', ("https:" == document.location.protocol ? "https://" : "http://") + "cdn.uservoice.com/javascripts/widgets/tab.js");
+    document.getElementsByTagName('head')[0].appendChild(s);
+  }
+  _loadSuper = window.onload;
+  window.onload = (typeof window.onload != 'function') ? _loadUserVoice : function() { _loadSuper(); _loadUserVoice(); };
+  </script>
+  <script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script type="text/javascript">
+  try {
+  var pageTracker = _gat._getTracker("UA-16279666-1");
+  pageTracker._setDomainName(".donatenashville.org");
+  pageTracker._trackPageview();
+  } catch(err) {}</script>
 </body>
 </html>
