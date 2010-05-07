@@ -29,15 +29,22 @@ class ResourceForm extends BaseResourceForm
     )));
     
     $neighborhoods = array(
-      'Outside Nashville'   => 'Outside Nashville',
-      'areas'               => ' -- Nashville Areas --',
-        'North Nashville'   => 'North Nashville',
-        'South Nashville'   => 'South Nashville',
-        'East Nashville'    => 'East Nashville',
-        'West Nashville'    => 'West Nashville',
-      'neighborhoods'       => ' -- Nashville Neighborhoods --',
-        'Antioch'           => 'Antioch',
-        'Brentwood'         => 'Brentwood',
+      'Outside Nashville'         => 'Outside Nashville',
+      'communities'               => ' ---------------',
+        'Antioch-Priest Lake'     => 'Antioch-Priest Lake',
+        'Bellevue'                => 'Bellevue', 
+        "Bordeaux-White's Creek"  => "Bordeaux-White's Creek", 
+        'Donelson-Hermitage'      => 'Donelson-Hermitage',
+        'Downtown Nashville'      => 'Downtown Nashville', 
+        'East Nashville'          => 'East Nashville',
+        'Green Hills-Midtown'     => 'Green Hills-Midtown',
+        'Joelton'                 => 'Joelton',
+        'Madison'                 => 'Madison',
+        'North Nashville'         => 'North Nashville',
+        'Parkwood-Union Hill'     => 'Parkwood-Union Hill',
+        'South Nashville'         => 'South Nashville',
+        'Southeast'               => 'Southeast', 
+        'West Nashville'          => 'West Nashville',
       );
     
     $this->widgetSchema['neighborhood'] = new sfWidgetFormChoice(array('choices' => $neighborhoods));
@@ -47,6 +54,7 @@ class ResourceForm extends BaseResourceForm
     $this->validatorSchema['neighborhood'] = new sfValidatorChoice(array('choices' => array_keys($neighborhoods)));
     
     $this->setDefault('state', 'TN');
+    $this->setDefault('neighborhood', 'communities');
   }
 
   /**

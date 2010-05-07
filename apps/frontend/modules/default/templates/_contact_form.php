@@ -1,7 +1,7 @@
 <?php use_stylesheets_for_form($form) ?>
 <?php use_javascripts_for_form($form) ?>
 
-<?php use_helper('dh') ?>
+<?php use_helper('dh','FormField') ?>
 
 <?php echo $form->renderFormTag(url_for('new_contact_message', array(), array('class'=>'async'))) ?>
   <?php echo $form->renderGlobalErrors() ?>
@@ -10,43 +10,29 @@
 <fieldset>
 <legend>* Required field</legend>
   <ul>
-    <li>
-      <label><?php echo $form['email']->renderLabel() ?></label>
-      
-      <div>
-        <?php echo $form['email']->renderError() ?>
-        <?php echo $form['email']->render() ?>
-      </div>
-    </li>
-    
-    <li>
-      <label><?php echo $form['name']->renderLabel() ?></label>
-      
-      <div>
-        <?php echo $form['name']->renderError() ?>
-        <?php echo $form['name']->render() ?>
-      </div>
-    </li>
-    
-    <li>
-      <label><?php echo $form['phone']->renderLabel() ?></label>
-      
-      <div>
-        <?php echo $form['phone']->renderError() ?>
-        <?php echo $form['phone']->render() ?>
-      </div>
-    </li>
-    
-    <li class="long">
-      <label><?php echo $form['notes']->renderLabel() ?></label>
-      
-      <div>
-        <?php echo $form['notes']->renderError() ?>
-        <?php echo $form['notes']->render() ?>
-      </div>
-    </li>
+      <li>
+        <label>Email *</label>
+        <?php echo outputFormField($form['email']) ?>
+      </li>
+
+      <li>
+        <label>Name</label>
+        <?php echo outputFormField($form['name']) ?>
+      </li>
+
+      <li>
+        <label>Phone</label>
+        <?php echo outputFormField($form['phone']) ?>
+      </li>
+
+      <li class="medium">
+        <label>Notes</label>
+        <?php echo outputFormField($form['notes']) ?>
+      </li>
   
-    <li><input type="submit" value="Send my question" /></li>
+      <li>
+        <input type="submit" value="Send my question" class="button"/>
+      </li>
   </ul>
 </fieldset>
 </form>
