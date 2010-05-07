@@ -4,7 +4,7 @@ ResourceFilter = $.extend({}, {
 	
 	MINIMUM_FILTER_LENGTH: 3,
 	KEYPRESS_DEBOUNCE_RATE: 450, // delays this long (in ms) after each keypress to prevent too many ajax requests
-	FADE_TIME: 300, // fade in/out takes this long
+	FADE_TIME: 250, // fade in/out takes this long
 
 	// these are specified in the resource filter template
 	NO_RESULTS_STRING: '', // this will be loaded from the html (see resource filter template)
@@ -73,8 +73,8 @@ ResourceFilter = $.extend({}, {
 		var self = this;
 
 		// mark as loading
-		self.updateUI(true);
-	  self.updateSidebarUI(true);
+		self.updateUI(true, 'list');
+		self.updateUI(true, 'sidebar');
 	  
 		var value = $.trim(jq_input.val());
 		if (value.length >= this.MINIMUM_FILTER_LENGTH) {
@@ -84,23 +84,25 @@ ResourceFilter = $.extend({}, {
 			// send the ajax request
 			var vars = {'q': value};
 			$.getJSON(action, vars, function(data, status) {
-				if (data['stuff'].length > 0) {
+				data.stuff = $.trim(data.stuff);
+				if (data.stuff.length > 0) {
 					// got data back - show the html string
-					self.showContent(data['stuff']);
+					self.showContent(data.stuff);
 				} else {
 					// if we got a blank string, show the no results string instead
 					self.showNoResults();
 				}
 				
-				if (data['info'].length > 0) {
+				data.info = $.trim(data.info);
+				if (data.info.length > 0) {
 					// got data back - show the html string
-					self.showSidebarContent(data['info']);
+					self.showSidebarContent(data.info);
 				} else {
 					// if we got a blank string, show the default content instead
 					self.showNoSidebarResults();
 				}
 				
-			}, 'html');
+			});
 		} else {
 			// didn't get enough characters
 			
@@ -223,6 +225,7 @@ ResourceFilter = $.extend({}, {
 
 			// send the request
 			$.get(action, vars, function(data, status) {
+				data = $.trim(data);
 				if (data.length > 0) {
 					// got data back - show the html string
 					self.showContent(data);
@@ -262,53 +265,46 @@ ResourceFilter = $.extend({}, {
 	////////////////////////////////////////////////////////////
 	/// UI Updates
 	
-	showContent: function(new_content) {
+	showContent: function(new_content, location) {
 		var self = this;
+		var id = 'ResultsContainer';
+		if(location === 'sidebar') { id = 'SidebarContainer'; }
 		
 		// update content
-		$('#ResultsContainer').queue(function() {
+		$('#'+id).queue(function() {
 			$(this).html(new_content);
 			$(this).dequeue();
 
 			// mark as no longer loading after the content is applied
-			self.updateUI(false);
+			self.updateUI(false, location);
 		});
 	},
 	
 	showSidebarContent: function(new_content) {
-		var self = this;
-		
-		// update content
-		$('#SidebarContainer').queue(function() {
-			$(this).html(new_content);
-			$(this).dequeue();
-
-			// mark as no longer loading after the content is applied
-			self.updateSidebarUI(false);
-		});
+		this.showContent(new_content, 'sidebar');
 	},
 
 	// updates the user interface to add a "searchLoading" class
-	updateSidebarUI: function(loading) {
-		if (loading) {
-			$('#sidebar').addClass('searchLoading');
-			$('#SidebarContainer').animate({opacity:0}, this.FADE_TIME);
+	updateUI: function(loading, location) {
+		var list_id, container_id;
+		if(location === 'sidebar') {
+			list_id = 'sidebar';
+			container_id = 'SidebarContainer';
 		} else {
-			$('#sidebar').removeClass('searchLoading');
-			$('#SidebarContainer').animate({opacity:1}, this.FADE_TIME);
+			list_id = 'ResourceResultsList';
+			container_id = 'ResultsContainer';
 		}
-	},	
-	
-	// updates the user interface to add a "searchLoading" class
-	updateUI: function(loading) {
+
 		if (loading) {
-			$('#ResourceResultsList').addClass('searchLoading');
-			$('#ResultsContainer').animate({opacity:0}, this.FADE_TIME);
+			$('#'+container_id).animate({opacity:0}, this.FADE_TIME);
+			$('#'+container_id).queue(function() {
+				$('#'+list_id).addClass('searchLoading');
+				$(this).dequeue();
+			});
 		} else {
-			$('#ResourceResultsList').removeClass('searchLoading');
-			$('#ResultsContainer').animate({opacity:1}, this.FADE_TIME);
+			$('#'+list_id).removeClass('searchLoading');
+			$('#'+container_id).animate({opacity:1}, this.FADE_TIME);
 		}
-		
 	},
 	
 	// reads the no results and default strings from the html
