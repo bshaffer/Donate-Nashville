@@ -226,7 +226,6 @@ ResourceFilter = $.extend({}, {
 			// send the request
 			$.get(action, vars, function(data, status) {
 				data = $.trim(data);
-				console.log('data.length='+data.length+' data=',data)
 				if (data.length > 0) {
 					// got data back - show the html string
 					self.showContent(data);
