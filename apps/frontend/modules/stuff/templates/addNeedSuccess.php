@@ -15,7 +15,7 @@
       <?php echo $form->renderHiddenFields() ?>
       <fieldset id="" class="">
         <legend>* Required</legend>
-        <h2>Resource Information</h2>
+        <h2>Item Information</h2>
         <ul>
 
         <li>

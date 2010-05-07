@@ -38,10 +38,11 @@ all:
       extra_parameters_as_query_string: true
   mailer:
     param:
-<?php if (file_exists('config/mailer.yml')): ?>
-<?php include('config/mailer.yml') ?>
-<?php else: ?>
       transport:
-        class:  Swift_MailTransport
-
-<?php endif ?>
+        class: Swift_SmtpTransport
+        param:
+          host:       smtp.gmail.com
+          port:       465
+          encryption: ssl
+          username:   noreply@donatenashville.org
+          password:   dnashville2010
