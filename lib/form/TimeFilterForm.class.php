@@ -9,7 +9,7 @@ class TimeFilterForm extends sfForm
   {
     $choices = array(
       ''      => 'Anytime', 
-      '00:00' => 'Morning (12am-12am)', 
+      '00:00' => 'Morning (12am-12pm)', 
       '12:00' => 'Afternoon (12pm-5pm)',
       '17:00' => 'Night (5pm-12am)'
       );
