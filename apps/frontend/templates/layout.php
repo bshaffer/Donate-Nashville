@@ -11,7 +11,6 @@
     <link rel="shortcut icon" href="/favicon.ico" />
   
 		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
-		<!-- google.load("jqueryui", "1.8.1"); -->
 		<script type="text/javascript" charset="utf-8">
 			google.load('jquery','1.4');
 			google.load('jqueryui', '1.8');
