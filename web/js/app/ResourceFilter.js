@@ -74,7 +74,8 @@ ResourceFilter = $.extend({}, {
 
 		// mark as loading
 		self.updateUI(true);
-	
+	  self.updateSidebarUI(true);
+	  
 		var value = $.trim(jq_input.val());
 		if (value.length >= this.MINIMUM_FILTER_LENGTH) {
 			// get the action from the form
@@ -82,13 +83,21 @@ ResourceFilter = $.extend({}, {
 
 			// send the ajax request
 			var vars = {'q': value};
-			$.get(action, vars, function(data, status) {
-				if (data.length > 0) {
+			$.getJSON(action, vars, function(data, status) {
+				if (data['stuff'].length > 0) {
 					// got data back - show the html string
-					self.showContent(data);
+					self.showContent(data['stuff']);
 				} else {
 					// if we got a blank string, show the no results string instead
 					self.showNoResults();
+				}
+				
+				if (data['info'].length > 0) {
+					// got data back - show the html string
+					self.showSidebarContent(data['info']);
+				} else {
+					// if we got a blank string, show the default content instead
+					self.showNoSidebarResults();
 				}
 				
 			}, 'html');
@@ -240,6 +249,11 @@ ResourceFilter = $.extend({}, {
 		this.showContent('<div class="noResults">'+this.NO_RESULTS_STRING+'</div>');
 	},
 	
+	// shows when no results are available
+	showNoSidebarResults: function() {
+		this.showSidebarContent('');
+	},
+	
 	showDefaultString: function() {
 		this.showContent('<div class="emptyList">'+this.DEFAULT_STRING+'</div>');
 	},
@@ -261,6 +275,29 @@ ResourceFilter = $.extend({}, {
 		});
 	},
 	
+	showSidebarContent: function(new_content) {
+		var self = this;
+		
+		// update content
+		$('#SidebarContainer').queue(function() {
+			$(this).html(new_content);
+			$(this).dequeue();
+
+			// mark as no longer loading after the content is applied
+			self.updateSidebarUI(false);
+		});
+	},
+
+	// updates the user interface to add a "searchLoading" class
+	updateSidebarUI: function(loading) {
+		if (loading) {
+			$('#sidebar').addClass('searchLoading');
+			$('#SidebarContainer').animate({opacity:0}, this.FADE_TIME);
+		} else {
+			$('#sidebar').removeClass('searchLoading');
+			$('#SidebarContainer').animate({opacity:1}, this.FADE_TIME);
+		}
+	},	
 	
 	// updates the user interface to add a "searchLoading" class
 	updateUI: function(loading) {

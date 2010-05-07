@@ -9,7 +9,6 @@ Resource:
       notnull:          true
     transaction_type:
       type:             enum
-      notnull:          true
       values:           [need, have]
     title:
       type:             string(255)
@@ -78,7 +77,8 @@ InfoResource:
   columns:
     keywords:
       type:             string(255)
-
+    url:
+      type:             string(255)
 
 ResourceParticipant:
   columns:

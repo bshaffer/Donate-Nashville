@@ -53,7 +53,7 @@
   		    <div class="grid_12">
   		       <?php echo $sf_content ?>
   		    </div>
-    		  <div class="grid_4">
+    		  <div class="grid_4" id="sidebar">
             <?php include_slot('sidebar'); ?>
           </div>
     		</div>		    

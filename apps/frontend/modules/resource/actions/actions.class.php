@@ -18,12 +18,22 @@ class resourceActions extends frontendActions
 
     if ($type = $request->getParameter('type')) 
     {
-      $query->whereWrap()->andWhere('transaction_type =?', $type);
+      $query->whereWrap()->andWhere('transaction_type = ?', $type);
     }
 
     $results = $query->execute(array(), Doctrine::HYDRATE_ARRAY);
     
-    return $this->renderPartial('stuff/list', array('results' => $results, 'transaction_type' => $type));
+    
+    $infoResults = Doctrine::getTable('InfoResource')
+                      ->getKeywordQuery($request->getParameter('q'), $type)
+                      ->limit(2)
+                      ->execute(array(), Doctrine::HYDRATE_ARRAY);
+                      
+    $stuffList = $this->getPartial('stuff/list', array('results' => $results, 'transaction_type' => $type));
+    
+    $infoList = $infoResults ? $this->getPartial('info/list', array('results' => $infoResults)) : '';
+    
+    return $this->renderText(json_encode(array('stuff' => $stuffList, 'info' => $infoList)));
   }
 
   public function executeTimeList(sfWebRequest $request)

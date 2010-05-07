@@ -20,6 +20,8 @@
       <strong>Search for your specific need. See below for matching items, or add a new item if no matching goods are available.</strong>
     </p>
   </div>
+  <div class="widget clearfix" id="SidebarContainer">
+  </div>
 <?php end_slot() ?>
 
 <?php slot('breadcrumbs', get_component('default', 'breadcrumbs')) ?>

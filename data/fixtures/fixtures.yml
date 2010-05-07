@@ -11,6 +11,10 @@ sfGuardUser:
     password:       admin
     is_super_admin: false
     email_address:  chayner@centresource.com
+  sgu_united_way:
+    password:       admin
+    is_super_admin: false
+    email_address:  jyhaynes@comcast.net
 
 sfGuardUserProfile:
   sgup_bshaffer:
@@ -25,6 +29,13 @@ sfGuardUserProfile:
     city:           Nashville
     state:          TN
     zip:            37213
+  sgup_united_way:
+    User:           sgu_united_way
+    address_1:      250 Venture Circle
+    city:           Nashville
+    state:          TN
+    zip:            37228-1696
+    phone_1:          (615) 255-8501
 
 sfGuardPermission:
   sgp_admin:
@@ -97,3 +108,26 @@ TimeResource:
     transaction_type:   want
     resource_date:      '2010-05-04'
     start_time:         '00:00'
+
+InfoResource:
+  info_resource1:
+    title:              Food with the United Way
+    keywords:           food
+    url:                'http://tn211.mycommunitypt.com/index.php?option=com_cpx&task=search.query&any=food+pantries&none=inspection+safety&city=Nashville'
+    User:               sgu_united_way
+  info_resource2:
+    title:              Furniture with the United Way
+    keywords:           furniture
+    url:                'http://tn211.mycommunitypt.com/index.php?option=com_cpx&task=search.query&all=furniture&city=Nashville'
+    User:               sgu_united_way
+  info_resource3:
+    title:              Clothing with the United Way
+    keywords:           clothing
+    url:                'http://tn211.mycommunitypt.com/index.php?option=com_cpx&task=search.query&all=clothing&city=nashville'
+    User:               sgu_united_way
+  info_resource4:
+    title:              Housing with the United Way
+    keywords:           housing
+    url:                'http://tn211.mycommunitypt.com/index.php?option=com_cpx&task=search.query&all=housing&city=Nashville'
+    User:               sgu_united_way
+

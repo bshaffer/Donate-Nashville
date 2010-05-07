@@ -16,11 +16,14 @@
 <?php slot('breadcrumbs', get_component('default', 'breadcrumbs')) ?>
 
 <?php slot('sidebar') ?>
-  <div id="quicklink" class="widget clearfix">
+  <div class="widget clearfix">
   	<h3 class="half-margin">Need Additional Resources?</h3>
   	<a href="http://www.211tn.org" title="TN 2-1-1" target="_blank"><?php echo image_tag('partners/211logo.png') ?></a>
   	<p>
   	 Dial United Way's 2-1-1 or visit <a href="http://www.211tn.org" title="TN 2-1-1" target="_blank">www.211tn.org</a> to find additional resources.
   	</p>
+  </div>
+
+  <div class="widget clearfix" id="SidebarContainer">
   </div>
 <?php end_slot() ?>
