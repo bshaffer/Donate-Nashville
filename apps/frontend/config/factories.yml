@@ -45,4 +45,3 @@ all:
         class:  Swift_MailTransport
 
 <?php endif ?>
-<?php exit ?>
