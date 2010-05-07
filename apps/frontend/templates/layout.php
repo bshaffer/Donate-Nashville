@@ -70,7 +70,7 @@
   			<li><?php echo link_to('About DonateNashville', '@about') ?></li>
   			<li><?php echo link_to('Terms of Service', '@terms_of_service') ?></li>
   			<li><?php echo link_to('Contact Us', '@new_contact_message') ?></li>
-  			<li><a href="http://www.twitter.com/donateNashville" title="@donateNashville">Twitter</a></li>
+  			<li><a href="http://www.twitter.com/donateNashville" title="@donateNashville" target="_blank">Twitter</a></li>
   		</ul>
   		<ul id="partners">
         <li class="partner_wearenashville"><a href="http://www.wearenashville.org" title="We Are Nashville">We Are Nashville</a></li>

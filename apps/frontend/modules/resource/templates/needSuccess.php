@@ -2,7 +2,7 @@
 	<h1>I Need&hellip;</h1>
 	<ul class="clearfix">
 		<li>
-			<h2 class="no-margin"><?php echo link_to('Help', '@add_need_time') ?></h2>
+			<h2 class="no-margin"><?php echo link_to('A Hand', '@add_need_time') ?></h2>
 			<p class="text-large">
 				<strong>Find help with tasks like cleanup, repair and any other activities requiring volunteer labor.</strong>
 			</p>
@@ -23,23 +23,13 @@
 </div>
 
 <?php slot('sidebar') ?>
-  <!-- <div class="widget special clearfix">
-    <h3 class="half-margin">Important Message</h3>
-    <p class="half-margin">
-      <strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</strong>
-    </p>
-  </div>
-  <div class="widget clearfix">
-    <h3 class="half-margin">Quick Message</h3>
-    <ul>
-      <li>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      </li>
-      <li>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      </li>
-    </ul>
-  </div> -->
+<!-- <div class="widget clearfix">
+  <h3 class="half-margin">General Help Available</h3>
+  <a href="http://www.211tn.org" title="TN 2-1-1" target="_blank"><?php echo image_tag('partners/211logo.png') ?></a>
+  <p>
+   Dial United Way's 2-1-1 or visit <a href="http://www.211tn.org" title="TN 2-1-1" target="_blank">www.211tn.org</a> to find additional resources.
+  </p>
+</div> -->
 <?php end_slot() ?>
 
 <?php slot('breadcrumbs', get_component('default', 'breadcrumbs')) ?>
