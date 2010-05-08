@@ -11,5 +11,6 @@ class sfGuardGroupForm extends PluginsfGuardGroupForm
 {
   public function configure()
   {
+    $this->useFields(array('name', 'description', 'permissions_list'));
   }
 }

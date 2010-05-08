@@ -1,21 +1,22 @@
-post_post:
-  class: sfDoctrineRouteCollection
-  options:
-    model:               Post
-    module:              post
-    prefix_path:         post
-    column:              id
-    with_wildcard_routes: true
+sf_guard_group:
+  url: /users
+  param: { module: users, action: index }
 
-page_page:
-  class: sfDoctrineRouteCollection
-  options:
-    model:               Page
-    module:              page
-    prefix_path:         page
-    column:              id
-    with_wildcard_routes: true
+sf_guard_permission:
+  url: /users
+  param: { module: users, action: index }
 
+sf_guard_user:
+  url: /users
+  param: { module: users, action: index }
+
+users:
+  url: /users
+  param: { module: users, action: index }
+statistics:
+  url:  /
+  param: { module: statistics, action: index }
+  
 # default rules
 homepage:
   url:   /

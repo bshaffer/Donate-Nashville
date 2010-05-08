@@ -20,10 +20,12 @@
 	clear:both;
 	margin-top:20px !important;
 }
+
 div#sf_admin_container h1 
 {
 	position:relative;
 }
+
 .date-from, .date-to
 {
 	display:block;
@@ -193,15 +195,11 @@ div#sf_admin_content {
 }
 
 div#sf_admin_container {
-	background: transparent url('../images/backend/sidebar-image.jpg') scroll repeat-y top left;
-	/*padding: 1em;*/
 	position: relative;
 }
 
 div#sf_admin_container h1 {
-	position:absolute;
 	padding:10px;
-	width:210px;
 	line-height:20px;
 /*	margin: -1.6em 0 0;*/
 }
