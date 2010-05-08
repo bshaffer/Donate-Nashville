@@ -138,7 +138,7 @@ hr {border-color:#fff; border-style:dashed;}
 
 /* HOME PAGE
 ****************************************************************************************************/
-h1#power-line {
+#content-area h1#power-line {
 	font-size:43px;
 	line-height:50px;
 	margin:25px 0 10px 0;
