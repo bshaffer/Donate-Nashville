@@ -419,6 +419,9 @@ ul.breadcrumbs {
 	margin-left: 14px;
 }
 
+.terms-of-service blockquote {
+	margin-left: 25px;
+}
 /* SEARCH
 ****************************************************************************************************/
 .search-large input{
