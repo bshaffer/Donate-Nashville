@@ -8,17 +8,21 @@
   
     <?php include_stylesheets() ?>
     <?php include_javascripts() ?>
+    <?php include_title(); ?>
 </head>
   <body>
     <div id="page" class="container_16 clearfix">
       <div id="header" class="grid_16">
-          <h1 id="site-title"><?php include_title(); ?> Admin</h1>
+          <h1 id="site-title">Donate Nashville Admin</h1>
           <img class="cs-logo" src="/images/backend/cs_logo.png" alt="centre{source}" />
  					<?php include_partial('global/public_menu', array()) ?>
       </div>
-      <div id="content-area" class="grid_16 alpha">
-				<?php include_partial('global/admin_menu', array()) ?>
-        <?php echo $sf_content ?>
+      <div id="navigation" class="grid_2 alpha">
+				  <?php include_partial('global/admin_menu', array()) ?>
+			</div>
+      <div id="content-area" class="grid_14 omega">
+          <?php echo $sf_content ?>
+        </div>
       </div>
   </body>
 </html>

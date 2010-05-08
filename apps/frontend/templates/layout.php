@@ -66,13 +66,13 @@
     
     <div id="footer" class="grid_16 clearfix">
   		<ul>
-  			<li><?php echo link_to('Home', '@homepage') ?></li>
+  			<li class="first"><?php echo link_to('Home', '@homepage') ?></li>
   			<li><?php echo link_to('I Need', '@need') ?></li>
   			<li><?php echo link_to('I Have', '@have') ?></li>
   			<li><?php echo link_to('About DonateNashville', '@about') ?></li>
   			<li><?php echo link_to('Terms of Service', '@terms_of_service') ?></li>
   			<li><?php echo link_to('Contact Us', '@new_contact_message') ?></li>
-  			<li><a href="http://www.twitter.com/donateNashville" title="@donateNashville" target="_blank">Twitter</a></li>
+  			<li class="last"><a href="http://www.twitter.com/donateNashville" title="@donateNashville" target="_blank">Twitter</a></li>
   		</ul>
   		<ul id="partners">
         <li class="partner_wearenashville"><a href="http://www.wearenashville.org" title="We Are Nashville">We Are Nashville</a></li>

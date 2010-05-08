@@ -19,7 +19,7 @@ page_page:
 # default rules
 homepage:
   url:   /
-  param: { module: default, action: index }
+  param: { module: statistics, action: index }
   
 sf_guard_signin:
   url:   /login

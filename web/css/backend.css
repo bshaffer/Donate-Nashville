@@ -1,13 +1,9 @@
+/* @override http://donate/css/backend.css */
+
 /*@Added By B.Shaffer*/
 #sf_admin_content
 {
 	min-height: 300px;
-}
-#main-nav
-{
-	position:absolute;
-	margin-top:60px;
-	z-index:100;
 }
 #sf_admin_container .mceToolbar tr,
 #sf_admin_container .mceToolbar td,
@@ -56,6 +52,59 @@ div#sf_admin_container h1
 {
 	padding: 3px 6px !important
 }
+
+/* @group Statistics */
+
+.list_type h2 {
+	margin: 10px 0;
+}
+
+.list_type table {
+	border-top: 1px solid #999;
+	width: 100%;
+}
+
+.list_type table tr {
+	border-bottom: 1px solid #999;
+}
+
+.list_type table tr th {
+	text-align: left;
+	font-weight: bold;
+	padding: 5px 3px !important;
+	font-size: 10px;
+	line-height: 10px;
+	background: #ddd;
+}
+
+.list_type table tr td {
+	padding: 5px 3px;
+}
+
+.list_type table tr td a {
+	font-weight: bold;
+}
+
+.list_type table tr td.title {
+	width: 50%;
+}
+
+.list_type table tr td.community{
+	width: 30%;
+}
+
+.list_type table tr td.community,
+.list_type table tr td.date_added{
+	width: 20%;
+}
+
+
+/* @end */
+
+
+
+
+
 /*@group HTML Elements*/
 a, img {
 	outline: none;

@@ -9,9 +9,9 @@ default:
     #language:     en
     #robots:       index, follow
 
-  stylesheets:    [reset.css, text.css, 960.css, backend.css, jquery-ui/themes/cupertino/ui.all.css]
+  stylesheets:    [reset.css, text.css, 960.css, backend.css, jquery-ui.css]
 
-  javascripts:    [http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js, http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/jquery-ui.min.js, backend.js]
+  javascripts:    [http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js, http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/jquery-ui.min.js, app/backend.js]
 
   has_layout:     true
   layout:         layout

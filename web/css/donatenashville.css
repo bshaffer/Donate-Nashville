@@ -520,7 +520,17 @@ ul.breadcrumbs {
 
 	#footer li {
 		display:inline;
-		margin:0 10px;
+		margin:0 0 0 20px;
+	}
+
+	#footer li:after {
+		margin-left: 20px;
+		content: '//';
+	}
+
+	#footer li.last:after {
+		margin-left: 0px;
+		content: '';
 	}
 	
 	#footer ul#partners {

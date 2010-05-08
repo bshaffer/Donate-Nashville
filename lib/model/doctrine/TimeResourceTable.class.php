@@ -95,4 +95,18 @@ class TimeResourceTable extends ResourceTable
       }
     }
   }
+  
+  public function getList($transaction_type = null, $is_fulfilled = 0)
+  {
+    $query = $this->createQuery('r')
+             ->where('r.is_fulfilled = ?', $is_fulfilled);
+             
+    if ($transaction_type)
+    {
+      $query->andWhere('r.transaction_type = ?', $transaction_type);
+    }
+    
+    return $query->execute();
+
+  }
 }

@@ -23,7 +23,6 @@ flood_resources:
   url:  /flood
   param:  { module: default, action: floodResources }
 
-
 # The main "have" actions
 have:
   url:   /have
