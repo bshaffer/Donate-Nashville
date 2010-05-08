@@ -12,6 +12,13 @@ Options +FollowSymLinks +ExecCGI
   #RewriteCond %{REQUEST_URI} !\.html$
   #RewriteRule .* - [L]
 
+  RewriteCond %{HTTP_HOST} ^donatenashville.org [NC]
+  RewriteRule ^(.*)$ http://www.donatenashville.org/$1 [L,R=301]
+
+  RewriteEngine on
+  RewriteCond %{HTTP_HOST} ^donate/$
+  RewriteRule ^(.*)$ http://beta.donate/$1 [R=301]
+
   # we check if the .html version is here (caching)
   RewriteRule ^$ index.html [QSA]
   RewriteRule ^([^.]+)$ $1.html [QSA]
