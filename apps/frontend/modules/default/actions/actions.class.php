@@ -14,7 +14,14 @@ class defaultActions extends frontendActions
   
   public function executeIndex(sfWebRequest $request)
   {
-    
+    $updated = strtotime('May 8, 2010 8:50 am');
+    if(isset($_COOKIE['donateNashville']) && $_COOKIE['donateNashville'] == $updated){;
+      // Don't show anything
+    } elseif (true) { 
+      setcookie("donateNashville", $updated);
+      setcookie("donateNashville", $updated, time()+150000000); /* expire in 1000 hours */
+      $this->showPopUp = true;
+    }
   }
   
   public function executeAbout(sfWebRequest $request)

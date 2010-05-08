@@ -31,3 +31,9 @@
     </div>
   </div>
 </div>
+
+<?php if ($showPopUp): ?>
+  <?php slot('popUp') ?>
+  <?php include_partial('homepagePopUp') ?>
+  <?php end_slot() ?>  
+<?php endif ?>

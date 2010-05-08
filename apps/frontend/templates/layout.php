@@ -16,7 +16,9 @@
 			google.load('jqueryui', '1.8');
 		</script>
 
-		<?php use_stylesheet('http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.0/themes/cupertino/jquery-ui.css'); ?>		
+		<?php use_stylesheet('http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.0/themes/cupertino/jquery-ui.css'); ?>
+		<script type="text/javascript" src="<?php echo javascript_path('jquery/fancybox/jquery.fancybox-1.3.1.pack.js') ?>"></script>
+		<link rel="stylesheet" href="<?php echo javascript_path('jquery/fancybox/jquery.fancybox-1.3.1.css') ?>" type="text/css" media="screen" title="no title" charset="utf-8">
     <?php include_stylesheets() ?>
     <?php include_javascripts() ?>
 </head>
@@ -81,6 +83,14 @@
   		<div class="center">&copy;<?php echo date('Y') ?> Donate Nashville</div>
 		</div>
 	</div>
+	
+	<?php if (has_slot('popUp')): ?>
+	 <div id="popup">
+	   <?php include_slot('popUp'); ?>
+	 </div>
+	<?php endif; ?>
+	
+	
 	<script type="text/javascript">
   var uservoiceOptions = {
     /* required */

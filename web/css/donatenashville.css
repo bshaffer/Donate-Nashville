@@ -206,8 +206,12 @@ div#homepage-desc a {
 		list-style-type: disc;
 		list-style-position: outside;
 	}
-
-	
+	#popup {
+		display: none;
+	}
+	#popup p {
+		font-size: 18px;
+	}
 
 /* HEADER
 ****************************************************************************************************/
