@@ -53,6 +53,7 @@ ResourceFilter = $.extend({}, {
 	//  in the same way as if an input change event was triggered
 	forceUpdate: function() {
 		if (this.resource_type == 'stuff') {
+		  this.showMoreResultsLink(true);
 			this.runFilterForStuff($('input.resource'), null, true);
 		} else {
 			this.dateOrTimeChanged(true);
@@ -299,12 +300,13 @@ ResourceFilter = $.extend({}, {
   showMoreResultsLink: function(hide) {
     if (hide) {
       this.RESULT_SET_OFFSET = 0;
-      $('.moreResultsLink').remove();      
+      $('.moreResultsLink').remove(); 
     } else {
-      if (!$('.moreResultsLink').length) {
-		    this.showContent(this.MORE_RESULTS_LINK_HTML, 'main', 'after');              
-      }
+        if ($('.moreResultsLink').length == 0) {
+		      this.showContent(this.MORE_RESULTS_LINK_HTML, null, 'after');
+        }
     }
+
 	},
 	
 	
