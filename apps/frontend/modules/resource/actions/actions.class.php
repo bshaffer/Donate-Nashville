@@ -16,7 +16,8 @@ class resourceActions extends frontendActions
     
     $query = Doctrine::getTable('StuffResource')
               ->getListQuery($request->getParameter('q'))
-              ->andWhere('is_fulfilled = ?', false);
+              ->andWhere('is_fulfilled = ?', false)
+              ->orderBy('created_at DESC');
 
     if ($type = $request->getParameter('type')) 
     {

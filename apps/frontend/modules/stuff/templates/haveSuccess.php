@@ -1,6 +1,10 @@
 <div class="main-col">
   <h1>I Have Stuff...</h1>
 
+  <p class="text-large">Either <a class="text-highlite" href="<?php echo url_for('@add_have_stuff') ?>">add an item</a> that you have and we'll notify you as soon as someone needs it, or search the 
+  list of current needs below.</p>
+  <hr/>
+  
   <?php
     include_partial('resource/resource_filter', array('resource_type' => 'stuff', 'resource_action' => 'have'));
   ?>

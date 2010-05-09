@@ -26,10 +26,10 @@ use_javascript('/js/app/ResourceFilterInit'.ucwords($resource_type).'.js');
 use_stylesheet('/css/app/resource_list.css');
 
 ?>
-<?php echo image_tag('icons/magnify-large.png', array('class'=>"left", 'width'=>"44", 'height'=>"41", 'alt'=>"Magnify Large")) ?>
-<?php include_component('resource', $resource_type.'_filter_form', array('resource_action' => $resource_action)); ?>
 <div class="clear">&nbsp;<?php echo $resource_action ?></div>
 <h2 class="half-margin"><?php include_partial('resource/list_header', array('type' => $resource_type, 'action' => $resource_action)) ?></h2>
+<?php echo image_tag('icons/magnify-large.png', array('class'=>"left", 'width'=>"44", 'height'=>"41", 'alt'=>"Magnify Large")) ?>
+<?php include_component('resource', $resource_type.'_filter_form', array('resource_action' => $resource_action)); ?>
 <hr />
 <div id="ResourceResultsList">
 	<div id="ResultsContainer">
