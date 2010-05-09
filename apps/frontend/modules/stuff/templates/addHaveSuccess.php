@@ -91,7 +91,16 @@
 </div>
 
 <?php slot('sidebar') ?>
-  
+  <div class="widget clearfix special">
+    <h3 class="half-margin">Want to ship something in from out of town?</h3>
+    <a href="http://www.crcnashville.org/floodrelief.aspx" title="CRC" target="_blank"><?php echo image_tag('partners/crc.jpg', array('class'=>'half-margin')) ?></a>
+  	<p class="no-margin">
+  	 The <a href="http://www.crcnashville.org/floodrelief.aspx" title="CRC" target="_blank">Community Resource Center</a> is 
+  	 accepting items that will be distributed to local community centers, nonprofit agencies, and churches.
+  	 <strong>Please no used clothing or perishable food at this time.</strong> For more information, please
+  	 <a href="http://www.crcnashville.org/floodrelief.aspx" title="CRC" target="_blank">visit their website.</a>
+  	</p>
+  </div>
 <?php end_slot() ?>
 
 <?php slot('breadcrumbs', get_component('default', 'breadcrumbs')) ?>
