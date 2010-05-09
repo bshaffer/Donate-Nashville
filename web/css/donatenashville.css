@@ -532,6 +532,10 @@ ul.breadcrumbs {
 		margin-left: 0px;
 		content: '';
 	}
+
+	#footer li.first {
+		margin: 0;
+	}
 	
 	#footer ul#partners {
 		margin-top: 35px;

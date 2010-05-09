@@ -1,0 +1,232 @@
+/* @override http://localhost/themes/wearenashville/wearenashville.css */
+
+body {
+	background: #000 url(images/bg.jpg) no-repeat center top;
+	margin: 0;
+	padding: 0;
+	font-family: Arial, Helvetica, Geneva, sans-serif;
+}
+
+#content {
+	background: url(images/bg.jpg) no-repeat center top;
+	width: 960px;
+	margin: 0 auto;
+	padding-top: 1050px;
+	position: relative;
+}
+
+#content h1,
+#content #we-are-nashville {
+	margin: 0;
+	display: none;
+}
+
+#content ul {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+#content ul li{
+	list-style-type: none;
+	list-style-image: none;
+}
+
+/* @group Header */
+#header #download {
+	position: absolute;
+	top: 25px;
+	left: 80px;
+	background: url(images/download.gif) no-repeat;
+	height: 18px;
+	width: 282px;
+}
+
+#header #home {
+	position: absolute;
+	top: 25px;
+	left: 80px;
+	background: url(images/home.gif) no-repeat;
+	height: 18px;
+	width: 86px;
+}
+
+#header #download a,
+#header #home a {
+	text-indent: -9999em;
+	display: block;
+}
+
+#header ul {
+	background: url(images/sharethis.gif) no-repeat;
+	height: 18px;
+	width: 164px;
+	position: absolute;
+	top: 25px;
+	right: 80px;
+	padding-left: 100px;
+}
+
+#header ul li {
+	float: left;
+}
+
+#header ul li a {
+	display: block;
+	text-indent: -9999em;
+}
+
+#header ul li#facebook a {
+	width: 90px;
+	height: 18px;
+}
+
+#header ul li#twitter a {
+	width: 74px;
+	height: 18px;
+}
+
+/* @end */
+
+#footer ul#blocks  {
+	margin: 5px 80px;
+	background: url(images/footerbar.gif) no-repeat left bottom;
+	padding-bottom: 40px;
+}
+
+#footer ul#blocks li {
+	float: left;
+}
+
+#footer ul#blocks li a {
+	display: block;
+	height: 130px;
+	text-indent: -9999em;
+}
+
+#footer ul li#shirt a{
+	background: url(images/buyshirt.gif);
+	width: 250px;
+	margin-right: 55px;
+}
+
+#footer ul li#donate-nashville a{
+	background: url(images/donatenashville.gif) no-repeat center;
+	width: 283px;
+	margin-right: 55px;
+}
+
+#footer ul li#water a{
+	background: url(images/savewater.gif) no-repeat center;
+	width: 153px;
+}
+
+#bottom-line{
+	width: 800px;
+	margin: 20px auto 80px;
+	overflow: hidden;
+	font-size: 10px;
+	text-transform: uppercase;
+}
+
+#copyright{
+	float: left;
+	color: #413f39;
+}
+
+#credits{
+	float: right;
+}
+
+ul#credits li {
+	float: left;
+	margin-left: 10px;
+	padding-left: 10px;
+	border-left: 1px solid #413f39;
+}
+
+ul#credits li.first {
+	border-left: none;
+}
+
+ul#credits li a {
+	display: block;
+	color: #413f39;
+	text-decoration: none;
+}
+
+#body {
+	position: absolute;
+	background: url(images/blankpage.jpg);
+	height: 944px;
+	width: 756px;
+	top: 72px;
+	left: 104px;
+}
+
+#body-inner {
+	height: 644px;
+	padding: 250px 20px 50px;
+	overflow: auto;
+}
+
+#body-inner #download-text {
+	margin: 0 0 30px;
+	font-size: 16px;
+	background: url(images/download-text.gif) no-repeat center top;
+	height: 56px;
+	position: relative;
+}
+
+#body-inner h3 {
+	margin: 0;
+	text-indent: -9999em;
+}
+
+#body-inner a#media {
+	position: absolute;
+	bottom: 0;
+	display: block;
+	text-indent: -9999em;
+	width: 700px;
+}
+
+ul#downloads {
+	width: 400px;
+	margin: 0 auto;
+}
+
+ul#downloads li{
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+
+ul#downloads li .image{
+	/*width: 250px;*/
+	float: left;
+}
+
+ul#downloads li img{
+	float: left;
+	margin-right: 20px;
+}
+
+ul#downloads li p {
+	margin: 0;
+}
+
+ul#downloads li p span{
+	display: block;
+	font-style: italic;
+	font-size: 12px;
+}
+
+ul#downloads li p a{
+	font-size: 12px;
+	text-transform: uppercase;
+	color: #cc4639;
+	text-decoration: none;
+	font-weight: bold;
+	display: block;
+	margin-top: 15px;
+}
