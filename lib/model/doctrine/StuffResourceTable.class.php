@@ -17,6 +17,8 @@ class StuffResourceTable extends ResourceTable
         ->whereWrap();
     }
     
+    $query->orderBy('created_at DESC');
+    
     return $query;
   }
   
