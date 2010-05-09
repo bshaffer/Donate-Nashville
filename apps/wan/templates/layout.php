@@ -5,7 +5,13 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>We Are Nashville</title>
-  <link rel="stylesheet" href="wearenashville.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  <?php include_http_metas() ?>
+  <?php include_metas() ?>
+  <?php include_title() ?>
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <?php include_stylesheets() ?>
+  <?php include_javascripts() ?>
+
 </head>
 <body>
   <div id="content">
@@ -23,22 +29,27 @@
       <li>Because... We Are Nashville</li>
     </ul>
     <div id="header">
-        <div id="download">
-          <a href="download.php">Download We Are Nashville Profile Image</a>
-        </div>        
+      <?php include_slot('navigation') ?>
       <ul>
         <li id="facebook">
         <a href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.wearenashville.org%2F&t=We%20Are%20Nashville" target="_blank">Share on Facebook</a></li>
         <li id="twitter"><a href="http://twitter.com/home?status=<?php echo urlencode('www.wearenashville.org #wearenashville'); ?>" target="_blank">Share on Twitter</a></li>
       </ul>
     </div>
-
+    
+    <div id="body">
+      <div id="body-inner">
+        <?php echo $sf_content ?>
+      </div>
+    </div>
+        
     <div id="footer">
       <ul id="blocks">
         <li id="shirt"><a href="http://store.coolpeoplecare.org/products/we-are-nashville-t-shirt" target="_blank">Get the Shirt</a></li>
         <li id="donate-nashville"><a href="http://www.donatenashville.org/" target="_blank">Get the Shirt</a></li>
         <li id="water"><a href="http://blogs.tennessean.com/blog/2010/savewater/" target="_blank">Save Your Water</a></li>
       </ul>
+
       <div id="bottom-line">
         <div id="copyright">&copy;<?php echo date('Y') ?> We Are Nashville. All Rights Reserved.</div>
         <ul id="credits">
@@ -47,5 +58,6 @@
         </ul>
       </div>
     </div>
+  </div>
 </body>
 </html>
