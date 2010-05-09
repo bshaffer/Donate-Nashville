@@ -88,7 +88,7 @@ ResourceFilter = $.extend({}, {
   // called manually, or runs every time the input is changed
   moreResultsClickedForStuff: function(jq_input) {
     this.RESULT_SET_OFFSET += this.RESULT_SET_SIZE;
-		this.runFilterForStuff(jq_input, true);
+		this.runFilterForStuff(jq_input, true, true);
 	},
 
 	runFilterForStuff: function(jq_input, append_to_list, force) {
