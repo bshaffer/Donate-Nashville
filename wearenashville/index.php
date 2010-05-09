@@ -9,7 +9,7 @@
 </head>
 <body>
   <div id="content">
-    <h1>We Are Nashville</h1>
+    <h1><a href="./">We Are Nashville</a></h1>
     <ul id="we-are-nashville">
       <li>We are people in need</li>
       <li>We are neighbors who care</li>

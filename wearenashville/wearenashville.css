@@ -1,4 +1,7 @@
-/* @override http://localhost/themes/wearenashville/wearenashville.css */
+/* @override 
+	http://localhost/themes/wearenashville/wearenashville.css
+	http://localhost/symfony/Donate-Nashville/wearenashville/wearenashville.css
+*/
 
 body {
 	background: #000 url(images/bg.jpg) no-repeat center top;
@@ -15,7 +18,22 @@ body {
 	position: relative;
 }
 
-#content h1,
+#content h1 {
+	margin: 0;
+	position: absolute;
+	top: 70px;
+	z-index: 50;
+	left: 100px;
+}
+
+#content h1 a {
+	display: block;
+	width: 760px;
+	height: 230px;
+	text-indent: -9999em;
+}
+
+
 #content #we-are-nashville {
 	margin: 0;
 	display: none;
