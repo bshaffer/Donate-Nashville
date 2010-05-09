@@ -108,3 +108,11 @@ a.danger:hover { color:#A80500; /* Red */ }
 
 /* Hide stuff without resorting to display:none; */
 .hide { visibility:hidden; width:0!important; height:0!important; line-height:0!important;padding:0!important;margin:0!important; }
+
+.moreResultsLink {
+  font-size:14px;
+  color:#204F7E;
+}
+.moreResultsLink:hover {
+  cursor:pointer;
+}

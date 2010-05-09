@@ -38,6 +38,8 @@ use_stylesheet('/css/app/resource_list.css');
      
     <?php /* the following line is shown only when a search is executed and no results are found. */ ?>
     <div class="noResults hidden">No results were found for this search.</div>
-    
+
+    <?php /* the following line is shown only when a search has additional results. */ ?>
+    <div class="moreResults hidden"><span class="moreResultsLink">+ <a title="more results">Load more results</a></div>
   </div>
 </div>

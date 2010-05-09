@@ -8,3 +8,8 @@ all:
       send_token_email:     Your login link from donatenashville.org
       match_found:          We found a match for you at donatenashville.org
       contact:              Contact Us form used at donatenashville.org
+
+
+  resource:
+    search_results_per_page:        8
+    keyword_results_per_page:       2

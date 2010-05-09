@@ -5,11 +5,14 @@ ResourceFilter = $.extend({}, {
 	MINIMUM_FILTER_LENGTH: 3,
 	KEYPRESS_DEBOUNCE_RATE: 450, // delays this long (in ms) after each keypress to prevent too many ajax requests
 	FADE_TIME: 250, // fade in/out takes this long
+	RESULT_SET_OFFSET: 0,  // When initialized, the offset is zero
+	RESULT_SET_SIZE:   8,  // The size of each query result set
 
 	// these are specified in the resource filter template
-	NO_RESULTS_STRING: '', // this will be loaded from the html (see resource filter template)
-	DEFAULT_STRING: '', // this will be loaded from the html (see resource filter template)
-
+	NO_RESULTS_STRING:      '', // this will be loaded from the html (see resource filter template)
+	DEFAULT_STRING:         '', // this will be loaded from the html (see resource filter template)
+  MORE_RESULTS_LINK_HTML: '', // this will be loaded from the html (see resource filter template)
+  
 	resource_type: 'time', // stuff or time
 	
 	
@@ -23,6 +26,8 @@ ResourceFilter = $.extend({}, {
 		
 		// read the NO_RESULTS_STRING and DEFAULT_STRING from the HTML
 		this.readStringsFromHTML();
+		
+    this.forceUpdate();
 	},
 	
 	
@@ -48,9 +53,9 @@ ResourceFilter = $.extend({}, {
 	//  in the same way as if an input change event was triggered
 	forceUpdate: function() {
 		if (this.resource_type == 'stuff') {
-			this.runFilterForStuff($('input.resource'));
+			this.runFilterForStuff($('input.resource'), null, true);
 		} else {
-			this.dateOrTimeChanged();
+			this.dateOrTimeChanged(true);
 		}
 	},
 	
@@ -65,28 +70,50 @@ ResourceFilter = $.extend({}, {
 		var self = this;
 
 		// add the debounce filter
-		jq_input.keyup($.debounce(self.KEYPRESS_DEBOUNCE_RATE, function() { self.runFilterForStuff(jq_input); }));
+		jq_input.keyup($.debounce(self.KEYPRESS_DEBOUNCE_RATE, function() { self.stuffInputChanged(jq_input); }));
+		
+    var more_results_link = $('.moreResultsLink');
+    more_results_link.live('click', function() { self.moreResultsClickedForStuff(jq_input)});
 	},
 
+  // called manually, or runs every time the input is changed
+  stuffInputChanged: function(jq_input) {
+    // Search has changed, so we should set the current result set offset to zero
+		this.showMoreResultsLink(true);
+    
+		this.runFilterForStuff(jq_input);
+	},
+	
+  // called manually, or runs every time the input is changed
+  moreResultsClickedForStuff: function(jq_input) {
+    this.RESULT_SET_OFFSET += this.RESULT_SET_SIZE;
+		this.runFilterForStuff(jq_input, true);
+	},
 
-	runFilterForStuff: function(jq_input) {
+	runFilterForStuff: function(jq_input, append_to_list, force) {
 		var self = this;
 
 		// mark as loading
 		self.updateUI(true, 'list');
-	  
+
 		var value = $.trim(jq_input.val());
-		if (value.length >= this.MINIMUM_FILTER_LENGTH) {
+		if (force || value.length >= this.MINIMUM_FILTER_LENGTH) {
 			// get the action from the form
 			var action = jq_input.closest('form').attr('action')+'';
 
 			// send the ajax request
-			var vars = {'q': value};
+			var vars = {'q': value, offset: self.RESULT_SET_OFFSET};
+						
 			$.getJSON(action, vars, function(data, status) {
 				data.stuff = $.trim(data.stuff);
 				if (data.stuff.length > 0) {
 					// got data back - show the html string
-					self.showContent(data.stuff);
+					if (append_to_list) {
+					  self.showContent(data.stuff, 'in-list', 'append');
+					} else {
+					  self.showContent(data.stuff);
+					};
+
 				} else {
 					// if we got a blank string, show the no results string instead
 					self.showNoResults();
@@ -97,6 +124,13 @@ ResourceFilter = $.extend({}, {
 					// got data back - show the html string
 				  self.updateUI(true, 'sidebar');
 					self.showSidebarContent(data.info);
+				}
+				
+				if (data.more == true) {
+				  self.showMoreResultsLink();
+				}
+				else {
+		      self.showMoreResultsLink(true);
 				}
 				
 			});
@@ -150,13 +184,19 @@ ResourceFilter = $.extend({}, {
 	
 	// called when any date or time is changed - either manually or with the date picker or time picker
 	//   here we pull the start date, the end date and send the appropriate request
-	dateOrTimeChanged: function() {
+	dateOrTimeChanged: function(force) {
 		// get the start and end dates
 		var values = this.getDateValues();
 
 		// make sure there is at least a valid start date
 		if (values !== null && values.start) {
 			this.runFilterForTime(values.start, values.end);
+		} else if(force){
+      var dateObj = new Date();
+      var todayString = dateObj.getFullYear()+'-'+(dateObj.getMonth()+1)+'-'+dateObj.getDate();
+      dateObj.setDate(dateObj.getDate()+7);
+      var nextWeekString = dateObj.getFullYear()+'-'+(dateObj.getMonth()+1)+'-'+dateObj.getDate();
+			this.runFilterForTime(todayString, nextWeekString);
 		}
 	},
 	
@@ -175,14 +215,12 @@ ResourceFilter = $.extend({}, {
 
 	  var end_date = this.extractDateValue('end_date');
     
-    if (end_date) 
-    {
+    if (end_date) {
   		// calculate end, if an end time was specified
   		var end_time = this.extractTimeValue('end_time');
   		values.end = (end_time ? end_date + ' ' + end_time : end_date);      
     }
-    else
-    {
+    else {
       values.end = '';
     }
 
@@ -217,7 +255,7 @@ ResourceFilter = $.extend({}, {
 
 			// set the query vars
 			//  the end date is optional
-			var vars = {start: start_date};
+			var vars = {start: start_date, offset: self.RESULT_SET_OFFSET};
 			if (end_date.length) { vars.end = end_date; }
 
 			// send the request
@@ -258,18 +296,33 @@ ResourceFilter = $.extend({}, {
 		this.showContent('<div class="emptyList">'+this.DEFAULT_STRING+'</div>');
 	},
 	
+  showMoreResultsLink: function(hide) {
+    if (hide) {
+      this.RESULT_SET_OFFSET = 0;
+      $('.moreResultsLink').remove();      
+    } else {
+      if (!$('.moreResultsLink').length) {
+		    this.showContent(this.MORE_RESULTS_LINK_HTML, 'main', 'after');              
+      }
+    }
+	},
+	
 	
 	////////////////////////////////////////////////////////////
 	/// UI Updates
 	
-	showContent: function(new_content, location) {
+	showContent: function(new_content, location, jq_function) {
 		var self = this;
 		var id = 'ResultsContainer';
 		if(location === 'sidebar') { id = 'SidebarContainer'; }
+    if(location === 'in-list') { id = 'ResourceList'; }
+    
+		if(!jq_function) { jq_function = 'html' }
 		
 		// update content
 		$('#'+id).queue(function() {
-			$(this).html(new_content);
+		  $(this)[jq_function](new_content);
+
 			$(this).dequeue();
 
 			// mark as no longer loading after the content is applied
@@ -308,6 +361,7 @@ ResourceFilter = $.extend({}, {
 	readStringsFromHTML: function() {
 		this.NO_RESULTS_STRING = $('#ResultsContainer .noResults').html();
 		this.DEFAULT_STRING = $('#ResultsContainer .emptyList').html();
+		this.MORE_RESULTS_LINK_HTML = $('#ResultsContainer .moreResults').html();
 	},
 	
 

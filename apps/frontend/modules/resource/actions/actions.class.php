@@ -12,29 +12,49 @@ class resourceActions extends frontendActions
 {
   public function executeStuffList(sfWebRequest $request)
   {  
+    $limit = sfConfig::get('app_resource_search_results_per_page');
+    
     $query = Doctrine::getTable('StuffResource')
               ->getListQuery($request->getParameter('q'))
-              ->andWhere('is_fulfilled = ?', false)
-              ->limit(8);
+              ->andWhere('is_fulfilled = ?', false);
 
     if ($type = $request->getParameter('type')) 
     {
       $query->andWhere('transaction_type = ?', $type);
     }
+    
+    if ($offset = $request->getParameter('offset', 0)) 
+    {
+      $query->offset($offset);
+    }
 
-    $results = $query->execute(array(), Doctrine::HYDRATE_ARRAY);
+    $more = $query->count() > ($limit + $offset);
+
+    if ($type == 'have' && !$request->getParameter('q')) 
+    {
+      $results = array();
+    }
+    else
+    {
+      $results = $query->limit($limit)->execute(array(), Doctrine::HYDRATE_ARRAY);
+    }
+
+    $stuffList = $this->getPartial('stuff/list', array('results' => $results, 'transaction_type' => $type, 'append' => $offset));
+
+    $infoList = '';
     
-    
-    $infoResults = Doctrine::getTable('InfoResource')
-                      ->getKeywordQuery($request->getParameter('q'), $type)
-                      ->limit(2)
-                      ->execute(array(), Doctrine::HYDRATE_ARRAY);
+    // This is the first search
+    if (!$offset)
+    {
+      $infoResults = Doctrine::getTable('InfoResource')
+                        ->getKeywordQuery($request->getParameter('q'), $type)
+                        ->limit(sfConfig::get('app_resource_keyword_results_per_page'))
+                        ->execute(array(), Doctrine::HYDRATE_ARRAY);
                       
-    $stuffList = $this->getPartial('stuff/list', array('results' => $results, 'transaction_type' => $type));
+      $infoList = $infoResults ? $this->getPartial('info/list', array('results' => $infoResults)) : '';
+    }
     
-    $infoList = $infoResults ? $this->getPartial('info/list', array('results' => $infoResults)) : '';
-    
-    return $this->renderText(json_encode(array('stuff' => trim($stuffList), 'info' => trim($infoList))));
+    return $this->renderText(json_encode(array('stuff' => trim($stuffList), 'info' => trim($infoList), 'more' => $more)));
   }
 
   public function executeTimeList(sfWebRequest $request)
@@ -42,11 +62,16 @@ class resourceActions extends frontendActions
     $query = Doctrine::getTable('TimeResource')
               ->getListQuery($request->getParameter('start'), $request->getParameter('end'))
               ->andWhere('is_fulfilled = ?', false)
-              ->limit(8);
+              ->limit(sfConfig::get('app_resource_search_results_per_page'));
 
     if ($type = $request->getParameter('type')) 
     {
       $query->whereWrap()->andWhere('transaction_type = ?', $type);
+    }
+    
+    if ($offset = $request->getParameter('offset')) 
+    {
+      $query->offset($offset);
     }
     
     $results = $query->execute(array(), Doctrine::HYDRATE_ARRAY);

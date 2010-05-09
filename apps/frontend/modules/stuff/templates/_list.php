@@ -1,7 +1,10 @@
 <?php use_helper('dh') ?>
   
 <?php if (count($results)): ?>
-<ul class="results-list search-results clearfix">
+  <?php if (!$append): ?>
+    <ul class="results-list search-results clearfix" id="ResourceList">    
+  <?php endif ?>
+
 <?php $i = 0; ?>
 <?php foreach ($results as $result): ?>
   <li <?php echo $i % 2 == 0 ? 'class="alt"' : '' ?>>
@@ -13,5 +16,8 @@
   </li>
   <?php $i++; ?>
 <?php endforeach ?>
-</ul>
+
+  <?php if (!$append): ?>
+    </ul>
+  <?php endif ?>
 <?php endif ?>
