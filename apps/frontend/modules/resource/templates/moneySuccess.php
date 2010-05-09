@@ -8,6 +8,10 @@
 
   <p>Donate online to the Metro Nashville Disaster Response Fund and/or the Tennessee Emergency Relief Fund <a href="http://www.cfmt.org/floodrelief/" title="The Community Foundation : Flood Relief" target="_blank">HERE</a> (checks can be mailed to P.O. Box 440225, Nashville, TN, 37244).</p>
 
+  <h3 class="no-margin">United Way of Metropolitan Nashville "Restore the Dream" Fund:</h3>
+  <p>As the community shifts from the "rescue and recovery" phase to the "restore and rebuild" phase, United Way has activated its "Restore The Dream" Fund established a decade ago to support service agencies during and after disasters, including structure and infrastructure restoration. This is a way for individuals to support the network of Nashville nonprofit agency programs as they deplete resources meeting immediate and short term needs of individuals. This includes providing reinforcements for organizations such as Red Cross, Salvation Army, Second Harvest and many others.</p>
+  <p>For more information, visit <a href="http://www.unitedwaynashville.org/nashvilleflood" title="Nashville Flood Relief &bull; United Way Metro Nashville" target="_blank">United Way of Metropolitan Nashville</a> or <a href="http://www.unitedwaynashville.org/give/give-10/flood/" title="Give10 &bull; United Way Metro Nashville" target="_blank">donate online</a>.
+  
   <h3 class="no-margin">Middle Tennessee Red Cross:</h3>
   <p>Donate online at <a href="http://www.middletennredcross.org/general_calltoaction.asp?CTA=1&amp;SN=8522&amp;OP=8919&amp;IDCapitulo=78T3Z2WSK0" title="Untitled Document" target="_blank">HERE</a>, by phone at 615-250-4300 or by mail at 2201 Charlotte Avenue, Nashville, TN 37203. Remember, the Red Cross is not a government agency and is funded solely by your local donations. You can also donate money at any Kroger, Dollar General or Whole Foods Market location.</p>
 
