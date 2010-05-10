@@ -39,6 +39,8 @@ class TimeResourceTable extends ResourceTable
         
     $query->endClause();
 
+    $query->orderBy('created_at DESC');
+
     return $query;
   }
   

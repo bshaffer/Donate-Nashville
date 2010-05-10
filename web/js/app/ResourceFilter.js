@@ -53,6 +53,7 @@ ResourceFilter = $.extend({}, {
 	//  in the same way as if an input change event was triggered
 	forceUpdate: function() {
 		if (this.resource_type == 'stuff') {
+		  this.showMoreResultsLink(true);
 			this.runFilterForStuff($('input.resource'), null, true);
 		} else {
 			this.dateOrTimeChanged(true);
@@ -87,7 +88,7 @@ ResourceFilter = $.extend({}, {
   // called manually, or runs every time the input is changed
   moreResultsClickedForStuff: function(jq_input) {
     this.RESULT_SET_OFFSET += this.RESULT_SET_SIZE;
-		this.runFilterForStuff(jq_input, true);
+		this.runFilterForStuff(jq_input, true, true);
 	},
 
 	runFilterForStuff: function(jq_input, append_to_list, force) {
@@ -299,12 +300,13 @@ ResourceFilter = $.extend({}, {
   showMoreResultsLink: function(hide) {
     if (hide) {
       this.RESULT_SET_OFFSET = 0;
-      $('.moreResultsLink').remove();      
+      $('.moreResultsLink').remove(); 
     } else {
-      if (!$('.moreResultsLink').length) {
-		    this.showContent(this.MORE_RESULTS_LINK_HTML, 'main', 'after');              
-      }
+        if ($('.moreResultsLink').length == 0) {
+		      this.showContent(this.MORE_RESULTS_LINK_HTML, null, 'after');
+        }
     }
+
 	},
 	
 	
