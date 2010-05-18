@@ -1,5 +1,5 @@
 <div>
-  <h2>Donate Nashville Export</h2>
+  <h2>Export</h2>
   <form action="<?php echo url_for('@export?sf_format=xls')?>" method="post">
     <table>
       <tr>
