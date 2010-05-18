@@ -17,6 +17,7 @@ class ProjectConfiguration extends sfProjectConfiguration
       'sfGoogleAnalyticsPlugin',
       'sfLucenePlugin',
       'sfTaskExtraPlugin',
+      'sfPhpExcelPlugin'
       ));
   }
   

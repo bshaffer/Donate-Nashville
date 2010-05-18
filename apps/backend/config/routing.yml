@@ -13,9 +13,14 @@ sf_guard_user:
 users:
   url: /users
   param: { module: users, action: index }
+
 statistics:
   url:  /
   param: { module: statistics, action: index }
+
+export:
+  url:  /export.:sf_format
+  param: { module: statistics, action: export }
   
 # default rules
 homepage:

@@ -27,4 +27,35 @@ class statisticsActions extends sfActions
     $this->fulfilled_have_stuff = Doctrine::getTable('StuffResource')->getList('have', 1);
     $this->fulfilled_need_stuff = Doctrine::getTable('StuffResource')->getList('need', 1);
   }
+  
+  public function executeExport($request)
+  {
+    $exportManager = sfExportManager::create($class);
+
+    $sheets = array(
+      'StuffResource' => array('have', 'need'), 
+      'InfoResource' => array('have', 'need'),
+      'TimeResource' => array('need'));
+      
+    foreach ($sheets as $class => $types) 
+    {
+      $fields = Doctrine::getTable($class)->getColumnNames();
+      $fields = array_combine($fields, $fields);
+
+      foreach ($fields as $key => $value) 
+      {
+        $fields[$key] = sfInflector::humanize($value);
+      }
+      
+      foreach ($types as $type) 
+      {
+        $results = Doctrine::getTable($class)->createQuery()->where('transaction_type = ?', $type)->execute();
+        $exportManager->exportCollectionSheet($results, $fields, sprintf('%s-%s', $class, $type));
+      }
+    }
+
+    $exportManager->output(sprintf('%s-Export', $class));
+
+    return sfView::NONE;
+  }
 }
