@@ -19,8 +19,10 @@ statistics:
   param: { module: statistics, action: index }
 
 export:
-  url:  /export.:sf_format
+  url:  /export
   param: { module: statistics, action: export }
+  requirements:
+    sf_method:  [GET, POST]
   
 # default rules
 homepage:

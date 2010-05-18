@@ -30,32 +30,38 @@ class statisticsActions extends sfActions
   
   public function executeExport($request)
   {
-    $exportManager = sfExportManager::create($class);
-
-    $sheets = array(
-      'StuffResource' => array('have', 'need'), 
-      'InfoResource' => array('have', 'need'),
-      'TimeResource' => array('need'));
-      
-    foreach ($sheets as $class => $types) 
+    if ($request->isMethod('POST')) 
     {
-      $fields = Doctrine::getTable($class)->getColumnNames();
-      $fields = array_combine($fields, $fields);
+      $exportManager = sfExportManager::create('Resource');
 
-      foreach ($fields as $key => $value) 
-      {
-        $fields[$key] = sfInflector::humanize($value);
-      }
+      $sheets = array(
+        'stuff' => array('have', 'need'), 
+        'info' => array('have', 'need'),
+        'time' => array('need'));
       
-      foreach ($types as $type) 
+      foreach ($sheets as $prefix => $types) 
       {
-        $results = Doctrine::getTable($class)->createQuery()->where('transaction_type = ?', $type)->execute();
-        $exportManager->exportCollectionSheet($results, $fields, sprintf('%s-%s', $class, $type));
+        $class = sfInflector::camelize($prefix.'Resource');
+        $fields = Doctrine::getTable($class)->getColumnNames();
+        $fields = array_combine($fields, $fields);
+
+        foreach ($fields as $key => $value) 
+        {
+          $fields[$key] = sfInflector::humanize($value);
+        }
+      
+        foreach ($types as $type) 
+        {
+          $results = Doctrine::getTable($class)->createQuery()->where('transaction_type = ?', $type)->execute();
+          $exportManager->exportCollectionSheet($results, $fields, sprintf('%s %s', $type, $prefix));
+        }
       }
+      $title = $request->getParameter('title', 'Donate_Nashville_Export');
+      $title = $request->getParameter('include_timestamp') ? $title . '-' . date('Y-m-d H:i') : $title;
+      $exportManager->output($title);
+
+      return sfView::NONE;
     }
 
-    $exportManager->output(sprintf('%s-Export', $class));
-
-    return sfView::NONE;
   }
 }
