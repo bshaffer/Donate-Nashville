@@ -65,7 +65,7 @@ end
 namespace :symlink do
   desc "Symlink the database"
   task :db do
-    run "ln -nfs #{shared_path}/databases.yml #{release_path}/databases.yml"
+    run "ln -nfs #{shared_path}/databases.yml #{release_path}/config/databases.yml"
   end
   
   desc 'Symlink the symfony library.'
