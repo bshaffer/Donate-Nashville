@@ -65,12 +65,7 @@ end
 namespace :symlink do
   desc "Symlink the database"
   task :db do
-    run "ln -nfs #{shared_path}/system/databases.yml #{release_path}/config/databases.yml"
-  end
-
-  desc "Symlink the mailer credentials"
-  task :mailer do
-    run "ln -nfs #{shared_path}/system/mailer.yml #{release_path}/config/mailer.yml"
+    run "ln -nfs #{shared_path}/databases.yml #{release_path}/config/databases.yml"
   end
   
   desc 'Symlink the symfony library.'
@@ -86,4 +81,4 @@ namespace :symfony do
   end
 end
 
-after 'deploy:finalize_update', 'symlink:symfony', 'deploy:create_dirs', 'symfony:clear_cache', 'symlink:db', 'symlink:mailer'
+after 'deploy:finalize_update', 'symlink:symfony', 'deploy:create_dirs', 'symfony:clear_cache', 'symlink:db'
