@@ -208,9 +208,6 @@ class stuffActions extends frontendActions
     $this->contact = $request->getAttribute('contact');
     $this->type = $this->resource['transaction_type'];
     
-    $this->senderAction = $this->type == 'need' ? 'has' : 'needs';
-    $this->receiverAction = $this->type == 'need' ? 'need' : 'have';
-    
     $this->setLayout('layoutEmail');
   }
   

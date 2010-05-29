@@ -1,7 +1,9 @@
+<?php use_helper('dh') ?>
+
 <h1>We have a match for "<?php echo $resource['title'] ?>"!</h1>
 
 <p>
-  User <?php echo $contact['name'] ?> says they <?php echo $senderAction ?> what you <?php echo $receiverAction ?>!
+  User <?php echo $contact['name'] ?> says they <?php echo opposite_of($type) ?> what you <?php echo $type ?>!
 </p>
 
 <p>You can contact them using the information below:</p>
