@@ -1,1 +1,1 @@
-<?php include_partial('resource/resource_contact_owner_form', array('form' => $form, 'resource' => $resource)) ?>
+<?php include_partial('resource/resource_contact_owner_form', array('form' => $form, 'resource' => $resource, 'type' => $resource['transaction_type'])) ?>

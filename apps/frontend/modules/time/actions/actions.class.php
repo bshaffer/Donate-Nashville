@@ -26,7 +26,7 @@ class timeActions extends frontendActions
   {
     $this->resource = $this->getRoute()->getObject();
     $this->type = $this->resource->getOppositeType();
-    $this->form = new ContactResourceOwnerForm();
+    $this->form = new ContactResourceOwnerForm(null, array('resource' => $this->resource));
     if($request->isMethod('POST'))
     {
       $this->form->bind($request->getParameter('resource_contact_owner'));

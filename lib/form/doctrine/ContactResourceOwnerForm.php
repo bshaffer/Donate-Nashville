@@ -13,6 +13,14 @@ class ContactResourceOwnerForm extends BaseContactForm
   public function configure()
   {
     $this->setWidget('resource_id', new sfWidgetFormInputHidden());
+    
+    if ($resource = $this->getOption('resource')) 
+    {
+      // Doesn't currently work - limitation of concrete inheritance
+
+      // $this->setDefault('resource_id', $resource['id']);
+    }
+    
     $this->widgetSchema->setNameFormat('contact[%s]');
   }
 }

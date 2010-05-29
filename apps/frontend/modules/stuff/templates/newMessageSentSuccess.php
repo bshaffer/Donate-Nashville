@@ -1,1 +1,1 @@
-Your message was sent.  Please wait for a response.
+<span class="flash-confirm">Your message was sent.  Please wait for a response.</span>

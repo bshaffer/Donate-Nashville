@@ -1,3 +1,4 @@
+
 <div class="main-col">
   <h1><?php echo $resource->title ?></h1>
   <?php if ($resource->showContactInformation()): ?>
@@ -35,3 +36,5 @@
 <?php slot('sidebar') ?>
   
 <?php end_slot() ?>
+
+<?php slot('title', $resource['title']) ?>

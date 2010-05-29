@@ -25,7 +25,7 @@ class stuffActions extends frontendActions
   {
     $this->resource = $this->getRoute()->getObject();
     $this->type = $this->resource->getOppositeType();
-    $this->form = new ContactResourceOwnerForm();
+    $this->form = new ContactResourceOwnerForm(null, array('resource' => $this->resource));
     
     if($request->isMethod('POST'))
     {
@@ -185,7 +185,7 @@ class stuffActions extends frontendActions
   {
     $this->resource = Doctrine_Core::getTable('stuffResource')->find($request->getParameter('id'));
     
-    $this->form = new ContactResourceOwnerForm();
+    $this->form = new ContactResourceOwnerForm(null, array('resource' => $this->resource));
     
     $this->form->bind($request->getParameter($this->form->getName()));
     
@@ -202,15 +202,30 @@ class stuffActions extends frontendActions
     }
   }
   
+  public function executeMatchEmail(sfWebRequest $request)
+  {
+    $this->resource = $request->getAttribute('resource');
+    $this->contact = $request->getAttribute('contact');
+    $this->type = $this->resource['transaction_type'];
+    
+    $this->senderAction = $this->type == 'need' ? 'has' : 'needs';
+    $this->receiverAction = $this->type == 'need' ? 'need' : 'have';
+    
+    $this->setLayout('layoutEmail');
+  }
+  
   /**
    * send an email to the resource owner letting them know that a match was
    * submitted, along with the contact info
    */
   protected function sendMatchFoundEmail($resource, $contact)
   {
+    $this->getRequest()->setAttribute('resource', $resource);
+    $this->getRequest()->setAttribute('contact', $contact);
+
     // send email based on $resource->transaction_type
-    $body = var_export($contact, true);
-    
+    $body = $this->getController()->getPresentationFor('stuff', 'matchEmail');
+
     $message = $this->getMailer()->compose(
       sfConfig::get('app_email_from'),
       $resource->User->username,
@@ -220,6 +235,5 @@ class stuffActions extends frontendActions
     
     $message->setContentType('text/html');
     $this->getMailer()->send($message);
-    
   }
 }
