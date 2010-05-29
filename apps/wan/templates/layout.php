@@ -45,7 +45,7 @@
         
     <div id="footer">
       <ul id="blocks">
-        <li id="shirt"><a href="http://store.coolpeoplecare.org/products/we-are-nashville-t-shirt" target="_blank">Get the Shirt</a></li>
+        <li id="shirt"><a href="http://store.coolpeoplecare.org/collections/we-are-nashville" target="_blank">Get the Shirt</a></li>
         <li id="donate-nashville"><a href="http://www.donatenashville.org/" target="_blank">Get the Shirt</a></li>
         <li id="water"><a href="http://blogs.tennessean.com/blog/2010/savewater/" target="_blank">Save Your Water</a></li>
       </ul>
