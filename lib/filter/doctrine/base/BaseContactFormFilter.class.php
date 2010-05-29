@@ -13,19 +13,21 @@ abstract class BaseContactFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'resource_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Resource'), 'add_empty' => true)),
-      'email'       => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'name'        => new sfWidgetFormFilterInput(),
-      'phone'       => new sfWidgetFormFilterInput(),
-      'notes'       => new sfWidgetFormFilterInput(),
+      'resource_id'   => new sfWidgetFormFilterInput(),
+      'resource_type' => new sfWidgetFormFilterInput(),
+      'email'         => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'name'          => new sfWidgetFormFilterInput(),
+      'phone'         => new sfWidgetFormFilterInput(),
+      'notes'         => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
-      'resource_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Resource'), 'column' => 'id')),
-      'email'       => new sfValidatorPass(array('required' => false)),
-      'name'        => new sfValidatorPass(array('required' => false)),
-      'phone'       => new sfValidatorPass(array('required' => false)),
-      'notes'       => new sfValidatorPass(array('required' => false)),
+      'resource_id'   => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'resource_type' => new sfValidatorPass(array('required' => false)),
+      'email'         => new sfValidatorPass(array('required' => false)),
+      'name'          => new sfValidatorPass(array('required' => false)),
+      'phone'         => new sfValidatorPass(array('required' => false)),
+      'notes'         => new sfValidatorPass(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('contact_filters[%s]');
@@ -45,12 +47,13 @@ abstract class BaseContactFormFilter extends BaseFormFilterDoctrine
   public function getFields()
   {
     return array(
-      'id'          => 'Number',
-      'resource_id' => 'ForeignKey',
-      'email'       => 'Text',
-      'name'        => 'Text',
-      'phone'       => 'Text',
-      'notes'       => 'Text',
+      'id'            => 'Number',
+      'resource_id'   => 'Number',
+      'resource_type' => 'Text',
+      'email'         => 'Text',
+      'name'          => 'Text',
+      'phone'         => 'Text',
+      'notes'         => 'Text',
     );
   }
 }

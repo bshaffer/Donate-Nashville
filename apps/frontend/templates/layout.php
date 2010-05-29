@@ -31,7 +31,7 @@
 				<div class="grid_6">&nbsp;</div>
 				<div class="grid_5">
 					<div class="twitter-single header right">
-						<?php include_component('default', 'twitter') ?>
+						<?php //include_component('default', 'twitter') ?>
 					</div>
 				</div>
 			</div>

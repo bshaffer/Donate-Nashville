@@ -12,4 +12,8 @@
  */
 class InfoResource extends BaseInfoResource
 {
+  public function getType()
+  {
+    return 'info';
+  }
 }

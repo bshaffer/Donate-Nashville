@@ -15,21 +15,23 @@ abstract class BaseContactForm extends BaseFormDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'id'          => new sfWidgetFormInputHidden(),
-      'resource_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Resource'), 'add_empty' => true)),
-      'email'       => new sfWidgetFormInputText(),
-      'name'        => new sfWidgetFormInputText(),
-      'phone'       => new sfWidgetFormInputText(),
-      'notes'       => new sfWidgetFormTextarea(),
+      'id'            => new sfWidgetFormInputHidden(),
+      'resource_id'   => new sfWidgetFormInputText(),
+      'resource_type' => new sfWidgetFormInputText(),
+      'email'         => new sfWidgetFormInputText(),
+      'name'          => new sfWidgetFormInputText(),
+      'phone'         => new sfWidgetFormInputText(),
+      'notes'         => new sfWidgetFormTextarea(),
     ));
 
     $this->setValidators(array(
-      'id'          => new sfValidatorDoctrineChoice(array('model' => $this->getModelName(), 'column' => 'id', 'required' => false)),
-      'resource_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Resource'), 'required' => false)),
-      'email'       => new sfValidatorString(array('max_length' => 255)),
-      'name'        => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'phone'       => new sfValidatorString(array('max_length' => 100, 'required' => false)),
-      'notes'       => new sfValidatorString(array('required' => false)),
+      'id'            => new sfValidatorDoctrineChoice(array('model' => $this->getModelName(), 'column' => 'id', 'required' => false)),
+      'resource_id'   => new sfValidatorInteger(array('required' => false)),
+      'resource_type' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'email'         => new sfValidatorString(array('max_length' => 255)),
+      'name'          => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'phone'         => new sfValidatorString(array('max_length' => 100, 'required' => false)),
+      'notes'         => new sfValidatorString(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('contact[%s]');

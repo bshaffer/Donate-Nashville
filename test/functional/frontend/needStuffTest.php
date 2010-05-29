@@ -59,15 +59,24 @@ $browser
     ->matches(sprintf('/%s/', $resource['title']))
     ->checkForm('ContactResourceOwnerForm')
   ->end()
-
-  ->call('/stuff/'.$resource->id.'/message', 'post', array('contact'=>array(
-      'email'=>'lacyrhoades@gmail.com',
-      'name'=>'Lacy',
-      'phone'=>'12345',
-      'notes'=>'Takin notes!'
-    )))
+  
+  ->setField('contact[email]', 'lacyrhoades@gmail.com')
+  ->setField('contact[name]', 'Lacy')
+  ->setField('contact[phone]', '12345')
+  ->setField('contact[notes]', 'Takin notes!')
+  
+  ->click('#resource-contact-submit')
+  
+  ->with('form')->begin()
+    ->hasErrors(false)
+  ->end()
   
   ->with('mailer')->begin()
     ->hasSent(true)
     ->withMessage($resource->User->username)
+  ->end()
+  
+  ->with('doctrine')->begin()
+    ->check('Contact', array('resource_id' => $resource['id'], 'resource_type' => $resource['type']))
+  ->end()
 ;

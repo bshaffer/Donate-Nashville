@@ -88,21 +88,14 @@ InfoResource:
     url:
       type:             string(255)
 
-ResourceParticipant:
-  columns:
-    participant_id:
-      type:             integer
-      notnull:          true
-    resource_id:
-      type:             integer
-      notnull:          true
-  relations:
-    
 Contact:
   columns:
     resource_id:
       type:             integer
       length:           8
+    resource_type:
+      type:             string
+      length:           255
     email:
       type:             string
       length:           255
@@ -115,8 +108,3 @@ Contact:
       length:           100
     notes:
       type:             clob
-  relations:
-    Resource:
-      local:            resource_id
-      foreignAlias:     Contacts
-      onDelete:         CASCADE

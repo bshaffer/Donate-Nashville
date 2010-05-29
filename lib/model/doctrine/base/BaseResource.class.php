@@ -23,46 +23,43 @@
  * @property string $phone_2
  * @property string $email
  * @property sfGuardUser $User
- * @property Doctrine_Collection $Contacts
  * 
- * @method integer             getOwnerId()          Returns the current record's "owner_id" value
- * @method enum                getTransactionType()  Returns the current record's "transaction_type" value
- * @method string              getTitle()            Returns the current record's "title" value
- * @method clob                getDescription()      Returns the current record's "description" value
- * @method enum                getPrivacy()          Returns the current record's "privacy" value
- * @method boolean             getIsFulfilled()      Returns the current record's "is_fulfilled" value
- * @method string              getNeighborhood()     Returns the current record's "neighborhood" value
- * @method string              getContactName()      Returns the current record's "contact_name" value
- * @method string              getAddress1()         Returns the current record's "address_1" value
- * @method string              getAddress2()         Returns the current record's "address_2" value
- * @method string              getCity()             Returns the current record's "city" value
- * @method string              getState()            Returns the current record's "state" value
- * @method string              getZip()              Returns the current record's "zip" value
- * @method string              getCounty()           Returns the current record's "county" value
- * @method string              getPhone1()           Returns the current record's "phone_1" value
- * @method string              getPhone2()           Returns the current record's "phone_2" value
- * @method string              getEmail()            Returns the current record's "email" value
- * @method sfGuardUser         getUser()             Returns the current record's "User" value
- * @method Doctrine_Collection getContacts()         Returns the current record's "Contacts" collection
- * @method Resource            setOwnerId()          Sets the current record's "owner_id" value
- * @method Resource            setTransactionType()  Sets the current record's "transaction_type" value
- * @method Resource            setTitle()            Sets the current record's "title" value
- * @method Resource            setDescription()      Sets the current record's "description" value
- * @method Resource            setPrivacy()          Sets the current record's "privacy" value
- * @method Resource            setIsFulfilled()      Sets the current record's "is_fulfilled" value
- * @method Resource            setNeighborhood()     Sets the current record's "neighborhood" value
- * @method Resource            setContactName()      Sets the current record's "contact_name" value
- * @method Resource            setAddress1()         Sets the current record's "address_1" value
- * @method Resource            setAddress2()         Sets the current record's "address_2" value
- * @method Resource            setCity()             Sets the current record's "city" value
- * @method Resource            setState()            Sets the current record's "state" value
- * @method Resource            setZip()              Sets the current record's "zip" value
- * @method Resource            setCounty()           Sets the current record's "county" value
- * @method Resource            setPhone1()           Sets the current record's "phone_1" value
- * @method Resource            setPhone2()           Sets the current record's "phone_2" value
- * @method Resource            setEmail()            Sets the current record's "email" value
- * @method Resource            setUser()             Sets the current record's "User" value
- * @method Resource            setContacts()         Sets the current record's "Contacts" collection
+ * @method integer     getOwnerId()          Returns the current record's "owner_id" value
+ * @method enum        getTransactionType()  Returns the current record's "transaction_type" value
+ * @method string      getTitle()            Returns the current record's "title" value
+ * @method clob        getDescription()      Returns the current record's "description" value
+ * @method enum        getPrivacy()          Returns the current record's "privacy" value
+ * @method boolean     getIsFulfilled()      Returns the current record's "is_fulfilled" value
+ * @method string      getNeighborhood()     Returns the current record's "neighborhood" value
+ * @method string      getContactName()      Returns the current record's "contact_name" value
+ * @method string      getAddress1()         Returns the current record's "address_1" value
+ * @method string      getAddress2()         Returns the current record's "address_2" value
+ * @method string      getCity()             Returns the current record's "city" value
+ * @method string      getState()            Returns the current record's "state" value
+ * @method string      getZip()              Returns the current record's "zip" value
+ * @method string      getCounty()           Returns the current record's "county" value
+ * @method string      getPhone1()           Returns the current record's "phone_1" value
+ * @method string      getPhone2()           Returns the current record's "phone_2" value
+ * @method string      getEmail()            Returns the current record's "email" value
+ * @method sfGuardUser getUser()             Returns the current record's "User" value
+ * @method Resource    setOwnerId()          Sets the current record's "owner_id" value
+ * @method Resource    setTransactionType()  Sets the current record's "transaction_type" value
+ * @method Resource    setTitle()            Sets the current record's "title" value
+ * @method Resource    setDescription()      Sets the current record's "description" value
+ * @method Resource    setPrivacy()          Sets the current record's "privacy" value
+ * @method Resource    setIsFulfilled()      Sets the current record's "is_fulfilled" value
+ * @method Resource    setNeighborhood()     Sets the current record's "neighborhood" value
+ * @method Resource    setContactName()      Sets the current record's "contact_name" value
+ * @method Resource    setAddress1()         Sets the current record's "address_1" value
+ * @method Resource    setAddress2()         Sets the current record's "address_2" value
+ * @method Resource    setCity()             Sets the current record's "city" value
+ * @method Resource    setState()            Sets the current record's "state" value
+ * @method Resource    setZip()              Sets the current record's "zip" value
+ * @method Resource    setCounty()           Sets the current record's "county" value
+ * @method Resource    setPhone1()           Sets the current record's "phone_1" value
+ * @method Resource    setPhone2()           Sets the current record's "phone_2" value
+ * @method Resource    setEmail()            Sets the current record's "email" value
+ * @method Resource    setUser()             Sets the current record's "User" value
  * 
  * @package    skeleton
  * @subpackage model
@@ -160,10 +157,6 @@ abstract class BaseResource extends sfDoctrineRecord
              'local' => 'owner_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
-
-        $this->hasMany('Contact as Contacts', array(
-             'local' => 'id',
-             'foreign' => 'resource_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable(array(
              ));
