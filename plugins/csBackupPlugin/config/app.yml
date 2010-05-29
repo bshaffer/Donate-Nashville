@@ -1,0 +1,36 @@
+all:
+  csBackup:
+    rsync:
+      options:
+        verbose:          true
+        progress:         true
+        stats:            true
+        compress:         true
+        rsh:              ssh
+        recursive:        true
+        times:            true
+        perms:            true
+        links:            true
+        delete:           true
+        exclude:          ['*.svn', '*.git']
+      
+      source:             [web/uploads]
+    
+      target:             false
+      
+    mysql:
+      email:              your@email.com
+      
+      # Can be array of DB names
+      dbname:             [db1, db2]
+      
+      backup_dir:         data/sql/backup
+      
+      command:            mysqldump
+    
+    scp:
+      target:             false
+
+      target_dir:         ~/
+      
+      source:             [web/uploads]

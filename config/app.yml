@@ -1,2 +1,6 @@
 #defaults
-# all:
+all:
+  csBackup:
+    mysql:
+      email:        bshaffer@centresource.com
+      backup_dir:   /var/www/donatenashville.org/backup/mysql
