@@ -31,14 +31,7 @@ class resourceActions extends frontendActions
 
     $more = $query->count() > ($limit + $offset);
 
-    if ($type == 'have' && !$request->getParameter('q')) 
-    {
-      $results = array();
-    }
-    else
-    {
-      $results = $query->limit($limit)->execute(array(), Doctrine::HYDRATE_ARRAY);
-    }
+    $results = $query->limit($limit)->execute(array(), Doctrine::HYDRATE_ARRAY);
 
     $stuffList = $this->getPartial('stuff/list', array('results' => $results, 'transaction_type' => $type, 'append' => $offset));
 
